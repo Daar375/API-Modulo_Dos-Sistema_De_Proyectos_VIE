@@ -1,0 +1,10 @@
+C:\Users\Daar375\source\repos\modulo2DBConectionAPI\VIEDataAccess\bin\Debug\VIEDataAccess.dll.config
+C:\Users\Daar375\source\repos\modulo2DBConectionAPI\VIEDataAccess\bin\Debug\VIEDataAccess.dll
+C:\Users\Daar375\source\repos\modulo2DBConectionAPI\VIEDataAccess\bin\Debug\VIEDataAccess.pdb
+C:\Users\Daar375\source\repos\modulo2DBConectionAPI\VIEDataAccess\bin\Debug\EntityFramework.dll
+C:\Users\Daar375\source\repos\modulo2DBConectionAPI\VIEDataAccess\bin\Debug\EntityFramework.xml
+C:\Users\Daar375\source\repos\modulo2DBConectionAPI\VIEDataAccess\obj\Debug\VIEDataAccess.csprojAssemblyReference.cache
+C:\Users\Daar375\source\repos\modulo2DBConectionAPI\VIEDataAccess\obj\Debug\VIEDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Daar375\source\repos\modulo2DBConectionAPI\VIEDataAccess\obj\Debug\VIEDataAccess.csproj.CopyComplete
+C:\Users\Daar375\source\repos\modulo2DBConectionAPI\VIEDataAccess\obj\Debug\VIEDataAccess.dll
+C:\Users\Daar375\source\repos\modulo2DBConectionAPI\VIEDataAccess\obj\Debug\VIEDataAccess.pdb

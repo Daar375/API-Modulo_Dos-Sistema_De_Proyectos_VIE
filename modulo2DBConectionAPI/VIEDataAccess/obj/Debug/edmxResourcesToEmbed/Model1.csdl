@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Frascati">
+    <Key>
+      <PropertyRef Name="idArea" />
+    </Key>
+    <Property Name="codigoProyecto" Type="String" MaxLength="14" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="idArea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="subArea" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="area" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_Frascati_Proyecto" FromRole="Frascati" ToRole="Proyecto" />
+  </EntityType>
+  <EntityType Name="Objetivo">
+    <Key>
+      <PropertyRef Name="idCodigo" />
+    </Key>
+    <Property Name="codigoProyecto" Type="String" MaxLength="14" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="objetivoEspecifico" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="idCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_Objetivo_Proyecto" FromRole="Objetivo" ToRole="Proyecto" />
+  </EntityType>
+  <EntityType Name="ODS">
+    <Key>
+      <PropertyRef Name="codigoDeArea" />
+    </Key>
+    <Property Name="codigoProyecto" Type="String" MaxLength="14" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="codigoDeArea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="subArea" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="area" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_ODS_Proyecto" FromRole="ODS" ToRole="Proyecto" />
+  </EntityType>
+  <EntityType Name="Poblacion_Beneficiaria">
+    <Key>
+      <PropertyRef Name="codigoPoblacion" />
+    </Key>
+    <Property Name="codigoProyecto" Type="String" MaxLength="14" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="codigoPoblacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="poblacion" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_Poblacion_Beneficiaria_Proyecto" FromRole="Poblacion_Beneficiaria" ToRole="Proyecto" />
+  </EntityType>
+  <EntityType Name="Proyecto">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="String" MaxLength="14" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="fechaIngreso" Type="DateTime" Precision="0" />
+    <Property Name="objetivoGeneral" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="tipo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="fechaSuspension" Type="DateTime" Precision="0" />
+    <Property Name="oficialDeProyecto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="modalidad" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="numeroDeActaVIE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="numeroDeActaEscuela" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="fechaAprobación" Type="DateTime" Precision="0" />
+    <Property Name="fechaInicio" Type="DateTime" Precision="0" />
+    <Property Name="fechaFinalizacion" Type="DateTime" Precision="0" />
+    <Property Name="investigadorCoordinador" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="justificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Frascati" Relationship="Self.FK_Frascati_Proyecto" FromRole="Proyecto" ToRole="Frascati" />
+    <NavigationProperty Name="Objetivo" Relationship="Self.FK_Objetivo_Proyecto" FromRole="Proyecto" ToRole="Objetivo" />
+    <NavigationProperty Name="ODS" Relationship="Self.FK_ODS_Proyecto" FromRole="Proyecto" ToRole="ODS" />
+    <NavigationProperty Name="Poblacion_Beneficiaria" Relationship="Self.FK_Poblacion_Beneficiaria_Proyecto" FromRole="Proyecto" ToRole="Poblacion_Beneficiaria" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Frascati_Proyecto">
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+    <End Role="Frascati" Type="Self.Frascati" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyecto">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="Frascati">
+        <PropertyRef Name="codigoProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Objetivo_Proyecto">
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+    <End Role="Objetivo" Type="Self.Objetivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyecto">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="Objetivo">
+        <PropertyRef Name="codigoProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ODS_Proyecto">
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+    <End Role="ODS" Type="Self.ODS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyecto">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="ODS">
+        <PropertyRef Name="codigoProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Poblacion_Beneficiaria_Proyecto">
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+    <End Role="Poblacion_Beneficiaria" Type="Self.Poblacion_Beneficiaria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyecto">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="Poblacion_Beneficiaria">
+        <PropertyRef Name="codigoProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VIEEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Frascati" EntityType="Self.Frascati" />
+    <EntitySet Name="Objetivo" EntityType="Self.Objetivo" />
+    <EntitySet Name="ODS" EntityType="Self.ODS" />
+    <EntitySet Name="Poblacion_Beneficiaria" EntityType="Self.Poblacion_Beneficiaria" />
+    <EntitySet Name="Proyecto" EntityType="Self.Proyecto" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_Frascati_Proyecto" Association="Self.FK_Frascati_Proyecto">
+      <End Role="Proyecto" EntitySet="Proyecto" />
+      <End Role="Frascati" EntitySet="Frascati" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Objetivo_Proyecto" Association="Self.FK_Objetivo_Proyecto">
+      <End Role="Proyecto" EntitySet="Proyecto" />
+      <End Role="Objetivo" EntitySet="Objetivo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ODS_Proyecto" Association="Self.FK_ODS_Proyecto">
+      <End Role="Proyecto" EntitySet="Proyecto" />
+      <End Role="ODS" EntitySet="ODS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Poblacion_Beneficiaria_Proyecto" Association="Self.FK_Poblacion_Beneficiaria_Proyecto">
+      <End Role="Proyecto" EntitySet="Proyecto" />
+      <End Role="Poblacion_Beneficiaria" EntitySet="Poblacion_Beneficiaria" />
+    </AssociationSet>
+    <FunctionImport Name="agregarFrascati">
+      <Parameter Name="codigoProyecto" Mode="In" Type="String" />
+      <Parameter Name="area" Mode="In" Type="String" />
+      <Parameter Name="subArea" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="agregarODS">
+      <Parameter Name="codigoProyecto" Mode="In" Type="String" />
+      <Parameter Name="area" Mode="In" Type="String" />
+      <Parameter Name="subArea" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="agregarPoblación">
+      <Parameter Name="codigoProyecto" Mode="In" Type="String" />
+      <Parameter Name="poblacion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="eliminarFrascati">
+      <Parameter Name="idArea" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="eliminarODS">
+      <Parameter Name="idArea" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="eliminarPoblación">
+      <Parameter Name="codigoPoblacion" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getFrascati" ReturnType="Collection(Model.getFrascati_Result)">
+      <Parameter Name="codigoProyecto" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getObjetivos" ReturnType="Collection(Model.getObjetivos_Result)">
+      <Parameter Name="codigoProyecto" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getODS" ReturnType="Collection(Model.getODS_Result)">
+      <Parameter Name="codigoProyecto" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getPoblaciones" ReturnType="Collection(Model.getPoblaciones_Result)">
+      <Parameter Name="codigoProyecto" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getProyecto" ReturnType="Collection(Model.getProyecto_Result)">
+      <Parameter Name="codigoEspecifico" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getProyectos" ReturnType="Collection(Model.getProyectos_Result)" />
+    <FunctionImport Name="getProyectosPorBusqueda" ReturnType="Collection(Model.getProyectosPorBusqueda_Result)">
+      <Parameter Name="criterioBusqueda" Mode="In" Type="String" />
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="getFrascati_Result">
+    <Property Type="Int32" Name="idArea" Nullable="false" />
+    <Property Type="String" Name="area" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="subArea" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="getObjetivos_Result">
+    <Property Type="Int32" Name="idCodigo" Nullable="false" />
+    <Property Type="String" Name="objetivoEspecifico" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="getODS_Result">
+    <Property Type="Int32" Name="codigoDeArea" Nullable="false" />
+    <Property Type="String" Name="area" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="subArea" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="getPoblaciones_Result">
+    <Property Type="Int32" Name="codigoPoblacion" Nullable="false" />
+    <Property Type="String" Name="poblacion" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="getProyecto_Result">
+    <Property Type="String" Name="codigo" Nullable="false" MaxLength="14" />
+    <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="fechaIngreso" Nullable="true" />
+    <Property Type="String" Name="objetivoGeneral" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="estado" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="tipo" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="fechaSuspension" Nullable="true" />
+    <Property Type="String" Name="oficialDeProyecto" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="modalidad" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="numeroDeActaVIE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="numeroDeActaEscuela" Nullable="true" MaxLength="30" />
+    <Property Type="DateTime" Name="fechaAprobación" Nullable="true" />
+    <Property Type="DateTime" Name="fechaInicio" Nullable="true" />
+    <Property Type="DateTime" Name="fechaFinalizacion" Nullable="true" />
+    <Property Type="String" Name="investigadorCoordinador" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="justificacion" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="getProyectos_Result">
+    <Property Type="String" Name="codigo" Nullable="false" MaxLength="14" />
+    <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="investigadorCoordinador" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="fechaInicio" Nullable="true" />
+    <Property Type="DateTime" Name="fechaFinalizacion" Nullable="true" />
+    <Property Type="String" Name="oficialDeProyecto" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="getProyectosPorBusqueda_Result">
+    <Property Type="String" Name="codigo" Nullable="false" MaxLength="14" />
+    <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="investigadorCoordinador" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="fechaInicio" Nullable="true" />
+    <Property Type="DateTime" Name="fechaFinalizacion" Nullable="true" />
+    <Property Type="String" Name="oficialDeProyecto" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>
