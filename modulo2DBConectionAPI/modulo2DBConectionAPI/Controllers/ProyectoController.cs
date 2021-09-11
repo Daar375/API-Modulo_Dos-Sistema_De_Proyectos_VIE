@@ -21,13 +21,13 @@ namespace modulo2DBConectionAPI.Controllers
                 return a.ToList();
             }
         }
-        public List<getProyecto_Result> Get(String id)
+        public getProyecto_Result Get(String id)
         {
             using (VIEEntities entities = new VIEEntities())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
                 System.Data.Objects.ObjectResult<getProyecto_Result> a = entities.getProyecto(id);
-                return a.ToList();
+                return a.ToList()[0];
             }
         }
         public List<getProyectosPorBusqueda_Result> Get(String criterioBusqueda, String parametros)
