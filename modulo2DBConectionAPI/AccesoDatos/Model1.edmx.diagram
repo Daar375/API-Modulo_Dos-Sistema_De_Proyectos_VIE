@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ae06fcad73284ac1ae31db16083fe351" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.AreaFrascati" Width="1.5" PointX="8.25" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Compra" Width="1.5" PointX="7.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Departamento" Width="1.5" PointX="8.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.EstadoDeProyecto" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Informe" Width="1.5" PointX="10.5" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Investigador" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ModalidadProyecto" Width="1.5" PointX="3" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ObjetivoEspecifico" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ODS" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PalabraClave" Width="1.5" PointX="7.5" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PlanDeAccion" Width="1.5" PointX="0.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PlanteamientoProyecto" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PoblacionBeneficiaria" Width="1.5" PointX="5.25" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Proyecto" Width="1.5" PointX="5.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ProyectoXBeneficiaria" Width="1.5" PointX="7.5" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ProyectoXDepartamento" Width="1.5" PointX="10.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ProyectoXFrascati" Width="1.5" PointX="10.5" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ProyectoXODS" Width="1.5" PointX="7.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.RubroPresupuesto" Width="1.5" PointX="5.25" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SetDatosGenerales" Width="1.5" PointX="3" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SubAreaFrascati" Width="1.5" PointX="8.25" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SubODS" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TipoDepartamento" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TipoDeProceso" Width="1.5" PointX="3" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TipoInforme" Width="1.5" PointX="8.25" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TipoProyecto" Width="1.5" PointX="3" PointY="26.5" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_ProyectoXFrascati_AreaFrascati" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_SubAreaFrascati_AreaFrascati" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Compra_Proyecto" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ProyectoXDepartamento_Departamento" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Proyecto_EstadoDeProyecto" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Informe_Proyecto" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Informe_TipoInforme" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Proyecto_Investigador" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Proyecto_Investigador1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Proyecto_ModalidadProyecto" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ObjetivoEspecifico_PlanDeAccion" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ProyectoXODS_ODS" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_SubODS_ODS" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PalabraClave_Proyecto" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PlanteamientoProyecto_PlanDeAccion" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Proyecto_PlanteamientoProyecto" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_RubroPresupuesto_PlanteamientoProyecto" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ProyectoXBeneficiaria_PoblacionBeneficiaria" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Proyecto_SetDatosGenerales" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Proyecto_TipoDeProceso" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Proyecto_TipoProyecto" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ProyectoXBeneficiaria_Proyecto" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ProyectoXDepartamento_Proyecto" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ProyectoXFrascati_Proyecto" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ProyectoXODS_Proyecto" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ProyectoXDepartamento_TipoDepartamento" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ProyectoXFrascati_SubAreaFrascati" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ProyectoXODS_SubODS" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="VieEntidades">
+    <EntitySetMapping Name="AreaFrascati">
+      <EntityTypeMapping TypeName="Model.AreaFrascati">
+        <MappingFragment StoreEntitySet="AreaFrascati">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Compra">
+      <EntityTypeMapping TypeName="Model.Compra">
+        <MappingFragment StoreEntitySet="Compra">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="PrecioTotal" ColumnName="PrecioTotal" />
+          <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departamento">
+      <EntityTypeMapping TypeName="Model.Departamento">
+        <MappingFragment StoreEntitySet="Departamento">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NombreProyecto" ColumnName="NombreProyecto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoDeProyecto">
+      <EntityTypeMapping TypeName="Model.EstadoDeProyecto">
+        <MappingFragment StoreEntitySet="EstadoDeProyecto">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EstadoDeProyecto1" ColumnName="EstadoDeProyecto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Informe">
+      <EntityTypeMapping TypeName="Model.Informe">
+        <MappingFragment StoreEntitySet="Informe">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TituloInforme" ColumnName="TituloInforme" />
+          <ScalarProperty Name="IdTipoInforme" ColumnName="IdTipoInforme" />
+          <ScalarProperty Name="FechaProgramada" ColumnName="FechaProgramada" />
+          <ScalarProperty Name="FechaDeEntrega" ColumnName="FechaDeEntrega" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+          <ScalarProperty Name="MemorandoDIP" ColumnName="MemorandoDIP" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Investigador">
+      <EntityTypeMapping TypeName="Model.Investigador">
+        <MappingFragment StoreEntitySet="Investigador">
+          <ScalarProperty Name="NumIdentidad" ColumnName="NumIdentidad" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ModalidadProyecto">
+      <EntityTypeMapping TypeName="Model.ModalidadProyecto">
+        <MappingFragment StoreEntitySet="ModalidadProyecto">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NombreModalidad" ColumnName="NombreModalidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ObjetivoEspecifico">
+      <EntityTypeMapping TypeName="Model.ObjetivoEspecifico">
+        <MappingFragment StoreEntitySet="ObjetivoEspecifico">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ObjetivoEspecifico1" ColumnName="ObjetivoEspecifico" />
+          <ScalarProperty Name="IdPlanDeAccion" ColumnName="IdPlanDeAccion" />
+          <ScalarProperty Name="Metodologia" ColumnName="Metodologia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ODS">
+      <EntityTypeMapping TypeName="Model.ODS">
+        <MappingFragment StoreEntitySet="ODS">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ODS1" ColumnName="ODS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PalabraClave">
+      <EntityTypeMapping TypeName="Model.PalabraClave">
+        <MappingFragment StoreEntitySet="PalabraClave">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PalabraClave1" ColumnName="PalabraClave" />
+          <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanDeAccion">
+      <EntityTypeMapping TypeName="Model.PlanDeAccion">
+        <MappingFragment StoreEntitySet="PlanDeAccion">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ObjetivoGeneral" ColumnName="ObjetivoGeneral" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanteamientoProyecto">
+      <EntityTypeMapping TypeName="Model.PlanteamientoProyecto">
+        <MappingFragment StoreEntitySet="PlanteamientoProyecto">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Justificacion" ColumnName="Justificacion" />
+          <ScalarProperty Name="EstadoSituacion" ColumnName="EstadoSituacion" />
+          <ScalarProperty Name="IdPlanDeAccion" ColumnName="IdPlanDeAccion" />
+          <ScalarProperty Name="EstrategiaAprobacion" ColumnName="EstrategiaAprobacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PoblacionBeneficiaria">
+      <EntityTypeMapping TypeName="Model.PoblacionBeneficiaria">
+        <MappingFragment StoreEntitySet="PoblacionBeneficiaria">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NombrePoblacion" ColumnName="NombrePoblacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proyecto">
+      <EntityTypeMapping TypeName="Model.Proyecto">
+        <MappingFragment StoreEntitySet="Proyecto">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="IdTipoProyecto" ColumnName="IdTipoProyecto" />
+          <ScalarProperty Name="IdEstadoDeProyecto" ColumnName="IdEstadoDeProyecto" />
+          <ScalarProperty Name="ActaVIE" ColumnName="ActaVIE" />
+          <ScalarProperty Name="ActaEscuela" ColumnName="ActaEscuela" />
+          <ScalarProperty Name="IdTipoDeProceso" ColumnName="IdTipoDeProceso" />
+          <ScalarProperty Name="FechaAprobacion" ColumnName="FechaAprobacion" />
+          <ScalarProperty Name="FechaSuspension" ColumnName="FechaSuspension" />
+          <ScalarProperty Name="IdOficialDeProyecto" ColumnName="IdOficialDeProyecto" />
+          <ScalarProperty Name="IdPlanteamientoProyecto" ColumnName="IdPlanteamientoProyecto" />
+          <ScalarProperty Name="IdSetDatosGenerales" ColumnName="IdSetDatosGenerales" />
+          <ScalarProperty Name="IdModalidad" ColumnName="IdModalidad" />
+          <ScalarProperty Name="IdInvestigadorCoordinador" ColumnName="IdInvestigadorCoordinador" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProyectoXBeneficiaria">
+      <EntityTypeMapping TypeName="Model.ProyectoXBeneficiaria">
+        <MappingFragment StoreEntitySet="ProyectoXBeneficiaria">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+          <ScalarProperty Name="IdPoblacionBeneficiaria" ColumnName="IdPoblacionBeneficiaria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProyectoXDepartamento">
+      <EntityTypeMapping TypeName="Model.ProyectoXDepartamento">
+        <MappingFragment StoreEntitySet="ProyectoXDepartamento">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+          <ScalarProperty Name="IdTipoDepartamento" ColumnName="IdTipoDepartamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProyectoXFrascati">
+      <EntityTypeMapping TypeName="Model.ProyectoXFrascati">
+        <MappingFragment StoreEntitySet="ProyectoXFrascati">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+          <ScalarProperty Name="IdSubArea" ColumnName="IdSubArea" />
+          <ScalarProperty Name="IdArea" ColumnName="IdArea" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProyectoXODS">
+      <EntityTypeMapping TypeName="Model.ProyectoXODS">
+        <MappingFragment StoreEntitySet="ProyectoXODS">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+          <ScalarProperty Name="IdSubODS" ColumnName="IdSubODS" />
+          <ScalarProperty Name="IdODS" ColumnName="IdODS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RubroPresupuesto">
+      <EntityTypeMapping TypeName="Model.RubroPresupuesto">
+        <MappingFragment StoreEntitySet="RubroPresupuesto">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Ano" ColumnName="Ano" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="IdPlanteamientoProyecto" ColumnName="IdPlanteamientoProyecto" />
+          <ScalarProperty Name="Justificacion" ColumnName="Justificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SetDatosGenerales">
+      <EntityTypeMapping TypeName="Model.SetDatosGenerales">
+        <MappingFragment StoreEntitySet="SetDatosGenerales">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NombreDelProyecto" ColumnName="NombreDelProyecto" />
+          <ScalarProperty Name="FechaInicioEjecucion" ColumnName="FechaInicioEjecucion" />
+          <ScalarProperty Name="FechaFinEjecucion" ColumnName="FechaFinEjecucion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubAreaFrascati">
+      <EntityTypeMapping TypeName="Model.SubAreaFrascati">
+        <MappingFragment StoreEntitySet="SubAreaFrascati">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdAreaFrascati" ColumnName="IdAreaFrascati" />
+          <ScalarProperty Name="SubArea" ColumnName="SubArea" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubODS">
+      <EntityTypeMapping TypeName="Model.SubODS">
+        <MappingFragment StoreEntitySet="SubODS">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdODS" ColumnName="IdODS" />
+          <ScalarProperty Name="SubODS1" ColumnName="SubODS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Model.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoDepartamento">
+      <EntityTypeMapping TypeName="Model.TipoDepartamento">
+        <MappingFragment StoreEntitySet="TipoDepartamento">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TipoDepartamento1" ColumnName="TipoDepartamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoDeProceso">
+      <EntityTypeMapping TypeName="Model.TipoDeProceso">
+        <MappingFragment StoreEntitySet="TipoDeProceso">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TipoDeProceso1" ColumnName="TipoDeProceso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoInforme">
+      <EntityTypeMapping TypeName="Model.TipoInforme">
+        <MappingFragment StoreEntitySet="TipoInforme">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TipoInforme1" ColumnName="TipoInforme" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoProyecto">
+      <EntityTypeMapping TypeName="Model.TipoProyecto">
+        <MappingFragment StoreEntitySet="TipoProyecto">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TipoProyecto1" ColumnName="TipoProyecto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Pr_Compra_Eliminar" FunctionName="Model.Store.Pr_Compra_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Pr_Compra_Insertar" FunctionName="Model.Store.Pr_Compra_Insertar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Compra_Insertar_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="PrecioTotal" ColumnName="PrecioTotal" />
+          <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_Compra_SeleccionarXProyecto" FunctionName="Model.Store.Pr_Compra_SeleccionarXProyecto">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Compra_SeleccionarXProyecto_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="PrecioTotal" ColumnName="PrecioTotal" />
+          <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_Informe_Eliminar" FunctionName="Model.Store.Pr_Informe_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Pr_Informe_Insertar" FunctionName="Model.Store.Pr_Informe_Insertar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Informe_Insertar_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TituloInforme" ColumnName="TituloInforme" />
+          <ScalarProperty Name="IdTipoInforme" ColumnName="IdTipoInforme" />
+          <ScalarProperty Name="FechaProgramada" ColumnName="FechaProgramada" />
+          <ScalarProperty Name="FechaDeEntrega" ColumnName="FechaDeEntrega" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+          <ScalarProperty Name="MemorandoDIP" ColumnName="MemorandoDIP" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_Informe_SeleccionarXProyecto" FunctionName="Model.Store.Pr_Informe_SeleccionarXProyecto">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Informe_SeleccionarXProyecto_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TituloInforme" ColumnName="TituloInforme" />
+          <ScalarProperty Name="TipoInforme" ColumnName="TipoInforme" />
+          <ScalarProperty Name="FechaProgramada" ColumnName="FechaProgramada" />
+          <ScalarProperty Name="FechaDeEntrega" ColumnName="FechaDeEntrega" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+          <ScalarProperty Name="MemorandoDIP" ColumnName="MemorandoDIP" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_ObjetivoEspecifico_Seleccionar" FunctionName="Model.Store.Pr_ObjetivoEspecifico_Seleccionar" />
+    <FunctionImportMapping FunctionImportName="Pr_PalabraClave_Eliminar" FunctionName="Model.Store.Pr_PalabraClave_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Pr_PalabraClave_Insertar" FunctionName="Model.Store.Pr_PalabraClave_Insertar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_PalabraClave_Insertar_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PalabraClave" ColumnName="PalabraClave" />
+          <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_PalabrasClave_SeleccionarXProyecto" FunctionName="Model.Store.Pr_PalabrasClave_SeleccionarXProyecto">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_PalabrasClave_SeleccionarXProyecto_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PalabraClave" ColumnName="PalabraClave" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_Proyecto_Buscar" FunctionName="Model.Store.Pr_Proyecto_Buscar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Proyecto_Buscar_Result">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="NombreDelProyecto" ColumnName="NombreDelProyecto" />
+          <ScalarProperty Name="FechaInicioEjecucion" ColumnName="FechaInicioEjecucion" />
+          <ScalarProperty Name="FechaFinEjecucion" ColumnName="FechaFinEjecucion" />
+          <ScalarProperty Name="NombreOficial" ColumnName="NombreOficial" />
+          <ScalarProperty Name="Apellido1Oficial" ColumnName="Apellido1Oficial" />
+          <ScalarProperty Name="Apellido2Oficial" ColumnName="Apellido2Oficial" />
+          <ScalarProperty Name="NombreInvestigador" ColumnName="NombreInvestigador" />
+          <ScalarProperty Name="Apellido1Investigador" ColumnName="Apellido1Investigador" />
+          <ScalarProperty Name="Apellido2Investigador" ColumnName="Apellido2Investigador" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_Proyecto_Consultar" FunctionName="Model.Store.Pr_Proyecto_Consultar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Proyecto_Consultar_Result">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="NombreDelProyecto" ColumnName="NombreDelProyecto" />
+          <ScalarProperty Name="ObjetivoGeneral" ColumnName="ObjetivoGeneral" />
+          <ScalarProperty Name="EstadoDeProyecto" ColumnName="EstadoDeProyecto" />
+          <ScalarProperty Name="TipoProyecto" ColumnName="TipoProyecto" />
+          <ScalarProperty Name="TipoDeProceso" ColumnName="TipoDeProceso" />
+          <ScalarProperty Name="FechaSuspension" ColumnName="FechaSuspension" />
+          <ScalarProperty Name="NombreOficial" ColumnName="NombreOficial" />
+          <ScalarProperty Name="Apellido1Oficial" ColumnName="Apellido1Oficial" />
+          <ScalarProperty Name="Apellido2Oficial" ColumnName="Apellido2Oficial" />
+          <ScalarProperty Name="NombreModalidad" ColumnName="NombreModalidad" />
+          <ScalarProperty Name="ActaVIE" ColumnName="ActaVIE" />
+          <ScalarProperty Name="ActaEscuela" ColumnName="ActaEscuela" />
+          <ScalarProperty Name="FechaAprobacion" ColumnName="FechaAprobacion" />
+          <ScalarProperty Name="FechaInicioEjecucion" ColumnName="FechaInicioEjecucion" />
+          <ScalarProperty Name="FechaFinEjecucion" ColumnName="FechaFinEjecucion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_Proyecto_Modificar" FunctionName="Model.Store.Pr_Proyecto_Modificar" />
+    <FunctionImportMapping FunctionImportName="Pr_Proyecto_Seleccionar" FunctionName="Model.Store.Pr_Proyecto_Seleccionar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Proyecto_Seleccionar_Result">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="NombreDelProyecto" ColumnName="NombreDelProyecto" />
+          <ScalarProperty Name="FechaInicioEjecucion" ColumnName="FechaInicioEjecucion" />
+          <ScalarProperty Name="FechaFinEjecucion" ColumnName="FechaFinEjecucion" />
+          <ScalarProperty Name="NombreOficial" ColumnName="NombreOficial" />
+          <ScalarProperty Name="Apellido1Oficial" ColumnName="Apellido1Oficial" />
+          <ScalarProperty Name="Apellido2Oficial" ColumnName="Apellido2Oficial" />
+          <ScalarProperty Name="NombreCoordinador" ColumnName="NombreCoordinador" />
+          <ScalarProperty Name="Apellido1Coordinador" ColumnName="Apellido1Coordinador" />
+          <ScalarProperty Name="Apellido2Coordinador" ColumnName="Apellido2Coordinador" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_ProyectoXBeneficiaria_Eliminar" FunctionName="Model.Store.Pr_ProyectoXBeneficiaria_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Pr_ProyectoXBeneficiaria_Insertar" FunctionName="Model.Store.Pr_ProyectoXBeneficiaria_Insertar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_ProyectoXBeneficiaria_Insertar_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+          <ScalarProperty Name="IdPoblacionBeneficiaria" ColumnName="IdPoblacionBeneficiaria" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_ProyectoXBeneficiaria_Seleccionar" FunctionName="Model.Store.Pr_ProyectoXBeneficiaria_Seleccionar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_ProyectoXBeneficiaria_Seleccionar_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NombrePoblacion" ColumnName="NombrePoblacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_ProyectoXDepartamento_Eliminar" FunctionName="Model.Store.Pr_ProyectoXDepartamento_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Pr_ProyectoXDepartamento_Insertar" FunctionName="Model.Store.Pr_ProyectoXDepartamento_Insertar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_ProyectoXDepartamento_Insertar_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+          <ScalarProperty Name="IdTipoDepartamento" ColumnName="IdTipoDepartamento" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_ProyectoXDepartamentos_Seleccionar" FunctionName="Model.Store.Pr_ProyectoXDepartamentos_Seleccionar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_ProyectoXDepartamentos_Seleccionar_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NombreProyecto" ColumnName="NombreProyecto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_ProyectoXFrascati_Eliminar" FunctionName="Model.Store.Pr_ProyectoXFrascati_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Pr_ProyectoXFrascati_Insertar" FunctionName="Model.Store.Pr_ProyectoXFrascati_Insertar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_ProyectoXFrascati_Insertar_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+          <ScalarProperty Name="IdSubArea" ColumnName="IdSubArea" />
+          <ScalarProperty Name="IdArea" ColumnName="IdArea" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_ProyectoXFrascati_Seleccionar" FunctionName="Model.Store.Pr_ProyectoXFrascati_Seleccionar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_ProyectoXFrascati_Seleccionar_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_ProyectoXODS_Eliminar" FunctionName="Model.Store.Pr_ProyectoXODS_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Pr_ProyectoXODS_Insertar" FunctionName="Model.Store.Pr_ProyectoXODS_Insertar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_ProyectoXODS_Insertar_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+          <ScalarProperty Name="IdSubODS" ColumnName="IdSubODS" />
+          <ScalarProperty Name="IdODS" ColumnName="IdODS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_ProyectoXODS_Seleccionar" FunctionName="Model.Store.Pr_ProyectoXODS_Seleccionar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_ProyectoXODS_Seleccionar_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ODS" ColumnName="ODS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_RubroPresupuesto_Eliminar" FunctionName="Model.Store.Pr_RubroPresupuesto_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Pr_RubroPresupuesto_Insertar" FunctionName="Model.Store.Pr_RubroPresupuesto_Insertar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_RubroPresupuesto_Insertar_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Ano" ColumnName="Ano" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="IdPlanteamientoProyecto" ColumnName="IdPlanteamientoProyecto" />
+          <ScalarProperty Name="Justificacion" ColumnName="Justificacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_RubroPresupuesto_SeleccionarXProyecto" FunctionName="Model.Store.Pr_RubroPresupuesto_SeleccionarXProyecto">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_RubroPresupuesto_SeleccionarXProyecto_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Ano" ColumnName="Ano" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Justificacion" ColumnName="Justificacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Model.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Model.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Model.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Model.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Model.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Model.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Model.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

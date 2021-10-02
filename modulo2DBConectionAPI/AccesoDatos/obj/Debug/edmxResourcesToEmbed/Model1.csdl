@@ -1,0 +1,1070 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AreaFrascati">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ProyectoXFrascati" Relationship="Self.FK_ProyectoXFrascati_AreaFrascati" FromRole="AreaFrascati" ToRole="ProyectoXFrascati" />
+    <NavigationProperty Name="SubAreaFrascati" Relationship="Self.FK_SubAreaFrascati_AreaFrascati" FromRole="AreaFrascati" ToRole="SubAreaFrascati" />
+  </EntityType>
+  <EntityType Name="Compra">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreProducto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cantidad" Type="Int32" Nullable="false" />
+    <Property Name="PrecioTotal" Type="Int32" Nullable="false" />
+    <Property Name="CodigoProyecto" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_Compra_Proyecto" FromRole="Compra" ToRole="Proyecto" />
+  </EntityType>
+  <EntityType Name="Departamento">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreProyecto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ProyectoXDepartamento" Relationship="Self.FK_ProyectoXDepartamento_Departamento" FromRole="Departamento" ToRole="ProyectoXDepartamento" />
+  </EntityType>
+  <EntityType Name="EstadoDeProyecto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EstadoDeProyecto1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_EstadoDeProyecto" FromRole="EstadoDeProyecto" ToRole="Proyecto" />
+  </EntityType>
+  <EntityType Name="Informe">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TituloInforme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdTipoInforme" Type="Int32" Nullable="false" />
+    <Property Name="FechaProgramada" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FechaDeEntrega" Type="DateTime" Precision="0" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdDocumento" Type="Int32" />
+    <Property Name="MemorandoDIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CodigoProyecto" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_Informe_Proyecto" FromRole="Informe" ToRole="Proyecto" />
+    <NavigationProperty Name="TipoInforme" Relationship="Self.FK_Informe_TipoInforme" FromRole="Informe" ToRole="TipoInforme" />
+  </EntityType>
+  <EntityType Name="Investigador">
+    <Key>
+      <PropertyRef Name="NumIdentidad" />
+    </Key>
+    <Property Name="NumIdentidad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PrimerApellido" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SegundoApellido" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_Investigador" FromRole="Investigador" ToRole="Proyecto" />
+    <NavigationProperty Name="Proyecto1" Relationship="Self.FK_Proyecto_Investigador1" FromRole="Investigador" ToRole="Proyecto" />
+  </EntityType>
+  <EntityType Name="ModalidadProyecto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreModalidad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_ModalidadProyecto" FromRole="ModalidadProyecto" ToRole="Proyecto" />
+  </EntityType>
+  <EntityType Name="ObjetivoEspecifico">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ObjetivoEspecifico1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdPlanDeAccion" Type="Int32" Nullable="false" />
+    <Property Name="Metodologia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PlanDeAccion" Relationship="Self.FK_ObjetivoEspecifico_PlanDeAccion" FromRole="ObjetivoEspecifico" ToRole="PlanDeAccion" />
+  </EntityType>
+  <EntityType Name="ODS">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ODS1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ProyectoXODS" Relationship="Self.FK_ProyectoXODS_ODS" FromRole="ODS" ToRole="ProyectoXODS" />
+    <NavigationProperty Name="SubODS" Relationship="Self.FK_SubODS_ODS" FromRole="ODS" ToRole="SubODS" />
+  </EntityType>
+  <EntityType Name="PalabraClave">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PalabraClave1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CodigoProyecto" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_PalabraClave_Proyecto" FromRole="PalabraClave" ToRole="Proyecto" />
+  </EntityType>
+  <EntityType Name="PlanDeAccion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ObjetivoGeneral" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ObjetivoEspecifico" Relationship="Self.FK_ObjetivoEspecifico_PlanDeAccion" FromRole="PlanDeAccion" ToRole="ObjetivoEspecifico" />
+    <NavigationProperty Name="PlanteamientoProyecto" Relationship="Self.FK_PlanteamientoProyecto_PlanDeAccion" FromRole="PlanDeAccion" ToRole="PlanteamientoProyecto" />
+  </EntityType>
+  <EntityType Name="PlanteamientoProyecto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Justificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EstadoSituacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdPlanDeAccion" Type="Int32" Nullable="false" />
+    <Property Name="EstrategiaAprobacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PlanDeAccion" Relationship="Self.FK_PlanteamientoProyecto_PlanDeAccion" FromRole="PlanteamientoProyecto" ToRole="PlanDeAccion" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_PlanteamientoProyecto" FromRole="PlanteamientoProyecto" ToRole="Proyecto" />
+    <NavigationProperty Name="RubroPresupuesto" Relationship="Self.FK_RubroPresupuesto_PlanteamientoProyecto" FromRole="PlanteamientoProyecto" ToRole="RubroPresupuesto" />
+  </EntityType>
+  <EntityType Name="PoblacionBeneficiaria">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombrePoblacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ProyectoXBeneficiaria" Relationship="Self.FK_ProyectoXBeneficiaria_PoblacionBeneficiaria" FromRole="PoblacionBeneficiaria" ToRole="ProyectoXBeneficiaria" />
+  </EntityType>
+  <EntityType Name="Proyecto">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdTipoProyecto" Type="Int32" Nullable="false" />
+    <Property Name="IdEstadoDeProyecto" Type="Int32" Nullable="false" />
+    <Property Name="ActaVIE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ActaEscuela" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdTipoDeProceso" Type="Int32" Nullable="false" />
+    <Property Name="FechaAprobacion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FechaSuspension" Type="DateTime" Precision="0" />
+    <Property Name="IdOficialDeProyecto" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdPlanteamientoProyecto" Type="Int32" Nullable="false" />
+    <Property Name="IdSetDatosGenerales" Type="Int32" Nullable="false" />
+    <Property Name="IdModalidad" Type="Int32" Nullable="false" />
+    <Property Name="IdInvestigadorCoordinador" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Compra" Relationship="Self.FK_Compra_Proyecto" FromRole="Proyecto" ToRole="Compra" />
+    <NavigationProperty Name="EstadoDeProyecto" Relationship="Self.FK_Proyecto_EstadoDeProyecto" FromRole="Proyecto" ToRole="EstadoDeProyecto" />
+    <NavigationProperty Name="Informe" Relationship="Self.FK_Informe_Proyecto" FromRole="Proyecto" ToRole="Informe" />
+    <NavigationProperty Name="Investigador" Relationship="Self.FK_Proyecto_Investigador" FromRole="Proyecto" ToRole="Investigador" />
+    <NavigationProperty Name="Investigador1" Relationship="Self.FK_Proyecto_Investigador1" FromRole="Proyecto" ToRole="Investigador" />
+    <NavigationProperty Name="ModalidadProyecto" Relationship="Self.FK_Proyecto_ModalidadProyecto" FromRole="Proyecto" ToRole="ModalidadProyecto" />
+    <NavigationProperty Name="PalabraClave" Relationship="Self.FK_PalabraClave_Proyecto" FromRole="Proyecto" ToRole="PalabraClave" />
+    <NavigationProperty Name="PlanteamientoProyecto" Relationship="Self.FK_Proyecto_PlanteamientoProyecto" FromRole="Proyecto" ToRole="PlanteamientoProyecto" />
+    <NavigationProperty Name="SetDatosGenerales" Relationship="Self.FK_Proyecto_SetDatosGenerales" FromRole="Proyecto" ToRole="SetDatosGenerales" />
+    <NavigationProperty Name="TipoDeProceso" Relationship="Self.FK_Proyecto_TipoDeProceso" FromRole="Proyecto" ToRole="TipoDeProceso" />
+    <NavigationProperty Name="TipoProyecto" Relationship="Self.FK_Proyecto_TipoProyecto" FromRole="Proyecto" ToRole="TipoProyecto" />
+    <NavigationProperty Name="ProyectoXBeneficiaria" Relationship="Self.FK_ProyectoXBeneficiaria_Proyecto" FromRole="Proyecto" ToRole="ProyectoXBeneficiaria" />
+    <NavigationProperty Name="ProyectoXDepartamento" Relationship="Self.FK_ProyectoXDepartamento_Proyecto" FromRole="Proyecto" ToRole="ProyectoXDepartamento" />
+    <NavigationProperty Name="ProyectoXFrascati" Relationship="Self.FK_ProyectoXFrascati_Proyecto" FromRole="Proyecto" ToRole="ProyectoXFrascati" />
+    <NavigationProperty Name="ProyectoXODS" Relationship="Self.FK_ProyectoXODS_Proyecto" FromRole="Proyecto" ToRole="ProyectoXODS" />
+  </EntityType>
+  <EntityType Name="ProyectoXBeneficiaria">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoProyecto" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdPoblacionBeneficiaria" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PoblacionBeneficiaria" Relationship="Self.FK_ProyectoXBeneficiaria_PoblacionBeneficiaria" FromRole="ProyectoXBeneficiaria" ToRole="PoblacionBeneficiaria" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_ProyectoXBeneficiaria_Proyecto" FromRole="ProyectoXBeneficiaria" ToRole="Proyecto" />
+  </EntityType>
+  <EntityType Name="ProyectoXDepartamento">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoProyecto" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdDepartamento" Type="Int32" Nullable="false" />
+    <Property Name="IdTipoDepartamento" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Departamento" Relationship="Self.FK_ProyectoXDepartamento_Departamento" FromRole="ProyectoXDepartamento" ToRole="Departamento" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_ProyectoXDepartamento_Proyecto" FromRole="ProyectoXDepartamento" ToRole="Proyecto" />
+    <NavigationProperty Name="TipoDepartamento" Relationship="Self.FK_ProyectoXDepartamento_TipoDepartamento" FromRole="ProyectoXDepartamento" ToRole="TipoDepartamento" />
+  </EntityType>
+  <EntityType Name="ProyectoXFrascati">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoProyecto" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdSubArea" Type="Int32" Nullable="false" />
+    <Property Name="IdArea" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AreaFrascati" Relationship="Self.FK_ProyectoXFrascati_AreaFrascati" FromRole="ProyectoXFrascati" ToRole="AreaFrascati" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_ProyectoXFrascati_Proyecto" FromRole="ProyectoXFrascati" ToRole="Proyecto" />
+    <NavigationProperty Name="SubAreaFrascati" Relationship="Self.FK_ProyectoXFrascati_SubAreaFrascati" FromRole="ProyectoXFrascati" ToRole="SubAreaFrascati" />
+  </EntityType>
+  <EntityType Name="ProyectoXODS">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoProyecto" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdSubODS" Type="Int32" Nullable="false" />
+    <Property Name="IdODS" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ODS" Relationship="Self.FK_ProyectoXODS_ODS" FromRole="ProyectoXODS" ToRole="ODS" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_ProyectoXODS_Proyecto" FromRole="ProyectoXODS" ToRole="Proyecto" />
+    <NavigationProperty Name="SubODS" Relationship="Self.FK_ProyectoXODS_SubODS" FromRole="ProyectoXODS" ToRole="SubODS" />
+  </EntityType>
+  <EntityType Name="RubroPresupuesto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ano" Type="Int32" Nullable="false" />
+    <Property Name="Monto" Type="Int32" Nullable="false" />
+    <Property Name="IdPlanteamientoProyecto" Type="Int32" Nullable="false" />
+    <Property Name="Justificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PlanteamientoProyecto" Relationship="Self.FK_RubroPresupuesto_PlanteamientoProyecto" FromRole="RubroPresupuesto" ToRole="PlanteamientoProyecto" />
+  </EntityType>
+  <EntityType Name="SetDatosGenerales">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreDelProyecto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FechaInicioEjecucion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FechaFinEjecucion" Type="DateTime" Precision="0" />
+    <Property Name="Estado" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_SetDatosGenerales" FromRole="SetDatosGenerales" ToRole="Proyecto" />
+  </EntityType>
+  <EntityType Name="SubAreaFrascati">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdAreaFrascati" Type="Int32" Nullable="false" />
+    <Property Name="SubArea" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AreaFrascati" Relationship="Self.FK_SubAreaFrascati_AreaFrascati" FromRole="SubAreaFrascati" ToRole="AreaFrascati" />
+    <NavigationProperty Name="ProyectoXFrascati" Relationship="Self.FK_ProyectoXFrascati_SubAreaFrascati" FromRole="SubAreaFrascati" ToRole="ProyectoXFrascati" />
+  </EntityType>
+  <EntityType Name="SubODS">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdODS" Type="Int32" Nullable="false" />
+    <Property Name="SubODS1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ODS" Relationship="Self.FK_SubODS_ODS" FromRole="SubODS" ToRole="ODS" />
+    <NavigationProperty Name="ProyectoXODS" Relationship="Self.FK_ProyectoXODS_SubODS" FromRole="SubODS" ToRole="ProyectoXODS" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TipoDepartamento">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoDepartamento1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ProyectoXDepartamento" Relationship="Self.FK_ProyectoXDepartamento_TipoDepartamento" FromRole="TipoDepartamento" ToRole="ProyectoXDepartamento" />
+  </EntityType>
+  <EntityType Name="TipoDeProceso">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoDeProceso1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_TipoDeProceso" FromRole="TipoDeProceso" ToRole="Proyecto" />
+  </EntityType>
+  <EntityType Name="TipoInforme">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoInforme1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Informe" Relationship="Self.FK_Informe_TipoInforme" FromRole="TipoInforme" ToRole="Informe" />
+  </EntityType>
+  <EntityType Name="TipoProyecto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoProyecto1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_TipoProyecto" FromRole="TipoProyecto" ToRole="Proyecto" />
+  </EntityType>
+  <Association Name="FK_ProyectoXFrascati_AreaFrascati">
+    <End Role="AreaFrascati" Type="Self.AreaFrascati" Multiplicity="1" />
+    <End Role="ProyectoXFrascati" Type="Self.ProyectoXFrascati" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AreaFrascati">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProyectoXFrascati">
+        <PropertyRef Name="IdArea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubAreaFrascati_AreaFrascati">
+    <End Role="AreaFrascati" Type="Self.AreaFrascati" Multiplicity="1" />
+    <End Role="SubAreaFrascati" Type="Self.SubAreaFrascati" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AreaFrascati">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SubAreaFrascati">
+        <PropertyRef Name="IdAreaFrascati" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Compra_Proyecto">
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+    <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyecto">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="Compra">
+        <PropertyRef Name="CodigoProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoXDepartamento_Departamento">
+    <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+    <End Role="ProyectoXDepartamento" Type="Self.ProyectoXDepartamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamento">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProyectoXDepartamento">
+        <PropertyRef Name="IdDepartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proyecto_EstadoDeProyecto">
+    <End Role="EstadoDeProyecto" Type="Self.EstadoDeProyecto" Multiplicity="1" />
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoDeProyecto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proyecto">
+        <PropertyRef Name="IdEstadoDeProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Informe_Proyecto">
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+    <End Role="Informe" Type="Self.Informe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyecto">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="Informe">
+        <PropertyRef Name="CodigoProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Informe_TipoInforme">
+    <End Role="TipoInforme" Type="Self.TipoInforme" Multiplicity="1" />
+    <End Role="Informe" Type="Self.Informe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoInforme">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Informe">
+        <PropertyRef Name="IdTipoInforme" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proyecto_Investigador">
+    <End Role="Investigador" Type="Self.Investigador" Multiplicity="1" />
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Investigador">
+        <PropertyRef Name="NumIdentidad" />
+      </Principal>
+      <Dependent Role="Proyecto">
+        <PropertyRef Name="IdOficialDeProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proyecto_Investigador1">
+    <End Role="Investigador" Type="Self.Investigador" Multiplicity="1" />
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Investigador">
+        <PropertyRef Name="NumIdentidad" />
+      </Principal>
+      <Dependent Role="Proyecto">
+        <PropertyRef Name="IdInvestigadorCoordinador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proyecto_ModalidadProyecto">
+    <End Role="ModalidadProyecto" Type="Self.ModalidadProyecto" Multiplicity="1" />
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ModalidadProyecto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proyecto">
+        <PropertyRef Name="IdModalidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ObjetivoEspecifico_PlanDeAccion">
+    <End Role="PlanDeAccion" Type="Self.PlanDeAccion" Multiplicity="1" />
+    <End Role="ObjetivoEspecifico" Type="Self.ObjetivoEspecifico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlanDeAccion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ObjetivoEspecifico">
+        <PropertyRef Name="IdPlanDeAccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoXODS_ODS">
+    <End Role="ODS" Type="Self.ODS" Multiplicity="1" />
+    <End Role="ProyectoXODS" Type="Self.ProyectoXODS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ODS">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProyectoXODS">
+        <PropertyRef Name="IdODS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubODS_ODS">
+    <End Role="ODS" Type="Self.ODS" Multiplicity="1" />
+    <End Role="SubODS" Type="Self.SubODS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ODS">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SubODS">
+        <PropertyRef Name="IdODS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PalabraClave_Proyecto">
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+    <End Role="PalabraClave" Type="Self.PalabraClave" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyecto">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="PalabraClave">
+        <PropertyRef Name="CodigoProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlanteamientoProyecto_PlanDeAccion">
+    <End Role="PlanDeAccion" Type="Self.PlanDeAccion" Multiplicity="1" />
+    <End Role="PlanteamientoProyecto" Type="Self.PlanteamientoProyecto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlanDeAccion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PlanteamientoProyecto">
+        <PropertyRef Name="IdPlanDeAccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proyecto_PlanteamientoProyecto">
+    <End Role="PlanteamientoProyecto" Type="Self.PlanteamientoProyecto" Multiplicity="1" />
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlanteamientoProyecto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proyecto">
+        <PropertyRef Name="IdPlanteamientoProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RubroPresupuesto_PlanteamientoProyecto">
+    <End Role="PlanteamientoProyecto" Type="Self.PlanteamientoProyecto" Multiplicity="1" />
+    <End Role="RubroPresupuesto" Type="Self.RubroPresupuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlanteamientoProyecto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RubroPresupuesto">
+        <PropertyRef Name="IdPlanteamientoProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoXBeneficiaria_PoblacionBeneficiaria">
+    <End Role="PoblacionBeneficiaria" Type="Self.PoblacionBeneficiaria" Multiplicity="1" />
+    <End Role="ProyectoXBeneficiaria" Type="Self.ProyectoXBeneficiaria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PoblacionBeneficiaria">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProyectoXBeneficiaria">
+        <PropertyRef Name="IdPoblacionBeneficiaria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proyecto_SetDatosGenerales">
+    <End Role="SetDatosGenerales" Type="Self.SetDatosGenerales" Multiplicity="1" />
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SetDatosGenerales">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proyecto">
+        <PropertyRef Name="IdSetDatosGenerales" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proyecto_TipoDeProceso">
+    <End Role="TipoDeProceso" Type="Self.TipoDeProceso" Multiplicity="1" />
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoDeProceso">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proyecto">
+        <PropertyRef Name="IdTipoDeProceso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proyecto_TipoProyecto">
+    <End Role="TipoProyecto" Type="Self.TipoProyecto" Multiplicity="1" />
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoProyecto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proyecto">
+        <PropertyRef Name="IdTipoProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoXBeneficiaria_Proyecto">
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+    <End Role="ProyectoXBeneficiaria" Type="Self.ProyectoXBeneficiaria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyecto">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="ProyectoXBeneficiaria">
+        <PropertyRef Name="CodigoProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoXDepartamento_Proyecto">
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+    <End Role="ProyectoXDepartamento" Type="Self.ProyectoXDepartamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyecto">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="ProyectoXDepartamento">
+        <PropertyRef Name="CodigoProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoXFrascati_Proyecto">
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+    <End Role="ProyectoXFrascati" Type="Self.ProyectoXFrascati" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyecto">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="ProyectoXFrascati">
+        <PropertyRef Name="CodigoProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoXODS_Proyecto">
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+    <End Role="ProyectoXODS" Type="Self.ProyectoXODS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyecto">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="ProyectoXODS">
+        <PropertyRef Name="CodigoProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoXDepartamento_TipoDepartamento">
+    <End Role="TipoDepartamento" Type="Self.TipoDepartamento" Multiplicity="1" />
+    <End Role="ProyectoXDepartamento" Type="Self.ProyectoXDepartamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoDepartamento">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProyectoXDepartamento">
+        <PropertyRef Name="IdTipoDepartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoXFrascati_SubAreaFrascati">
+    <End Role="SubAreaFrascati" Type="Self.SubAreaFrascati" Multiplicity="1" />
+    <End Role="ProyectoXFrascati" Type="Self.ProyectoXFrascati" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubAreaFrascati">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProyectoXFrascati">
+        <PropertyRef Name="IdSubArea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoXODS_SubODS">
+    <End Role="SubODS" Type="Self.SubODS" Multiplicity="1" />
+    <End Role="ProyectoXODS" Type="Self.ProyectoXODS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubODS">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProyectoXODS">
+        <PropertyRef Name="IdSubODS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VieEntidades" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AreaFrascati" EntityType="Self.AreaFrascati" />
+    <EntitySet Name="Compra" EntityType="Self.Compra" />
+    <EntitySet Name="Departamento" EntityType="Self.Departamento" />
+    <EntitySet Name="EstadoDeProyecto" EntityType="Self.EstadoDeProyecto" />
+    <EntitySet Name="Informe" EntityType="Self.Informe" />
+    <EntitySet Name="Investigador" EntityType="Self.Investigador" />
+    <EntitySet Name="ModalidadProyecto" EntityType="Self.ModalidadProyecto" />
+    <EntitySet Name="ObjetivoEspecifico" EntityType="Self.ObjetivoEspecifico" />
+    <EntitySet Name="ODS" EntityType="Self.ODS" />
+    <EntitySet Name="PalabraClave" EntityType="Self.PalabraClave" />
+    <EntitySet Name="PlanDeAccion" EntityType="Self.PlanDeAccion" />
+    <EntitySet Name="PlanteamientoProyecto" EntityType="Self.PlanteamientoProyecto" />
+    <EntitySet Name="PoblacionBeneficiaria" EntityType="Self.PoblacionBeneficiaria" />
+    <EntitySet Name="Proyecto" EntityType="Self.Proyecto" />
+    <EntitySet Name="ProyectoXBeneficiaria" EntityType="Self.ProyectoXBeneficiaria" />
+    <EntitySet Name="ProyectoXDepartamento" EntityType="Self.ProyectoXDepartamento" />
+    <EntitySet Name="ProyectoXFrascati" EntityType="Self.ProyectoXFrascati" />
+    <EntitySet Name="ProyectoXODS" EntityType="Self.ProyectoXODS" />
+    <EntitySet Name="RubroPresupuesto" EntityType="Self.RubroPresupuesto" />
+    <EntitySet Name="SetDatosGenerales" EntityType="Self.SetDatosGenerales" />
+    <EntitySet Name="SubAreaFrascati" EntityType="Self.SubAreaFrascati" />
+    <EntitySet Name="SubODS" EntityType="Self.SubODS" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TipoDepartamento" EntityType="Self.TipoDepartamento" />
+    <EntitySet Name="TipoDeProceso" EntityType="Self.TipoDeProceso" />
+    <EntitySet Name="TipoInforme" EntityType="Self.TipoInforme" />
+    <EntitySet Name="TipoProyecto" EntityType="Self.TipoProyecto" />
+    <AssociationSet Name="FK_ProyectoXFrascati_AreaFrascati" Association="Self.FK_ProyectoXFrascati_AreaFrascati">
+      <End Role="AreaFrascati" EntitySet="AreaFrascati" />
+      <End Role="ProyectoXFrascati" EntitySet="ProyectoXFrascati" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubAreaFrascati_AreaFrascati" Association="Self.FK_SubAreaFrascati_AreaFrascati">
+      <End Role="AreaFrascati" EntitySet="AreaFrascati" />
+      <End Role="SubAreaFrascati" EntitySet="SubAreaFrascati" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Compra_Proyecto" Association="Self.FK_Compra_Proyecto">
+      <End Role="Proyecto" EntitySet="Proyecto" />
+      <End Role="Compra" EntitySet="Compra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoXDepartamento_Departamento" Association="Self.FK_ProyectoXDepartamento_Departamento">
+      <End Role="Departamento" EntitySet="Departamento" />
+      <End Role="ProyectoXDepartamento" EntitySet="ProyectoXDepartamento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proyecto_EstadoDeProyecto" Association="Self.FK_Proyecto_EstadoDeProyecto">
+      <End Role="EstadoDeProyecto" EntitySet="EstadoDeProyecto" />
+      <End Role="Proyecto" EntitySet="Proyecto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Informe_Proyecto" Association="Self.FK_Informe_Proyecto">
+      <End Role="Proyecto" EntitySet="Proyecto" />
+      <End Role="Informe" EntitySet="Informe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Informe_TipoInforme" Association="Self.FK_Informe_TipoInforme">
+      <End Role="TipoInforme" EntitySet="TipoInforme" />
+      <End Role="Informe" EntitySet="Informe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proyecto_Investigador" Association="Self.FK_Proyecto_Investigador">
+      <End Role="Investigador" EntitySet="Investigador" />
+      <End Role="Proyecto" EntitySet="Proyecto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proyecto_Investigador1" Association="Self.FK_Proyecto_Investigador1">
+      <End Role="Investigador" EntitySet="Investigador" />
+      <End Role="Proyecto" EntitySet="Proyecto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proyecto_ModalidadProyecto" Association="Self.FK_Proyecto_ModalidadProyecto">
+      <End Role="ModalidadProyecto" EntitySet="ModalidadProyecto" />
+      <End Role="Proyecto" EntitySet="Proyecto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ObjetivoEspecifico_PlanDeAccion" Association="Self.FK_ObjetivoEspecifico_PlanDeAccion">
+      <End Role="PlanDeAccion" EntitySet="PlanDeAccion" />
+      <End Role="ObjetivoEspecifico" EntitySet="ObjetivoEspecifico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoXODS_ODS" Association="Self.FK_ProyectoXODS_ODS">
+      <End Role="ODS" EntitySet="ODS" />
+      <End Role="ProyectoXODS" EntitySet="ProyectoXODS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubODS_ODS" Association="Self.FK_SubODS_ODS">
+      <End Role="ODS" EntitySet="ODS" />
+      <End Role="SubODS" EntitySet="SubODS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PalabraClave_Proyecto" Association="Self.FK_PalabraClave_Proyecto">
+      <End Role="Proyecto" EntitySet="Proyecto" />
+      <End Role="PalabraClave" EntitySet="PalabraClave" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlanteamientoProyecto_PlanDeAccion" Association="Self.FK_PlanteamientoProyecto_PlanDeAccion">
+      <End Role="PlanDeAccion" EntitySet="PlanDeAccion" />
+      <End Role="PlanteamientoProyecto" EntitySet="PlanteamientoProyecto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proyecto_PlanteamientoProyecto" Association="Self.FK_Proyecto_PlanteamientoProyecto">
+      <End Role="PlanteamientoProyecto" EntitySet="PlanteamientoProyecto" />
+      <End Role="Proyecto" EntitySet="Proyecto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RubroPresupuesto_PlanteamientoProyecto" Association="Self.FK_RubroPresupuesto_PlanteamientoProyecto">
+      <End Role="PlanteamientoProyecto" EntitySet="PlanteamientoProyecto" />
+      <End Role="RubroPresupuesto" EntitySet="RubroPresupuesto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoXBeneficiaria_PoblacionBeneficiaria" Association="Self.FK_ProyectoXBeneficiaria_PoblacionBeneficiaria">
+      <End Role="PoblacionBeneficiaria" EntitySet="PoblacionBeneficiaria" />
+      <End Role="ProyectoXBeneficiaria" EntitySet="ProyectoXBeneficiaria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proyecto_SetDatosGenerales" Association="Self.FK_Proyecto_SetDatosGenerales">
+      <End Role="SetDatosGenerales" EntitySet="SetDatosGenerales" />
+      <End Role="Proyecto" EntitySet="Proyecto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proyecto_TipoDeProceso" Association="Self.FK_Proyecto_TipoDeProceso">
+      <End Role="TipoDeProceso" EntitySet="TipoDeProceso" />
+      <End Role="Proyecto" EntitySet="Proyecto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proyecto_TipoProyecto" Association="Self.FK_Proyecto_TipoProyecto">
+      <End Role="TipoProyecto" EntitySet="TipoProyecto" />
+      <End Role="Proyecto" EntitySet="Proyecto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoXBeneficiaria_Proyecto" Association="Self.FK_ProyectoXBeneficiaria_Proyecto">
+      <End Role="Proyecto" EntitySet="Proyecto" />
+      <End Role="ProyectoXBeneficiaria" EntitySet="ProyectoXBeneficiaria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoXDepartamento_Proyecto" Association="Self.FK_ProyectoXDepartamento_Proyecto">
+      <End Role="Proyecto" EntitySet="Proyecto" />
+      <End Role="ProyectoXDepartamento" EntitySet="ProyectoXDepartamento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoXFrascati_Proyecto" Association="Self.FK_ProyectoXFrascati_Proyecto">
+      <End Role="Proyecto" EntitySet="Proyecto" />
+      <End Role="ProyectoXFrascati" EntitySet="ProyectoXFrascati" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoXODS_Proyecto" Association="Self.FK_ProyectoXODS_Proyecto">
+      <End Role="Proyecto" EntitySet="Proyecto" />
+      <End Role="ProyectoXODS" EntitySet="ProyectoXODS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoXDepartamento_TipoDepartamento" Association="Self.FK_ProyectoXDepartamento_TipoDepartamento">
+      <End Role="TipoDepartamento" EntitySet="TipoDepartamento" />
+      <End Role="ProyectoXDepartamento" EntitySet="ProyectoXDepartamento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoXFrascati_SubAreaFrascati" Association="Self.FK_ProyectoXFrascati_SubAreaFrascati">
+      <End Role="SubAreaFrascati" EntitySet="SubAreaFrascati" />
+      <End Role="ProyectoXFrascati" EntitySet="ProyectoXFrascati" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoXODS_SubODS" Association="Self.FK_ProyectoXODS_SubODS">
+      <End Role="SubODS" EntitySet="SubODS" />
+      <End Role="ProyectoXODS" EntitySet="ProyectoXODS" />
+    </AssociationSet>
+    <FunctionImport Name="Pr_Compra_Eliminar" ReturnType="Collection(Int32)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_Compra_Insertar" ReturnType="Collection(Model.Pr_Compra_Insertar_Result)">
+      <Parameter Name="NombreProducto" Mode="In" Type="String" />
+      <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+      <Parameter Name="PrecioTotal" Mode="In" Type="Int32" />
+      <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_Compra_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_Compra_SeleccionarXProyecto_Result)">
+      <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_Informe_Eliminar" ReturnType="Collection(Int32)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_Informe_Insertar" ReturnType="Collection(Model.Pr_Informe_Insertar_Result)">
+      <Parameter Name="TituloInforme" Mode="In" Type="String" />
+      <Parameter Name="IdTipoInforme" Mode="In" Type="Int32" />
+      <Parameter Name="FechaProgramada" Mode="In" Type="DateTime" />
+      <Parameter Name="Estado" Mode="In" Type="String" />
+      <Parameter Name="MemorandoDIP" Mode="In" Type="String" />
+      <Parameter Name="Observaciones" Mode="In" Type="String" />
+      <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_Informe_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_Informe_SeleccionarXProyecto_Result)">
+      <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_ObjetivoEspecifico_Seleccionar" ReturnType="Collection(String)">
+      <Parameter Name="Codigo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_PalabraClave_Eliminar" ReturnType="Collection(Int32)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_PalabraClave_Insertar" ReturnType="Collection(Model.Pr_PalabraClave_Insertar_Result)">
+      <Parameter Name="PalabraClave" Mode="In" Type="String" />
+      <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_PalabrasClave_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_PalabrasClave_SeleccionarXProyecto_Result)">
+      <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_Proyecto_Buscar" ReturnType="Collection(Model.Pr_Proyecto_Buscar_Result)">
+      <Parameter Name="CriterioBusqueda" Mode="In" Type="String" />
+      <Parameter Name="Parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_Proyecto_Consultar" ReturnType="Collection(Model.Pr_Proyecto_Consultar_Result)">
+      <Parameter Name="Codigo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_Proyecto_Modificar" ReturnType="Collection(Int32)">
+      <Parameter Name="Codigo" Mode="In" Type="String" />
+      <Parameter Name="NuevoNombre" Mode="In" Type="String" />
+      <Parameter Name="NuevoObjetivoGeneral" Mode="In" Type="String" />
+      <Parameter Name="NuevaActaVIE" Mode="In" Type="String" />
+      <Parameter Name="NuevaActaEscuela" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_Proyecto_Seleccionar" ReturnType="Collection(Model.Pr_Proyecto_Seleccionar_Result)" />
+    <FunctionImport Name="Pr_ProyectoXBeneficiaria_Eliminar" ReturnType="Collection(Int32)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_ProyectoXBeneficiaria_Insertar" ReturnType="Collection(Model.Pr_ProyectoXBeneficiaria_Insertar_Result)">
+      <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+      <Parameter Name="IdPoblacionBeneficiaria" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_ProyectoXBeneficiaria_Seleccionar" ReturnType="Collection(Model.Pr_ProyectoXBeneficiaria_Seleccionar_Result)">
+      <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_ProyectoXDepartamento_Eliminar" ReturnType="Collection(Int32)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_ProyectoXDepartamento_Insertar" ReturnType="Collection(Model.Pr_ProyectoXDepartamento_Insertar_Result)">
+      <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+      <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
+      <Parameter Name="IdTipoDepartamento" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_ProyectoXDepartamentos_Seleccionar" ReturnType="Collection(Model.Pr_ProyectoXDepartamentos_Seleccionar_Result)">
+      <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_ProyectoXFrascati_Eliminar" ReturnType="Collection(Int32)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_ProyectoXFrascati_Insertar" ReturnType="Collection(Model.Pr_ProyectoXFrascati_Insertar_Result)">
+      <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+      <Parameter Name="IdSubArea" Mode="In" Type="Int32" />
+      <Parameter Name="IdArea" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_ProyectoXFrascati_Seleccionar" ReturnType="Collection(Model.Pr_ProyectoXFrascati_Seleccionar_Result)">
+      <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_ProyectoXODS_Eliminar" ReturnType="Collection(Int32)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_ProyectoXODS_Insertar" ReturnType="Collection(Model.Pr_ProyectoXODS_Insertar_Result)">
+      <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+      <Parameter Name="IdSubODS" Mode="In" Type="Int32" />
+      <Parameter Name="IdODS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_ProyectoXODS_Seleccionar" ReturnType="Collection(Model.Pr_ProyectoXODS_Seleccionar_Result)">
+      <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_RubroPresupuesto_Eliminar" ReturnType="Collection(Int32)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_RubroPresupuesto_Insertar" ReturnType="Collection(Model.Pr_RubroPresupuesto_Insertar_Result)">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Ano" Mode="In" Type="Int32" />
+      <Parameter Name="Monto" Mode="In" Type="Int32" />
+      <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+      <Parameter Name="Justificacion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_RubroPresupuesto_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_RubroPresupuesto_SeleccionarXProyecto_Result)">
+      <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Model.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Model.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="Pr_Compra_Insertar_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="NombreProducto" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Cantidad" Nullable="false" />
+    <Property Type="Int32" Name="PrecioTotal" Nullable="false" />
+    <Property Type="String" Name="CodigoProyecto" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="Pr_Compra_SeleccionarXProyecto_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="NombreProducto" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Cantidad" Nullable="false" />
+    <Property Type="Int32" Name="PrecioTotal" Nullable="false" />
+    <Property Type="String" Name="CodigoProyecto" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="Pr_Informe_Insertar_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="TituloInforme" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="IdTipoInforme" Nullable="false" />
+    <Property Type="DateTime" Name="FechaProgramada" Nullable="false" />
+    <Property Type="DateTime" Name="FechaDeEntrega" Nullable="true" />
+    <Property Type="String" Name="Estado" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="IdDocumento" Nullable="true" />
+    <Property Type="String" Name="MemorandoDIP" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Observaciones" Nullable="false" MaxLength="Max" />
+    <Property Type="String" Name="CodigoProyecto" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="Pr_Informe_SeleccionarXProyecto_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="TituloInforme" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="TipoInforme" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FechaProgramada" Nullable="false" />
+    <Property Type="DateTime" Name="FechaDeEntrega" Nullable="true" />
+    <Property Type="String" Name="Estado" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="IdDocumento" Nullable="true" />
+    <Property Type="String" Name="MemorandoDIP" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Observaciones" Nullable="false" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="Pr_PalabraClave_Insertar_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="PalabraClave" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="CodigoProyecto" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="Pr_PalabrasClave_SeleccionarXProyecto_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="PalabraClave" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Pr_Proyecto_Buscar_Result">
+    <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="NombreDelProyecto" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="FechaInicioEjecucion" Nullable="false" />
+    <Property Type="DateTime" Name="FechaFinEjecucion" Nullable="true" />
+    <Property Type="String" Name="NombreOficial" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido1Oficial" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido2Oficial" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="NombreInvestigador" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido1Investigador" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido2Investigador" Nullable="true" MaxLength="15" />
+  </ComplexType>
+  <ComplexType Name="Pr_Proyecto_Consultar_Result">
+    <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="FechaIngreso" Nullable="false" />
+    <Property Type="String" Name="NombreDelProyecto" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="ObjetivoGeneral" Nullable="false" MaxLength="Max" />
+    <Property Type="String" Name="EstadoDeProyecto" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="TipoProyecto" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="TipoDeProceso" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FechaSuspension" Nullable="true" />
+    <Property Type="String" Name="NombreOficial" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido1Oficial" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido2Oficial" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="NombreModalidad" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ActaVIE" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ActaEscuela" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FechaAprobacion" Nullable="false" />
+    <Property Type="DateTime" Name="FechaInicioEjecucion" Nullable="false" />
+    <Property Type="DateTime" Name="FechaFinEjecucion" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Pr_Proyecto_Seleccionar_Result">
+    <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="NombreDelProyecto" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="FechaInicioEjecucion" Nullable="false" />
+    <Property Type="DateTime" Name="FechaFinEjecucion" Nullable="true" />
+    <Property Type="String" Name="NombreOficial" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido1Oficial" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido2Oficial" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="NombreCoordinador" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido1Coordinador" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido2Coordinador" Nullable="true" MaxLength="15" />
+  </ComplexType>
+  <ComplexType Name="Pr_ProyectoXBeneficiaria_Insertar_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="CodigoProyecto" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="IdPoblacionBeneficiaria" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Pr_ProyectoXBeneficiaria_Seleccionar_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="NombrePoblacion" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Pr_ProyectoXDepartamento_Insertar_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="CodigoProyecto" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="IdDepartamento" Nullable="false" />
+    <Property Type="Int32" Name="IdTipoDepartamento" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Pr_ProyectoXDepartamentos_Seleccionar_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="NombreProyecto" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Pr_ProyectoXFrascati_Insertar_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="CodigoProyecto" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="IdSubArea" Nullable="false" />
+    <Property Type="Int32" Name="IdArea" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Pr_ProyectoXFrascati_Seleccionar_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Area" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Pr_ProyectoXODS_Insertar_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="CodigoProyecto" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="IdSubODS" Nullable="false" />
+    <Property Type="Int32" Name="IdODS" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Pr_ProyectoXODS_Seleccionar_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="ODS" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Pr_RubroPresupuesto_Insertar_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Ano" Nullable="false" />
+    <Property Type="Int32" Name="Monto" Nullable="false" />
+    <Property Type="Int32" Name="IdPlanteamientoProyecto" Nullable="false" />
+    <Property Type="String" Name="Justificacion" Nullable="false" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="Pr_RubroPresupuesto_SeleccionarXProyecto_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Ano" Nullable="false" />
+    <Property Type="Int32" Name="Monto" Nullable="false" />
+    <Property Type="String" Name="Justificacion" Nullable="false" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>
