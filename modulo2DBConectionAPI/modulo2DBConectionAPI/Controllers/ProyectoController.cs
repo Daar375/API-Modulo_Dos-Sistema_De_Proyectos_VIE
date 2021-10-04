@@ -12,20 +12,22 @@ namespace modulo2DBConectionAPI.Controllers
     public class ProyectoController : ApiController
     {
 
-        public List<Proyecto> Get()
+        public List<Pr_Proyecto_Seleccionar_Result> Get()
         {
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
-                return entities.Proyecto.ToList();
+                System.Data.Objects.ObjectResult<Pr_Proyecto_Seleccionar_Result> res = entities.Pr_Proyecto_Seleccionar();
+                return res.ToList();
             }
         }
-        public Proyecto Get(String id)
+        public List<Pr_Proyecto_Consultar_Result> Get(String id)
         {
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
-                return entities.Proyecto.FirstOrDefault(e => e.Codigo == id);
+                System.Data.Objects.ObjectResult<Pr_Proyecto_Consultar_Result> res = entities.Pr_Proyecto_Consultar(id);
+                return res.ToList();
             }
         }
         public List<Pr_Proyecto_Buscar_Result> Get(String criterioBusqueda, String parametros)
