@@ -146,13 +146,13 @@ namespace AccesoDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Informe_SeleccionarXProyecto_Result>("Pr_Informe_SeleccionarXProyecto", codigoProyectoParameter);
         }
     
-        public virtual ObjectResult<string> Pr_ObjetivoEspecifico_Seleccionar(string codigo)
+        public virtual ObjectResult<Pr_ObjetivoEspecifico_Seleccionar_Result> Pr_ObjetivoEspecifico_Seleccionar(string codigo)
         {
             var codigoParameter = codigo != null ?
                 new ObjectParameter("Codigo", codigo) :
                 new ObjectParameter("Codigo", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("Pr_ObjetivoEspecifico_Seleccionar", codigoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_ObjetivoEspecifico_Seleccionar_Result>("Pr_ObjetivoEspecifico_Seleccionar", codigoParameter);
         }
     
         public virtual ObjectResult<Nullable<int>> Pr_PalabraClave_Eliminar(Nullable<int> id)

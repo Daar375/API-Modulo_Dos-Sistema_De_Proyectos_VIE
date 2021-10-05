@@ -325,7 +325,14 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="Pr_ObjetivoEspecifico_Seleccionar" FunctionName="Model.Store.Pr_ObjetivoEspecifico_Seleccionar" />
+    <FunctionImportMapping FunctionImportName="Pr_ObjetivoEspecifico_Seleccionar" FunctionName="Model.Store.Pr_ObjetivoEspecifico_Seleccionar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_ObjetivoEspecifico_Seleccionar_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ObjetivoEspecifico" ColumnName="ObjetivoEspecifico" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Pr_PalabraClave_Eliminar" FunctionName="Model.Store.Pr_PalabraClave_Eliminar" />
     <FunctionImportMapping FunctionImportName="Pr_PalabraClave_Insertar" FunctionName="Model.Store.Pr_PalabraClave_Insertar">
       <ResultMapping>
@@ -456,7 +463,10 @@
       <ResultMapping>
         <ComplexTypeMapping TypeName="Model.Pr_ProyectoXFrascati_Seleccionar_Result">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdArea" ColumnName="IdArea" />
           <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="IdSubArea" ColumnName="IdSubArea" />
+          <ScalarProperty Name="SubArea" ColumnName="SubArea" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

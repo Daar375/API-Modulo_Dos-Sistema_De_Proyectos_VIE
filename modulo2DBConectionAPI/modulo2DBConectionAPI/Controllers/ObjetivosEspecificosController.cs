@@ -19,12 +19,12 @@ namespace modulo2DBConectionAPI.Controllers
             }
         }
         
-        public List<string> Get(String id)
+        public List<Pr_ObjetivoEspecifico_Seleccionar_Result> Get(String id)
         {
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
-                System.Data.Objects.ObjectResult<string> res = entities.Pr_ObjetivoEspecifico_Seleccionar(id);
+                System.Data.Objects.ObjectResult<Pr_ObjetivoEspecifico_Seleccionar_Result> res = entities.Pr_ObjetivoEspecifico_Seleccionar(id);
                 return res.ToList();
             }
         }

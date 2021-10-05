@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace modulo2DBConectionAPI.Controllers
 {
-    public class SubFrascattiController : ApiController
+    public class SubFrascatiController : ApiController
     {
        
             public List<SubAreaFrascati> Get()

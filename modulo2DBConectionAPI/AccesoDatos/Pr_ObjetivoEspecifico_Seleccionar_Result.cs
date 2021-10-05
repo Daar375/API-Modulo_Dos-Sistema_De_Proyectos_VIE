@@ -11,12 +11,9 @@ namespace AccesoDatos
 {
     using System;
     
-    public partial class Pr_ProyectoXFrascati_Seleccionar_Result
+    public partial class Pr_ObjetivoEspecifico_Seleccionar_Result
     {
         public int Id { get; set; }
-        public int IdArea { get; set; }
-        public string Area { get; set; }
-        public int IdSubArea { get; set; }
-        public string SubArea { get; set; }
+        public string ObjetivoEspecifico { get; set; }
     }
 }

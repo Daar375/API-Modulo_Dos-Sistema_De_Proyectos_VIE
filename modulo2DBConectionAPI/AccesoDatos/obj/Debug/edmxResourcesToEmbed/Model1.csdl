@@ -801,7 +801,7 @@
     <FunctionImport Name="Pr_Informe_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_Informe_SeleccionarXProyecto_Result)">
       <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="Pr_ObjetivoEspecifico_Seleccionar" ReturnType="Collection(String)">
+    <FunctionImport Name="Pr_ObjetivoEspecifico_Seleccionar" ReturnType="Collection(Model.Pr_ObjetivoEspecifico_Seleccionar_Result)">
       <Parameter Name="Codigo" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Pr_PalabraClave_Eliminar" ReturnType="Collection(Int32)">
@@ -955,6 +955,10 @@
     <Property Type="String" Name="MemorandoDIP" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Observaciones" Nullable="false" MaxLength="Max" />
   </ComplexType>
+  <ComplexType Name="Pr_ObjetivoEspecifico_Seleccionar_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="ObjetivoEspecifico" Nullable="false" MaxLength="Max" />
+  </ComplexType>
   <ComplexType Name="Pr_PalabraClave_Insertar_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
     <Property Type="String" Name="PalabraClave" Nullable="false" MaxLength="50" />
@@ -1038,7 +1042,10 @@
   </ComplexType>
   <ComplexType Name="Pr_ProyectoXFrascati_Seleccionar_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="IdArea" Nullable="false" />
     <Property Type="String" Name="Area" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="IdSubArea" Nullable="false" />
+    <Property Type="String" Name="SubArea" Nullable="false" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="Pr_ProyectoXODS_Insertar_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
