@@ -43,7 +43,7 @@ namespace modulo2DBConectionAPI.Controllers
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
-                System.Data.Objects.ObjectResult<Pr_PalabraClave_Insertar_Result> res = entities.Pr_PalabraClave_Insertar(codigoProyecto, palabraClave);
+                System.Data.Objects.ObjectResult<Pr_PalabraClave_Insertar_Result> res = entities.Pr_PalabraClave_Insertar( palabraClave, codigoProyecto);
                 return res.ToList();
             }
         }
