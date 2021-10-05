@@ -44,7 +44,7 @@ namespace modulo2DBConectionAPI.Controllers
             using (VieEntidades entidades = new VieEntidades())
             {
                 entidades.Configuration.ProxyCreationEnabled = false;
-                System.Data.Objects.ObjectResult<Pr_ProyectoXFrascati_Insertar_Result> res = entidades.Pr_ProyectoXFrascati_Insertar(codigoProyecto, area, subArea);
+                System.Data.Objects.ObjectResult<Pr_ProyectoXFrascati_Insertar_Result> res = entidades.Pr_ProyectoXFrascati_Insertar(codigoProyecto, subArea, area);
                 return res.ToList();
             }
         }

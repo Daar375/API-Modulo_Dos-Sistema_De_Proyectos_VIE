@@ -38,12 +38,12 @@ namespace modulo2DBConectionAPI.Controllers////////////////////////en construcci
             }
         }
         [HttpPost]
-        public List<Pr_Compra_Insertar_Result> Post(string nombreProducto, int cantidad, int  precioTotal , string codigoProyecto)
+        public List<Pr_Compra_Insertar_Result> Post(string nombreProducto, string cantidad, string  precioTotal , string codigoProyecto)
         {
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
-                System.Data.Objects.ObjectResult<Pr_Compra_Insertar_Result> res = entities.Pr_Compra_Insertar(nombreProducto, cantidad, precioTotal, codigoProyecto);
+                System.Data.Objects.ObjectResult<Pr_Compra_Insertar_Result> res = entities.Pr_Compra_Insertar(nombreProducto, Int32.Parse(cantidad), Int32.Parse(precioTotal), codigoProyecto);
                 return res.ToList();
             }
         }
