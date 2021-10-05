@@ -17,6 +17,8 @@ namespace AccesoDatos
         public System.DateTime FechaIngreso { get; set; }
         public string NombreDelProyecto { get; set; }
         public string ObjetivoGeneral { get; set; }
+        public string Descripcion { get; set; }
+        public string Justificacion { get; set; }
         public string EstadoDeProyecto { get; set; }
         public string TipoProyecto { get; set; }
         public string TipoDeProceso { get; set; }

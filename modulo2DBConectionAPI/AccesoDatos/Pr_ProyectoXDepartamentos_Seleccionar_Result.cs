@@ -15,5 +15,6 @@ namespace AccesoDatos
     {
         public int Id { get; set; }
         public string NombreProyecto { get; set; }
+        public string TipoDepartamento { get; set; }
     }
 }

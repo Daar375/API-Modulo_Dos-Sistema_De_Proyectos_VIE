@@ -39,6 +39,8 @@ namespace AccesoDatos
         public int IdModalidad { get; set; }
         public string IdInvestigadorCoordinador { get; set; }
         public System.DateTime FechaIngreso { get; set; }
+        public string Descripcion { get; set; }
+        public string Justificacion { get; set; }
     
         public virtual ICollection<Compra> Compra { get; set; }
         public virtual EstadoDeProyecto EstadoDeProyecto { get; set; }

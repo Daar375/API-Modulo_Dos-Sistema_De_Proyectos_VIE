@@ -163,8 +163,10 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\DepartamentoController.cs" />
+    <Compile Include="Controllers\EstadoProyectoController.cs" />
     <Compile Include="Controllers\FrascatiController.cs" />
     <Compile Include="Controllers\InformeController.cs" />
+    <Compile Include="Controllers\ModalidadController.cs" />
     <Compile Include="Controllers\ObjetivosEspecificosController.cs" />
     <Compile Include="Controllers\ODSController.cs" />
     <Compile Include="Controllers\PalabrasClaveController.cs" />
@@ -172,6 +174,8 @@
     <Compile Include="Controllers\PresupuestoController.cs" />
     <Compile Include="Controllers\ProyectoController.cs" />
     <Compile Include="Controllers\TipoDepartamentoController.cs" />
+    <Compile Include="Controllers\TipoDeProyectoController.cs" />
+    <Compile Include="Controllers\TipoProcesoController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -232,6 +236,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\EstadoProyecto\" />
     <Folder Include="Views\TipoDepartamento\" />
   </ItemGroup>
   <ItemGroup>
@@ -268,7 +273,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj">
-      <Project>{a35fbc22-6958-4b32-94c3-bb4a09faa893}</Project>
+      <Project>{92e6f167-5275-4265-9d08-f7ab2aecea3f}</Project>
       <Name>AccesoDatos</Name>
     </ProjectReference>
   </ItemGroup>

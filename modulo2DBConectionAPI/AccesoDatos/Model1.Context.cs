@@ -208,7 +208,7 @@ namespace AccesoDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Proyecto_Consultar_Result>("Pr_Proyecto_Consultar", codigoParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> Pr_Proyecto_Modificar(string codigo, string nuevoNombre, string nuevoObjetivoGeneral, string nuevaActaVIE, string nuevaActaEscuela)
+        public virtual ObjectResult<Nullable<int>> Pr_Proyecto_Modificar(string codigo, string nuevoNombre, string nuevoObjetivoGeneral, string nuevaActaVIE, string nuevaActaEscuela, string nuevaDescripcion, string nuevaJustificacion)
         {
             var codigoParameter = codigo != null ?
                 new ObjectParameter("Codigo", codigo) :
@@ -230,7 +230,15 @@ namespace AccesoDatos
                 new ObjectParameter("NuevaActaEscuela", nuevaActaEscuela) :
                 new ObjectParameter("NuevaActaEscuela", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Pr_Proyecto_Modificar", codigoParameter, nuevoNombreParameter, nuevoObjetivoGeneralParameter, nuevaActaVIEParameter, nuevaActaEscuelaParameter);
+            var nuevaDescripcionParameter = nuevaDescripcion != null ?
+                new ObjectParameter("NuevaDescripcion", nuevaDescripcion) :
+                new ObjectParameter("NuevaDescripcion", typeof(string));
+    
+            var nuevaJustificacionParameter = nuevaJustificacion != null ?
+                new ObjectParameter("NuevaJustificacion", nuevaJustificacion) :
+                new ObjectParameter("NuevaJustificacion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Pr_Proyecto_Modificar", codigoParameter, nuevoNombreParameter, nuevoObjetivoGeneralParameter, nuevaActaVIEParameter, nuevaActaEscuelaParameter, nuevaDescripcionParameter, nuevaJustificacionParameter);
         }
     
         public virtual ObjectResult<Pr_Proyecto_Seleccionar_Result> Pr_Proyecto_Seleccionar()

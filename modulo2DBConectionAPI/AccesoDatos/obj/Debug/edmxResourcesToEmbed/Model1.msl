@@ -141,6 +141,8 @@
           <ScalarProperty Name="IdModalidad" ColumnName="IdModalidad" />
           <ScalarProperty Name="IdInvestigadorCoordinador" ColumnName="IdInvestigadorCoordinador" />
           <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Justificacion" ColumnName="Justificacion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -203,6 +205,7 @@
           <ScalarProperty Name="FechaInicioEjecucion" ColumnName="FechaInicioEjecucion" />
           <ScalarProperty Name="FechaFinEjecucion" ColumnName="FechaFinEjecucion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Justificacion" ColumnName="Justificacion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -364,6 +367,8 @@
           <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
           <ScalarProperty Name="NombreDelProyecto" ColumnName="NombreDelProyecto" />
           <ScalarProperty Name="ObjetivoGeneral" ColumnName="ObjetivoGeneral" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Justificacion" ColumnName="Justificacion" />
           <ScalarProperty Name="EstadoDeProyecto" ColumnName="EstadoDeProyecto" />
           <ScalarProperty Name="TipoProyecto" ColumnName="TipoProyecto" />
           <ScalarProperty Name="TipoDeProceso" ColumnName="TipoDeProceso" />
@@ -411,6 +416,7 @@
       <ResultMapping>
         <ComplexTypeMapping TypeName="Model.Pr_ProyectoXBeneficiaria_Seleccionar_Result">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdPoblacionBeneficiaria" ColumnName="IdPoblacionBeneficiaria" />
           <ScalarProperty Name="NombrePoblacion" ColumnName="NombrePoblacion" />
         </ComplexTypeMapping>
       </ResultMapping>
@@ -431,6 +437,7 @@
         <ComplexTypeMapping TypeName="Model.Pr_ProyectoXDepartamentos_Seleccionar_Result">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="NombreProyecto" ColumnName="NombreProyecto" />
+          <ScalarProperty Name="TipoDepartamento" ColumnName="TipoDepartamento" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

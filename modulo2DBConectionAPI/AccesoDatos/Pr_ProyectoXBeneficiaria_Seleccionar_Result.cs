@@ -14,6 +14,7 @@ namespace AccesoDatos
     public partial class Pr_ProyectoXBeneficiaria_Seleccionar_Result
     {
         public int Id { get; set; }
+        public int IdPoblacionBeneficiaria { get; set; }
         public string NombrePoblacion { get; set; }
     }
 }

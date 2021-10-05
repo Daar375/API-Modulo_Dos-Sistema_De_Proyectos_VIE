@@ -148,6 +148,8 @@
     <Property Name="IdModalidad" Type="Int32" Nullable="false" />
     <Property Name="IdInvestigadorCoordinador" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Justificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Compra" Relationship="Self.FK_Compra_Proyecto" FromRole="Proyecto" ToRole="Compra" />
     <NavigationProperty Name="EstadoDeProyecto" Relationship="Self.FK_Proyecto_EstadoDeProyecto" FromRole="Proyecto" ToRole="EstadoDeProyecto" />
     <NavigationProperty Name="Informe" Relationship="Self.FK_Informe_Proyecto" FromRole="Proyecto" ToRole="Informe" />
@@ -231,6 +233,7 @@
     <Property Name="FechaInicioEjecucion" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="FechaFinEjecucion" Type="DateTime" Precision="0" />
     <Property Name="Estado" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Justificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_SetDatosGenerales" FromRole="SetDatosGenerales" ToRole="Proyecto" />
   </EntityType>
   <EntityType Name="SubAreaFrascati">
@@ -824,6 +827,8 @@
       <Parameter Name="NuevoObjetivoGeneral" Mode="In" Type="String" />
       <Parameter Name="NuevaActaVIE" Mode="In" Type="String" />
       <Parameter Name="NuevaActaEscuela" Mode="In" Type="String" />
+      <Parameter Name="NuevaDescripcion" Mode="In" Type="String" />
+      <Parameter Name="NuevaJustificacion" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Pr_Proyecto_Seleccionar" ReturnType="Collection(Model.Pr_Proyecto_Seleccionar_Result)" />
     <FunctionImport Name="Pr_ProyectoXBeneficiaria_Eliminar" ReturnType="Collection(Int32)">
@@ -976,6 +981,8 @@
     <Property Type="DateTime" Name="FechaIngreso" Nullable="false" />
     <Property Type="String" Name="NombreDelProyecto" Nullable="false" MaxLength="100" />
     <Property Type="String" Name="ObjetivoGeneral" Nullable="false" MaxLength="Max" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="Max" />
+    <Property Type="String" Name="Justificacion" Nullable="true" MaxLength="Max" />
     <Property Type="String" Name="EstadoDeProyecto" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="TipoProyecto" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="TipoDeProceso" Nullable="false" MaxLength="50" />
@@ -1009,6 +1016,7 @@
   </ComplexType>
   <ComplexType Name="Pr_ProyectoXBeneficiaria_Seleccionar_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="IdPoblacionBeneficiaria" Nullable="false" />
     <Property Type="String" Name="NombrePoblacion" Nullable="true" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="Pr_ProyectoXDepartamento_Insertar_Result">
@@ -1020,6 +1028,7 @@
   <ComplexType Name="Pr_ProyectoXDepartamentos_Seleccionar_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
     <Property Type="String" Name="NombreProyecto" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="TipoDepartamento" Nullable="false" MaxLength="20" />
   </ComplexType>
   <ComplexType Name="Pr_ProyectoXFrascati_Insertar_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />

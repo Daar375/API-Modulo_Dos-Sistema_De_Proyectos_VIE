@@ -24,6 +24,7 @@ namespace AccesoDatos
         public System.DateTime FechaInicioEjecucion { get; set; }
         public Nullable<System.DateTime> FechaFinEjecucion { get; set; }
         public string Estado { get; set; }
+        public string Justificacion { get; set; }
     
         public virtual ICollection<Proyecto> Proyecto { get; set; }
     }

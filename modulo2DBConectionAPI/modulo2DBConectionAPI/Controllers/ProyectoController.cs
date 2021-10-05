@@ -41,12 +41,12 @@ namespace modulo2DBConectionAPI.Controllers
         }
 
         [HttpPost]
-        public List<int?> Post(string codigoProyecto,string nuevoNombre, string nuevoObjetivoGeneral    , string nuevaActaVIE, string nuevaActaEscuela)
+        public List<int?> Post(string codigoProyecto,string nuevoNombre, string nuevoObjetivoGeneral    , string nuevaActaVIE, string nuevaActaEscuela, string nuevaDescripcion, string nuevaJustificacion)
         {
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
-                return entities.Pr_Proyecto_Modificar(codigoProyecto, nuevoNombre, nuevoObjetivoGeneral, nuevaActaVIE, nuevaActaEscuela).ToList(); 
+                return entities.Pr_Proyecto_Modificar(codigoProyecto, nuevoNombre, nuevoObjetivoGeneral, nuevaActaVIE, nuevaActaEscuela, nuevaDescripcion,nuevaJustificacion).ToList(); 
             }
         }
     }

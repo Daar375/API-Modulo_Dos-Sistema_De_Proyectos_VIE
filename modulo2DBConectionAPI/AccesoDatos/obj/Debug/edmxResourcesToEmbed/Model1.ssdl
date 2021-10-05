@@ -128,6 +128,8 @@
     <Property Name="IdModalidad" Type="int" Nullable="false" />
     <Property Name="IdInvestigadorCoordinador" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="FechaIngreso" Type="date" Nullable="false" />
+    <Property Name="Descripcion" Type="text" Nullable="false" />
+    <Property Name="Justificacion" Type="text" />
   </EntityType>
   <EntityType Name="ProyectoXBeneficiaria">
     <Key>
@@ -184,6 +186,7 @@
     <Property Name="FechaInicioEjecucion" Type="date" Nullable="false" />
     <Property Name="FechaFinEjecucion" Type="date" />
     <Property Name="Estado" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="Justificacion" Type="text" Nullable="false" />
   </EntityType>
   <EntityType Name="SubAreaFrascati">
     <Key>
@@ -629,6 +632,8 @@
     <Parameter Name="NuevoObjetivoGeneral" Type="text" Mode="In" />
     <Parameter Name="NuevaActaVIE" Type="nvarchar" Mode="In" />
     <Parameter Name="NuevaActaEscuela" Type="nvarchar" Mode="In" />
+    <Parameter Name="NuevaDescripcion" Type="text" Mode="In" />
+    <Parameter Name="NuevaJustificacion" Type="text" Mode="In" />
   </Function>
   <Function Name="Pr_Proyecto_Seleccionar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Pr_ProyectoXBeneficiaria_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
