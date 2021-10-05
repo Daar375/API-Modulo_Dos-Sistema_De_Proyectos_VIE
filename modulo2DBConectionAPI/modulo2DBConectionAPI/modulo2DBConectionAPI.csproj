@@ -171,6 +171,7 @@
     <Compile Include="Controllers\PoblacionController.cs" />
     <Compile Include="Controllers\PresupuestoController.cs" />
     <Compile Include="Controllers\ProyectoController.cs" />
+    <Compile Include="Controllers\TipoDepartamentoController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -231,6 +232,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\TipoDepartamento\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
