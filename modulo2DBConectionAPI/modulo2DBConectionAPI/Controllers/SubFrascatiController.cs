@@ -1,10 +1,10 @@
-﻿using AccesoDatos;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AccesoDatos;
 
 namespace modulo2DBConectionAPI.Controllers
 {
@@ -21,15 +21,14 @@ namespace modulo2DBConectionAPI.Controllers
             }
 
 
-        /*    [HttpPost]
-            public List<Pr_ProyectoXFrascati_Insertar_Result> Post(string codigoProyecto, int area, int subArea)
+            public List<Pr_SubAreaFrascati_Consultar1_Result> Get(string area)
             {
                 using (VieEntidades entidades = new VieEntidades())
                 {
                     entidades.Configuration.ProxyCreationEnabled = false;
-                    System.Data.Objects.ObjectResult<Pr_ProyectoXFrascati_Insertar_Result> res = entidades.Pr_ProyectoXFrascati_Insertar(codigoProyecto, subArea, area);
-                    return res.ToList();
+                System.Data.Objects.ObjectResult<Pr_SubAreaFrascati_Consultar1_Result> res = entidades.Pr_SubAreaFrascati_Consultar1(int.Parse(area));
+                return res.ToList();
                 }
-            }*/
+            }
     }
 }

@@ -917,6 +917,18 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="Pr_SubAreaFrascati_Consultar" ReturnType="Collection(String)">
+      <Parameter Name="IdAreaFrascati" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_SubODS_Consultar" ReturnType="Collection(String)">
+      <Parameter Name="IdODS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_SubAreaFrascati_Consultar1" ReturnType="Collection(Model.Pr_SubAreaFrascati_Consultar1_Result)">
+      <Parameter Name="IdAreaFrascati" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_SubODS_Consultar1" ReturnType="Collection(Model.Pr_SubODS_Consultar1_Result)">
+      <Parameter Name="IdODS" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="Pr_Compra_Insertar_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
@@ -1082,5 +1094,13 @@
     <Property Type="Int32" Name="ID" Nullable="false" />
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Pr_SubAreaFrascati_Consultar1_Result">
+    <Property Type="String" Name="SubArea" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Pr_SubODS_Consultar1_Result">
+    <Property Type="String" Name="SubODS" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
   </ComplexType>
 </Schema>

@@ -175,6 +175,7 @@
     <Compile Include="Controllers\PresupuestoController.cs" />
     <Compile Include="Controllers\ProyectoController.cs" />
     <Compile Include="Controllers\SubFrascatiController.cs" />
+    <Compile Include="Controllers\subODSController.cs" />
     <Compile Include="Controllers\TipoDepartamentoController.cs" />
     <Compile Include="Controllers\TipoDeProyectoController.cs" />
     <Compile Include="Controllers\TipoInformeController.cs" />

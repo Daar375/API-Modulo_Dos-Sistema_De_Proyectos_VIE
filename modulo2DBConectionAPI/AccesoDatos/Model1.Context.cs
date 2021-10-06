@@ -527,5 +527,41 @@ namespace AccesoDatos
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        public virtual ObjectResult<string> Pr_SubAreaFrascati_Consultar(Nullable<int> idAreaFrascati)
+        {
+            var idAreaFrascatiParameter = idAreaFrascati.HasValue ?
+                new ObjectParameter("IdAreaFrascati", idAreaFrascati) :
+                new ObjectParameter("IdAreaFrascati", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("Pr_SubAreaFrascati_Consultar", idAreaFrascatiParameter);
+        }
+    
+        public virtual ObjectResult<string> Pr_SubODS_Consultar(Nullable<int> idODS)
+        {
+            var idODSParameter = idODS.HasValue ?
+                new ObjectParameter("IdODS", idODS) :
+                new ObjectParameter("IdODS", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("Pr_SubODS_Consultar", idODSParameter);
+        }
+    
+        public virtual ObjectResult<Pr_SubAreaFrascati_Consultar1_Result> Pr_SubAreaFrascati_Consultar1(Nullable<int> idAreaFrascati)
+        {
+            var idAreaFrascatiParameter = idAreaFrascati.HasValue ?
+                new ObjectParameter("IdAreaFrascati", idAreaFrascati) :
+                new ObjectParameter("IdAreaFrascati", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_SubAreaFrascati_Consultar1_Result>("Pr_SubAreaFrascati_Consultar1", idAreaFrascatiParameter);
+        }
+    
+        public virtual ObjectResult<Pr_SubODS_Consultar1_Result> Pr_SubODS_Consultar1(Nullable<int> idODS)
+        {
+            var idODSParameter = idODS.HasValue ?
+                new ObjectParameter("IdODS", idODS) :
+                new ObjectParameter("IdODS", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_SubODS_Consultar1_Result>("Pr_SubODS_Consultar1", idODSParameter);
+        }
     }
 }

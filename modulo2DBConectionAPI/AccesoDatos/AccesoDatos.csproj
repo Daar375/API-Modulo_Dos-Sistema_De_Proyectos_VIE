@@ -179,6 +179,12 @@
     <Compile Include="Pr_RubroPresupuesto_SeleccionarXProyecto_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pr_SubAreaFrascati_Consultar1_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pr_SubODS_Consultar1_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="RubroPresupuesto.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
