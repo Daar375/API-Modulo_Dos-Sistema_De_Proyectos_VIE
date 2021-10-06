@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{31BE5675-C3F2-4C8A-94F8-86656EBF7EAD}</ProjectGuid>
+    <ProjectGuid>{7BE6EA2A-7B9F-4C5B-B168-138C468C54FB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AccesoDatos</RootNamespace>
@@ -179,10 +179,10 @@
     <Compile Include="Pr_RubroPresupuesto_SeleccionarXProyecto_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pr_SubAreaFrascati_Consultar1_Result.cs">
+    <Compile Include="Pr_SubAreaFrascati_Consultar_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pr_SubODS_Consultar1_Result.cs">
+    <Compile Include="Pr_SubODS_Consultar_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="RubroPresupuesto.cs">

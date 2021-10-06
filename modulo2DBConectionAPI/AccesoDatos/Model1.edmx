@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AreaFrascati">
           <Key>
             <PropertyRef Name="Id" />
@@ -874,7 +874,8 @@
             <End Role="SubODS" EntitySet="SubODS" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -967,7 +968,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ODS1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ProyectoXODS" Relationship="Self.FK_ProyectoXODS_ODS" FromRole="ODS" ToRole="ProyectoXODS" />
-          <NavigationProperty Name="SubODS" Relationship="Self.FK_SubODS_ODS" FromRole="ODS" ToRole="SubODS" />
         </EntityType>
         <EntityType Name="PalabraClave">
           <Key>
@@ -1653,7 +1653,7 @@
             <End Role="ProyectoXODS" EntitySet="ProyectoXODS" />
           </AssociationSet>
           <FunctionImport Name="Pr_Compra_Eliminar" ReturnType="Collection(Int32)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Compra_Insertar" ReturnType="Collection(Model.Pr_Compra_Insertar_Result)">
             <Parameter Name="NombreProducto" Mode="In" Type="String" />
@@ -1662,10 +1662,10 @@
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Compra_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_Compra_SeleccionarXProyecto_Result)">
-          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Informe_Eliminar" ReturnType="Collection(Int32)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Informe_Insertar" ReturnType="Collection(Model.Pr_Informe_Insertar_Result)">
             <Parameter Name="TituloInforme" Mode="In" Type="String" />
@@ -1677,27 +1677,27 @@
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Informe_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_Informe_SeleccionarXProyecto_Result)">
-          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_ObjetivoEspecifico_Seleccionar" ReturnType="Collection(Model.Pr_ObjetivoEspecifico_Seleccionar_Result)">
-          <Parameter Name="Codigo" Mode="In" Type="String" />
+            <Parameter Name="Codigo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_PalabraClave_Eliminar" ReturnType="Collection(Int32)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_PalabraClave_Insertar" ReturnType="Collection(Model.Pr_PalabraClave_Insertar_Result)">
             <Parameter Name="PalabraClave" Mode="In" Type="String" />
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_PalabrasClave_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_PalabrasClave_SeleccionarXProyecto_Result)">
-          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_Buscar" ReturnType="Collection(Model.Pr_Proyecto_Buscar_Result)">
             <Parameter Name="CriterioBusqueda" Mode="In" Type="String" />
             <Parameter Name="Parametro" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_Consultar" ReturnType="Collection(Model.Pr_Proyecto_Consultar_Result)">
-          <Parameter Name="Codigo" Mode="In" Type="String" />
+            <Parameter Name="Codigo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_Modificar" ReturnType="Collection(Int32)">
             <Parameter Name="Codigo" Mode="In" Type="String" />
@@ -1710,17 +1710,17 @@
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_Seleccionar" ReturnType="Collection(Model.Pr_Proyecto_Seleccionar_Result)" />
           <FunctionImport Name="Pr_ProyectoXBeneficiaria_Eliminar" ReturnType="Collection(Int32)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXBeneficiaria_Insertar" ReturnType="Collection(Model.Pr_ProyectoXBeneficiaria_Insertar_Result)">
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
             <Parameter Name="IdPoblacionBeneficiaria" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXBeneficiaria_Seleccionar" ReturnType="Collection(Model.Pr_ProyectoXBeneficiaria_Seleccionar_Result)">
-          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXDepartamento_Eliminar" ReturnType="Collection(Int32)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXDepartamento_Insertar" ReturnType="Collection(Model.Pr_ProyectoXDepartamento_Insertar_Result)">
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
@@ -1728,10 +1728,10 @@
             <Parameter Name="IdTipoDepartamento" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXDepartamentos_Seleccionar" ReturnType="Collection(Model.Pr_ProyectoXDepartamentos_Seleccionar_Result)">
-          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXFrascati_Eliminar" ReturnType="Collection(Int32)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXFrascati_Insertar" ReturnType="Collection(Model.Pr_ProyectoXFrascati_Insertar_Result)">
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
@@ -1739,10 +1739,10 @@
             <Parameter Name="IdArea" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXFrascati_Seleccionar" ReturnType="Collection(Model.Pr_ProyectoXFrascati_Seleccionar_Result)">
-          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXODS_Eliminar" ReturnType="Collection(Int32)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXODS_Insertar" ReturnType="Collection(Model.Pr_ProyectoXODS_Insertar_Result)">
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
@@ -1750,10 +1750,10 @@
             <Parameter Name="IdODS" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXODS_Seleccionar" ReturnType="Collection(Model.Pr_ProyectoXODS_Seleccionar_Result)">
-          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_RubroPresupuesto_Eliminar" ReturnType="Collection(Int32)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_RubroPresupuesto_Insertar" ReturnType="Collection(Model.Pr_RubroPresupuesto_Insertar_Result)">
             <Parameter Name="Nombre" Mode="In" Type="String" />
@@ -1763,7 +1763,13 @@
             <Parameter Name="Justificacion" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_RubroPresupuesto_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_RubroPresupuesto_SeleccionarXProyecto_Result)">
-          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_SubAreaFrascati_Consultar" ReturnType="Collection(Model.Pr_SubAreaFrascati_Consultar_Result)">
+            <Parameter Name="IdAreaFrascati" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_SubODS_Consultar" ReturnType="Collection(Model.Pr_SubODS_Consultar_Result)">
+            <Parameter Name="IdODS" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -1795,18 +1801,6 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="Pr_SubAreaFrascati_Consultar" ReturnType="Collection(String)">
-            <Parameter Name="IdAreaFrascati" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Pr_SubODS_Consultar" ReturnType="Collection(String)">
-            <Parameter Name="IdODS" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Pr_SubAreaFrascati_Consultar1" ReturnType="Collection(Model.Pr_SubAreaFrascati_Consultar1_Result)">
-            <Parameter Name="IdAreaFrascati" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Pr_SubODS_Consultar1" ReturnType="Collection(Model.Pr_SubODS_Consultar1_Result)">
-            <Parameter Name="IdODS" Mode="In" Type="Int32" />
-          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Pr_Compra_Insertar_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -1946,6 +1940,7 @@
         <ComplexType Name="Pr_ProyectoXODS_Seleccionar_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="ODS" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SubODS" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="Pr_RubroPresupuesto_Insertar_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -1962,6 +1957,14 @@
           <Property Type="Int32" Name="Monto" Nullable="false" />
           <Property Type="String" Name="Justificacion" Nullable="false" MaxLength="Max" />
         </ComplexType>
+        <ComplexType Name="Pr_SubAreaFrascati_Consultar_Result">
+          <Property Type="String" Name="SubArea" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Pr_SubODS_Consultar_Result">
+          <Property Type="String" Name="SubODS" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+        </ComplexType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -1972,14 +1975,6 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="Pr_SubAreaFrascati_Consultar1_Result">
-          <Property Type="String" Name="SubArea" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="Id" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="Pr_SubODS_Consultar1_Result">
-          <Property Type="String" Name="SubODS" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="Id" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2472,6 +2467,7 @@
               <ComplexTypeMapping TypeName="Model.Pr_ProyectoXODS_Seleccionar_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ODS" ColumnName="ODS" />
+                <ScalarProperty Name="SubODS" ColumnName="SubODS" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2499,6 +2495,22 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_SubAreaFrascati_Consultar" FunctionName="Model.Store.Pr_SubAreaFrascati_Consultar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_SubAreaFrascati_Consultar_Result">
+                <ScalarProperty Name="SubArea" ColumnName="SubArea" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_SubODS_Consultar" FunctionName="Model.Store.Pr_SubODS_Consultar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_SubODS_Consultar_Result">
+                <ScalarProperty Name="SubODS" ColumnName="SubODS" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Model.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Model.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Model.Store.sp_dropdiagram" />
@@ -2523,22 +2535,6 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Model.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Model.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="Pr_SubAreaFrascati_Consultar1" FunctionName="Model.Store.Pr_SubAreaFrascati_Consultar">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.Pr_SubAreaFrascati_Consultar1_Result">
-                <ScalarProperty Name="SubArea" ColumnName="SubArea" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Pr_SubODS_Consultar1" FunctionName="Model.Store.Pr_SubODS_Consultar">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.Pr_SubODS_Consultar1_Result">
-                <ScalarProperty Name="SubODS" ColumnName="SubODS" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

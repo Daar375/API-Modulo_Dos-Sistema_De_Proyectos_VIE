@@ -11,7 +11,7 @@ namespace AccesoDatos
 {
     using System;
     
-    public partial class Pr_SubAreaFrascati_Consultar1_Result
+    public partial class Pr_SubAreaFrascati_Consultar_Result
     {
         public string SubArea { get; set; }
         public int Id { get; set; }

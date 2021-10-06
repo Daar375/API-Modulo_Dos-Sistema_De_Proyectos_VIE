@@ -20,12 +20,12 @@ namespace modulo2DBConectionAPI.Controllers
         }
 
 
-        public List<Pr_SubODS_Consultar1_Result> Get(string ods)
+        public List<Pr_SubODS_Consultar_Result> Get(string ods)
         {
             using (VieEntidades entidades = new VieEntidades())
             {
                 entidades.Configuration.ProxyCreationEnabled = false;
-                System.Data.Objects.ObjectResult<Pr_SubODS_Consultar1_Result> res = entidades.Pr_SubODS_Consultar1(int.Parse(ods));
+                System.Data.Objects.ObjectResult<Pr_SubODS_Consultar_Result> res = entidades.Pr_SubODS_Consultar(int.Parse(ods));
                 return res.ToList();
             }
         }

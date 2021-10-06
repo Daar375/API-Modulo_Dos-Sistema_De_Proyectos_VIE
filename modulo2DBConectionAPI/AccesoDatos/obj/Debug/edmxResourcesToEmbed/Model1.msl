@@ -486,6 +486,7 @@
         <ComplexTypeMapping TypeName="Model.Pr_ProyectoXODS_Seleccionar_Result">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ODS" ColumnName="ODS" />
+          <ScalarProperty Name="SubODS" ColumnName="SubODS" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -513,6 +514,22 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_SubAreaFrascati_Consultar" FunctionName="Model.Store.Pr_SubAreaFrascati_Consultar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_SubAreaFrascati_Consultar_Result">
+          <ScalarProperty Name="SubArea" ColumnName="SubArea" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_SubODS_Consultar" FunctionName="Model.Store.Pr_SubODS_Consultar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_SubODS_Consultar_Result">
+          <ScalarProperty Name="SubODS" ColumnName="SubODS" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Model.Store.sp_alterdiagram" />
     <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Model.Store.sp_creatediagram" />
     <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Model.Store.sp_dropdiagram" />
@@ -537,21 +554,5 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Model.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Model.Store.sp_upgraddiagrams" />
-    <FunctionImportMapping FunctionImportName="Pr_SubAreaFrascati_Consultar1" FunctionName="Model.Store.Pr_SubAreaFrascati_Consultar">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="Model.Pr_SubAreaFrascati_Consultar1_Result">
-          <ScalarProperty Name="SubArea" ColumnName="SubArea" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="Pr_SubODS_Consultar1" FunctionName="Model.Store.Pr_SubODS_Consultar">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="Model.Pr_SubODS_Consultar1_Result">
-          <ScalarProperty Name="SubODS" ColumnName="SubODS" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -15,5 +15,6 @@ namespace AccesoDatos
     {
         public int Id { get; set; }
         public string ODS { get; set; }
+        public string SubODS { get; set; }
     }
 }

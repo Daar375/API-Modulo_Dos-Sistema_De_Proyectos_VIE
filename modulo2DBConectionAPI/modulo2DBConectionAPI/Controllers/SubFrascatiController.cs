@@ -21,12 +21,12 @@ namespace modulo2DBConectionAPI.Controllers
             }
 
 
-            public List<Pr_SubAreaFrascati_Consultar1_Result> Get(string area)
+            public List<Pr_SubAreaFrascati_Consultar_Result> Get(string area)
             {
                 using (VieEntidades entidades = new VieEntidades())
                 {
                     entidades.Configuration.ProxyCreationEnabled = false;
-                System.Data.Objects.ObjectResult<Pr_SubAreaFrascati_Consultar1_Result> res = entidades.Pr_SubAreaFrascati_Consultar1(int.Parse(area));
+                System.Data.Objects.ObjectResult<Pr_SubAreaFrascati_Consultar_Result> res = entidades.Pr_SubAreaFrascati_Consultar(int.Parse(area));
                 return res.ToList();
                 }
             }

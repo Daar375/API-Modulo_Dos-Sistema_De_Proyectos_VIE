@@ -11,7 +11,7 @@ namespace AccesoDatos
 {
     using System;
     
-    public partial class Pr_SubODS_Consultar1_Result
+    public partial class Pr_SubODS_Consultar_Result
     {
         public string SubODS { get; set; }
         public int Id { get; set; }
