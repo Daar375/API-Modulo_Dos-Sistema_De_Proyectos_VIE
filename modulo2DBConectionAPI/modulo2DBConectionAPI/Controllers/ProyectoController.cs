@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using AccesoDatos;
 using System.Data.Entity;
+using System.IO;
+using modulo2DBConectionAPI.Models;
 
 namespace modulo2DBConectionAPI.Controllers
 {
@@ -41,12 +42,13 @@ namespace modulo2DBConectionAPI.Controllers
         }
 
         [HttpPost]
-        public List<int?> Post(string codigoProyecto,string nuevoNombre, string nuevoObjetivoGeneral    , string nuevaActaVIE, string nuevaActaEscuela, string nuevaDescripcion, string nuevaJustificacion)
+        [Route("api/proyecto/ModificarProyecto")]
+        public List<int?> ModificarProyecto([FromBody] ModificarProyectoResponse RequestInfo)
         {
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
-                return entities.Pr_Proyecto_Modificar(codigoProyecto, nuevoNombre, nuevoObjetivoGeneral, nuevaActaVIE, nuevaActaEscuela, nuevaDescripcion,nuevaJustificacion).ToList(); 
+                return entities.Pr_Proyecto_Modificar(RequestInfo.codigoProyecto, RequestInfo.nuevoNombre, RequestInfo.nuevoObjetivoGeneral, RequestInfo.nuevaActaVIE, RequestInfo.nuevaActaEscuela, RequestInfo.nuevaDescripcion, RequestInfo.nuevaJustificacion).ToList();
             }
         }
     }
