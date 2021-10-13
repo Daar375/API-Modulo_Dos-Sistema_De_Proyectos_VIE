@@ -12,15 +12,18 @@ namespace AccesoDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class RubroPresupuesto
+    public partial class Canton
     {
+        public Canton()
+        {
+            this.Distrito = new HashSet<Distrito>();
+        }
+    
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public int Ano { get; set; }
-        public int Monto { get; set; }
-        public int IdPlanteamientoProyecto { get; set; }
-        public string Justificacion { get; set; }
+        public int IdProvincia { get; set; }
     
-        public virtual PlanteamientoProyecto PlanteamientoProyecto { get; set; }
+        public virtual Provincia Provincia { get; set; }
+        public virtual ICollection<Distrito> Distrito { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace AccesoDatos
         public string Codigo { get; set; }
         public string NombreDelProyecto { get; set; }
         public System.DateTime FechaInicioEjecucion { get; set; }
-        public Nullable<System.DateTime> FechaFinEjecucion { get; set; }
+        public System.DateTime FechaFinEjecucion { get; set; }
         public string NombreOficial { get; set; }
         public string Apellido1Oficial { get; set; }
         public string Apellido2Oficial { get; set; }

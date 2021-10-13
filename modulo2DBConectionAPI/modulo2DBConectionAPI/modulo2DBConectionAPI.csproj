@@ -162,11 +162,15 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AmpliacionController.cs" />
+    <Compile Include="Controllers\BitacoraController.cs" />
+    <Compile Include="Controllers\ColaboradoresController.cs" />
     <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\DepartamentoController.cs" />
     <Compile Include="Controllers\EstadoProyectoController.cs" />
     <Compile Include="Controllers\FrascatiController.cs" />
     <Compile Include="Controllers\InformeController.cs" />
+    <Compile Include="Controllers\MetasController.cs" />
     <Compile Include="Controllers\ModalidadController.cs" />
     <Compile Include="Controllers\ObjetivosEspecificosController.cs" />
     <Compile Include="Controllers\ODSController.cs" />
@@ -174,12 +178,14 @@
     <Compile Include="Controllers\PoblacionController.cs" />
     <Compile Include="Controllers\PresupuestoController.cs" />
     <Compile Include="Controllers\ProyectoController.cs" />
+    <Compile Include="Controllers\RiesgoController.cs" />
     <Compile Include="Controllers\SubFrascatiController.cs" />
     <Compile Include="Controllers\subODSController.cs" />
     <Compile Include="Controllers\TipoDepartamentoController.cs" />
     <Compile Include="Controllers\TipoDeProyectoController.cs" />
     <Compile Include="Controllers\TipoInformeController.cs" />
     <Compile Include="Controllers\TipoProcesoController.cs" />
+    <Compile Include="Controllers\UbicacionGeograficaController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -280,7 +286,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj">
-      <Project>{7be6ea2a-7b9f-4c5b-b168-138c468c54fb}</Project>
+      <Project>{c72b8b61-b8d7-48c4-bf84-d7c78eb33a7b}</Project>
       <Name>AccesoDatos</Name>
     </ProjectReference>
   </ItemGroup>

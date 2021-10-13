@@ -11,13 +11,11 @@ namespace AccesoDatos
 {
     using System;
     
-    public partial class Pr_RubroPresupuesto_Insertar_Result
+    public partial class Pr_EntradaBitacora_Seleccionar_Result
     {
         public int Id { get; set; }
-        public string Nombre { get; set; }
-        public int Ano { get; set; }
-        public int Monto { get; set; }
-        public int IdPlanteamientoProyecto { get; set; }
-        public string Justificacion { get; set; }
+        public string Descripcion { get; set; }
+        public string Responsable { get; set; }
+        public System.DateTime FechaYHora { get; set; }
     }
 }

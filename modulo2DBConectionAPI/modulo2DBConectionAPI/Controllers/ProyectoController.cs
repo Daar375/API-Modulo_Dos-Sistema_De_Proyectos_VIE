@@ -48,9 +48,11 @@ namespace modulo2DBConectionAPI.Controllers
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
-                return entities.Pr_Proyecto_Modificar(RequestInfo.codigoProyecto, RequestInfo.nuevoNombre, RequestInfo.nuevoObjetivoGeneral, RequestInfo.nuevaActaVIE, RequestInfo.nuevaActaEscuela, RequestInfo.nuevaDescripcion, RequestInfo.nuevaJustificacion).ToList();
-            }
+
+                return entities.Pr_Proyecto_Modificar(RequestInfo.codigoProyecto, DateTime.Parse(RequestInfo.nuevaFechaIngreso) , RequestInfo.nuevoNombre, RequestInfo.nuevoObjetivoGeneral, RequestInfo.nuevoIdEstado, RequestInfo.nuevoIdTipoProyecto, RequestInfo.nuevoIdTipoProceso, RequestInfo.nuevoIdModalidad,  RequestInfo.nuevaActaVIE, RequestInfo.nuevaActaEscuela, DateTime.Parse(RequestInfo.nuevaFechaAprobacion) , DateTime.Parse(RequestInfo.nuevaFechaInicio) , RequestInfo.nuevaDescripcion, RequestInfo.nuevaJustificacion).ToList();
+            }      
+
         }
-    }
+}
 }
     

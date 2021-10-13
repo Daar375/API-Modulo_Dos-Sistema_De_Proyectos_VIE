@@ -16,9 +16,13 @@ namespace AccesoDatos
     {
         public Proyecto()
         {
+            this.AmpliacionFechas = new HashSet<AmpliacionFechas>();
             this.Compra = new HashSet<Compra>();
+            this.EntradaBitacora = new HashSet<EntradaBitacora>();
+            this.Incidencia = new HashSet<Incidencia>();
             this.Informe = new HashSet<Informe>();
             this.PalabraClave = new HashSet<PalabraClave>();
+            this.PresupuestoProyecto = new HashSet<PresupuestoProyecto>();
             this.ProyectoXBeneficiaria = new HashSet<ProyectoXBeneficiaria>();
             this.ProyectoXDepartamento = new HashSet<ProyectoXDepartamento>();
             this.ProyectoXFrascati = new HashSet<ProyectoXFrascati>();
@@ -42,14 +46,18 @@ namespace AccesoDatos
         public string Descripcion { get; set; }
         public string Justificacion { get; set; }
     
+        public virtual ICollection<AmpliacionFechas> AmpliacionFechas { get; set; }
         public virtual ICollection<Compra> Compra { get; set; }
+        public virtual ICollection<EntradaBitacora> EntradaBitacora { get; set; }
         public virtual EstadoDeProyecto EstadoDeProyecto { get; set; }
+        public virtual ICollection<Incidencia> Incidencia { get; set; }
         public virtual ICollection<Informe> Informe { get; set; }
         public virtual Investigador Investigador { get; set; }
         public virtual Investigador Investigador1 { get; set; }
         public virtual ModalidadProyecto ModalidadProyecto { get; set; }
         public virtual ICollection<PalabraClave> PalabraClave { get; set; }
         public virtual PlanteamientoProyecto PlanteamientoProyecto { get; set; }
+        public virtual ICollection<PresupuestoProyecto> PresupuestoProyecto { get; set; }
         public virtual SetDatosGenerales SetDatosGenerales { get; set; }
         public virtual TipoDeProceso TipoDeProceso { get; set; }
         public virtual TipoProyecto TipoProyecto { get; set; }

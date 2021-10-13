@@ -16,6 +16,8 @@ namespace AccesoDatos
     {
         public Investigador()
         {
+            this.EquipoDeTrabajo = new HashSet<EquipoDeTrabajo>();
+            this.ProductoObjetivo = new HashSet<ProductoObjetivo>();
             this.Proyecto = new HashSet<Proyecto>();
             this.Proyecto1 = new HashSet<Proyecto>();
         }
@@ -24,7 +26,11 @@ namespace AccesoDatos
         public string Nombre { get; set; }
         public string PrimerApellido { get; set; }
         public string SegundoApellido { get; set; }
+        public string CorreoElectronico { get; set; }
+        public string TelefonoMovil { get; set; }
     
+        public virtual ICollection<EquipoDeTrabajo> EquipoDeTrabajo { get; set; }
+        public virtual ICollection<ProductoObjetivo> ProductoObjetivo { get; set; }
         public virtual ICollection<Proyecto> Proyecto { get; set; }
         public virtual ICollection<Proyecto> Proyecto1 { get; set; }
     }

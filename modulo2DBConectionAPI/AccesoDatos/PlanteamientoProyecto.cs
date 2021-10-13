@@ -17,7 +17,6 @@ namespace AccesoDatos
         public PlanteamientoProyecto()
         {
             this.Proyecto = new HashSet<Proyecto>();
-            this.RubroPresupuesto = new HashSet<RubroPresupuesto>();
         }
     
         public int Id { get; set; }
@@ -28,6 +27,5 @@ namespace AccesoDatos
     
         public virtual PlanDeAccion PlanDeAccion { get; set; }
         public virtual ICollection<Proyecto> Proyecto { get; set; }
-        public virtual ICollection<RubroPresupuesto> RubroPresupuesto { get; set; }
     }
 }

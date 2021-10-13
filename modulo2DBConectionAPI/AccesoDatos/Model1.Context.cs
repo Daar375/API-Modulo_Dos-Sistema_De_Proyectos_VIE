@@ -28,33 +28,60 @@ namespace AccesoDatos
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<AmpliacionFechas> AmpliacionFechas { get; set; }
         public DbSet<AreaFrascati> AreaFrascati { get; set; }
+        public DbSet<Canton> Canton { get; set; }
+        public DbSet<Colaborador> Colaborador { get; set; }
         public DbSet<Compra> Compra { get; set; }
         public DbSet<Departamento> Departamento { get; set; }
+        public DbSet<Distrito> Distrito { get; set; }
+        public DbSet<EntradaBitacora> EntradaBitacora { get; set; }
+        public DbSet<EquipoDeTrabajo> EquipoDeTrabajo { get; set; }
+        public DbSet<EquipoDeTrabajoXTipoHora> EquipoDeTrabajoXTipoHora { get; set; }
+        public DbSet<Escuela> Escuela { get; set; }
         public DbSet<EstadoDeProyecto> EstadoDeProyecto { get; set; }
+        public DbSet<FuenteFinanciamiento> FuenteFinanciamiento { get; set; }
+        public DbSet<Incidencia> Incidencia { get; set; }
         public DbSet<Informe> Informe { get; set; }
         public DbSet<Investigador> Investigador { get; set; }
+        public DbSet<Meta> Meta { get; set; }
         public DbSet<ModalidadProyecto> ModalidadProyecto { get; set; }
+        public DbSet<NivelDeResponsabilidad> NivelDeResponsabilidad { get; set; }
         public DbSet<ObjetivoEspecifico> ObjetivoEspecifico { get; set; }
         public DbSet<ODS> ODS { get; set; }
+        public DbSet<Pais> Pais { get; set; }
         public DbSet<PalabraClave> PalabraClave { get; set; }
+        public DbSet<Partida> Partida { get; set; }
         public DbSet<PlanDeAccion> PlanDeAccion { get; set; }
         public DbSet<PlanteamientoProyecto> PlanteamientoProyecto { get; set; }
         public DbSet<PoblacionBeneficiaria> PoblacionBeneficiaria { get; set; }
+        public DbSet<PresupuestoProyecto> PresupuestoProyecto { get; set; }
+        public DbSet<ProductoObjetivo> ProductoObjetivo { get; set; }
+        public DbSet<Provincia> Provincia { get; set; }
         public DbSet<Proyecto> Proyecto { get; set; }
         public DbSet<ProyectoXBeneficiaria> ProyectoXBeneficiaria { get; set; }
         public DbSet<ProyectoXDepartamento> ProyectoXDepartamento { get; set; }
         public DbSet<ProyectoXFrascati> ProyectoXFrascati { get; set; }
         public DbSet<ProyectoXODS> ProyectoXODS { get; set; }
-        public DbSet<RubroPresupuesto> RubroPresupuesto { get; set; }
+        public DbSet<Region> Region { get; set; }
+        public DbSet<Riesgo> Riesgo { get; set; }
+        public DbSet<Sede> Sede { get; set; }
         public DbSet<SetDatosGenerales> SetDatosGenerales { get; set; }
         public DbSet<SubAreaFrascati> SubAreaFrascati { get; set; }
         public DbSet<SubODS> SubODS { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<TipoDepartamento> TipoDepartamento { get; set; }
         public DbSet<TipoDeProceso> TipoDeProceso { get; set; }
+        public DbSet<TipoHora> TipoHora { get; set; }
         public DbSet<TipoInforme> TipoInforme { get; set; }
+        public DbSet<TipoParticipacion> TipoParticipacion { get; set; }
         public DbSet<TipoProyecto> TipoProyecto { get; set; }
+        public DbSet<UbicacionGeografica> UbicacionGeografica { get; set; }
+    
+        public virtual ObjectResult<Pr_Colaborador_Seleccionar_Result> Pr_Colaborador_Seleccionar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Colaborador_Seleccionar_Result>("Pr_Colaborador_Seleccionar");
+        }
     
         public virtual ObjectResult<Nullable<int>> Pr_Compra_Eliminar(Nullable<int> id)
         {
@@ -93,6 +120,89 @@ namespace AccesoDatos
                 new ObjectParameter("CodigoProyecto", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Compra_SeleccionarXProyecto_Result>("Pr_Compra_SeleccionarXProyecto", codigoProyectoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Pr_EntradaBitacora_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Pr_EntradaBitacora_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Pr_EntradaBitacora_Insertar_Result> Pr_EntradaBitacora_Insertar(string descripcion, string responsable, Nullable<System.DateTime> fechaYHora, string codigoProyecto)
+        {
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var responsableParameter = responsable != null ?
+                new ObjectParameter("Responsable", responsable) :
+                new ObjectParameter("Responsable", typeof(string));
+    
+            var fechaYHoraParameter = fechaYHora.HasValue ?
+                new ObjectParameter("FechaYHora", fechaYHora) :
+                new ObjectParameter("FechaYHora", typeof(System.DateTime));
+    
+            var codigoProyectoParameter = codigoProyecto != null ?
+                new ObjectParameter("CodigoProyecto", codigoProyecto) :
+                new ObjectParameter("CodigoProyecto", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_EntradaBitacora_Insertar_Result>("Pr_EntradaBitacora_Insertar", descripcionParameter, responsableParameter, fechaYHoraParameter, codigoProyectoParameter);
+        }
+    
+        public virtual ObjectResult<Pr_EntradaBitacora_Seleccionar_Result> Pr_EntradaBitacora_Seleccionar(string codigoProyecto)
+        {
+            var codigoProyectoParameter = codigoProyecto != null ?
+                new ObjectParameter("CodigoProyecto", codigoProyecto) :
+                new ObjectParameter("CodigoProyecto", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_EntradaBitacora_Seleccionar_Result>("Pr_EntradaBitacora_Seleccionar", codigoProyectoParameter);
+        }
+    
+        public virtual ObjectResult<Pr_EquipoDeTrabajo_Seleccionar_Result> Pr_EquipoDeTrabajo_Seleccionar(string codigo)
+        {
+            var codigoParameter = codigo != null ?
+                new ObjectParameter("Codigo", codigo) :
+                new ObjectParameter("Codigo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_EquipoDeTrabajo_Seleccionar_Result>("Pr_EquipoDeTrabajo_Seleccionar", codigoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Pr_Incidencia_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Pr_Incidencia_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Pr_Incidencia_Insertar_Result> Pr_Incidencia_Insertar(string tituloIncidencia, string descripcion, string codigoProyecto)
+        {
+            var tituloIncidenciaParameter = tituloIncidencia != null ?
+                new ObjectParameter("TituloIncidencia", tituloIncidencia) :
+                new ObjectParameter("TituloIncidencia", typeof(string));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var codigoProyectoParameter = codigoProyecto != null ?
+                new ObjectParameter("CodigoProyecto", codigoProyecto) :
+                new ObjectParameter("CodigoProyecto", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Incidencia_Insertar_Result>("Pr_Incidencia_Insertar", tituloIncidenciaParameter, descripcionParameter, codigoProyectoParameter);
+        }
+    
+        public virtual ObjectResult<Pr_Incidencias_Seleccionar_Result> Pr_Incidencias_Seleccionar(string codigoProyecto)
+        {
+            var codigoProyectoParameter = codigoProyecto != null ?
+                new ObjectParameter("CodigoProyecto", codigoProyecto) :
+                new ObjectParameter("CodigoProyecto", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Incidencias_Seleccionar_Result>("Pr_Incidencias_Seleccionar", codigoProyectoParameter);
         }
     
         public virtual ObjectResult<Nullable<int>> Pr_Informe_Eliminar(Nullable<int> id)
@@ -146,6 +256,41 @@ namespace AccesoDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Informe_SeleccionarXProyecto_Result>("Pr_Informe_SeleccionarXProyecto", codigoProyectoParameter);
         }
     
+        public virtual ObjectResult<string> Pr_Meta_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("Pr_Meta_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Pr_Meta_Insertar_Result> Pr_Meta_Insertar(string nombre, Nullable<bool> estaCumplida, Nullable<int> idObjectivoEspecifico)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var estaCumplidaParameter = estaCumplida.HasValue ?
+                new ObjectParameter("EstaCumplida", estaCumplida) :
+                new ObjectParameter("EstaCumplida", typeof(bool));
+    
+            var idObjectivoEspecificoParameter = idObjectivoEspecifico.HasValue ?
+                new ObjectParameter("IdObjectivoEspecifico", idObjectivoEspecifico) :
+                new ObjectParameter("IdObjectivoEspecifico", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Meta_Insertar_Result>("Pr_Meta_Insertar", nombreParameter, estaCumplidaParameter, idObjectivoEspecificoParameter);
+        }
+    
+        public virtual ObjectResult<Pr_Meta_Seleccionar_Result> Pr_Meta_Seleccionar(Nullable<int> idObjetivoEspecifico)
+        {
+            var idObjetivoEspecificoParameter = idObjetivoEspecifico.HasValue ?
+                new ObjectParameter("IdObjetivoEspecifico", idObjetivoEspecifico) :
+                new ObjectParameter("IdObjetivoEspecifico", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Meta_Seleccionar_Result>("Pr_Meta_Seleccionar", idObjetivoEspecificoParameter);
+        }
+    
         public virtual ObjectResult<Pr_ObjetivoEspecifico_Seleccionar_Result> Pr_ObjetivoEspecifico_Seleccionar(string codigo)
         {
             var codigoParameter = codigo != null ?
@@ -186,6 +331,137 @@ namespace AccesoDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_PalabrasClave_SeleccionarXProyecto_Result>("Pr_PalabrasClave_SeleccionarXProyecto", codigoProyectoParameter);
         }
     
+        public virtual ObjectResult<Nullable<int>> Pr_PresupuestoProyecto_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Pr_PresupuestoProyecto_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Pr_PresupuestoProyecto_Insertar_Result> Pr_PresupuestoProyecto_Insertar(Nullable<int> idFuenteFinanciamiento, string organizacion, Nullable<int> idPartida, Nullable<int> ano, Nullable<int> monto, string codigoProyecto)
+        {
+            var idFuenteFinanciamientoParameter = idFuenteFinanciamiento.HasValue ?
+                new ObjectParameter("IdFuenteFinanciamiento", idFuenteFinanciamiento) :
+                new ObjectParameter("IdFuenteFinanciamiento", typeof(int));
+    
+            var organizacionParameter = organizacion != null ?
+                new ObjectParameter("Organizacion", organizacion) :
+                new ObjectParameter("Organizacion", typeof(string));
+    
+            var idPartidaParameter = idPartida.HasValue ?
+                new ObjectParameter("IdPartida", idPartida) :
+                new ObjectParameter("IdPartida", typeof(int));
+    
+            var anoParameter = ano.HasValue ?
+                new ObjectParameter("Ano", ano) :
+                new ObjectParameter("Ano", typeof(int));
+    
+            var montoParameter = monto.HasValue ?
+                new ObjectParameter("Monto", monto) :
+                new ObjectParameter("Monto", typeof(int));
+    
+            var codigoProyectoParameter = codigoProyecto != null ?
+                new ObjectParameter("CodigoProyecto", codigoProyecto) :
+                new ObjectParameter("CodigoProyecto", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_PresupuestoProyecto_Insertar_Result>("Pr_PresupuestoProyecto_Insertar", idFuenteFinanciamientoParameter, organizacionParameter, idPartidaParameter, anoParameter, montoParameter, codigoProyectoParameter);
+        }
+    
+        public virtual ObjectResult<Pr_PresupuestoProyecto_Seleccionar_Result> Pr_PresupuestoProyecto_Seleccionar(string codigoProyecto)
+        {
+            var codigoProyectoParameter = codigoProyecto != null ?
+                new ObjectParameter("CodigoProyecto", codigoProyecto) :
+                new ObjectParameter("CodigoProyecto", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_PresupuestoProyecto_Seleccionar_Result>("Pr_PresupuestoProyecto_Seleccionar", codigoProyectoParameter);
+        }
+    
+        public virtual ObjectResult<string> Pr_ProductoObjetivo_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("Pr_ProductoObjetivo_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Pr_ProductoObjetivo_Insertar_Result> Pr_ProductoObjetivo_Insertar(string actividad, string idInvestigadorEncargado, Nullable<int> idColaboradorEncargado, Nullable<int> idNivelDeResponsabilidad, string nombre, Nullable<int> idObjetivoEspecifico, Nullable<int> ano, Nullable<int> trimestre, Nullable<System.DateTime> fecha)
+        {
+            var actividadParameter = actividad != null ?
+                new ObjectParameter("Actividad", actividad) :
+                new ObjectParameter("Actividad", typeof(string));
+    
+            var idInvestigadorEncargadoParameter = idInvestigadorEncargado != null ?
+                new ObjectParameter("IdInvestigadorEncargado", idInvestigadorEncargado) :
+                new ObjectParameter("IdInvestigadorEncargado", typeof(string));
+    
+            var idColaboradorEncargadoParameter = idColaboradorEncargado.HasValue ?
+                new ObjectParameter("IdColaboradorEncargado", idColaboradorEncargado) :
+                new ObjectParameter("IdColaboradorEncargado", typeof(int));
+    
+            var idNivelDeResponsabilidadParameter = idNivelDeResponsabilidad.HasValue ?
+                new ObjectParameter("IdNivelDeResponsabilidad", idNivelDeResponsabilidad) :
+                new ObjectParameter("IdNivelDeResponsabilidad", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var idObjetivoEspecificoParameter = idObjetivoEspecifico.HasValue ?
+                new ObjectParameter("IdObjetivoEspecifico", idObjetivoEspecifico) :
+                new ObjectParameter("IdObjetivoEspecifico", typeof(int));
+    
+            var anoParameter = ano.HasValue ?
+                new ObjectParameter("Ano", ano) :
+                new ObjectParameter("Ano", typeof(int));
+    
+            var trimestreParameter = trimestre.HasValue ?
+                new ObjectParameter("Trimestre", trimestre) :
+                new ObjectParameter("Trimestre", typeof(int));
+    
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("Fecha", fecha) :
+                new ObjectParameter("Fecha", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_ProductoObjetivo_Insertar_Result>("Pr_ProductoObjetivo_Insertar", actividadParameter, idInvestigadorEncargadoParameter, idColaboradorEncargadoParameter, idNivelDeResponsabilidadParameter, nombreParameter, idObjetivoEspecificoParameter, anoParameter, trimestreParameter, fechaParameter);
+        }
+    
+        public virtual ObjectResult<Pr_ProductoObjetivo_Seleccionar_Result> Pr_ProductoObjetivo_Seleccionar(Nullable<int> idObjetivoEspecifico)
+        {
+            var idObjetivoEspecificoParameter = idObjetivoEspecifico.HasValue ?
+                new ObjectParameter("IdObjetivoEspecifico", idObjetivoEspecifico) :
+                new ObjectParameter("IdObjetivoEspecifico", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_ProductoObjetivo_Seleccionar_Result>("Pr_ProductoObjetivo_Seleccionar", idObjetivoEspecificoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Pr_Proyecto_AmpliarFecha(Nullable<System.DateTime> fechaAprobacion, Nullable<System.DateTime> nuevaFechaFinalizacion, Nullable<System.DateTime> viejaFechaFinalizacion, string observaciones, string codigo)
+        {
+            var fechaAprobacionParameter = fechaAprobacion.HasValue ?
+                new ObjectParameter("FechaAprobacion", fechaAprobacion) :
+                new ObjectParameter("FechaAprobacion", typeof(System.DateTime));
+    
+            var nuevaFechaFinalizacionParameter = nuevaFechaFinalizacion.HasValue ?
+                new ObjectParameter("NuevaFechaFinalizacion", nuevaFechaFinalizacion) :
+                new ObjectParameter("NuevaFechaFinalizacion", typeof(System.DateTime));
+    
+            var viejaFechaFinalizacionParameter = viejaFechaFinalizacion.HasValue ?
+                new ObjectParameter("ViejaFechaFinalizacion", viejaFechaFinalizacion) :
+                new ObjectParameter("ViejaFechaFinalizacion", typeof(System.DateTime));
+    
+            var observacionesParameter = observaciones != null ?
+                new ObjectParameter("Observaciones", observaciones) :
+                new ObjectParameter("Observaciones", typeof(string));
+    
+            var codigoParameter = codigo != null ?
+                new ObjectParameter("Codigo", codigo) :
+                new ObjectParameter("Codigo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Pr_Proyecto_AmpliarFecha", fechaAprobacionParameter, nuevaFechaFinalizacionParameter, viejaFechaFinalizacionParameter, observacionesParameter, codigoParameter);
+        }
+    
         public virtual ObjectResult<Pr_Proyecto_Buscar_Result> Pr_Proyecto_Buscar(string criterioBusqueda, string parametro)
         {
             var criterioBusquedaParameter = criterioBusqueda != null ?
@@ -199,6 +475,19 @@ namespace AccesoDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Proyecto_Buscar_Result>("Pr_Proyecto_Buscar", criterioBusquedaParameter, parametroParameter);
         }
     
+        public virtual ObjectResult<Nullable<int>> Pr_Proyecto_CambiarInvCoord(string codigo, string numIdentidad)
+        {
+            var codigoParameter = codigo != null ?
+                new ObjectParameter("Codigo", codigo) :
+                new ObjectParameter("Codigo", typeof(string));
+    
+            var numIdentidadParameter = numIdentidad != null ?
+                new ObjectParameter("NumIdentidad", numIdentidad) :
+                new ObjectParameter("NumIdentidad", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Pr_Proyecto_CambiarInvCoord", codigoParameter, numIdentidadParameter);
+        }
+    
         public virtual ObjectResult<Pr_Proyecto_Consultar_Result> Pr_Proyecto_Consultar(string codigo)
         {
             var codigoParameter = codigo != null ?
@@ -208,11 +497,15 @@ namespace AccesoDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Proyecto_Consultar_Result>("Pr_Proyecto_Consultar", codigoParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> Pr_Proyecto_Modificar(string codigo, string nuevoNombre, string nuevoObjetivoGeneral, string nuevaActaVIE, string nuevaActaEscuela, string nuevaDescripcion, string nuevaJustificacion)
+        public virtual ObjectResult<Nullable<int>> Pr_Proyecto_Modificar(string codigo, Nullable<System.DateTime> nuevaFechaIngreso, string nuevoNombre, string nuevoObjetivoGeneral, Nullable<int> nuevoIdEstado, Nullable<int> nuevoIdTipoProyecto, Nullable<int> nuevoIdTipoProceso, Nullable<int> nuevoIdModalidad, string nuevaActaVIE, string nuevaActaEscuela, Nullable<System.DateTime> nuevaFechaAprobacion, Nullable<System.DateTime> nuevaFechaInicio, string nuevaDescripcion, string nuevaJustificacion)
         {
             var codigoParameter = codigo != null ?
                 new ObjectParameter("Codigo", codigo) :
                 new ObjectParameter("Codigo", typeof(string));
+    
+            var nuevaFechaIngresoParameter = nuevaFechaIngreso.HasValue ?
+                new ObjectParameter("NuevaFechaIngreso", nuevaFechaIngreso) :
+                new ObjectParameter("NuevaFechaIngreso", typeof(System.DateTime));
     
             var nuevoNombreParameter = nuevoNombre != null ?
                 new ObjectParameter("NuevoNombre", nuevoNombre) :
@@ -222,6 +515,22 @@ namespace AccesoDatos
                 new ObjectParameter("NuevoObjetivoGeneral", nuevoObjetivoGeneral) :
                 new ObjectParameter("NuevoObjetivoGeneral", typeof(string));
     
+            var nuevoIdEstadoParameter = nuevoIdEstado.HasValue ?
+                new ObjectParameter("NuevoIdEstado", nuevoIdEstado) :
+                new ObjectParameter("NuevoIdEstado", typeof(int));
+    
+            var nuevoIdTipoProyectoParameter = nuevoIdTipoProyecto.HasValue ?
+                new ObjectParameter("NuevoIdTipoProyecto", nuevoIdTipoProyecto) :
+                new ObjectParameter("NuevoIdTipoProyecto", typeof(int));
+    
+            var nuevoIdTipoProcesoParameter = nuevoIdTipoProceso.HasValue ?
+                new ObjectParameter("NuevoIdTipoProceso", nuevoIdTipoProceso) :
+                new ObjectParameter("NuevoIdTipoProceso", typeof(int));
+    
+            var nuevoIdModalidadParameter = nuevoIdModalidad.HasValue ?
+                new ObjectParameter("NuevoIdModalidad", nuevoIdModalidad) :
+                new ObjectParameter("NuevoIdModalidad", typeof(int));
+    
             var nuevaActaVIEParameter = nuevaActaVIE != null ?
                 new ObjectParameter("NuevaActaVIE", nuevaActaVIE) :
                 new ObjectParameter("NuevaActaVIE", typeof(string));
@@ -229,6 +538,14 @@ namespace AccesoDatos
             var nuevaActaEscuelaParameter = nuevaActaEscuela != null ?
                 new ObjectParameter("NuevaActaEscuela", nuevaActaEscuela) :
                 new ObjectParameter("NuevaActaEscuela", typeof(string));
+    
+            var nuevaFechaAprobacionParameter = nuevaFechaAprobacion.HasValue ?
+                new ObjectParameter("NuevaFechaAprobacion", nuevaFechaAprobacion) :
+                new ObjectParameter("NuevaFechaAprobacion", typeof(System.DateTime));
+    
+            var nuevaFechaInicioParameter = nuevaFechaInicio.HasValue ?
+                new ObjectParameter("NuevaFechaInicio", nuevaFechaInicio) :
+                new ObjectParameter("NuevaFechaInicio", typeof(System.DateTime));
     
             var nuevaDescripcionParameter = nuevaDescripcion != null ?
                 new ObjectParameter("NuevaDescripcion", nuevaDescripcion) :
@@ -238,7 +555,68 @@ namespace AccesoDatos
                 new ObjectParameter("NuevaJustificacion", nuevaJustificacion) :
                 new ObjectParameter("NuevaJustificacion", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Pr_Proyecto_Modificar", codigoParameter, nuevoNombreParameter, nuevoObjetivoGeneralParameter, nuevaActaVIEParameter, nuevaActaEscuelaParameter, nuevaDescripcionParameter, nuevaJustificacionParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Pr_Proyecto_Modificar", codigoParameter, nuevaFechaIngresoParameter, nuevoNombreParameter, nuevoObjetivoGeneralParameter, nuevoIdEstadoParameter, nuevoIdTipoProyectoParameter, nuevoIdTipoProcesoParameter, nuevoIdModalidadParameter, nuevaActaVIEParameter, nuevaActaEscuelaParameter, nuevaFechaAprobacionParameter, nuevaFechaInicioParameter, nuevaDescripcionParameter, nuevaJustificacionParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Pr_Proyecto_PermisosModificar(string codigo, Nullable<System.DateTime> nuevaFechaIngreso, string nuevoNombre, string nuevoObjetivoGeneral, Nullable<int> nuevoIdEstado, Nullable<int> nuevoIdTipoProyecto, Nullable<int> nuevoIdTipoProceso, Nullable<int> nuevoIdModalidad, string nuevaActaVIE, string nuevaActaEscuela, Nullable<System.DateTime> nuevaFechaAprobacion, Nullable<System.DateTime> nuevaFechaInicio, string nuevaDescripcion, string nuevaJustificacion)
+        {
+            var codigoParameter = codigo != null ?
+                new ObjectParameter("Codigo", codigo) :
+                new ObjectParameter("Codigo", typeof(string));
+    
+            var nuevaFechaIngresoParameter = nuevaFechaIngreso.HasValue ?
+                new ObjectParameter("NuevaFechaIngreso", nuevaFechaIngreso) :
+                new ObjectParameter("NuevaFechaIngreso", typeof(System.DateTime));
+    
+            var nuevoNombreParameter = nuevoNombre != null ?
+                new ObjectParameter("NuevoNombre", nuevoNombre) :
+                new ObjectParameter("NuevoNombre", typeof(string));
+    
+            var nuevoObjetivoGeneralParameter = nuevoObjetivoGeneral != null ?
+                new ObjectParameter("NuevoObjetivoGeneral", nuevoObjetivoGeneral) :
+                new ObjectParameter("NuevoObjetivoGeneral", typeof(string));
+    
+            var nuevoIdEstadoParameter = nuevoIdEstado.HasValue ?
+                new ObjectParameter("NuevoIdEstado", nuevoIdEstado) :
+                new ObjectParameter("NuevoIdEstado", typeof(int));
+    
+            var nuevoIdTipoProyectoParameter = nuevoIdTipoProyecto.HasValue ?
+                new ObjectParameter("NuevoIdTipoProyecto", nuevoIdTipoProyecto) :
+                new ObjectParameter("NuevoIdTipoProyecto", typeof(int));
+    
+            var nuevoIdTipoProcesoParameter = nuevoIdTipoProceso.HasValue ?
+                new ObjectParameter("NuevoIdTipoProceso", nuevoIdTipoProceso) :
+                new ObjectParameter("NuevoIdTipoProceso", typeof(int));
+    
+            var nuevoIdModalidadParameter = nuevoIdModalidad.HasValue ?
+                new ObjectParameter("NuevoIdModalidad", nuevoIdModalidad) :
+                new ObjectParameter("NuevoIdModalidad", typeof(int));
+    
+            var nuevaActaVIEParameter = nuevaActaVIE != null ?
+                new ObjectParameter("NuevaActaVIE", nuevaActaVIE) :
+                new ObjectParameter("NuevaActaVIE", typeof(string));
+    
+            var nuevaActaEscuelaParameter = nuevaActaEscuela != null ?
+                new ObjectParameter("NuevaActaEscuela", nuevaActaEscuela) :
+                new ObjectParameter("NuevaActaEscuela", typeof(string));
+    
+            var nuevaFechaAprobacionParameter = nuevaFechaAprobacion.HasValue ?
+                new ObjectParameter("NuevaFechaAprobacion", nuevaFechaAprobacion) :
+                new ObjectParameter("NuevaFechaAprobacion", typeof(System.DateTime));
+    
+            var nuevaFechaInicioParameter = nuevaFechaInicio.HasValue ?
+                new ObjectParameter("NuevaFechaInicio", nuevaFechaInicio) :
+                new ObjectParameter("NuevaFechaInicio", typeof(System.DateTime));
+    
+            var nuevaDescripcionParameter = nuevaDescripcion != null ?
+                new ObjectParameter("NuevaDescripcion", nuevaDescripcion) :
+                new ObjectParameter("NuevaDescripcion", typeof(string));
+    
+            var nuevaJustificacionParameter = nuevaJustificacion != null ?
+                new ObjectParameter("NuevaJustificacion", nuevaJustificacion) :
+                new ObjectParameter("NuevaJustificacion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Pr_Proyecto_PermisosModificar", codigoParameter, nuevaFechaIngresoParameter, nuevoNombreParameter, nuevoObjetivoGeneralParameter, nuevoIdEstadoParameter, nuevoIdTipoProyectoParameter, nuevoIdTipoProcesoParameter, nuevoIdModalidadParameter, nuevaActaVIEParameter, nuevaActaEscuelaParameter, nuevaFechaAprobacionParameter, nuevaFechaInicioParameter, nuevaDescripcionParameter, nuevaJustificacionParameter);
         }
     
         public virtual ObjectResult<Pr_Proyecto_Seleccionar_Result> Pr_Proyecto_Seleccionar()
@@ -382,47 +760,39 @@ namespace AccesoDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_ProyectoXODS_Seleccionar_Result>("Pr_ProyectoXODS_Seleccionar", codigoProyectoParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> Pr_RubroPresupuesto_Eliminar(Nullable<int> id)
+        public virtual ObjectResult<string> Pr_Riesgo_Eliminar(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("Id", id) :
                 new ObjectParameter("Id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Pr_RubroPresupuesto_Eliminar", idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("Pr_Riesgo_Eliminar", idParameter);
         }
     
-        public virtual ObjectResult<Pr_RubroPresupuesto_Insertar_Result> Pr_RubroPresupuesto_Insertar(string nombre, Nullable<int> ano, Nullable<int> monto, string codigoProyecto, string justificacion)
+        public virtual ObjectResult<Pr_Riesgo_Insertar_Result> Pr_Riesgo_Insertar(string nombre, string accionesMitagacion, Nullable<int> idObjetivoEspecifico)
         {
             var nombreParameter = nombre != null ?
                 new ObjectParameter("Nombre", nombre) :
                 new ObjectParameter("Nombre", typeof(string));
     
-            var anoParameter = ano.HasValue ?
-                new ObjectParameter("Ano", ano) :
-                new ObjectParameter("Ano", typeof(int));
+            var accionesMitagacionParameter = accionesMitagacion != null ?
+                new ObjectParameter("AccionesMitagacion", accionesMitagacion) :
+                new ObjectParameter("AccionesMitagacion", typeof(string));
     
-            var montoParameter = monto.HasValue ?
-                new ObjectParameter("Monto", monto) :
-                new ObjectParameter("Monto", typeof(int));
+            var idObjetivoEspecificoParameter = idObjetivoEspecifico.HasValue ?
+                new ObjectParameter("IdObjetivoEspecifico", idObjetivoEspecifico) :
+                new ObjectParameter("IdObjetivoEspecifico", typeof(int));
     
-            var codigoProyectoParameter = codigoProyecto != null ?
-                new ObjectParameter("CodigoProyecto", codigoProyecto) :
-                new ObjectParameter("CodigoProyecto", typeof(string));
-    
-            var justificacionParameter = justificacion != null ?
-                new ObjectParameter("Justificacion", justificacion) :
-                new ObjectParameter("Justificacion", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_RubroPresupuesto_Insertar_Result>("Pr_RubroPresupuesto_Insertar", nombreParameter, anoParameter, montoParameter, codigoProyectoParameter, justificacionParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Riesgo_Insertar_Result>("Pr_Riesgo_Insertar", nombreParameter, accionesMitagacionParameter, idObjetivoEspecificoParameter);
         }
     
-        public virtual ObjectResult<Pr_RubroPresupuesto_SeleccionarXProyecto_Result> Pr_RubroPresupuesto_SeleccionarXProyecto(string codigoProyecto)
+        public virtual ObjectResult<Pr_Riesgo_Seleccionar_Result> Pr_Riesgo_Seleccionar(Nullable<int> idObjetivoEspecifico)
         {
-            var codigoProyectoParameter = codigoProyecto != null ?
-                new ObjectParameter("CodigoProyecto", codigoProyecto) :
-                new ObjectParameter("CodigoProyecto", typeof(string));
+            var idObjetivoEspecificoParameter = idObjetivoEspecifico.HasValue ?
+                new ObjectParameter("IdObjetivoEspecifico", idObjetivoEspecifico) :
+                new ObjectParameter("IdObjetivoEspecifico", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_RubroPresupuesto_SeleccionarXProyecto_Result>("Pr_RubroPresupuesto_SeleccionarXProyecto", codigoProyectoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Riesgo_Seleccionar_Result>("Pr_Riesgo_Seleccionar", idObjetivoEspecificoParameter);
         }
     
         public virtual ObjectResult<Pr_SubAreaFrascati_Consultar_Result> Pr_SubAreaFrascati_Consultar(Nullable<int> idAreaFrascati)
@@ -441,6 +811,45 @@ namespace AccesoDatos
                 new ObjectParameter("IdODS", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_SubODS_Consultar_Result>("Pr_SubODS_Consultar", idODSParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Pr_UbicacionGeografica_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Pr_UbicacionGeografica_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Pr_UbicacionGeografica_Insertar_Result> Pr_UbicacionGeografica_Insertar(Nullable<int> idPais, Nullable<int> idRegion, Nullable<int> idProvincia, string codigoProyecto)
+        {
+            var idPaisParameter = idPais.HasValue ?
+                new ObjectParameter("IdPais", idPais) :
+                new ObjectParameter("IdPais", typeof(int));
+    
+            var idRegionParameter = idRegion.HasValue ?
+                new ObjectParameter("IdRegion", idRegion) :
+                new ObjectParameter("IdRegion", typeof(int));
+    
+            var idProvinciaParameter = idProvincia.HasValue ?
+                new ObjectParameter("IdProvincia", idProvincia) :
+                new ObjectParameter("IdProvincia", typeof(int));
+    
+            var codigoProyectoParameter = codigoProyecto != null ?
+                new ObjectParameter("CodigoProyecto", codigoProyecto) :
+                new ObjectParameter("CodigoProyecto", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_UbicacionGeografica_Insertar_Result>("Pr_UbicacionGeografica_Insertar", idPaisParameter, idRegionParameter, idProvinciaParameter, codigoProyectoParameter);
+        }
+    
+        public virtual ObjectResult<Pr_UbicacionGeografica_Seleccionar_Result> Pr_UbicacionGeografica_Seleccionar(string codigoProyecto)
+        {
+            var codigoProyectoParameter = codigoProyecto != null ?
+                new ObjectParameter("CodigoProyecto", codigoProyecto) :
+                new ObjectParameter("CodigoProyecto", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_UbicacionGeografica_Seleccionar_Result>("Pr_UbicacionGeografica_Seleccionar", codigoProyectoParameter);
         }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)

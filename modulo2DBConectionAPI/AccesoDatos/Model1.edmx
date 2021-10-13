@@ -5,12 +5,40 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AmpliacionFechas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaAprobacion" Type="date" Nullable="false" />
+          <Property Name="NuevaFechaFinalizacion" Type="date" Nullable="false" />
+          <Property Name="ViejaFechaFinalizacion" Type="date" />
+          <Property Name="Observaciones" Type="text" Nullable="false" />
+          <Property Name="CodigoProyecto" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
         <EntityType Name="AreaFrascati">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Area" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Canton">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdProvincia" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Colaborador">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="PrimerApellido" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="SegundoApellido" Type="nvarchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="Compra">
           <Key>
@@ -29,12 +57,76 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NombreProyecto" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Distrito">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdCanton" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EntradaBitacora">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="text" Nullable="false" />
+          <Property Name="Responsable" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaYHora" Type="datetime" Nullable="false" />
+          <Property Name="CodigoProyecto" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EquipoDeTrabajo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumIdentidad" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="IdSetDatos" Type="int" Nullable="false" />
+          <Property Name="IdCondicionDeParticipacion" Type="int" Nullable="false" />
+          <Property Name="IdEscuela" Type="int" Nullable="false" />
+          <Property Name="CantidadHoras" Type="int" Nullable="false" />
+          <Property Name="AreaConocimiento" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EquipoDeTrabajoXTipoHora">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEquipoDeTrabajo" Type="int" Nullable="false" />
+          <Property Name="IdTipoHora" Type="int" Nullable="false" />
+          <Property Name="FechaInicio" Type="date" Nullable="false" />
+          <Property Name="FechaFinalizacion" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Escuela">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreEscuela" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="IdSede" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="EstadoDeProyecto">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EstadoDeProyecto" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FuenteFinanciamiento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FuenteFinanciamiento" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Incidencia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TituloIncidencia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="text" Nullable="false" />
+          <Property Name="CodigoProyecto" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Informe">
           <Key>
@@ -59,6 +151,17 @@
           <Property Name="Nombre" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="PrimerApellido" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="SegundoApellido" Type="nvarchar" MaxLength="15" />
+          <Property Name="CorreoElectronico" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TelefonoMovil" Type="nvarchar" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Meta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EstaCumplida" Type="bit" Nullable="false" />
+          <Property Name="IdObjectivoEspecifico" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ModalidadProyecto">
           <Key>
@@ -66,6 +169,13 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NombreModalidad" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NivelDeResponsabilidad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NivelDeResponsabilidad" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="ObjetivoEspecifico">
           <Key>
@@ -83,6 +193,13 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ODS" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombrePais" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
         <EntityType Name="PalabraClave">
           <Key>
             <PropertyRef Name="Id" />
@@ -90,6 +207,13 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PalabraClave" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CodigoProyecto" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Partida">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Partida" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="PlanDeAccion">
           <Key>
@@ -114,6 +238,40 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NombrePoblacion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PresupuestoProyecto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdFuenteFinanciamiento" Type="int" Nullable="false" />
+          <Property Name="Organizacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdPartida" Type="int" />
+          <Property Name="Ano" Type="int" Nullable="false" />
+          <Property Name="Monto" Type="int" Nullable="false" />
+          <Property Name="CodigoProyecto" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductoObjetivo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Actividad" Type="text" Nullable="false" />
+          <Property Name="IdInvestigadorEncargado" Type="nvarchar" MaxLength="20" />
+          <Property Name="IdColaboradorEncargado" Type="int" />
+          <Property Name="IdNivelDeResponsabilidad" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdObjetivoEspecifico" Type="int" Nullable="false" />
+          <Property Name="Ano" Type="int" Nullable="false" />
+          <Property Name="Trimestre" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Proyecto">
           <Key>
@@ -171,16 +329,28 @@
           <Property Name="IdSubODS" Type="int" Nullable="false" />
           <Property Name="IdODS" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="RubroPresupuesto">
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreRegion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Riesgo">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Ano" Type="int" Nullable="false" />
-          <Property Name="Monto" Type="int" Nullable="false" />
-          <Property Name="IdPlanteamientoProyecto" Type="int" Nullable="false" />
-          <Property Name="Justificacion" Type="text" Nullable="false" />
+          <Property Name="AccionesMitagacion" Type="text" Nullable="false" />
+          <Property Name="IdObjetivoEspecifico" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sede">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreSede" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="SetDatosGenerales">
           <Key>
@@ -189,7 +359,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NombreDelProyecto" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="FechaInicioEjecucion" Type="date" Nullable="false" />
-          <Property Name="FechaFinEjecucion" Type="date" />
+          <Property Name="FechaFinEjecucion" Type="date" Nullable="false" />
           <Property Name="Estado" Type="nvarchar" MaxLength="25" Nullable="false" />
           <Property Name="Justificacion" Type="text" Nullable="false" />
         </EntityType>
@@ -233,12 +403,26 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TipoDeProceso" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="TipoHora">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoHora" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="TipoInforme">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TipoInforme" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoParticipacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoParticipacion" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="TipoProyecto">
           <Key>
@@ -247,6 +431,40 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TipoProyecto" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="UbicacionGeografica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPais" Type="int" Nullable="false" />
+          <Property Name="IdRegion" Type="int" />
+          <Property Name="IdProvincia" Type="int" />
+          <Property Name="CodigoProyecto" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AmpliacionFechas_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="AmpliacionFechas" Type="Self.AmpliacionFechas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="AmpliacionFechas">
+              <PropertyRef Name="CodigoProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Canton_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Canton" Type="Self.Canton" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Canton">
+              <PropertyRef Name="IdProvincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Compra_Proyecto">
           <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
           <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
@@ -255,6 +473,126 @@
               <PropertyRef Name="Codigo" />
             </Principal>
             <Dependent Role="Compra">
+              <PropertyRef Name="CodigoProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distrito_Canton">
+          <End Role="Canton" Type="Self.Canton" Multiplicity="1" />
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Canton">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Distrito">
+              <PropertyRef Name="IdCanton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntradaBitacora_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="EntradaBitacora" Type="Self.EntradaBitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="EntradaBitacora">
+              <PropertyRef Name="CodigoProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipoDeTrabajo_Escuela">
+          <End Role="Escuela" Type="Self.Escuela" Multiplicity="1" />
+          <End Role="EquipoDeTrabajo" Type="Self.EquipoDeTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Escuela">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipoDeTrabajo">
+              <PropertyRef Name="IdEscuela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipoDeTrabajo_Investigador">
+          <End Role="Investigador" Type="Self.Investigador" Multiplicity="1" />
+          <End Role="EquipoDeTrabajo" Type="Self.EquipoDeTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investigador">
+              <PropertyRef Name="NumIdentidad" />
+            </Principal>
+            <Dependent Role="EquipoDeTrabajo">
+              <PropertyRef Name="NumIdentidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipoDeTrabajo_SetDatosGenerales">
+          <End Role="SetDatosGenerales" Type="Self.SetDatosGenerales" Multiplicity="1" />
+          <End Role="EquipoDeTrabajo" Type="Self.EquipoDeTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SetDatosGenerales">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipoDeTrabajo">
+              <PropertyRef Name="IdSetDatos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipoDeTrabajo_TipoParticipacion">
+          <End Role="TipoParticipacion" Type="Self.TipoParticipacion" Multiplicity="1" />
+          <End Role="EquipoDeTrabajo" Type="Self.EquipoDeTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoParticipacion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipoDeTrabajo">
+              <PropertyRef Name="IdCondicionDeParticipacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipoDeTrabajoXTipoHora_EquipoDeTrabajo">
+          <End Role="EquipoDeTrabajo" Type="Self.EquipoDeTrabajo" Multiplicity="1" />
+          <End Role="EquipoDeTrabajoXTipoHora" Type="Self.EquipoDeTrabajoXTipoHora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipoDeTrabajo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipoDeTrabajoXTipoHora">
+              <PropertyRef Name="IdEquipoDeTrabajo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipoDeTrabajoXTipoHora_TipoHora">
+          <End Role="TipoHora" Type="Self.TipoHora" Multiplicity="1" />
+          <End Role="EquipoDeTrabajoXTipoHora" Type="Self.EquipoDeTrabajoXTipoHora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoHora">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipoDeTrabajoXTipoHora">
+              <PropertyRef Name="IdTipoHora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Escuela_Sede">
+          <End Role="Sede" Type="Self.Sede" Multiplicity="1" />
+          <End Role="Escuela" Type="Self.Escuela" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Escuela">
+              <PropertyRef Name="IdSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidencia_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="Incidencia" Type="Self.Incidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="Incidencia">
               <PropertyRef Name="CodigoProyecto" />
             </Dependent>
           </ReferentialConstraint>
@@ -280,6 +618,18 @@
             </Principal>
             <Dependent Role="Informe">
               <PropertyRef Name="IdTipoInforme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meta_ObjetivoEspecifico">
+          <End Role="ObjetivoEspecifico" Type="Self.ObjetivoEspecifico" Multiplicity="1" />
+          <End Role="Meta" Type="Self.Meta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObjetivoEspecifico">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Meta">
+              <PropertyRef Name="IdObjectivoEspecifico" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -316,6 +666,102 @@
             </Principal>
             <Dependent Role="PlanteamientoProyecto">
               <PropertyRef Name="IdPlanDeAccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PresupuestoProyecto_FuenteFinanciamiento">
+          <End Role="FuenteFinanciamiento" Type="Self.FuenteFinanciamiento" Multiplicity="1" />
+          <End Role="PresupuestoProyecto" Type="Self.PresupuestoProyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuenteFinanciamiento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PresupuestoProyecto">
+              <PropertyRef Name="IdFuenteFinanciamiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PresupuestoProyecto_Partida">
+          <End Role="Partida" Type="Self.Partida" Multiplicity="0..1" />
+          <End Role="PresupuestoProyecto" Type="Self.PresupuestoProyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partida">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PresupuestoProyecto">
+              <PropertyRef Name="IdPartida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PresupuestoProyecto_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="PresupuestoProyecto" Type="Self.PresupuestoProyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="PresupuestoProyecto">
+              <PropertyRef Name="CodigoProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductoObjetivo_Colaborador">
+          <End Role="Colaborador" Type="Self.Colaborador" Multiplicity="0..1" />
+          <End Role="ProductoObjetivo" Type="Self.ProductoObjetivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaborador">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductoObjetivo">
+              <PropertyRef Name="IdColaboradorEncargado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductoObjetivo_Investigador1">
+          <End Role="Investigador" Type="Self.Investigador" Multiplicity="0..1" />
+          <End Role="ProductoObjetivo" Type="Self.ProductoObjetivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investigador">
+              <PropertyRef Name="NumIdentidad" />
+            </Principal>
+            <Dependent Role="ProductoObjetivo">
+              <PropertyRef Name="IdInvestigadorEncargado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductoObjetivo_NivelDeResponsibilidad">
+          <End Role="NivelDeResponsabilidad" Type="Self.NivelDeResponsabilidad" Multiplicity="1" />
+          <End Role="ProductoObjetivo" Type="Self.ProductoObjetivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NivelDeResponsabilidad">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductoObjetivo">
+              <PropertyRef Name="IdNivelDeResponsabilidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductoObjetivo_ObjetivoEspecifico">
+          <End Role="ObjetivoEspecifico" Type="Self.ObjetivoEspecifico" Multiplicity="1" />
+          <End Role="ProductoObjetivo" Type="Self.ProductoObjetivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObjetivoEspecifico">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductoObjetivo">
+              <PropertyRef Name="IdObjetivoEspecifico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductoObjetivo_ProductoObjetivo">
+          <End Role="ProductoObjetivo" Type="Self.ProductoObjetivo" Multiplicity="1" />
+          <End Role="ProductoObjetivo1" Type="Self.ProductoObjetivo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ProductoObjetivo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductoObjetivo1">
+              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -547,15 +993,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RubroPresupuesto_PlanteamientoProyecto">
-          <End Role="PlanteamientoProyecto" Type="Self.PlanteamientoProyecto" Multiplicity="1" />
-          <End Role="RubroPresupuesto" Type="Self.RubroPresupuesto" Multiplicity="*" />
+        <Association Name="FK_Riesgo_ObjetivoEspecifico">
+          <End Role="ObjetivoEspecifico" Type="Self.ObjetivoEspecifico" Multiplicity="1" />
+          <End Role="Riesgo" Type="Self.Riesgo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PlanteamientoProyecto">
+            <Principal Role="ObjetivoEspecifico">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="RubroPresupuesto">
-              <PropertyRef Name="IdPlanteamientoProyecto" />
+            <Dependent Role="Riesgo">
+              <PropertyRef Name="IdObjetivoEspecifico" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -583,7 +1029,44 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UbicacionGeografica_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="UbicacionGeografica" Type="Self.UbicacionGeografica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UbicacionGeografica">
+              <PropertyRef Name="IdPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UbicacionGeografica_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="0..1" />
+          <End Role="UbicacionGeografica" Type="Self.UbicacionGeografica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UbicacionGeografica">
+              <PropertyRef Name="IdProvincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UbicacionGeografica_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="UbicacionGeografica" Type="Self.UbicacionGeografica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UbicacionGeografica">
+              <PropertyRef Name="IdRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="Pr_Colaborador_Seleccionar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Pr_Compra_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="int" Mode="In" />
         </Function>
@@ -594,6 +1077,32 @@
           <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="Pr_Compra_SeleccionarXProyecto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Pr_EntradaBitacora_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Pr_EntradaBitacora_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Descripcion" Type="text" Mode="In" />
+          <Parameter Name="Responsable" Type="nvarchar" Mode="In" />
+          <Parameter Name="FechaYHora" Type="datetime" Mode="In" />
+          <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Pr_EntradaBitacora_Seleccionar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Pr_EquipoDeTrabajo_Seleccionar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Codigo" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Pr_Incidencia_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Pr_Incidencia_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TituloIncidencia" Type="nvarchar" Mode="In" />
+          <Parameter Name="Descripcion" Type="text" Mode="In" />
+          <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Pr_Incidencias_Seleccionar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="Pr_Informe_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -611,6 +1120,17 @@
         <Function Name="Pr_Informe_SeleccionarXProyecto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="Pr_Meta_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Pr_Meta_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="EstaCumplida" Type="bit" Mode="In" />
+          <Parameter Name="IdObjectivoEspecifico" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Pr_Meta_Seleccionar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdObjetivoEspecifico" Type="int" Mode="In" />
+        </Function>
         <Function Name="Pr_ObjetivoEspecifico_Seleccionar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Codigo" Type="nvarchar" Mode="In" />
         </Function>
@@ -624,19 +1144,84 @@
         <Function Name="Pr_PalabrasClave_SeleccionarXProyecto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="Pr_PresupuestoProyecto_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Pr_PresupuestoProyecto_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdFuenteFinanciamiento" Type="int" Mode="In" />
+          <Parameter Name="Organizacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="IdPartida" Type="int" Mode="In" />
+          <Parameter Name="Ano" Type="int" Mode="In" />
+          <Parameter Name="Monto" Type="int" Mode="In" />
+          <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Pr_PresupuestoProyecto_Seleccionar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Pr_ProductoObjetivo_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Pr_ProductoObjetivo_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Actividad" Type="text" Mode="In" />
+          <Parameter Name="IdInvestigadorEncargado" Type="nvarchar" Mode="In" />
+          <Parameter Name="IdColaboradorEncargado" Type="int" Mode="In" />
+          <Parameter Name="IdNivelDeResponsabilidad" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="IdObjetivoEspecifico" Type="int" Mode="In" />
+          <Parameter Name="Ano" Type="int" Mode="In" />
+          <Parameter Name="Trimestre" Type="int" Mode="In" />
+          <Parameter Name="Fecha" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Pr_ProductoObjetivo_Seleccionar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdObjetivoEspecifico" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Pr_Proyecto_AmpliarFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FechaAprobacion" Type="date" Mode="In" />
+          <Parameter Name="NuevaFechaFinalizacion" Type="date" Mode="In" />
+          <Parameter Name="ViejaFechaFinalizacion" Type="date" Mode="In" />
+          <Parameter Name="Observaciones" Type="text" Mode="In" />
+          <Parameter Name="Codigo" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="Pr_Proyecto_Buscar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CriterioBusqueda" Type="nvarchar" Mode="In" />
           <Parameter Name="Parametro" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Pr_Proyecto_CambiarInvCoord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Codigo" Type="nvarchar" Mode="In" />
+          <Parameter Name="NumIdentidad" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="Pr_Proyecto_Consultar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Codigo" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="Pr_Proyecto_Modificar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Codigo" Type="nvarchar" Mode="In" />
+          <Parameter Name="NuevaFechaIngreso" Type="date" Mode="In" />
           <Parameter Name="NuevoNombre" Type="nvarchar" Mode="In" />
           <Parameter Name="NuevoObjetivoGeneral" Type="text" Mode="In" />
+          <Parameter Name="NuevoIdEstado" Type="int" Mode="In" />
+          <Parameter Name="NuevoIdTipoProyecto" Type="int" Mode="In" />
+          <Parameter Name="NuevoIdTipoProceso" Type="int" Mode="In" />
+          <Parameter Name="NuevoIdModalidad" Type="int" Mode="In" />
           <Parameter Name="NuevaActaVIE" Type="nvarchar" Mode="In" />
           <Parameter Name="NuevaActaEscuela" Type="nvarchar" Mode="In" />
+          <Parameter Name="NuevaFechaAprobacion" Type="date" Mode="In" />
+          <Parameter Name="NuevaFechaInicio" Type="date" Mode="In" />
+          <Parameter Name="NuevaDescripcion" Type="text" Mode="In" />
+          <Parameter Name="NuevaJustificacion" Type="text" Mode="In" />
+        </Function>
+        <Function Name="Pr_Proyecto_PermisosModificar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Codigo" Type="nvarchar" Mode="In" />
+          <Parameter Name="NuevaFechaIngreso" Type="date" Mode="In" />
+          <Parameter Name="NuevoNombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="NuevoObjetivoGeneral" Type="text" Mode="In" />
+          <Parameter Name="NuevoIdEstado" Type="int" Mode="In" />
+          <Parameter Name="NuevoIdTipoProyecto" Type="int" Mode="In" />
+          <Parameter Name="NuevoIdTipoProceso" Type="int" Mode="In" />
+          <Parameter Name="NuevoIdModalidad" Type="int" Mode="In" />
+          <Parameter Name="NuevaActaVIE" Type="nvarchar" Mode="In" />
+          <Parameter Name="NuevaActaEscuela" Type="nvarchar" Mode="In" />
+          <Parameter Name="NuevaFechaAprobacion" Type="date" Mode="In" />
+          <Parameter Name="NuevaFechaInicio" Type="date" Mode="In" />
           <Parameter Name="NuevaDescripcion" Type="text" Mode="In" />
           <Parameter Name="NuevaJustificacion" Type="text" Mode="In" />
         </Function>
@@ -684,24 +1269,34 @@
         <Function Name="Pr_ProyectoXODS_Seleccionar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="Pr_RubroPresupuesto_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="Pr_Riesgo_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="int" Mode="In" />
         </Function>
-        <Function Name="Pr_RubroPresupuesto_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="Pr_Riesgo_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
-          <Parameter Name="Ano" Type="int" Mode="In" />
-          <Parameter Name="Monto" Type="int" Mode="In" />
-          <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
-          <Parameter Name="Justificacion" Type="text" Mode="In" />
+          <Parameter Name="AccionesMitagacion" Type="text" Mode="In" />
+          <Parameter Name="IdObjetivoEspecifico" Type="int" Mode="In" />
         </Function>
-        <Function Name="Pr_RubroPresupuesto_SeleccionarXProyecto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
+        <Function Name="Pr_Riesgo_Seleccionar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdObjetivoEspecifico" Type="int" Mode="In" />
         </Function>
         <Function Name="Pr_SubAreaFrascati_Consultar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdAreaFrascati" Type="int" Mode="In" />
         </Function>
         <Function Name="Pr_SubODS_Consultar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdODS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Pr_UbicacionGeografica_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Pr_UbicacionGeografica_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdPais" Type="int" Mode="In" />
+          <Parameter Name="IdRegion" Type="int" Mode="In" />
+          <Parameter Name="IdProvincia" Type="int" Mode="In" />
+          <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Pr_UbicacionGeografica_Seleccionar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -734,36 +1329,106 @@
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="AmpliacionFechas" EntityType="Self.AmpliacionFechas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AreaFrascati" EntityType="Self.AreaFrascati" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Canton" EntityType="Self.Canton" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Colaborador" EntityType="Self.Colaborador" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Compra" EntityType="Self.Compra" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Distrito" EntityType="Self.Distrito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EntradaBitacora" EntityType="Self.EntradaBitacora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipoDeTrabajo" EntityType="Self.EquipoDeTrabajo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipoDeTrabajoXTipoHora" EntityType="Self.EquipoDeTrabajoXTipoHora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Escuela" EntityType="Self.Escuela" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EstadoDeProyecto" EntityType="Self.EstadoDeProyecto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FuenteFinanciamiento" EntityType="Self.FuenteFinanciamiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Incidencia" EntityType="Self.Incidencia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Informe" EntityType="Self.Informe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Investigador" EntityType="Self.Investigador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Meta" EntityType="Self.Meta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ModalidadProyecto" EntityType="Self.ModalidadProyecto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NivelDeResponsabilidad" EntityType="Self.NivelDeResponsabilidad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ObjetivoEspecifico" EntityType="Self.ObjetivoEspecifico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ODS" EntityType="Self.ODS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PalabraClave" EntityType="Self.PalabraClave" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Partida" EntityType="Self.Partida" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlanDeAccion" EntityType="Self.PlanDeAccion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlanteamientoProyecto" EntityType="Self.PlanteamientoProyecto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PoblacionBeneficiaria" EntityType="Self.PoblacionBeneficiaria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PresupuestoProyecto" EntityType="Self.PresupuestoProyecto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductoObjetivo" EntityType="Self.ProductoObjetivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provincia" EntityType="Self.Provincia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proyecto" EntityType="Self.Proyecto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProyectoXBeneficiaria" EntityType="Self.ProyectoXBeneficiaria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProyectoXDepartamento" EntityType="Self.ProyectoXDepartamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProyectoXFrascati" EntityType="Self.ProyectoXFrascati" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProyectoXODS" EntityType="Self.ProyectoXODS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RubroPresupuesto" EntityType="Self.RubroPresupuesto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Riesgo" EntityType="Self.Riesgo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sede" EntityType="Self.Sede" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SetDatosGenerales" EntityType="Self.SetDatosGenerales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubAreaFrascati" EntityType="Self.SubAreaFrascati" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubODS" EntityType="Self.SubODS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoDepartamento" EntityType="Self.TipoDepartamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoDeProceso" EntityType="Self.TipoDeProceso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoHora" EntityType="Self.TipoHora" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoInforme" EntityType="Self.TipoInforme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoParticipacion" EntityType="Self.TipoParticipacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoProyecto" EntityType="Self.TipoProyecto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UbicacionGeografica" EntityType="Self.UbicacionGeografica" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AmpliacionFechas_Proyecto" Association="Self.FK_AmpliacionFechas_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="AmpliacionFechas" EntitySet="AmpliacionFechas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Canton_Provincia" Association="Self.FK_Canton_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Canton" EntitySet="Canton" />
+          </AssociationSet>
           <AssociationSet Name="FK_Compra_Proyecto" Association="Self.FK_Compra_Proyecto">
             <End Role="Proyecto" EntitySet="Proyecto" />
             <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distrito_Canton" Association="Self.FK_Distrito_Canton">
+            <End Role="Canton" EntitySet="Canton" />
+            <End Role="Distrito" EntitySet="Distrito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntradaBitacora_Proyecto" Association="Self.FK_EntradaBitacora_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="EntradaBitacora" EntitySet="EntradaBitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipoDeTrabajo_Escuela" Association="Self.FK_EquipoDeTrabajo_Escuela">
+            <End Role="Escuela" EntitySet="Escuela" />
+            <End Role="EquipoDeTrabajo" EntitySet="EquipoDeTrabajo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipoDeTrabajo_Investigador" Association="Self.FK_EquipoDeTrabajo_Investigador">
+            <End Role="Investigador" EntitySet="Investigador" />
+            <End Role="EquipoDeTrabajo" EntitySet="EquipoDeTrabajo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipoDeTrabajo_SetDatosGenerales" Association="Self.FK_EquipoDeTrabajo_SetDatosGenerales">
+            <End Role="SetDatosGenerales" EntitySet="SetDatosGenerales" />
+            <End Role="EquipoDeTrabajo" EntitySet="EquipoDeTrabajo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipoDeTrabajo_TipoParticipacion" Association="Self.FK_EquipoDeTrabajo_TipoParticipacion">
+            <End Role="TipoParticipacion" EntitySet="TipoParticipacion" />
+            <End Role="EquipoDeTrabajo" EntitySet="EquipoDeTrabajo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipoDeTrabajoXTipoHora_EquipoDeTrabajo" Association="Self.FK_EquipoDeTrabajoXTipoHora_EquipoDeTrabajo">
+            <End Role="EquipoDeTrabajo" EntitySet="EquipoDeTrabajo" />
+            <End Role="EquipoDeTrabajoXTipoHora" EntitySet="EquipoDeTrabajoXTipoHora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipoDeTrabajoXTipoHora_TipoHora" Association="Self.FK_EquipoDeTrabajoXTipoHora_TipoHora">
+            <End Role="TipoHora" EntitySet="TipoHora" />
+            <End Role="EquipoDeTrabajoXTipoHora" EntitySet="EquipoDeTrabajoXTipoHora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Escuela_Sede" Association="Self.FK_Escuela_Sede">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="Escuela" EntitySet="Escuela" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidencia_Proyecto" Association="Self.FK_Incidencia_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Incidencia" EntitySet="Incidencia" />
           </AssociationSet>
           <AssociationSet Name="FK_Informe_Proyecto" Association="Self.FK_Informe_Proyecto">
             <End Role="Proyecto" EntitySet="Proyecto" />
@@ -772,6 +1437,10 @@
           <AssociationSet Name="FK_Informe_TipoInforme" Association="Self.FK_Informe_TipoInforme">
             <End Role="TipoInforme" EntitySet="TipoInforme" />
             <End Role="Informe" EntitySet="Informe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meta_ObjetivoEspecifico" Association="Self.FK_Meta_ObjetivoEspecifico">
+            <End Role="ObjetivoEspecifico" EntitySet="ObjetivoEspecifico" />
+            <End Role="Meta" EntitySet="Meta" />
           </AssociationSet>
           <AssociationSet Name="FK_ObjetivoEspecifico_PlanDeAccion" Association="Self.FK_ObjetivoEspecifico_PlanDeAccion">
             <End Role="PlanDeAccion" EntitySet="PlanDeAccion" />
@@ -784,6 +1453,38 @@
           <AssociationSet Name="FK_PlanteamientoProyecto_PlanDeAccion" Association="Self.FK_PlanteamientoProyecto_PlanDeAccion">
             <End Role="PlanDeAccion" EntitySet="PlanDeAccion" />
             <End Role="PlanteamientoProyecto" EntitySet="PlanteamientoProyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PresupuestoProyecto_FuenteFinanciamiento" Association="Self.FK_PresupuestoProyecto_FuenteFinanciamiento">
+            <End Role="FuenteFinanciamiento" EntitySet="FuenteFinanciamiento" />
+            <End Role="PresupuestoProyecto" EntitySet="PresupuestoProyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PresupuestoProyecto_Partida" Association="Self.FK_PresupuestoProyecto_Partida">
+            <End Role="Partida" EntitySet="Partida" />
+            <End Role="PresupuestoProyecto" EntitySet="PresupuestoProyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PresupuestoProyecto_Proyecto" Association="Self.FK_PresupuestoProyecto_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="PresupuestoProyecto" EntitySet="PresupuestoProyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductoObjetivo_Colaborador" Association="Self.FK_ProductoObjetivo_Colaborador">
+            <End Role="Colaborador" EntitySet="Colaborador" />
+            <End Role="ProductoObjetivo" EntitySet="ProductoObjetivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductoObjetivo_Investigador1" Association="Self.FK_ProductoObjetivo_Investigador1">
+            <End Role="Investigador" EntitySet="Investigador" />
+            <End Role="ProductoObjetivo" EntitySet="ProductoObjetivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductoObjetivo_NivelDeResponsibilidad" Association="Self.FK_ProductoObjetivo_NivelDeResponsibilidad">
+            <End Role="NivelDeResponsabilidad" EntitySet="NivelDeResponsabilidad" />
+            <End Role="ProductoObjetivo" EntitySet="ProductoObjetivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductoObjetivo_ObjetivoEspecifico" Association="Self.FK_ProductoObjetivo_ObjetivoEspecifico">
+            <End Role="ObjetivoEspecifico" EntitySet="ObjetivoEspecifico" />
+            <End Role="ProductoObjetivo" EntitySet="ProductoObjetivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductoObjetivo_ProductoObjetivo" Association="Self.FK_ProductoObjetivo_ProductoObjetivo">
+            <End Role="ProductoObjetivo" EntitySet="ProductoObjetivo" />
+            <End Role="ProductoObjetivo1" EntitySet="ProductoObjetivo" />
           </AssociationSet>
           <AssociationSet Name="FK_Proyecto_EstadoDeProyecto" Association="Self.FK_Proyecto_EstadoDeProyecto">
             <End Role="EstadoDeProyecto" EntitySet="EstadoDeProyecto" />
@@ -861,9 +1562,9 @@
             <End Role="SubODS" EntitySet="SubODS" />
             <End Role="ProyectoXODS" EntitySet="ProyectoXODS" />
           </AssociationSet>
-          <AssociationSet Name="FK_RubroPresupuesto_PlanteamientoProyecto" Association="Self.FK_RubroPresupuesto_PlanteamientoProyecto">
-            <End Role="PlanteamientoProyecto" EntitySet="PlanteamientoProyecto" />
-            <End Role="RubroPresupuesto" EntitySet="RubroPresupuesto" />
+          <AssociationSet Name="FK_Riesgo_ObjetivoEspecifico" Association="Self.FK_Riesgo_ObjetivoEspecifico">
+            <End Role="ObjetivoEspecifico" EntitySet="ObjetivoEspecifico" />
+            <End Role="Riesgo" EntitySet="Riesgo" />
           </AssociationSet>
           <AssociationSet Name="FK_SubAreaFrascati_AreaFrascati" Association="Self.FK_SubAreaFrascati_AreaFrascati">
             <End Role="AreaFrascati" EntitySet="AreaFrascati" />
@@ -873,12 +1574,36 @@
             <End Role="ODS" EntitySet="ODS" />
             <End Role="SubODS" EntitySet="SubODS" />
           </AssociationSet>
+          <AssociationSet Name="FK_UbicacionGeografica_Pais" Association="Self.FK_UbicacionGeografica_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="UbicacionGeografica" EntitySet="UbicacionGeografica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UbicacionGeografica_Provincia" Association="Self.FK_UbicacionGeografica_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="UbicacionGeografica" EntitySet="UbicacionGeografica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UbicacionGeografica_Region" Association="Self.FK_UbicacionGeografica_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="UbicacionGeografica" EntitySet="UbicacionGeografica" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AmpliacionFechas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaAprobacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NuevaFechaFinalizacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ViejaFechaFinalizacion" Type="DateTime" Precision="0" />
+          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodigoProyecto" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Proyecto" Relationship="Self.FK_AmpliacionFechas_Proyecto" FromRole="AmpliacionFechas" ToRole="Proyecto" />
+        </EntityType>
         <EntityType Name="AreaFrascati">
           <Key>
             <PropertyRef Name="Id" />
@@ -887,6 +1612,26 @@
           <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ProyectoXFrascati" Relationship="Self.FK_ProyectoXFrascati_AreaFrascati" FromRole="AreaFrascati" ToRole="ProyectoXFrascati" />
           <NavigationProperty Name="SubAreaFrascati" Relationship="Self.FK_SubAreaFrascati_AreaFrascati" FromRole="AreaFrascati" ToRole="SubAreaFrascati" />
+        </EntityType>
+        <EntityType Name="Canton">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdProvincia" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Provincia" Relationship="Self.FK_Canton_Provincia" FromRole="Canton" ToRole="Provincia" />
+          <NavigationProperty Name="Distrito" Relationship="Self.FK_Distrito_Canton" FromRole="Canton" ToRole="Distrito" />
+        </EntityType>
+        <EntityType Name="Colaborador">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimerApellido" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SegundoApellido" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProductoObjetivo" Relationship="Self.FK_ProductoObjetivo_Colaborador" FromRole="Colaborador" ToRole="ProductoObjetivo" />
         </EntityType>
         <EntityType Name="Compra">
           <Key>
@@ -907,6 +1652,65 @@
           <Property Name="NombreProyecto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ProyectoXDepartamento" Relationship="Self.FK_ProyectoXDepartamento_Departamento" FromRole="Departamento" ToRole="ProyectoXDepartamento" />
         </EntityType>
+        <EntityType Name="Distrito">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdCanton" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Canton" Relationship="Self.FK_Distrito_Canton" FromRole="Distrito" ToRole="Canton" />
+        </EntityType>
+        <EntityType Name="EntradaBitacora">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Responsable" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaYHora" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CodigoProyecto" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Proyecto" Relationship="Self.FK_EntradaBitacora_Proyecto" FromRole="EntradaBitacora" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="EquipoDeTrabajo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumIdentidad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdSetDatos" Type="Int32" Nullable="false" />
+          <Property Name="IdCondicionDeParticipacion" Type="Int32" Nullable="false" />
+          <Property Name="IdEscuela" Type="Int32" Nullable="false" />
+          <Property Name="CantidadHoras" Type="Int32" Nullable="false" />
+          <Property Name="AreaConocimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Escuela" Relationship="Self.FK_EquipoDeTrabajo_Escuela" FromRole="EquipoDeTrabajo" ToRole="Escuela" />
+          <NavigationProperty Name="Investigador" Relationship="Self.FK_EquipoDeTrabajo_Investigador" FromRole="EquipoDeTrabajo" ToRole="Investigador" />
+          <NavigationProperty Name="SetDatosGenerales" Relationship="Self.FK_EquipoDeTrabajo_SetDatosGenerales" FromRole="EquipoDeTrabajo" ToRole="SetDatosGenerales" />
+          <NavigationProperty Name="TipoParticipacion" Relationship="Self.FK_EquipoDeTrabajo_TipoParticipacion" FromRole="EquipoDeTrabajo" ToRole="TipoParticipacion" />
+          <NavigationProperty Name="EquipoDeTrabajoXTipoHora" Relationship="Self.FK_EquipoDeTrabajoXTipoHora_EquipoDeTrabajo" FromRole="EquipoDeTrabajo" ToRole="EquipoDeTrabajoXTipoHora" />
+        </EntityType>
+        <EntityType Name="EquipoDeTrabajoXTipoHora">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEquipoDeTrabajo" Type="Int32" Nullable="false" />
+          <Property Name="IdTipoHora" Type="Int32" Nullable="false" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaFinalizacion" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="EquipoDeTrabajo" Relationship="Self.FK_EquipoDeTrabajoXTipoHora_EquipoDeTrabajo" FromRole="EquipoDeTrabajoXTipoHora" ToRole="EquipoDeTrabajo" />
+          <NavigationProperty Name="TipoHora" Relationship="Self.FK_EquipoDeTrabajoXTipoHora_TipoHora" FromRole="EquipoDeTrabajoXTipoHora" ToRole="TipoHora" />
+        </EntityType>
+        <EntityType Name="Escuela">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreEscuela" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdSede" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EquipoDeTrabajo" Relationship="Self.FK_EquipoDeTrabajo_Escuela" FromRole="Escuela" ToRole="EquipoDeTrabajo" />
+          <NavigationProperty Name="Sede" Relationship="Self.FK_Escuela_Sede" FromRole="Escuela" ToRole="Sede" />
+        </EntityType>
         <EntityType Name="EstadoDeProyecto">
           <Key>
             <PropertyRef Name="Id" />
@@ -914,6 +1718,24 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EstadoDeProyecto1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_EstadoDeProyecto" FromRole="EstadoDeProyecto" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="FuenteFinanciamiento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FuenteFinanciamiento1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PresupuestoProyecto" Relationship="Self.FK_PresupuestoProyecto_FuenteFinanciamiento" FromRole="FuenteFinanciamiento" ToRole="PresupuestoProyecto" />
+        </EntityType>
+        <EntityType Name="Incidencia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TituloIncidencia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodigoProyecto" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Proyecto" Relationship="Self.FK_Incidencia_Proyecto" FromRole="Incidencia" ToRole="Proyecto" />
         </EntityType>
         <EntityType Name="Informe">
           <Key>
@@ -940,8 +1762,22 @@
           <Property Name="Nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PrimerApellido" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SegundoApellido" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CorreoElectronico" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TelefonoMovil" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="EquipoDeTrabajo" Relationship="Self.FK_EquipoDeTrabajo_Investigador" FromRole="Investigador" ToRole="EquipoDeTrabajo" />
+          <NavigationProperty Name="ProductoObjetivo" Relationship="Self.FK_ProductoObjetivo_Investigador1" FromRole="Investigador" ToRole="ProductoObjetivo" />
           <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_Investigador" FromRole="Investigador" ToRole="Proyecto" />
           <NavigationProperty Name="Proyecto1" Relationship="Self.FK_Proyecto_Investigador1" FromRole="Investigador" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="Meta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EstaCumplida" Type="Boolean" Nullable="false" />
+          <Property Name="IdObjectivoEspecifico" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ObjetivoEspecifico" Relationship="Self.FK_Meta_ObjetivoEspecifico" FromRole="Meta" ToRole="ObjetivoEspecifico" />
         </EntityType>
         <EntityType Name="ModalidadProyecto">
           <Key>
@@ -951,6 +1787,14 @@
           <Property Name="NombreModalidad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_ModalidadProyecto" FromRole="ModalidadProyecto" ToRole="Proyecto" />
         </EntityType>
+        <EntityType Name="NivelDeResponsabilidad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NivelDeResponsabilidad1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ProductoObjetivo" Relationship="Self.FK_ProductoObjetivo_NivelDeResponsibilidad" FromRole="NivelDeResponsabilidad" ToRole="ProductoObjetivo" />
+        </EntityType>
         <EntityType Name="ObjetivoEspecifico">
           <Key>
             <PropertyRef Name="Id" />
@@ -959,7 +1803,10 @@
           <Property Name="ObjetivoEspecifico1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IdPlanDeAccion" Type="Int32" Nullable="false" />
           <Property Name="Metodologia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Meta" Relationship="Self.FK_Meta_ObjetivoEspecifico" FromRole="ObjetivoEspecifico" ToRole="Meta" />
           <NavigationProperty Name="PlanDeAccion" Relationship="Self.FK_ObjetivoEspecifico_PlanDeAccion" FromRole="ObjetivoEspecifico" ToRole="PlanDeAccion" />
+          <NavigationProperty Name="ProductoObjetivo" Relationship="Self.FK_ProductoObjetivo_ObjetivoEspecifico" FromRole="ObjetivoEspecifico" ToRole="ProductoObjetivo" />
+          <NavigationProperty Name="Riesgo" Relationship="Self.FK_Riesgo_ObjetivoEspecifico" FromRole="ObjetivoEspecifico" ToRole="Riesgo" />
         </EntityType>
         <EntityType Name="ODS">
           <Key>
@@ -969,6 +1816,14 @@
           <Property Name="ODS1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ProyectoXODS" Relationship="Self.FK_ProyectoXODS_ODS" FromRole="ODS" ToRole="ProyectoXODS" />
         </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombrePais" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="UbicacionGeografica" Relationship="Self.FK_UbicacionGeografica_Pais" FromRole="Pais" ToRole="UbicacionGeografica" />
+        </EntityType>
         <EntityType Name="PalabraClave">
           <Key>
             <PropertyRef Name="Id" />
@@ -977,6 +1832,14 @@
           <Property Name="PalabraClave1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CodigoProyecto" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Proyecto" Relationship="Self.FK_PalabraClave_Proyecto" FromRole="PalabraClave" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="Partida">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Partida1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PresupuestoProyecto" Relationship="Self.FK_PresupuestoProyecto_Partida" FromRole="Partida" ToRole="PresupuestoProyecto" />
         </EntityType>
         <EntityType Name="PlanDeAccion">
           <Key>
@@ -998,7 +1861,6 @@
           <Property Name="EstrategiaAprobacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="PlanDeAccion" Relationship="Self.FK_PlanteamientoProyecto_PlanDeAccion" FromRole="PlanteamientoProyecto" ToRole="PlanDeAccion" />
           <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_PlanteamientoProyecto" FromRole="PlanteamientoProyecto" ToRole="Proyecto" />
-          <NavigationProperty Name="RubroPresupuesto" Relationship="Self.FK_RubroPresupuesto_PlanteamientoProyecto" FromRole="PlanteamientoProyecto" ToRole="RubroPresupuesto" />
         </EntityType>
         <EntityType Name="PoblacionBeneficiaria">
           <Key>
@@ -1007,6 +1869,51 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NombrePoblacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ProyectoXBeneficiaria" Relationship="Self.FK_ProyectoXBeneficiaria_PoblacionBeneficiaria" FromRole="PoblacionBeneficiaria" ToRole="ProyectoXBeneficiaria" />
+        </EntityType>
+        <EntityType Name="PresupuestoProyecto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdFuenteFinanciamiento" Type="Int32" Nullable="false" />
+          <Property Name="Organizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdPartida" Type="Int32" />
+          <Property Name="Ano" Type="Int32" Nullable="false" />
+          <Property Name="Monto" Type="Int32" Nullable="false" />
+          <Property Name="CodigoProyecto" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="FuenteFinanciamiento" Relationship="Self.FK_PresupuestoProyecto_FuenteFinanciamiento" FromRole="PresupuestoProyecto" ToRole="FuenteFinanciamiento" />
+          <NavigationProperty Name="Partida" Relationship="Self.FK_PresupuestoProyecto_Partida" FromRole="PresupuestoProyecto" ToRole="Partida" />
+          <NavigationProperty Name="Proyecto" Relationship="Self.FK_PresupuestoProyecto_Proyecto" FromRole="PresupuestoProyecto" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="ProductoObjetivo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Actividad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdInvestigadorEncargado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IdColaboradorEncargado" Type="Int32" />
+          <Property Name="IdNivelDeResponsabilidad" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdObjetivoEspecifico" Type="Int32" Nullable="false" />
+          <Property Name="Ano" Type="Int32" Nullable="false" />
+          <Property Name="Trimestre" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Colaborador" Relationship="Self.FK_ProductoObjetivo_Colaborador" FromRole="ProductoObjetivo" ToRole="Colaborador" />
+          <NavigationProperty Name="Investigador" Relationship="Self.FK_ProductoObjetivo_Investigador1" FromRole="ProductoObjetivo" ToRole="Investigador" />
+          <NavigationProperty Name="NivelDeResponsabilidad" Relationship="Self.FK_ProductoObjetivo_NivelDeResponsibilidad" FromRole="ProductoObjetivo" ToRole="NivelDeResponsabilidad" />
+          <NavigationProperty Name="ObjetivoEspecifico" Relationship="Self.FK_ProductoObjetivo_ObjetivoEspecifico" FromRole="ProductoObjetivo" ToRole="ObjetivoEspecifico" />
+          <NavigationProperty Name="ProductoObjetivo1" Relationship="Self.FK_ProductoObjetivo_ProductoObjetivo" FromRole="ProductoObjetivo" ToRole="ProductoObjetivo1" />
+          <NavigationProperty Name="ProductoObjetivo2" Relationship="Self.FK_ProductoObjetivo_ProductoObjetivo" FromRole="ProductoObjetivo1" ToRole="ProductoObjetivo" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Canton" Relationship="Self.FK_Canton_Provincia" FromRole="Provincia" ToRole="Canton" />
+          <NavigationProperty Name="UbicacionGeografica" Relationship="Self.FK_UbicacionGeografica_Provincia" FromRole="Provincia" ToRole="UbicacionGeografica" />
         </EntityType>
         <EntityType Name="Proyecto">
           <Key>
@@ -1028,14 +1935,18 @@
           <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Justificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AmpliacionFechas" Relationship="Self.FK_AmpliacionFechas_Proyecto" FromRole="Proyecto" ToRole="AmpliacionFechas" />
           <NavigationProperty Name="Compra" Relationship="Self.FK_Compra_Proyecto" FromRole="Proyecto" ToRole="Compra" />
+          <NavigationProperty Name="EntradaBitacora" Relationship="Self.FK_EntradaBitacora_Proyecto" FromRole="Proyecto" ToRole="EntradaBitacora" />
           <NavigationProperty Name="EstadoDeProyecto" Relationship="Self.FK_Proyecto_EstadoDeProyecto" FromRole="Proyecto" ToRole="EstadoDeProyecto" />
+          <NavigationProperty Name="Incidencia" Relationship="Self.FK_Incidencia_Proyecto" FromRole="Proyecto" ToRole="Incidencia" />
           <NavigationProperty Name="Informe" Relationship="Self.FK_Informe_Proyecto" FromRole="Proyecto" ToRole="Informe" />
           <NavigationProperty Name="Investigador" Relationship="Self.FK_Proyecto_Investigador" FromRole="Proyecto" ToRole="Investigador" />
           <NavigationProperty Name="Investigador1" Relationship="Self.FK_Proyecto_Investigador1" FromRole="Proyecto" ToRole="Investigador" />
           <NavigationProperty Name="ModalidadProyecto" Relationship="Self.FK_Proyecto_ModalidadProyecto" FromRole="Proyecto" ToRole="ModalidadProyecto" />
           <NavigationProperty Name="PalabraClave" Relationship="Self.FK_PalabraClave_Proyecto" FromRole="Proyecto" ToRole="PalabraClave" />
           <NavigationProperty Name="PlanteamientoProyecto" Relationship="Self.FK_Proyecto_PlanteamientoProyecto" FromRole="Proyecto" ToRole="PlanteamientoProyecto" />
+          <NavigationProperty Name="PresupuestoProyecto" Relationship="Self.FK_PresupuestoProyecto_Proyecto" FromRole="Proyecto" ToRole="PresupuestoProyecto" />
           <NavigationProperty Name="SetDatosGenerales" Relationship="Self.FK_Proyecto_SetDatosGenerales" FromRole="Proyecto" ToRole="SetDatosGenerales" />
           <NavigationProperty Name="TipoDeProceso" Relationship="Self.FK_Proyecto_TipoDeProceso" FromRole="Proyecto" ToRole="TipoDeProceso" />
           <NavigationProperty Name="TipoProyecto" Relationship="Self.FK_Proyecto_TipoProyecto" FromRole="Proyecto" ToRole="TipoProyecto" />
@@ -1090,17 +2001,31 @@
           <NavigationProperty Name="Proyecto" Relationship="Self.FK_ProyectoXODS_Proyecto" FromRole="ProyectoXODS" ToRole="Proyecto" />
           <NavigationProperty Name="SubODS" Relationship="Self.FK_ProyectoXODS_SubODS" FromRole="ProyectoXODS" ToRole="SubODS" />
         </EntityType>
-        <EntityType Name="RubroPresupuesto">
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreRegion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="UbicacionGeografica" Relationship="Self.FK_UbicacionGeografica_Region" FromRole="Region" ToRole="UbicacionGeografica" />
+        </EntityType>
+        <EntityType Name="Riesgo">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Ano" Type="Int32" Nullable="false" />
-          <Property Name="Monto" Type="Int32" Nullable="false" />
-          <Property Name="IdPlanteamientoProyecto" Type="Int32" Nullable="false" />
-          <Property Name="Justificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="PlanteamientoProyecto" Relationship="Self.FK_RubroPresupuesto_PlanteamientoProyecto" FromRole="RubroPresupuesto" ToRole="PlanteamientoProyecto" />
+          <Property Name="AccionesMitagacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdObjetivoEspecifico" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ObjetivoEspecifico" Relationship="Self.FK_Riesgo_ObjetivoEspecifico" FromRole="Riesgo" ToRole="ObjetivoEspecifico" />
+        </EntityType>
+        <EntityType Name="Sede">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreSede" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Escuela" Relationship="Self.FK_Escuela_Sede" FromRole="Sede" ToRole="Escuela" />
         </EntityType>
         <EntityType Name="SetDatosGenerales">
           <Key>
@@ -1109,9 +2034,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NombreDelProyecto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FechaInicioEjecucion" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="FechaFinEjecucion" Type="DateTime" Precision="0" />
+          <Property Name="FechaFinEjecucion" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Estado" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Justificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EquipoDeTrabajo" Relationship="Self.FK_EquipoDeTrabajo_SetDatosGenerales" FromRole="SetDatosGenerales" ToRole="EquipoDeTrabajo" />
           <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_SetDatosGenerales" FromRole="SetDatosGenerales" ToRole="Proyecto" />
         </EntityType>
         <EntityType Name="SubAreaFrascati">
@@ -1160,6 +2086,14 @@
           <Property Name="TipoDeProceso1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_TipoDeProceso" FromRole="TipoDeProceso" ToRole="Proyecto" />
         </EntityType>
+        <EntityType Name="TipoHora">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoHora1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="EquipoDeTrabajoXTipoHora" Relationship="Self.FK_EquipoDeTrabajoXTipoHora_TipoHora" FromRole="TipoHora" ToRole="EquipoDeTrabajoXTipoHora" />
+        </EntityType>
         <EntityType Name="TipoInforme">
           <Key>
             <PropertyRef Name="Id" />
@@ -1167,6 +2101,14 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TipoInforme1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Informe" Relationship="Self.FK_Informe_TipoInforme" FromRole="TipoInforme" ToRole="Informe" />
+        </EntityType>
+        <EntityType Name="TipoParticipacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoParticipacion1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="EquipoDeTrabajo" Relationship="Self.FK_EquipoDeTrabajo_TipoParticipacion" FromRole="TipoParticipacion" ToRole="EquipoDeTrabajo" />
         </EntityType>
         <EntityType Name="TipoProyecto">
           <Key>
@@ -1176,6 +2118,31 @@
           <Property Name="TipoProyecto1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_TipoProyecto" FromRole="TipoProyecto" ToRole="Proyecto" />
         </EntityType>
+        <EntityType Name="UbicacionGeografica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPais" Type="Int32" Nullable="false" />
+          <Property Name="IdRegion" Type="Int32" />
+          <Property Name="IdProvincia" Type="Int32" />
+          <Property Name="CodigoProyecto" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Pais" Relationship="Self.FK_UbicacionGeografica_Pais" FromRole="UbicacionGeografica" ToRole="Pais" />
+          <NavigationProperty Name="Provincia" Relationship="Self.FK_UbicacionGeografica_Provincia" FromRole="UbicacionGeografica" ToRole="Provincia" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_UbicacionGeografica_Region" FromRole="UbicacionGeografica" ToRole="Region" />
+        </EntityType>
+        <Association Name="FK_AmpliacionFechas_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="AmpliacionFechas" Type="Self.AmpliacionFechas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="AmpliacionFechas">
+              <PropertyRef Name="CodigoProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ProyectoXFrascati_AreaFrascati">
           <End Role="AreaFrascati" Type="Self.AreaFrascati" Multiplicity="1" />
           <End Role="ProyectoXFrascati" Type="Self.ProyectoXFrascati" Multiplicity="*" />
@@ -1197,6 +2164,42 @@
             </Principal>
             <Dependent Role="SubAreaFrascati">
               <PropertyRef Name="IdAreaFrascati" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Canton_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Canton" Type="Self.Canton" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Canton">
+              <PropertyRef Name="IdProvincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distrito_Canton">
+          <End Role="Canton" Type="Self.Canton" Multiplicity="1" />
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Canton">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Distrito">
+              <PropertyRef Name="IdCanton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductoObjetivo_Colaborador">
+          <End Role="Colaborador" Type="Self.Colaborador" Multiplicity="0..1" />
+          <End Role="ProductoObjetivo" Type="Self.ProductoObjetivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaborador">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductoObjetivo">
+              <PropertyRef Name="IdColaboradorEncargado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1224,6 +2227,102 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EntradaBitacora_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="EntradaBitacora" Type="Self.EntradaBitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="EntradaBitacora">
+              <PropertyRef Name="CodigoProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipoDeTrabajo_Escuela">
+          <End Role="Escuela" Type="Self.Escuela" Multiplicity="1" />
+          <End Role="EquipoDeTrabajo" Type="Self.EquipoDeTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Escuela">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipoDeTrabajo">
+              <PropertyRef Name="IdEscuela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipoDeTrabajo_Investigador">
+          <End Role="Investigador" Type="Self.Investigador" Multiplicity="1" />
+          <End Role="EquipoDeTrabajo" Type="Self.EquipoDeTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investigador">
+              <PropertyRef Name="NumIdentidad" />
+            </Principal>
+            <Dependent Role="EquipoDeTrabajo">
+              <PropertyRef Name="NumIdentidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipoDeTrabajo_SetDatosGenerales">
+          <End Role="SetDatosGenerales" Type="Self.SetDatosGenerales" Multiplicity="1" />
+          <End Role="EquipoDeTrabajo" Type="Self.EquipoDeTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SetDatosGenerales">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipoDeTrabajo">
+              <PropertyRef Name="IdSetDatos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipoDeTrabajo_TipoParticipacion">
+          <End Role="TipoParticipacion" Type="Self.TipoParticipacion" Multiplicity="1" />
+          <End Role="EquipoDeTrabajo" Type="Self.EquipoDeTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoParticipacion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipoDeTrabajo">
+              <PropertyRef Name="IdCondicionDeParticipacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipoDeTrabajoXTipoHora_EquipoDeTrabajo">
+          <End Role="EquipoDeTrabajo" Type="Self.EquipoDeTrabajo" Multiplicity="1" />
+          <End Role="EquipoDeTrabajoXTipoHora" Type="Self.EquipoDeTrabajoXTipoHora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipoDeTrabajo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipoDeTrabajoXTipoHora">
+              <PropertyRef Name="IdEquipoDeTrabajo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipoDeTrabajoXTipoHora_TipoHora">
+          <End Role="TipoHora" Type="Self.TipoHora" Multiplicity="1" />
+          <End Role="EquipoDeTrabajoXTipoHora" Type="Self.EquipoDeTrabajoXTipoHora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoHora">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipoDeTrabajoXTipoHora">
+              <PropertyRef Name="IdTipoHora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Escuela_Sede">
+          <End Role="Sede" Type="Self.Sede" Multiplicity="1" />
+          <End Role="Escuela" Type="Self.Escuela" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Escuela">
+              <PropertyRef Name="IdSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Proyecto_EstadoDeProyecto">
           <End Role="EstadoDeProyecto" Type="Self.EstadoDeProyecto" Multiplicity="1" />
           <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
@@ -1233,6 +2332,30 @@
             </Principal>
             <Dependent Role="Proyecto">
               <PropertyRef Name="IdEstadoDeProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PresupuestoProyecto_FuenteFinanciamiento">
+          <End Role="FuenteFinanciamiento" Type="Self.FuenteFinanciamiento" Multiplicity="1" />
+          <End Role="PresupuestoProyecto" Type="Self.PresupuestoProyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuenteFinanciamiento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PresupuestoProyecto">
+              <PropertyRef Name="IdFuenteFinanciamiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidencia_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="Incidencia" Type="Self.Incidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="Incidencia">
+              <PropertyRef Name="CodigoProyecto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1260,6 +2383,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ProductoObjetivo_Investigador1">
+          <End Role="Investigador" Type="Self.Investigador" Multiplicity="0..1" />
+          <End Role="ProductoObjetivo" Type="Self.ProductoObjetivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investigador">
+              <PropertyRef Name="NumIdentidad" />
+            </Principal>
+            <Dependent Role="ProductoObjetivo">
+              <PropertyRef Name="IdInvestigadorEncargado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Proyecto_Investigador">
           <End Role="Investigador" Type="Self.Investigador" Multiplicity="1" />
           <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
@@ -1284,6 +2419,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Meta_ObjetivoEspecifico">
+          <End Role="ObjetivoEspecifico" Type="Self.ObjetivoEspecifico" Multiplicity="1" />
+          <End Role="Meta" Type="Self.Meta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObjetivoEspecifico">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Meta">
+              <PropertyRef Name="IdObjectivoEspecifico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Proyecto_ModalidadProyecto">
           <End Role="ModalidadProyecto" Type="Self.ModalidadProyecto" Multiplicity="1" />
           <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
@@ -1296,6 +2443,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ProductoObjetivo_NivelDeResponsibilidad">
+          <End Role="NivelDeResponsabilidad" Type="Self.NivelDeResponsabilidad" Multiplicity="1" />
+          <End Role="ProductoObjetivo" Type="Self.ProductoObjetivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NivelDeResponsabilidad">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductoObjetivo">
+              <PropertyRef Name="IdNivelDeResponsabilidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ObjetivoEspecifico_PlanDeAccion">
           <End Role="PlanDeAccion" Type="Self.PlanDeAccion" Multiplicity="1" />
           <End Role="ObjetivoEspecifico" Type="Self.ObjetivoEspecifico" Multiplicity="*" />
@@ -1305,6 +2464,30 @@
             </Principal>
             <Dependent Role="ObjetivoEspecifico">
               <PropertyRef Name="IdPlanDeAccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductoObjetivo_ObjetivoEspecifico">
+          <End Role="ObjetivoEspecifico" Type="Self.ObjetivoEspecifico" Multiplicity="1" />
+          <End Role="ProductoObjetivo" Type="Self.ProductoObjetivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObjetivoEspecifico">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductoObjetivo">
+              <PropertyRef Name="IdObjetivoEspecifico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Riesgo_ObjetivoEspecifico">
+          <End Role="ObjetivoEspecifico" Type="Self.ObjetivoEspecifico" Multiplicity="1" />
+          <End Role="Riesgo" Type="Self.Riesgo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObjetivoEspecifico">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Riesgo">
+              <PropertyRef Name="IdObjetivoEspecifico" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1332,6 +2515,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UbicacionGeografica_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="UbicacionGeografica" Type="Self.UbicacionGeografica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UbicacionGeografica">
+              <PropertyRef Name="IdPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PalabraClave_Proyecto">
           <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
           <End Role="PalabraClave" Type="Self.PalabraClave" Multiplicity="*" />
@@ -1341,6 +2536,18 @@
             </Principal>
             <Dependent Role="PalabraClave">
               <PropertyRef Name="CodigoProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PresupuestoProyecto_Partida">
+          <End Role="Partida" Type="Self.Partida" Multiplicity="0..1" />
+          <End Role="PresupuestoProyecto" Type="Self.PresupuestoProyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partida">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PresupuestoProyecto">
+              <PropertyRef Name="IdPartida" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1368,18 +2575,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RubroPresupuesto_PlanteamientoProyecto">
-          <End Role="PlanteamientoProyecto" Type="Self.PlanteamientoProyecto" Multiplicity="1" />
-          <End Role="RubroPresupuesto" Type="Self.RubroPresupuesto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PlanteamientoProyecto">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RubroPresupuesto">
-              <PropertyRef Name="IdPlanteamientoProyecto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ProyectoXBeneficiaria_PoblacionBeneficiaria">
           <End Role="PoblacionBeneficiaria" Type="Self.PoblacionBeneficiaria" Multiplicity="1" />
           <End Role="ProyectoXBeneficiaria" Type="Self.ProyectoXBeneficiaria" Multiplicity="*" />
@@ -1389,6 +2584,42 @@
             </Principal>
             <Dependent Role="ProyectoXBeneficiaria">
               <PropertyRef Name="IdPoblacionBeneficiaria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PresupuestoProyecto_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="PresupuestoProyecto" Type="Self.PresupuestoProyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="PresupuestoProyecto">
+              <PropertyRef Name="CodigoProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductoObjetivo_ProductoObjetivo">
+          <End Role="ProductoObjetivo" Type="Self.ProductoObjetivo" Multiplicity="1" />
+          <End Role="ProductoObjetivo1" Type="Self.ProductoObjetivo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ProductoObjetivo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductoObjetivo1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UbicacionGeografica_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="0..1" />
+          <End Role="UbicacionGeografica" Type="Self.UbicacionGeografica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UbicacionGeografica">
+              <PropertyRef Name="IdProvincia" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1512,34 +2743,72 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UbicacionGeografica_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="UbicacionGeografica" Type="Self.UbicacionGeografica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UbicacionGeografica">
+              <PropertyRef Name="IdRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="VieEntidades" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AmpliacionFechas" EntityType="Self.AmpliacionFechas" />
           <EntitySet Name="AreaFrascati" EntityType="Self.AreaFrascati" />
+          <EntitySet Name="Canton" EntityType="Self.Canton" />
+          <EntitySet Name="Colaborador" EntityType="Self.Colaborador" />
           <EntitySet Name="Compra" EntityType="Self.Compra" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" />
+          <EntitySet Name="Distrito" EntityType="Self.Distrito" />
+          <EntitySet Name="EntradaBitacora" EntityType="Self.EntradaBitacora" />
+          <EntitySet Name="EquipoDeTrabajo" EntityType="Self.EquipoDeTrabajo" />
+          <EntitySet Name="EquipoDeTrabajoXTipoHora" EntityType="Self.EquipoDeTrabajoXTipoHora" />
+          <EntitySet Name="Escuela" EntityType="Self.Escuela" />
           <EntitySet Name="EstadoDeProyecto" EntityType="Self.EstadoDeProyecto" />
+          <EntitySet Name="FuenteFinanciamiento" EntityType="Self.FuenteFinanciamiento" />
+          <EntitySet Name="Incidencia" EntityType="Self.Incidencia" />
           <EntitySet Name="Informe" EntityType="Self.Informe" />
           <EntitySet Name="Investigador" EntityType="Self.Investigador" />
+          <EntitySet Name="Meta" EntityType="Self.Meta" />
           <EntitySet Name="ModalidadProyecto" EntityType="Self.ModalidadProyecto" />
+          <EntitySet Name="NivelDeResponsabilidad" EntityType="Self.NivelDeResponsabilidad" />
           <EntitySet Name="ObjetivoEspecifico" EntityType="Self.ObjetivoEspecifico" />
           <EntitySet Name="ODS" EntityType="Self.ODS" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" />
           <EntitySet Name="PalabraClave" EntityType="Self.PalabraClave" />
+          <EntitySet Name="Partida" EntityType="Self.Partida" />
           <EntitySet Name="PlanDeAccion" EntityType="Self.PlanDeAccion" />
           <EntitySet Name="PlanteamientoProyecto" EntityType="Self.PlanteamientoProyecto" />
           <EntitySet Name="PoblacionBeneficiaria" EntityType="Self.PoblacionBeneficiaria" />
+          <EntitySet Name="PresupuestoProyecto" EntityType="Self.PresupuestoProyecto" />
+          <EntitySet Name="ProductoObjetivo" EntityType="Self.ProductoObjetivo" />
+          <EntitySet Name="Provincia" EntityType="Self.Provincia" />
           <EntitySet Name="Proyecto" EntityType="Self.Proyecto" />
           <EntitySet Name="ProyectoXBeneficiaria" EntityType="Self.ProyectoXBeneficiaria" />
           <EntitySet Name="ProyectoXDepartamento" EntityType="Self.ProyectoXDepartamento" />
           <EntitySet Name="ProyectoXFrascati" EntityType="Self.ProyectoXFrascati" />
           <EntitySet Name="ProyectoXODS" EntityType="Self.ProyectoXODS" />
-          <EntitySet Name="RubroPresupuesto" EntityType="Self.RubroPresupuesto" />
+          <EntitySet Name="Region" EntityType="Self.Region" />
+          <EntitySet Name="Riesgo" EntityType="Self.Riesgo" />
+          <EntitySet Name="Sede" EntityType="Self.Sede" />
           <EntitySet Name="SetDatosGenerales" EntityType="Self.SetDatosGenerales" />
           <EntitySet Name="SubAreaFrascati" EntityType="Self.SubAreaFrascati" />
           <EntitySet Name="SubODS" EntityType="Self.SubODS" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TipoDepartamento" EntityType="Self.TipoDepartamento" />
           <EntitySet Name="TipoDeProceso" EntityType="Self.TipoDeProceso" />
+          <EntitySet Name="TipoHora" EntityType="Self.TipoHora" />
           <EntitySet Name="TipoInforme" EntityType="Self.TipoInforme" />
+          <EntitySet Name="TipoParticipacion" EntityType="Self.TipoParticipacion" />
           <EntitySet Name="TipoProyecto" EntityType="Self.TipoProyecto" />
+          <EntitySet Name="UbicacionGeografica" EntityType="Self.UbicacionGeografica" />
+          <AssociationSet Name="FK_AmpliacionFechas_Proyecto" Association="Self.FK_AmpliacionFechas_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="AmpliacionFechas" EntitySet="AmpliacionFechas" />
+          </AssociationSet>
           <AssociationSet Name="FK_ProyectoXFrascati_AreaFrascati" Association="Self.FK_ProyectoXFrascati_AreaFrascati">
             <End Role="AreaFrascati" EntitySet="AreaFrascati" />
             <End Role="ProyectoXFrascati" EntitySet="ProyectoXFrascati" />
@@ -1547,6 +2816,18 @@
           <AssociationSet Name="FK_SubAreaFrascati_AreaFrascati" Association="Self.FK_SubAreaFrascati_AreaFrascati">
             <End Role="AreaFrascati" EntitySet="AreaFrascati" />
             <End Role="SubAreaFrascati" EntitySet="SubAreaFrascati" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Canton_Provincia" Association="Self.FK_Canton_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Canton" EntitySet="Canton" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distrito_Canton" Association="Self.FK_Distrito_Canton">
+            <End Role="Canton" EntitySet="Canton" />
+            <End Role="Distrito" EntitySet="Distrito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductoObjetivo_Colaborador" Association="Self.FK_ProductoObjetivo_Colaborador">
+            <End Role="Colaborador" EntitySet="Colaborador" />
+            <End Role="ProductoObjetivo" EntitySet="ProductoObjetivo" />
           </AssociationSet>
           <AssociationSet Name="FK_Compra_Proyecto" Association="Self.FK_Compra_Proyecto">
             <End Role="Proyecto" EntitySet="Proyecto" />
@@ -1556,9 +2837,49 @@
             <End Role="Departamento" EntitySet="Departamento" />
             <End Role="ProyectoXDepartamento" EntitySet="ProyectoXDepartamento" />
           </AssociationSet>
+          <AssociationSet Name="FK_EntradaBitacora_Proyecto" Association="Self.FK_EntradaBitacora_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="EntradaBitacora" EntitySet="EntradaBitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipoDeTrabajo_Escuela" Association="Self.FK_EquipoDeTrabajo_Escuela">
+            <End Role="Escuela" EntitySet="Escuela" />
+            <End Role="EquipoDeTrabajo" EntitySet="EquipoDeTrabajo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipoDeTrabajo_Investigador" Association="Self.FK_EquipoDeTrabajo_Investigador">
+            <End Role="Investigador" EntitySet="Investigador" />
+            <End Role="EquipoDeTrabajo" EntitySet="EquipoDeTrabajo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipoDeTrabajo_SetDatosGenerales" Association="Self.FK_EquipoDeTrabajo_SetDatosGenerales">
+            <End Role="SetDatosGenerales" EntitySet="SetDatosGenerales" />
+            <End Role="EquipoDeTrabajo" EntitySet="EquipoDeTrabajo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipoDeTrabajo_TipoParticipacion" Association="Self.FK_EquipoDeTrabajo_TipoParticipacion">
+            <End Role="TipoParticipacion" EntitySet="TipoParticipacion" />
+            <End Role="EquipoDeTrabajo" EntitySet="EquipoDeTrabajo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipoDeTrabajoXTipoHora_EquipoDeTrabajo" Association="Self.FK_EquipoDeTrabajoXTipoHora_EquipoDeTrabajo">
+            <End Role="EquipoDeTrabajo" EntitySet="EquipoDeTrabajo" />
+            <End Role="EquipoDeTrabajoXTipoHora" EntitySet="EquipoDeTrabajoXTipoHora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipoDeTrabajoXTipoHora_TipoHora" Association="Self.FK_EquipoDeTrabajoXTipoHora_TipoHora">
+            <End Role="TipoHora" EntitySet="TipoHora" />
+            <End Role="EquipoDeTrabajoXTipoHora" EntitySet="EquipoDeTrabajoXTipoHora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Escuela_Sede" Association="Self.FK_Escuela_Sede">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="Escuela" EntitySet="Escuela" />
+          </AssociationSet>
           <AssociationSet Name="FK_Proyecto_EstadoDeProyecto" Association="Self.FK_Proyecto_EstadoDeProyecto">
             <End Role="EstadoDeProyecto" EntitySet="EstadoDeProyecto" />
             <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PresupuestoProyecto_FuenteFinanciamiento" Association="Self.FK_PresupuestoProyecto_FuenteFinanciamiento">
+            <End Role="FuenteFinanciamiento" EntitySet="FuenteFinanciamiento" />
+            <End Role="PresupuestoProyecto" EntitySet="PresupuestoProyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidencia_Proyecto" Association="Self.FK_Incidencia_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Incidencia" EntitySet="Incidencia" />
           </AssociationSet>
           <AssociationSet Name="FK_Informe_Proyecto" Association="Self.FK_Informe_Proyecto">
             <End Role="Proyecto" EntitySet="Proyecto" />
@@ -1568,6 +2889,10 @@
             <End Role="TipoInforme" EntitySet="TipoInforme" />
             <End Role="Informe" EntitySet="Informe" />
           </AssociationSet>
+          <AssociationSet Name="FK_ProductoObjetivo_Investigador1" Association="Self.FK_ProductoObjetivo_Investigador1">
+            <End Role="Investigador" EntitySet="Investigador" />
+            <End Role="ProductoObjetivo" EntitySet="ProductoObjetivo" />
+          </AssociationSet>
           <AssociationSet Name="FK_Proyecto_Investigador" Association="Self.FK_Proyecto_Investigador">
             <End Role="Investigador" EntitySet="Investigador" />
             <End Role="Proyecto" EntitySet="Proyecto" />
@@ -1576,13 +2901,29 @@
             <End Role="Investigador" EntitySet="Investigador" />
             <End Role="Proyecto" EntitySet="Proyecto" />
           </AssociationSet>
+          <AssociationSet Name="FK_Meta_ObjetivoEspecifico" Association="Self.FK_Meta_ObjetivoEspecifico">
+            <End Role="ObjetivoEspecifico" EntitySet="ObjetivoEspecifico" />
+            <End Role="Meta" EntitySet="Meta" />
+          </AssociationSet>
           <AssociationSet Name="FK_Proyecto_ModalidadProyecto" Association="Self.FK_Proyecto_ModalidadProyecto">
             <End Role="ModalidadProyecto" EntitySet="ModalidadProyecto" />
             <End Role="Proyecto" EntitySet="Proyecto" />
           </AssociationSet>
+          <AssociationSet Name="FK_ProductoObjetivo_NivelDeResponsibilidad" Association="Self.FK_ProductoObjetivo_NivelDeResponsibilidad">
+            <End Role="NivelDeResponsabilidad" EntitySet="NivelDeResponsabilidad" />
+            <End Role="ProductoObjetivo" EntitySet="ProductoObjetivo" />
+          </AssociationSet>
           <AssociationSet Name="FK_ObjetivoEspecifico_PlanDeAccion" Association="Self.FK_ObjetivoEspecifico_PlanDeAccion">
             <End Role="PlanDeAccion" EntitySet="PlanDeAccion" />
             <End Role="ObjetivoEspecifico" EntitySet="ObjetivoEspecifico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductoObjetivo_ObjetivoEspecifico" Association="Self.FK_ProductoObjetivo_ObjetivoEspecifico">
+            <End Role="ObjetivoEspecifico" EntitySet="ObjetivoEspecifico" />
+            <End Role="ProductoObjetivo" EntitySet="ProductoObjetivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Riesgo_ObjetivoEspecifico" Association="Self.FK_Riesgo_ObjetivoEspecifico">
+            <End Role="ObjetivoEspecifico" EntitySet="ObjetivoEspecifico" />
+            <End Role="Riesgo" EntitySet="Riesgo" />
           </AssociationSet>
           <AssociationSet Name="FK_ProyectoXODS_ODS" Association="Self.FK_ProyectoXODS_ODS">
             <End Role="ODS" EntitySet="ODS" />
@@ -1592,9 +2933,17 @@
             <End Role="ODS" EntitySet="ODS" />
             <End Role="SubODS" EntitySet="SubODS" />
           </AssociationSet>
+          <AssociationSet Name="FK_UbicacionGeografica_Pais" Association="Self.FK_UbicacionGeografica_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="UbicacionGeografica" EntitySet="UbicacionGeografica" />
+          </AssociationSet>
           <AssociationSet Name="FK_PalabraClave_Proyecto" Association="Self.FK_PalabraClave_Proyecto">
             <End Role="Proyecto" EntitySet="Proyecto" />
             <End Role="PalabraClave" EntitySet="PalabraClave" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PresupuestoProyecto_Partida" Association="Self.FK_PresupuestoProyecto_Partida">
+            <End Role="Partida" EntitySet="Partida" />
+            <End Role="PresupuestoProyecto" EntitySet="PresupuestoProyecto" />
           </AssociationSet>
           <AssociationSet Name="FK_PlanteamientoProyecto_PlanDeAccion" Association="Self.FK_PlanteamientoProyecto_PlanDeAccion">
             <End Role="PlanDeAccion" EntitySet="PlanDeAccion" />
@@ -1604,13 +2953,21 @@
             <End Role="PlanteamientoProyecto" EntitySet="PlanteamientoProyecto" />
             <End Role="Proyecto" EntitySet="Proyecto" />
           </AssociationSet>
-          <AssociationSet Name="FK_RubroPresupuesto_PlanteamientoProyecto" Association="Self.FK_RubroPresupuesto_PlanteamientoProyecto">
-            <End Role="PlanteamientoProyecto" EntitySet="PlanteamientoProyecto" />
-            <End Role="RubroPresupuesto" EntitySet="RubroPresupuesto" />
-          </AssociationSet>
           <AssociationSet Name="FK_ProyectoXBeneficiaria_PoblacionBeneficiaria" Association="Self.FK_ProyectoXBeneficiaria_PoblacionBeneficiaria">
             <End Role="PoblacionBeneficiaria" EntitySet="PoblacionBeneficiaria" />
             <End Role="ProyectoXBeneficiaria" EntitySet="ProyectoXBeneficiaria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PresupuestoProyecto_Proyecto" Association="Self.FK_PresupuestoProyecto_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="PresupuestoProyecto" EntitySet="PresupuestoProyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductoObjetivo_ProductoObjetivo" Association="Self.FK_ProductoObjetivo_ProductoObjetivo">
+            <End Role="ProductoObjetivo" EntitySet="ProductoObjetivo" />
+            <End Role="ProductoObjetivo1" EntitySet="ProductoObjetivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UbicacionGeografica_Provincia" Association="Self.FK_UbicacionGeografica_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="UbicacionGeografica" EntitySet="UbicacionGeografica" />
           </AssociationSet>
           <AssociationSet Name="FK_Proyecto_SetDatosGenerales" Association="Self.FK_Proyecto_SetDatosGenerales">
             <End Role="SetDatosGenerales" EntitySet="SetDatosGenerales" />
@@ -1652,6 +3009,11 @@
             <End Role="SubODS" EntitySet="SubODS" />
             <End Role="ProyectoXODS" EntitySet="ProyectoXODS" />
           </AssociationSet>
+          <AssociationSet Name="FK_UbicacionGeografica_Region" Association="Self.FK_UbicacionGeografica_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="UbicacionGeografica" EntitySet="UbicacionGeografica" />
+          </AssociationSet>
+          <FunctionImport Name="Pr_Colaborador_Seleccionar" ReturnType="Collection(Model.Pr_Colaborador_Seleccionar_Result)" />
           <FunctionImport Name="Pr_Compra_Eliminar" ReturnType="Collection(Int32)">
             <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1662,6 +3024,32 @@
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Compra_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_Compra_SeleccionarXProyecto_Result)">
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_EntradaBitacora_Eliminar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_EntradaBitacora_Insertar" ReturnType="Collection(Model.Pr_EntradaBitacora_Insertar_Result)">
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Responsable" Mode="In" Type="String" />
+            <Parameter Name="FechaYHora" Mode="In" Type="DateTime" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_EntradaBitacora_Seleccionar" ReturnType="Collection(Model.Pr_EntradaBitacora_Seleccionar_Result)">
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_EquipoDeTrabajo_Seleccionar" ReturnType="Collection(Model.Pr_EquipoDeTrabajo_Seleccionar_Result)">
+            <Parameter Name="Codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_Incidencia_Eliminar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_Incidencia_Insertar" ReturnType="Collection(Model.Pr_Incidencia_Insertar_Result)">
+            <Parameter Name="TituloIncidencia" Mode="In" Type="String" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_Incidencias_Seleccionar" ReturnType="Collection(Model.Pr_Incidencias_Seleccionar_Result)">
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Informe_Eliminar" ReturnType="Collection(Int32)">
@@ -1679,6 +3067,17 @@
           <FunctionImport Name="Pr_Informe_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_Informe_SeleccionarXProyecto_Result)">
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Pr_Meta_Eliminar" ReturnType="Collection(String)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_Meta_Insertar" ReturnType="Collection(Model.Pr_Meta_Insertar_Result)">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="EstaCumplida" Mode="In" Type="Boolean" />
+            <Parameter Name="IdObjectivoEspecifico" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_Meta_Seleccionar" ReturnType="Collection(Model.Pr_Meta_Seleccionar_Result)">
+            <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="Pr_ObjetivoEspecifico_Seleccionar" ReturnType="Collection(Model.Pr_ObjetivoEspecifico_Seleccionar_Result)">
             <Parameter Name="Codigo" Mode="In" Type="String" />
           </FunctionImport>
@@ -1692,19 +3091,84 @@
           <FunctionImport Name="Pr_PalabrasClave_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_PalabrasClave_SeleccionarXProyecto_Result)">
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Pr_PresupuestoProyecto_Eliminar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_PresupuestoProyecto_Insertar" ReturnType="Collection(Model.Pr_PresupuestoProyecto_Insertar_Result)">
+            <Parameter Name="IdFuenteFinanciamiento" Mode="In" Type="Int32" />
+            <Parameter Name="Organizacion" Mode="In" Type="String" />
+            <Parameter Name="IdPartida" Mode="In" Type="Int32" />
+            <Parameter Name="Ano" Mode="In" Type="Int32" />
+            <Parameter Name="Monto" Mode="In" Type="Int32" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_PresupuestoProyecto_Seleccionar" ReturnType="Collection(Model.Pr_PresupuestoProyecto_Seleccionar_Result)">
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_ProductoObjetivo_Eliminar" ReturnType="Collection(String)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_ProductoObjetivo_Insertar" ReturnType="Collection(Model.Pr_ProductoObjetivo_Insertar_Result)">
+            <Parameter Name="Actividad" Mode="In" Type="String" />
+            <Parameter Name="IdInvestigadorEncargado" Mode="In" Type="String" />
+            <Parameter Name="IdColaboradorEncargado" Mode="In" Type="Int32" />
+            <Parameter Name="IdNivelDeResponsabilidad" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
+            <Parameter Name="Ano" Mode="In" Type="Int32" />
+            <Parameter Name="Trimestre" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_ProductoObjetivo_Seleccionar" ReturnType="Collection(Model.Pr_ProductoObjetivo_Seleccionar_Result)">
+            <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_Proyecto_AmpliarFecha" ReturnType="Collection(Int32)">
+            <Parameter Name="FechaAprobacion" Mode="In" Type="DateTime" />
+            <Parameter Name="NuevaFechaFinalizacion" Mode="In" Type="DateTime" />
+            <Parameter Name="ViejaFechaFinalizacion" Mode="In" Type="DateTime" />
+            <Parameter Name="Observaciones" Mode="In" Type="String" />
+            <Parameter Name="Codigo" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_Buscar" ReturnType="Collection(Model.Pr_Proyecto_Buscar_Result)">
             <Parameter Name="CriterioBusqueda" Mode="In" Type="String" />
             <Parameter Name="Parametro" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_Proyecto_CambiarInvCoord" ReturnType="Collection(Int32)">
+            <Parameter Name="Codigo" Mode="In" Type="String" />
+            <Parameter Name="NumIdentidad" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_Consultar" ReturnType="Collection(Model.Pr_Proyecto_Consultar_Result)">
             <Parameter Name="Codigo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_Modificar" ReturnType="Collection(Int32)">
             <Parameter Name="Codigo" Mode="In" Type="String" />
+            <Parameter Name="NuevaFechaIngreso" Mode="In" Type="DateTime" />
             <Parameter Name="NuevoNombre" Mode="In" Type="String" />
             <Parameter Name="NuevoObjetivoGeneral" Mode="In" Type="String" />
+            <Parameter Name="NuevoIdEstado" Mode="In" Type="Int32" />
+            <Parameter Name="NuevoIdTipoProyecto" Mode="In" Type="Int32" />
+            <Parameter Name="NuevoIdTipoProceso" Mode="In" Type="Int32" />
+            <Parameter Name="NuevoIdModalidad" Mode="In" Type="Int32" />
             <Parameter Name="NuevaActaVIE" Mode="In" Type="String" />
             <Parameter Name="NuevaActaEscuela" Mode="In" Type="String" />
+            <Parameter Name="NuevaFechaAprobacion" Mode="In" Type="DateTime" />
+            <Parameter Name="NuevaFechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="NuevaDescripcion" Mode="In" Type="String" />
+            <Parameter Name="NuevaJustificacion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_Proyecto_PermisosModificar" ReturnType="Collection(Int32)">
+            <Parameter Name="Codigo" Mode="In" Type="String" />
+            <Parameter Name="NuevaFechaIngreso" Mode="In" Type="DateTime" />
+            <Parameter Name="NuevoNombre" Mode="In" Type="String" />
+            <Parameter Name="NuevoObjetivoGeneral" Mode="In" Type="String" />
+            <Parameter Name="NuevoIdEstado" Mode="In" Type="Int32" />
+            <Parameter Name="NuevoIdTipoProyecto" Mode="In" Type="Int32" />
+            <Parameter Name="NuevoIdTipoProceso" Mode="In" Type="Int32" />
+            <Parameter Name="NuevoIdModalidad" Mode="In" Type="Int32" />
+            <Parameter Name="NuevaActaVIE" Mode="In" Type="String" />
+            <Parameter Name="NuevaActaEscuela" Mode="In" Type="String" />
+            <Parameter Name="NuevaFechaAprobacion" Mode="In" Type="DateTime" />
+            <Parameter Name="NuevaFechaInicio" Mode="In" Type="DateTime" />
             <Parameter Name="NuevaDescripcion" Mode="In" Type="String" />
             <Parameter Name="NuevaJustificacion" Mode="In" Type="String" />
           </FunctionImport>
@@ -1752,24 +3216,34 @@
           <FunctionImport Name="Pr_ProyectoXODS_Seleccionar" ReturnType="Collection(Model.Pr_ProyectoXODS_Seleccionar_Result)">
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="Pr_RubroPresupuesto_Eliminar" ReturnType="Collection(Int32)">
+          <FunctionImport Name="Pr_Riesgo_Eliminar" ReturnType="Collection(String)">
             <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="Pr_RubroPresupuesto_Insertar" ReturnType="Collection(Model.Pr_RubroPresupuesto_Insertar_Result)">
+          <FunctionImport Name="Pr_Riesgo_Insertar" ReturnType="Collection(Model.Pr_Riesgo_Insertar_Result)">
             <Parameter Name="Nombre" Mode="In" Type="String" />
-            <Parameter Name="Ano" Mode="In" Type="Int32" />
-            <Parameter Name="Monto" Mode="In" Type="Int32" />
-            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
-            <Parameter Name="Justificacion" Mode="In" Type="String" />
+            <Parameter Name="AccionesMitagacion" Mode="In" Type="String" />
+            <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="Pr_RubroPresupuesto_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_RubroPresupuesto_SeleccionarXProyecto_Result)">
-            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          <FunctionImport Name="Pr_Riesgo_Seleccionar" ReturnType="Collection(Model.Pr_Riesgo_Seleccionar_Result)">
+            <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_SubAreaFrascati_Consultar" ReturnType="Collection(Model.Pr_SubAreaFrascati_Consultar_Result)">
             <Parameter Name="IdAreaFrascati" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_SubODS_Consultar" ReturnType="Collection(Model.Pr_SubODS_Consultar_Result)">
             <Parameter Name="IdODS" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_UbicacionGeografica_Eliminar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_UbicacionGeografica_Insertar" ReturnType="Collection(Model.Pr_UbicacionGeografica_Insertar_Result)">
+            <Parameter Name="IdPais" Mode="In" Type="Int32" />
+            <Parameter Name="IdRegion" Mode="In" Type="Int32" />
+            <Parameter Name="IdProvincia" Mode="In" Type="Int32" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_UbicacionGeografica_Seleccionar" ReturnType="Collection(Model.Pr_UbicacionGeografica_Seleccionar_Result)">
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -1802,6 +3276,12 @@
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
+        <ComplexType Name="Pr_Colaborador_Seleccionar_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="15" />
+        </ComplexType>
         <ComplexType Name="Pr_Compra_Insertar_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="NombreProducto" Nullable="false" MaxLength="50" />
@@ -1815,6 +3295,39 @@
           <Property Type="Int32" Name="Cantidad" Nullable="false" />
           <Property Type="Int32" Name="PrecioTotal" Nullable="false" />
           <Property Type="String" Name="CodigoProyecto" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Pr_EntradaBitacora_Insertar_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="Responsable" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="FechaYHora" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CodigoProyecto" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Pr_EntradaBitacora_Seleccionar_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="Responsable" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="FechaYHora" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Pr_EquipoDeTrabajo_Seleccionar_Result">
+          <Property Type="String" Name="NumIdentidad" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="TipoParticipacion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TelefonoMovil" Nullable="false" MaxLength="9" />
+          <Property Type="String" Name="CorreoElectronico" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Pr_Incidencia_Insertar_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="TituloIncidencia" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="CodigoProyecto" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Pr_Incidencias_Seleccionar_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="TituloIncidencia" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="Max" />
         </ComplexType>
         <ComplexType Name="Pr_Informe_Insertar_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -1839,6 +3352,17 @@
           <Property Type="String" Name="MemorandoDIP" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Observaciones" Nullable="false" MaxLength="Max" />
         </ComplexType>
+        <ComplexType Name="Pr_Meta_Insertar_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="EstaCumplida" Nullable="false" />
+          <Property Type="Int32" Name="IdObjectivoEspecifico" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Pr_Meta_Seleccionar_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="EstaCumplida" Nullable="false" />
+        </ComplexType>
         <ComplexType Name="Pr_ObjetivoEspecifico_Seleccionar_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="ObjetivoEspecifico" Nullable="false" MaxLength="Max" />
@@ -1852,11 +3376,52 @@
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="PalabraClave" Nullable="false" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="Pr_PresupuestoProyecto_Insertar_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="IdFuenteFinanciamiento" Nullable="false" />
+          <Property Type="String" Name="Organizacion" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IdPartida" Nullable="true" />
+          <Property Type="Int32" Name="Ano" Nullable="false" />
+          <Property Type="Int32" Name="Monto" Nullable="false" />
+          <Property Type="String" Name="CodigoProyecto" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Pr_PresupuestoProyecto_Seleccionar_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Ano" Nullable="false" />
+          <Property Type="String" Name="FuenteFinanciamiento" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Partida" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Monto" Nullable="false" />
+          <Property Type="String" Name="Organizacion" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Pr_ProductoObjetivo_Insertar_Result">
+          <Property Type="String" Name="Actividad" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="IdInvestigadorEncargado" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="IdColaboradorEncargado" Nullable="true" />
+          <Property Type="Int32" Name="IdNivelDeResponsabilidad" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IdObjetivoEspecifico" Nullable="false" />
+          <Property Type="Int32" Name="Ano" Nullable="false" />
+          <Property Type="Int32" Name="Trimestre" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Pr_ProductoObjetivo_Seleccionar_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+          <Property Type="String" Name="Actividad" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="NivelDeResponsabilidad" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="EncargadoNombre" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="EncargadoApellido1" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="EncargadoApellido2" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="ColaboradorEncargado" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="ColaboradorApellido1" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="ColaboradorApellido2" Nullable="true" MaxLength="15" />
+        </ComplexType>
         <ComplexType Name="Pr_Proyecto_Buscar_Result">
           <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="NombreDelProyecto" Nullable="false" MaxLength="100" />
           <Property Type="DateTime" Name="FechaInicioEjecucion" Nullable="false" />
-          <Property Type="DateTime" Name="FechaFinEjecucion" Nullable="true" />
+          <Property Type="DateTime" Name="FechaFinEjecucion" Nullable="false" />
           <Property Type="String" Name="NombreOficial" Nullable="false" MaxLength="15" />
           <Property Type="String" Name="Apellido1Oficial" Nullable="false" MaxLength="15" />
           <Property Type="String" Name="Apellido2Oficial" Nullable="true" MaxLength="15" />
@@ -1883,13 +3448,13 @@
           <Property Type="String" Name="ActaEscuela" Nullable="false" MaxLength="50" />
           <Property Type="DateTime" Name="FechaAprobacion" Nullable="false" />
           <Property Type="DateTime" Name="FechaInicioEjecucion" Nullable="false" />
-          <Property Type="DateTime" Name="FechaFinEjecucion" Nullable="true" />
+          <Property Type="DateTime" Name="FechaFinEjecucion" Nullable="false" />
         </ComplexType>
         <ComplexType Name="Pr_Proyecto_Seleccionar_Result">
           <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="NombreDelProyecto" Nullable="false" MaxLength="100" />
           <Property Type="DateTime" Name="FechaInicioEjecucion" Nullable="false" />
-          <Property Type="DateTime" Name="FechaFinEjecucion" Nullable="true" />
+          <Property Type="DateTime" Name="FechaFinEjecucion" Nullable="false" />
           <Property Type="String" Name="NombreOficial" Nullable="false" MaxLength="15" />
           <Property Type="String" Name="Apellido1Oficial" Nullable="false" MaxLength="15" />
           <Property Type="String" Name="Apellido2Oficial" Nullable="true" MaxLength="15" />
@@ -1942,20 +3507,16 @@
           <Property Type="String" Name="ODS" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="SubODS" Nullable="false" MaxLength="50" />
         </ComplexType>
-        <ComplexType Name="Pr_RubroPresupuesto_Insertar_Result">
+        <ComplexType Name="Pr_Riesgo_Insertar_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="Ano" Nullable="false" />
-          <Property Type="Int32" Name="Monto" Nullable="false" />
-          <Property Type="Int32" Name="IdPlanteamientoProyecto" Nullable="false" />
-          <Property Type="String" Name="Justificacion" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="AccionesMitagacion" Nullable="false" MaxLength="Max" />
+          <Property Type="Int32" Name="IdObjetivoEspecifico" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="Pr_RubroPresupuesto_SeleccionarXProyecto_Result">
+        <ComplexType Name="Pr_Riesgo_Seleccionar_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="Ano" Nullable="false" />
-          <Property Type="Int32" Name="Monto" Nullable="false" />
-          <Property Type="String" Name="Justificacion" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="AccionesMitagacion" Nullable="false" MaxLength="Max" />
         </ComplexType>
         <ComplexType Name="Pr_SubAreaFrascati_Consultar_Result">
           <Property Type="String" Name="SubArea" Nullable="false" MaxLength="50" />
@@ -1964,6 +3525,19 @@
         <ComplexType Name="Pr_SubODS_Consultar_Result">
           <Property Type="String" Name="SubODS" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Pr_UbicacionGeografica_Insertar_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="IdPais" Nullable="false" />
+          <Property Type="Int32" Name="IdRegion" Nullable="true" />
+          <Property Type="Int32" Name="IdProvincia" Nullable="true" />
+          <Property Type="String" Name="CodigoProyecto" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Pr_UbicacionGeografica_Seleccionar_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="NombrePais" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="NombreRegion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1982,11 +3556,42 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="VieEntidades">
+          <EntitySetMapping Name="AmpliacionFechas">
+            <EntityTypeMapping TypeName="Model.AmpliacionFechas">
+              <MappingFragment StoreEntitySet="AmpliacionFechas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FechaAprobacion" ColumnName="FechaAprobacion" />
+                <ScalarProperty Name="NuevaFechaFinalizacion" ColumnName="NuevaFechaFinalizacion" />
+                <ScalarProperty Name="ViejaFechaFinalizacion" ColumnName="ViejaFechaFinalizacion" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="AreaFrascati">
             <EntityTypeMapping TypeName="Model.AreaFrascati">
               <MappingFragment StoreEntitySet="AreaFrascati">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Area" ColumnName="Area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Canton">
+            <EntityTypeMapping TypeName="Model.Canton">
+              <MappingFragment StoreEntitySet="Canton">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colaborador">
+            <EntityTypeMapping TypeName="Model.Colaborador">
+              <MappingFragment StoreEntitySet="Colaborador">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2009,11 +3614,82 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Distrito">
+            <EntityTypeMapping TypeName="Model.Distrito">
+              <MappingFragment StoreEntitySet="Distrito">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdCanton" ColumnName="IdCanton" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EntradaBitacora">
+            <EntityTypeMapping TypeName="Model.EntradaBitacora">
+              <MappingFragment StoreEntitySet="EntradaBitacora">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Responsable" ColumnName="Responsable" />
+                <ScalarProperty Name="FechaYHora" ColumnName="FechaYHora" />
+                <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipoDeTrabajo">
+            <EntityTypeMapping TypeName="Model.EquipoDeTrabajo">
+              <MappingFragment StoreEntitySet="EquipoDeTrabajo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NumIdentidad" ColumnName="NumIdentidad" />
+                <ScalarProperty Name="IdSetDatos" ColumnName="IdSetDatos" />
+                <ScalarProperty Name="IdCondicionDeParticipacion" ColumnName="IdCondicionDeParticipacion" />
+                <ScalarProperty Name="IdEscuela" ColumnName="IdEscuela" />
+                <ScalarProperty Name="CantidadHoras" ColumnName="CantidadHoras" />
+                <ScalarProperty Name="AreaConocimiento" ColumnName="AreaConocimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipoDeTrabajoXTipoHora">
+            <EntityTypeMapping TypeName="Model.EquipoDeTrabajoXTipoHora">
+              <MappingFragment StoreEntitySet="EquipoDeTrabajoXTipoHora">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdEquipoDeTrabajo" ColumnName="IdEquipoDeTrabajo" />
+                <ScalarProperty Name="IdTipoHora" ColumnName="IdTipoHora" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFinalizacion" ColumnName="FechaFinalizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Escuela">
+            <EntityTypeMapping TypeName="Model.Escuela">
+              <MappingFragment StoreEntitySet="Escuela">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NombreEscuela" ColumnName="NombreEscuela" />
+                <ScalarProperty Name="IdSede" ColumnName="IdSede" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="EstadoDeProyecto">
             <EntityTypeMapping TypeName="Model.EstadoDeProyecto">
               <MappingFragment StoreEntitySet="EstadoDeProyecto">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="EstadoDeProyecto1" ColumnName="EstadoDeProyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FuenteFinanciamiento">
+            <EntityTypeMapping TypeName="Model.FuenteFinanciamiento">
+              <MappingFragment StoreEntitySet="FuenteFinanciamiento">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FuenteFinanciamiento1" ColumnName="FuenteFinanciamiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incidencia">
+            <EntityTypeMapping TypeName="Model.Incidencia">
+              <MappingFragment StoreEntitySet="Incidencia">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TituloIncidencia" ColumnName="TituloIncidencia" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2040,6 +3716,18 @@
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
                 <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="TelefonoMovil" ColumnName="TelefonoMovil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Meta">
+            <EntityTypeMapping TypeName="Model.Meta">
+              <MappingFragment StoreEntitySet="Meta">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="EstaCumplida" ColumnName="EstaCumplida" />
+                <ScalarProperty Name="IdObjectivoEspecifico" ColumnName="IdObjectivoEspecifico" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2048,6 +3736,14 @@
               <MappingFragment StoreEntitySet="ModalidadProyecto">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="NombreModalidad" ColumnName="NombreModalidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NivelDeResponsabilidad">
+            <EntityTypeMapping TypeName="Model.NivelDeResponsabilidad">
+              <MappingFragment StoreEntitySet="NivelDeResponsabilidad">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NivelDeResponsabilidad1" ColumnName="NivelDeResponsabilidad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2069,12 +3765,28 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="Model.Pais">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NombrePais" ColumnName="NombrePais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PalabraClave">
             <EntityTypeMapping TypeName="Model.PalabraClave">
               <MappingFragment StoreEntitySet="PalabraClave">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="PalabraClave1" ColumnName="PalabraClave" />
                 <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Partida">
+            <EntityTypeMapping TypeName="Model.Partida">
+              <MappingFragment StoreEntitySet="Partida">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Partida1" ColumnName="Partida" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2102,6 +3814,43 @@
               <MappingFragment StoreEntitySet="PoblacionBeneficiaria">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="NombrePoblacion" ColumnName="NombrePoblacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PresupuestoProyecto">
+            <EntityTypeMapping TypeName="Model.PresupuestoProyecto">
+              <MappingFragment StoreEntitySet="PresupuestoProyecto">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdFuenteFinanciamiento" ColumnName="IdFuenteFinanciamiento" />
+                <ScalarProperty Name="Organizacion" ColumnName="Organizacion" />
+                <ScalarProperty Name="IdPartida" ColumnName="IdPartida" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductoObjetivo">
+            <EntityTypeMapping TypeName="Model.ProductoObjetivo">
+              <MappingFragment StoreEntitySet="ProductoObjetivo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Actividad" ColumnName="Actividad" />
+                <ScalarProperty Name="IdInvestigadorEncargado" ColumnName="IdInvestigadorEncargado" />
+                <ScalarProperty Name="IdColaboradorEncargado" ColumnName="IdColaboradorEncargado" />
+                <ScalarProperty Name="IdNivelDeResponsabilidad" ColumnName="IdNivelDeResponsabilidad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdObjetivoEspecifico" ColumnName="IdObjetivoEspecifico" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="Trimestre" ColumnName="Trimestre" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provincia">
+            <EntityTypeMapping TypeName="Model.Provincia">
+              <MappingFragment StoreEntitySet="Provincia">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2166,15 +3915,29 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RubroPresupuesto">
-            <EntityTypeMapping TypeName="Model.RubroPresupuesto">
-              <MappingFragment StoreEntitySet="RubroPresupuesto">
+          <EntitySetMapping Name="Region">
+            <EntityTypeMapping TypeName="Model.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NombreRegion" ColumnName="NombreRegion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Riesgo">
+            <EntityTypeMapping TypeName="Model.Riesgo">
+              <MappingFragment StoreEntitySet="Riesgo">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Ano" ColumnName="Ano" />
-                <ScalarProperty Name="Monto" ColumnName="Monto" />
-                <ScalarProperty Name="IdPlanteamientoProyecto" ColumnName="IdPlanteamientoProyecto" />
-                <ScalarProperty Name="Justificacion" ColumnName="Justificacion" />
+                <ScalarProperty Name="AccionesMitagacion" ColumnName="AccionesMitagacion" />
+                <ScalarProperty Name="IdObjetivoEspecifico" ColumnName="IdObjetivoEspecifico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sede">
+            <EntityTypeMapping TypeName="Model.Sede">
+              <MappingFragment StoreEntitySet="Sede">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NombreSede" ColumnName="NombreSede" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2235,11 +3998,27 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TipoHora">
+            <EntityTypeMapping TypeName="Model.TipoHora">
+              <MappingFragment StoreEntitySet="TipoHora">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TipoHora1" ColumnName="TipoHora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TipoInforme">
             <EntityTypeMapping TypeName="Model.TipoInforme">
               <MappingFragment StoreEntitySet="TipoInforme">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TipoInforme1" ColumnName="TipoInforme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoParticipacion">
+            <EntityTypeMapping TypeName="Model.TipoParticipacion">
+              <MappingFragment StoreEntitySet="TipoParticipacion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TipoParticipacion1" ColumnName="TipoParticipacion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2251,6 +4030,27 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="UbicacionGeografica">
+            <EntityTypeMapping TypeName="Model.UbicacionGeografica">
+              <MappingFragment StoreEntitySet="UbicacionGeografica">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+                <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+                <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
+                <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Pr_Colaborador_Seleccionar" FunctionName="Model.Store.Pr_Colaborador_Seleccionar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_Colaborador_Seleccionar_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Pr_Compra_Eliminar" FunctionName="Model.Store.Pr_Compra_Eliminar" />
           <FunctionImportMapping FunctionImportName="Pr_Compra_Insertar" FunctionName="Model.Store.Pr_Compra_Insertar">
             <ResultMapping>
@@ -2271,6 +4071,61 @@
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="PrecioTotal" ColumnName="PrecioTotal" />
                 <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_EntradaBitacora_Eliminar" FunctionName="Model.Store.Pr_EntradaBitacora_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Pr_EntradaBitacora_Insertar" FunctionName="Model.Store.Pr_EntradaBitacora_Insertar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_EntradaBitacora_Insertar_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Responsable" ColumnName="Responsable" />
+                <ScalarProperty Name="FechaYHora" ColumnName="FechaYHora" />
+                <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_EntradaBitacora_Seleccionar" FunctionName="Model.Store.Pr_EntradaBitacora_Seleccionar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_EntradaBitacora_Seleccionar_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Responsable" ColumnName="Responsable" />
+                <ScalarProperty Name="FechaYHora" ColumnName="FechaYHora" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_EquipoDeTrabajo_Seleccionar" FunctionName="Model.Store.Pr_EquipoDeTrabajo_Seleccionar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_EquipoDeTrabajo_Seleccionar_Result">
+                <ScalarProperty Name="NumIdentidad" ColumnName="NumIdentidad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="TipoParticipacion" ColumnName="TipoParticipacion" />
+                <ScalarProperty Name="TelefonoMovil" ColumnName="TelefonoMovil" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_Incidencia_Eliminar" FunctionName="Model.Store.Pr_Incidencia_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Pr_Incidencia_Insertar" FunctionName="Model.Store.Pr_Incidencia_Insertar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_Incidencia_Insertar_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TituloIncidencia" ColumnName="TituloIncidencia" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_Incidencias_Seleccionar" FunctionName="Model.Store.Pr_Incidencias_Seleccionar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_Incidencias_Seleccionar_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TituloIncidencia" ColumnName="TituloIncidencia" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2306,6 +4161,26 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_Meta_Eliminar" FunctionName="Model.Store.Pr_Meta_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Pr_Meta_Insertar" FunctionName="Model.Store.Pr_Meta_Insertar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_Meta_Insertar_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="EstaCumplida" ColumnName="EstaCumplida" />
+                <ScalarProperty Name="IdObjectivoEspecifico" ColumnName="IdObjectivoEspecifico" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_Meta_Seleccionar" FunctionName="Model.Store.Pr_Meta_Seleccionar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_Meta_Seleccionar_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="EstaCumplida" ColumnName="EstaCumplida" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Pr_ObjetivoEspecifico_Seleccionar" FunctionName="Model.Store.Pr_ObjetivoEspecifico_Seleccionar">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Model.Pr_ObjetivoEspecifico_Seleccionar_Result">
@@ -2332,6 +4207,66 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_PresupuestoProyecto_Eliminar" FunctionName="Model.Store.Pr_PresupuestoProyecto_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Pr_PresupuestoProyecto_Insertar" FunctionName="Model.Store.Pr_PresupuestoProyecto_Insertar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_PresupuestoProyecto_Insertar_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdFuenteFinanciamiento" ColumnName="IdFuenteFinanciamiento" />
+                <ScalarProperty Name="Organizacion" ColumnName="Organizacion" />
+                <ScalarProperty Name="IdPartida" ColumnName="IdPartida" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_PresupuestoProyecto_Seleccionar" FunctionName="Model.Store.Pr_PresupuestoProyecto_Seleccionar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_PresupuestoProyecto_Seleccionar_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="FuenteFinanciamiento" ColumnName="FuenteFinanciamiento" />
+                <ScalarProperty Name="Partida" ColumnName="Partida" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Organizacion" ColumnName="Organizacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_ProductoObjetivo_Eliminar" FunctionName="Model.Store.Pr_ProductoObjetivo_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Pr_ProductoObjetivo_Insertar" FunctionName="Model.Store.Pr_ProductoObjetivo_Insertar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_ProductoObjetivo_Insertar_Result">
+                <ScalarProperty Name="Actividad" ColumnName="Actividad" />
+                <ScalarProperty Name="IdInvestigadorEncargado" ColumnName="IdInvestigadorEncargado" />
+                <ScalarProperty Name="IdColaboradorEncargado" ColumnName="IdColaboradorEncargado" />
+                <ScalarProperty Name="IdNivelDeResponsabilidad" ColumnName="IdNivelDeResponsabilidad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdObjetivoEspecifico" ColumnName="IdObjetivoEspecifico" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="Trimestre" ColumnName="Trimestre" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_ProductoObjetivo_Seleccionar" FunctionName="Model.Store.Pr_ProductoObjetivo_Seleccionar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_ProductoObjetivo_Seleccionar_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Actividad" ColumnName="Actividad" />
+                <ScalarProperty Name="NivelDeResponsabilidad" ColumnName="NivelDeResponsabilidad" />
+                <ScalarProperty Name="EncargadoNombre" ColumnName="EncargadoNombre" />
+                <ScalarProperty Name="EncargadoApellido1" ColumnName="EncargadoApellido1" />
+                <ScalarProperty Name="EncargadoApellido2" ColumnName="EncargadoApellido2" />
+                <ScalarProperty Name="ColaboradorEncargado" ColumnName="ColaboradorEncargado" />
+                <ScalarProperty Name="ColaboradorApellido1" ColumnName="ColaboradorApellido1" />
+                <ScalarProperty Name="ColaboradorApellido2" ColumnName="ColaboradorApellido2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_Proyecto_AmpliarFecha" FunctionName="Model.Store.Pr_Proyecto_AmpliarFecha" />
           <FunctionImportMapping FunctionImportName="Pr_Proyecto_Buscar" FunctionName="Model.Store.Pr_Proyecto_Buscar">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Model.Pr_Proyecto_Buscar_Result">
@@ -2348,6 +4283,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_Proyecto_CambiarInvCoord" FunctionName="Model.Store.Pr_Proyecto_CambiarInvCoord" />
           <FunctionImportMapping FunctionImportName="Pr_Proyecto_Consultar" FunctionName="Model.Store.Pr_Proyecto_Consultar">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Model.Pr_Proyecto_Consultar_Result">
@@ -2374,6 +4310,7 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Pr_Proyecto_Modificar" FunctionName="Model.Store.Pr_Proyecto_Modificar" />
+          <FunctionImportMapping FunctionImportName="Pr_Proyecto_PermisosModificar" FunctionName="Model.Store.Pr_Proyecto_PermisosModificar" />
           <FunctionImportMapping FunctionImportName="Pr_Proyecto_Seleccionar" FunctionName="Model.Store.Pr_Proyecto_Seleccionar">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Model.Pr_Proyecto_Seleccionar_Result">
@@ -2471,27 +4408,23 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Pr_RubroPresupuesto_Eliminar" FunctionName="Model.Store.Pr_RubroPresupuesto_Eliminar" />
-          <FunctionImportMapping FunctionImportName="Pr_RubroPresupuesto_Insertar" FunctionName="Model.Store.Pr_RubroPresupuesto_Insertar">
+          <FunctionImportMapping FunctionImportName="Pr_Riesgo_Eliminar" FunctionName="Model.Store.Pr_Riesgo_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Pr_Riesgo_Insertar" FunctionName="Model.Store.Pr_Riesgo_Insertar">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.Pr_RubroPresupuesto_Insertar_Result">
+              <ComplexTypeMapping TypeName="Model.Pr_Riesgo_Insertar_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Ano" ColumnName="Ano" />
-                <ScalarProperty Name="Monto" ColumnName="Monto" />
-                <ScalarProperty Name="IdPlanteamientoProyecto" ColumnName="IdPlanteamientoProyecto" />
-                <ScalarProperty Name="Justificacion" ColumnName="Justificacion" />
+                <ScalarProperty Name="AccionesMitagacion" ColumnName="AccionesMitagacion" />
+                <ScalarProperty Name="IdObjetivoEspecifico" ColumnName="IdObjetivoEspecifico" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Pr_RubroPresupuesto_SeleccionarXProyecto" FunctionName="Model.Store.Pr_RubroPresupuesto_SeleccionarXProyecto">
+          <FunctionImportMapping FunctionImportName="Pr_Riesgo_Seleccionar" FunctionName="Model.Store.Pr_Riesgo_Seleccionar">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.Pr_RubroPresupuesto_SeleccionarXProyecto_Result">
+              <ComplexTypeMapping TypeName="Model.Pr_Riesgo_Seleccionar_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Ano" ColumnName="Ano" />
-                <ScalarProperty Name="Monto" ColumnName="Monto" />
-                <ScalarProperty Name="Justificacion" ColumnName="Justificacion" />
+                <ScalarProperty Name="AccionesMitagacion" ColumnName="AccionesMitagacion" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2508,6 +4441,28 @@
               <ComplexTypeMapping TypeName="Model.Pr_SubODS_Consultar_Result">
                 <ScalarProperty Name="SubODS" ColumnName="SubODS" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_UbicacionGeografica_Eliminar" FunctionName="Model.Store.Pr_UbicacionGeografica_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Pr_UbicacionGeografica_Insertar" FunctionName="Model.Store.Pr_UbicacionGeografica_Insertar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_UbicacionGeografica_Insertar_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+                <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+                <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
+                <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_UbicacionGeografica_Seleccionar" FunctionName="Model.Store.Pr_UbicacionGeografica_Seleccionar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_UbicacionGeografica_Seleccionar_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NombrePais" ColumnName="NombrePais" />
+                <ScalarProperty Name="NombreRegion" ColumnName="NombreRegion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

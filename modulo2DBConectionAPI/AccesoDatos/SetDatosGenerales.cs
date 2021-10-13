@@ -16,16 +16,18 @@ namespace AccesoDatos
     {
         public SetDatosGenerales()
         {
+            this.EquipoDeTrabajo = new HashSet<EquipoDeTrabajo>();
             this.Proyecto = new HashSet<Proyecto>();
         }
     
         public int Id { get; set; }
         public string NombreDelProyecto { get; set; }
         public System.DateTime FechaInicioEjecucion { get; set; }
-        public Nullable<System.DateTime> FechaFinEjecucion { get; set; }
+        public System.DateTime FechaFinEjecucion { get; set; }
         public string Estado { get; set; }
         public string Justificacion { get; set; }
     
+        public virtual ICollection<EquipoDeTrabajo> EquipoDeTrabajo { get; set; }
         public virtual ICollection<Proyecto> Proyecto { get; set; }
     }
 }

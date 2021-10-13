@@ -14,11 +14,21 @@ namespace AccesoDatos
     
     public partial class ObjetivoEspecifico
     {
+        public ObjetivoEspecifico()
+        {
+            this.Meta = new HashSet<Meta>();
+            this.ProductoObjetivo = new HashSet<ProductoObjetivo>();
+            this.Riesgo = new HashSet<Riesgo>();
+        }
+    
         public int Id { get; set; }
         public string ObjetivoEspecifico1 { get; set; }
         public int IdPlanDeAccion { get; set; }
         public string Metodologia { get; set; }
     
+        public virtual ICollection<Meta> Meta { get; set; }
         public virtual PlanDeAccion PlanDeAccion { get; set; }
+        public virtual ICollection<ProductoObjetivo> ProductoObjetivo { get; set; }
+        public virtual ICollection<Riesgo> Riesgo { get; set; }
     }
 }

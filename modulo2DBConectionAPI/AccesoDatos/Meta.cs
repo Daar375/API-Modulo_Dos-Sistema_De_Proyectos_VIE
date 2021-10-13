@@ -10,13 +10,15 @@
 namespace AccesoDatos
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class Pr_RubroPresupuesto_SeleccionarXProyecto_Result
+    public partial class Meta
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public int Ano { get; set; }
-        public int Monto { get; set; }
-        public string Justificacion { get; set; }
+        public bool EstaCumplida { get; set; }
+        public int IdObjectivoEspecifico { get; set; }
+    
+        public virtual ObjetivoEspecifico ObjetivoEspecifico { get; set; }
     }
 }

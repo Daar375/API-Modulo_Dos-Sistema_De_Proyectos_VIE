@@ -10,20 +10,20 @@ namespace modulo2DBConectionAPI.Controllers
 {
     public class PresupuestoController : ApiController
     {
-        public List<RubroPresupuesto> Get()
+        public List<PresupuestoProyecto> Get()
         {
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
-                return entities.RubroPresupuesto.ToList();
+                return entities.PresupuestoProyecto.ToList();
             }
         }
-        public List<Pr_RubroPresupuesto_SeleccionarXProyecto_Result> Get(String id)
+        public List<Pr_PresupuestoProyecto_Seleccionar_Result> Get(String id)
         {
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
-                System.Data.Objects.ObjectResult<Pr_RubroPresupuesto_SeleccionarXProyecto_Result> res = entities.Pr_RubroPresupuesto_SeleccionarXProyecto(id);
+                System.Data.Objects.ObjectResult<Pr_PresupuestoProyecto_Seleccionar_Result> res = entities.Pr_PresupuestoProyecto_Seleccionar(id);
                 return res.ToList();
             }
         }
@@ -35,16 +35,16 @@ namespace modulo2DBConectionAPI.Controllers
             {
                 entities.Configuration.ProxyCreationEnabled = false;
 
-                return entities.Pr_RubroPresupuesto_Eliminar(id).ToList();
+                return entities.Pr_PresupuestoProyecto_Eliminar(id).ToList();
             }
         }
         [HttpPost]
-        public List<Pr_RubroPresupuesto_Insertar_Result> Post(string codigoProyecto, string nombre, int ano, int monto, string justificacion)
+        public List<Pr_PresupuestoProyecto_Insertar_Result> Post(Nullable<int> idFuenteFinanciamiento, string organizacion, int idPartida, int ano, int monto, string codigoProyecto)
         {
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
-                System.Data.Objects.ObjectResult<Pr_RubroPresupuesto_Insertar_Result> res = entities.Pr_RubroPresupuesto_Insertar(nombre, ano, monto, codigoProyecto, justificacion);
+                System.Data.Objects.ObjectResult<Pr_PresupuestoProyecto_Insertar_Result> res = entities.Pr_PresupuestoProyecto_Insertar(idFuenteFinanciamiento,  organizacion,  idPartida,  ano,  monto,  codigoProyecto);
                 return res.ToList();
             }
         }

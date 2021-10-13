@@ -31,6 +31,6 @@ namespace AccesoDatos
         public string ActaEscuela { get; set; }
         public System.DateTime FechaAprobacion { get; set; }
         public System.DateTime FechaInicioEjecucion { get; set; }
-        public Nullable<System.DateTime> FechaFinEjecucion { get; set; }
+        public System.DateTime FechaFinEjecucion { get; set; }
     }
 }
