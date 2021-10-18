@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using AccesoDatos;
+using modulo2DBConectionAPI.Models;
 
 namespace modulo2DBConectionAPI.Controllers
 {
@@ -38,12 +39,14 @@ namespace modulo2DBConectionAPI.Controllers
             }
         }
         [HttpPost]
-        public List<Pr_EntradaBitacora_Insertar_Result> Post(string descripcion, string responsable, System.DateTime fechaYHora, string codigoProyecto)
+        [Route("api/bitacora/AgregarBitacora")]
+
+        public List<Pr_EntradaBitacora_Insertar_Result> Post([FromBody] PostBitacoraResponce RequestInfo)
         {
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
-                return entities.Pr_EntradaBitacora_Insertar(descripcion, responsable, fechaYHora, codigoProyecto).ToList();
+                return entities.Pr_EntradaBitacora_Insertar(RequestInfo.descripcion, RequestInfo.responsable, DateTime.Parse(RequestInfo.fechaYHora) , RequestInfo.codigoProyecto).ToList();
             }
         }
     }

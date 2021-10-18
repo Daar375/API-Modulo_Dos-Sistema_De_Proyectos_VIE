@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using AccesoDatos;
+using modulo2DBConectionAPI.Models;
 
 namespace modulo2DBConectionAPI.Controllers
 {
@@ -20,12 +21,14 @@ namespace modulo2DBConectionAPI.Controllers
         }
 
         [HttpPost]
-        public List<int?> Post(System.DateTime fechaAprobacion, System.DateTime nuevaFechaFinalizacion, System.DateTime viejaFechaFinalizacion, string observaciones, string codigo)
+        [Route("api/ampliacion/AmpliarFecha")]
+
+        public List<int?> Post([FromBody] PostAmpliacionResponce RequestInfo)
         {
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
-                return entities.Pr_Proyecto_AmpliarFecha(fechaAprobacion, nuevaFechaFinalizacion, viejaFechaFinalizacion, observaciones, codigo).ToList();
+                return entities.Pr_Proyecto_AmpliarFecha(DateTime.Parse(RequestInfo.fechaAprobacion), DateTime.Parse(RequestInfo.nuevaFechaFinalizacion), DateTime.Parse(RequestInfo.viejaFechaFinalizacion), RequestInfo.observaciones, RequestInfo.codigo).ToList();
             }
         }
     }

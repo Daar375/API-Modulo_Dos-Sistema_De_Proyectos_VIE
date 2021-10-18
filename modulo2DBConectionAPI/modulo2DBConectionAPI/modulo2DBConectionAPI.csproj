@@ -191,6 +191,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ModificarProyectoResponse.cs" />
+    <Compile Include="Models\PostInformeResponce.cs" />
+    <Compile Include="Models\PostAmpliacionResponce.cs" />
+    <Compile Include="Models\PostBitacoraResponce.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -247,6 +250,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\EstadoProyecto\" />
+    <Folder Include="Views\PostAmpliacionResponce\" />
     <Folder Include="Views\TipoDepartamento\" />
   </ItemGroup>
   <ItemGroup>

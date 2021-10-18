@@ -39,7 +39,7 @@ namespace modulo2DBConectionAPI.Controllers
             }
         }
         [HttpPost]
-        public List<Pr_PresupuestoProyecto_Insertar_Result> Post(Nullable<int> idFuenteFinanciamiento, string organizacion, int idPartida, int ano, int monto, string codigoProyecto)
+        public List<Pr_PresupuestoProyecto_Insertar_Result> Post(int idFuenteFinanciamiento, string organizacion, int idPartida, int ano, int monto, string codigoProyecto)
         {
             using (VieEntidades entities = new VieEntidades())
             {

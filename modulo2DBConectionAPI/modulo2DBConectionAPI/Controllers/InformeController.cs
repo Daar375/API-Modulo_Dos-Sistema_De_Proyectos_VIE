@@ -1,4 +1,5 @@
 ﻿using AccesoDatos;
+using modulo2DBConectionAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,13 +38,17 @@ namespace modulo2DBConectionAPI.Controllers
                 return entities.Pr_Informe_Eliminar(id).ToList();
             }
         }
+
+
         [HttpPost]
-        public List<Pr_Informe_Insertar_Result> Post(string tituloInforme, int idTipoInforme, DateTime fechaProgramada, string estado, string memorandoDIP, string observaciones, string codigoProyecto)
+        [Route("api/Informe/AgregarInforme")]
+
+        public List<Pr_Informe_Insertar_Result> Post([FromBody] PostInformeResponce RequestInfo)
         {
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
-                System.Data.Objects.ObjectResult<Pr_Informe_Insertar_Result> res = entities.Pr_Informe_Insertar(tituloInforme, idTipoInforme, fechaProgramada, estado, memorandoDIP, observaciones, codigoProyecto);
+                System.Data.Objects.ObjectResult<Pr_Informe_Insertar_Result> res = entities.Pr_Informe_Insertar(RequestInfo.tituloInforme,RequestInfo.idTipoInforme, DateTime.Parse(RequestInfo.fechaProgramada), RequestInfo.estado, RequestInfo.memorandoDIP, RequestInfo.observaciones, RequestInfo.codigoProyecto);
                 return res.ToList();
             }
         }
