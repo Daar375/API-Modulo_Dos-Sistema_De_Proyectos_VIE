@@ -19,6 +19,7 @@ namespace AccesoDatos
         public int IdTipoHora { get; set; }
         public System.DateTime FechaInicio { get; set; }
         public System.DateTime FechaFinalizacion { get; set; }
+        public Nullable<int> CantidadHoras { get; set; }
     
         public virtual EquipoDeTrabajo EquipoDeTrabajo { get; set; }
         public virtual TipoHora TipoHora { get; set; }

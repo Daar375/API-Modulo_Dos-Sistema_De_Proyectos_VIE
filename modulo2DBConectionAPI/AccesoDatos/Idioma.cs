@@ -12,17 +12,16 @@ namespace AccesoDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class UbicacionGeografica
+    public partial class Idioma
     {
-        public int Id { get; set; }
-        public int IdPais { get; set; }
-        public Nullable<int> IdRegion { get; set; }
-        public Nullable<int> IdProvincia { get; set; }
-        public string CodigoProyecto { get; set; }
+        public Idioma()
+        {
+            this.InvestigadorXIdioma = new HashSet<InvestigadorXIdioma>();
+        }
     
-        public virtual Pais Pais { get; set; }
-        public virtual Provincia Provincia { get; set; }
-        public virtual Proyecto Proyecto { get; set; }
-        public virtual Region Region { get; set; }
+        public int Id { get; set; }
+        public string NombreIdioma { get; set; }
+    
+        public virtual ICollection<InvestigadorXIdioma> InvestigadorXIdioma { get; set; }
     }
 }

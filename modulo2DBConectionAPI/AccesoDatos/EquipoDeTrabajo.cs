@@ -24,7 +24,6 @@ namespace AccesoDatos
         public int IdSetDatos { get; set; }
         public int IdCondicionDeParticipacion { get; set; }
         public int IdEscuela { get; set; }
-        public int CantidadHoras { get; set; }
         public string AreaConocimiento { get; set; }
     
         public virtual Escuela Escuela { get; set; }

@@ -17,5 +17,6 @@ namespace AccesoDatos
         public string Descripcion { get; set; }
         public string Responsable { get; set; }
         public System.DateTime FechaYHora { get; set; }
+        public string CedulaResponsable { get; set; }
     }
 }

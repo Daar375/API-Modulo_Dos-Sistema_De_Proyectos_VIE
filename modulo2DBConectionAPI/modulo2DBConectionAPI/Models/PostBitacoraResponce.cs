@@ -10,9 +10,16 @@ namespace modulo2DBConectionAPI.Models
 
         public string descripcion { get; set; }
         public string responsable { get; set; }
+
+        public string cedulaResponsable { get; set; }
+
+        
         public string fechaYHora { get; set; }
         public string codigoProyecto { get; set; }
        
+
+
+
     }
 }
     

@@ -16,12 +16,14 @@ namespace AccesoDatos
     {
         public Pais()
         {
+            this.Investigador = new HashSet<Investigador>();
             this.UbicacionGeografica = new HashSet<UbicacionGeografica>();
         }
     
         public int Id { get; set; }
         public string NombrePais { get; set; }
     
+        public virtual ICollection<Investigador> Investigador { get; set; }
         public virtual ICollection<UbicacionGeografica> UbicacionGeografica { get; set; }
     }
 }

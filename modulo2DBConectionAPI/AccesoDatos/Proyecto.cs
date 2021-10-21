@@ -27,6 +27,7 @@ namespace AccesoDatos
             this.ProyectoXDepartamento = new HashSet<ProyectoXDepartamento>();
             this.ProyectoXFrascati = new HashSet<ProyectoXFrascati>();
             this.ProyectoXODS = new HashSet<ProyectoXODS>();
+            this.UbicacionGeografica = new HashSet<UbicacionGeografica>();
         }
     
         public string Codigo { get; set; }
@@ -65,5 +66,6 @@ namespace AccesoDatos
         public virtual ICollection<ProyectoXDepartamento> ProyectoXDepartamento { get; set; }
         public virtual ICollection<ProyectoXFrascati> ProyectoXFrascati { get; set; }
         public virtual ICollection<ProyectoXODS> ProyectoXODS { get; set; }
+        public virtual ICollection<UbicacionGeografica> UbicacionGeografica { get; set; }
     }
 }

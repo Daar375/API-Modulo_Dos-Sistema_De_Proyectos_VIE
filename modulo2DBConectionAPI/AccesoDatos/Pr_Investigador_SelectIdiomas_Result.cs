@@ -11,13 +11,11 @@ namespace AccesoDatos
 {
     using System;
     
-    public partial class Pr_EquipoDeTrabajo_Seleccionar_Result
+    public partial class Pr_Investigador_SelectIdiomas_Result
     {
-        public string NumIdentidad { get; set; }
-        public string Nombre { get; set; }
-        public string PrimerApellido { get; set; }
-        public string SegundoApellido { get; set; }
-        public string TipoParticipacion { get; set; }
-        public string CorreoElectronico { get; set; }
+        public string NombreIdioma { get; set; }
+        public string NivelLectura { get; set; }
+        public string NivelHabla { get; set; }
+        public string NivelEscritura { get; set; }
     }
 }

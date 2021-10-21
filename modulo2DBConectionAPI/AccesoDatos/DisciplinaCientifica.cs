@@ -12,17 +12,18 @@ namespace AccesoDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class UbicacionGeografica
+    public partial class DisciplinaCientifica
     {
-        public int Id { get; set; }
-        public int IdPais { get; set; }
-        public Nullable<int> IdRegion { get; set; }
-        public Nullable<int> IdProvincia { get; set; }
-        public string CodigoProyecto { get; set; }
+        public DisciplinaCientifica()
+        {
+            this.InvestigadorXSubdisciplina = new HashSet<InvestigadorXSubdisciplina>();
+            this.Subdisciplina = new HashSet<Subdisciplina>();
+        }
     
-        public virtual Pais Pais { get; set; }
-        public virtual Provincia Provincia { get; set; }
-        public virtual Proyecto Proyecto { get; set; }
-        public virtual Region Region { get; set; }
+        public int Id { get; set; }
+        public string DisciplinaCientifica1 { get; set; }
+    
+        public virtual ICollection<InvestigadorXSubdisciplina> InvestigadorXSubdisciplina { get; set; }
+        public virtual ICollection<Subdisciplina> Subdisciplina { get; set; }
     }
 }

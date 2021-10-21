@@ -11,13 +11,11 @@ namespace AccesoDatos
 {
     using System;
     
-    public partial class Pr_EquipoDeTrabajo_Seleccionar_Result
+    public partial class Pr_Investigador_ConsultHoras_Result
     {
-        public string NumIdentidad { get; set; }
-        public string Nombre { get; set; }
-        public string PrimerApellido { get; set; }
-        public string SegundoApellido { get; set; }
-        public string TipoParticipacion { get; set; }
-        public string CorreoElectronico { get; set; }
+        public string TipoHora { get; set; }
+        public System.DateTime FechaInicio { get; set; }
+        public System.DateTime FechaFinalizacion { get; set; }
+        public Nullable<int> CantidadHoras { get; set; }
     }
 }

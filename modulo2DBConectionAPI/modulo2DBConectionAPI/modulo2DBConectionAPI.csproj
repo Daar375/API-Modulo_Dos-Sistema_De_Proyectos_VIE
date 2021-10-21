@@ -170,6 +170,7 @@
     <Compile Include="Controllers\EstadoProyectoController.cs" />
     <Compile Include="Controllers\FrascatiController.cs" />
     <Compile Include="Controllers\InformeController.cs" />
+    <Compile Include="Controllers\InvestigadorController.cs" />
     <Compile Include="Controllers\MetasController.cs" />
     <Compile Include="Controllers\ModalidadController.cs" />
     <Compile Include="Controllers\ObjetivosEspecificosController.cs" />
@@ -250,6 +251,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\EstadoProyecto\" />
+    <Folder Include="Views\Investigador\" />
     <Folder Include="Views\PostAmpliacionResponce\" />
     <Folder Include="Views\TipoDepartamento\" />
   </ItemGroup>
@@ -290,7 +292,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj">
-      <Project>{c72b8b61-b8d7-48c4-bf84-d7c78eb33a7b}</Project>
+      <Project>{81af0fa5-c601-4a38-adb4-747c5676e81f}</Project>
       <Name>AccesoDatos</Name>
     </ProjectReference>
   </ItemGroup>

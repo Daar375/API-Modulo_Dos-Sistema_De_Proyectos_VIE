@@ -52,6 +52,13 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NombreProyecto" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="DisciplinaCientifica">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DisciplinaCientifica" Type="nvarchar" MaxLength="25" Nullable="false" />
+  </EntityType>
   <EntityType Name="Distrito">
     <Key>
       <PropertyRef Name="Id" />
@@ -69,6 +76,7 @@
     <Property Name="Responsable" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="FechaYHora" Type="datetime" Nullable="false" />
     <Property Name="CodigoProyecto" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="CedulaResponsable" Type="nvarchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="EquipoDeTrabajo">
     <Key>
@@ -79,7 +87,6 @@
     <Property Name="IdSetDatos" Type="int" Nullable="false" />
     <Property Name="IdCondicionDeParticipacion" Type="int" Nullable="false" />
     <Property Name="IdEscuela" Type="int" Nullable="false" />
-    <Property Name="CantidadHoras" Type="int" Nullable="false" />
     <Property Name="AreaConocimiento" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="EquipoDeTrabajoXTipoHora">
@@ -91,6 +98,7 @@
     <Property Name="IdTipoHora" Type="int" Nullable="false" />
     <Property Name="FechaInicio" Type="date" Nullable="false" />
     <Property Name="FechaFinalizacion" Type="date" Nullable="false" />
+    <Property Name="CantidadHoras" Type="int" />
   </EntityType>
   <EntityType Name="Escuela">
     <Key>
@@ -113,6 +121,13 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FuenteFinanciamiento" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Idioma">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreIdioma" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Incidencia">
     <Key>
@@ -148,6 +163,39 @@
     <Property Name="SegundoApellido" Type="nvarchar" MaxLength="15" />
     <Property Name="CorreoElectronico" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="TelefonoMovil" Type="nvarchar" MaxLength="9" Nullable="false" />
+    <Property Name="EstadoActual" Type="bit" Nullable="false" />
+    <Property Name="FechaNacimiento" Type="date" Nullable="false" />
+    <Property Name="TipoIdentificacion" Type="int" Nullable="false" />
+    <Property Name="PaisNacimiento" Type="int" Nullable="false" />
+    <Property Name="Sexo" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InvestigadorXEscuela">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEscuela" Type="int" Nullable="false" />
+    <Property Name="NumIdentidad" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InvestigadorXIdioma">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumIdentidad" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="IdIdioma" Type="int" Nullable="false" />
+    <Property Name="NivelLectura" Type="int" Nullable="false" />
+    <Property Name="NivelHabla" Type="int" Nullable="false" />
+    <Property Name="NivelEscritura" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InvestigadorXSubdisciplina">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdSubdisciplina" Type="int" Nullable="false" />
+    <Property Name="NumIdentidad" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="IdDisciplina" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Meta">
     <Key>
@@ -171,6 +219,13 @@
     </Key>
     <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="NivelDeResponsabilidad" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NivelIdioma">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NivelIdioma" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="ObjetivoEspecifico">
     <Key>
@@ -366,6 +421,14 @@
     <Property Name="IdAreaFrascati" Type="int" Nullable="false" />
     <Property Name="SubArea" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="Subdisciplina">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subdisciplina" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="IdDisciplina" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="SubODS">
     <Key>
       <PropertyRef Name="Id" />
@@ -383,6 +446,13 @@
     <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TipoDeIdentificacion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoIdentificacion" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="TipoDepartamento">
     <Key>
@@ -481,6 +551,18 @@
       </Principal>
       <Dependent Role="Distrito">
         <PropertyRef Name="IdCanton" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EntradaBitacora_Investigador">
+    <End Role="Investigador" Type="Self.Investigador" Multiplicity="0..1" />
+    <End Role="EntradaBitacora" Type="Self.EntradaBitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Investigador">
+        <PropertyRef Name="NumIdentidad" />
+      </Principal>
+      <Dependent Role="EntradaBitacora">
+        <PropertyRef Name="CedulaResponsable" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -613,6 +695,150 @@
       </Principal>
       <Dependent Role="Informe">
         <PropertyRef Name="IdTipoInforme" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Investigador_Pais">
+    <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+    <End Role="Investigador" Type="Self.Investigador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Investigador">
+        <PropertyRef Name="PaisNacimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Investigador_TipoDeIdentificacion">
+    <End Role="TipoDeIdentificacion" Type="Self.TipoDeIdentificacion" Multiplicity="1" />
+    <End Role="Investigador" Type="Self.Investigador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoDeIdentificacion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Investigador">
+        <PropertyRef Name="TipoIdentificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvestigadorXEscuela_Escuela">
+    <End Role="Escuela" Type="Self.Escuela" Multiplicity="1" />
+    <End Role="InvestigadorXEscuela" Type="Self.InvestigadorXEscuela" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Escuela">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InvestigadorXEscuela">
+        <PropertyRef Name="IdEscuela" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvestigadorXEscuela_Investigador">
+    <End Role="Investigador" Type="Self.Investigador" Multiplicity="1" />
+    <End Role="InvestigadorXEscuela" Type="Self.InvestigadorXEscuela" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Investigador">
+        <PropertyRef Name="NumIdentidad" />
+      </Principal>
+      <Dependent Role="InvestigadorXEscuela">
+        <PropertyRef Name="NumIdentidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvestigadorXIdioma_Idioma">
+    <End Role="Idioma" Type="Self.Idioma" Multiplicity="1" />
+    <End Role="InvestigadorXIdioma" Type="Self.InvestigadorXIdioma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Idioma">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InvestigadorXIdioma">
+        <PropertyRef Name="IdIdioma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvestigadorXIdioma_Investigador">
+    <End Role="Investigador" Type="Self.Investigador" Multiplicity="1" />
+    <End Role="InvestigadorXIdioma" Type="Self.InvestigadorXIdioma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Investigador">
+        <PropertyRef Name="NumIdentidad" />
+      </Principal>
+      <Dependent Role="InvestigadorXIdioma">
+        <PropertyRef Name="NumIdentidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvestigadorXIdioma_NivelIdioma">
+    <End Role="NivelIdioma" Type="Self.NivelIdioma" Multiplicity="1" />
+    <End Role="InvestigadorXIdioma" Type="Self.InvestigadorXIdioma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NivelIdioma">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InvestigadorXIdioma">
+        <PropertyRef Name="NivelLectura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvestigadorXIdioma_NivelIdioma1">
+    <End Role="NivelIdioma" Type="Self.NivelIdioma" Multiplicity="1" />
+    <End Role="InvestigadorXIdioma" Type="Self.InvestigadorXIdioma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NivelIdioma">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InvestigadorXIdioma">
+        <PropertyRef Name="NivelHabla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvestigadorXIdioma_NivelIdioma2">
+    <End Role="NivelIdioma" Type="Self.NivelIdioma" Multiplicity="1" />
+    <End Role="InvestigadorXIdioma" Type="Self.InvestigadorXIdioma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NivelIdioma">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InvestigadorXIdioma">
+        <PropertyRef Name="NivelEscritura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvestigadorXSubdisciplina_DisciplinaCientifica">
+    <End Role="DisciplinaCientifica" Type="Self.DisciplinaCientifica" Multiplicity="1" />
+    <End Role="InvestigadorXSubdisciplina" Type="Self.InvestigadorXSubdisciplina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DisciplinaCientifica">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InvestigadorXSubdisciplina">
+        <PropertyRef Name="IdDisciplina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvestigadorXSubdisciplina_Investigador">
+    <End Role="Investigador" Type="Self.Investigador" Multiplicity="1" />
+    <End Role="InvestigadorXSubdisciplina" Type="Self.InvestigadorXSubdisciplina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Investigador">
+        <PropertyRef Name="NumIdentidad" />
+      </Principal>
+      <Dependent Role="InvestigadorXSubdisciplina">
+        <PropertyRef Name="NumIdentidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvestigadorXSubdisciplina_Subdisciplina">
+    <End Role="Subdisciplina" Type="Self.Subdisciplina" Multiplicity="1" />
+    <End Role="InvestigadorXSubdisciplina" Type="Self.InvestigadorXSubdisciplina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subdisciplina">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InvestigadorXSubdisciplina">
+        <PropertyRef Name="IdSubdisciplina" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1012,6 +1238,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Subdisciplina_DisciplinaCientifica">
+    <End Role="DisciplinaCientifica" Type="Self.DisciplinaCientifica" Multiplicity="1" />
+    <End Role="Subdisciplina" Type="Self.Subdisciplina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DisciplinaCientifica">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Subdisciplina">
+        <PropertyRef Name="IdDisciplina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_SubODS_ODS">
     <End Role="ODS" Type="Self.ODS" Multiplicity="1" />
     <End Role="SubODS" Type="Self.SubODS" Multiplicity="*" />
@@ -1048,6 +1286,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_UbicacionGeografica_Proyecto">
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+    <End Role="UbicacionGeografica" Type="Self.UbicacionGeografica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyecto">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="UbicacionGeografica">
+        <PropertyRef Name="CodigoProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_UbicacionGeografica_Region">
     <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
     <End Role="UbicacionGeografica" Type="Self.UbicacionGeografica" Multiplicity="*" />
@@ -1080,6 +1330,7 @@
   <Function Name="Pr_EntradaBitacora_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Descripcion" Type="text" Mode="In" />
     <Parameter Name="Responsable" Type="nvarchar" Mode="In" />
+    <Parameter Name="CedulaResponsable" Type="nvarchar" Mode="In" />
     <Parameter Name="FechaYHora" Type="datetime" Mode="In" />
     <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
   </Function>
@@ -1115,6 +1366,50 @@
   <Function Name="Pr_Informe_SeleccionarXProyecto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="Pr_Investigador_AgregarAProy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumIdentidad" Type="nvarchar" Mode="In" />
+    <Parameter Name="IdSetDatos" Type="int" Mode="In" />
+    <Parameter Name="IdCondicionDeParticipacion" Type="int" Mode="In" />
+    <Parameter Name="IdEscuela" Type="int" Mode="In" />
+    <Parameter Name="AreaConocimiento" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Pr_Investigador_AgregarHoras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdEquipoDeTrabajo" Type="int" Mode="In" />
+    <Parameter Name="IdTipoHora" Type="int" Mode="In" />
+    <Parameter Name="FechaInicio" Type="date" Mode="In" />
+    <Parameter Name="FechaFinalizacion" Type="date" Mode="In" />
+    <Parameter Name="CantidadHoras" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Pr_Investigador_Buscar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NombreInvestigador" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Pr_Investigador_Consultar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumIdentidad" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Pr_Investigador_ConsultHoras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumIdentidad" Type="nvarchar" Mode="In" />
+    <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Pr_Investigador_DiscipSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Estado" Type="nvarchar" Mode="In" />
+    <Parameter Name="Disciplina" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Pr_Investigador_EscuelaSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Estado" Type="nvarchar" Mode="In" />
+    <Parameter Name="Escuela" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Pr_Investigador_EstadoSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Estado" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Pr_Investigador_SelectDiscip" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumIdentidad" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Pr_Investigador_SelectEscuela" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumIdentidad" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Pr_Investigador_SelectIdiomas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumIdentidad" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="Pr_Meta_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Id" Type="int" Mode="In" />
   </Function>
@@ -1138,6 +1433,10 @@
   </Function>
   <Function Name="Pr_PalabrasClave_SeleccionarXProyecto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Pr_PlanDeAccion_ObjGenModificar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CodigoProyecto" Type="nvarchar" Mode="In" />
+    <Parameter Name="NuevoObjGeneral" Type="text" Mode="In" />
   </Function>
   <Function Name="Pr_PresupuestoProyecto_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Id" Type="int" Mode="In" />
@@ -1219,6 +1518,27 @@
     <Parameter Name="NuevaFechaInicio" Type="date" Mode="In" />
     <Parameter Name="NuevaDescripcion" Type="text" Mode="In" />
     <Parameter Name="NuevaJustificacion" Type="text" Mode="In" />
+  </Function>
+  <Function Name="Pr_Proyecto_ReporteBeneficiaria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EstadoBusqueda" Type="nvarchar" Mode="In" />
+    <Parameter Name="IdBeneficiaria" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Pr_Proyecto_ReporteEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EstadoBusqueda" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Pr_Proyecto_ReporteModalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EstadoBusqueda" Type="nvarchar" Mode="In" />
+    <Parameter Name="IdModalidadProyecto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Pr_Proyecto_ReporteTipoProy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EstadoBusqueda" Type="nvarchar" Mode="In" />
+    <Parameter Name="IdTipoProyecto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Pr_Proyecto_ReporteUbicacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EstadoBusqueda" Type="nvarchar" Mode="In" />
+    <Parameter Name="IdPais" Type="int" Mode="In" />
+    <Parameter Name="IdRegion" Type="int" Mode="In" />
+    <Parameter Name="IdProvinvia" Type="int" Mode="In" />
   </Function>
   <Function Name="Pr_Proyecto_Seleccionar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Pr_ProyectoXBeneficiaria_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1330,6 +1650,7 @@
     <EntitySet Name="Colaborador" EntityType="Self.Colaborador" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Compra" EntityType="Self.Compra" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DisciplinaCientifica" EntityType="Self.DisciplinaCientifica" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Distrito" EntityType="Self.Distrito" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EntradaBitacora" EntityType="Self.EntradaBitacora" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EquipoDeTrabajo" EntityType="Self.EquipoDeTrabajo" Schema="dbo" store:Type="Tables" />
@@ -1337,12 +1658,17 @@
     <EntitySet Name="Escuela" EntityType="Self.Escuela" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EstadoDeProyecto" EntityType="Self.EstadoDeProyecto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FuenteFinanciamiento" EntityType="Self.FuenteFinanciamiento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Idioma" EntityType="Self.Idioma" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Incidencia" EntityType="Self.Incidencia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Informe" EntityType="Self.Informe" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Investigador" EntityType="Self.Investigador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InvestigadorXEscuela" EntityType="Self.InvestigadorXEscuela" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InvestigadorXIdioma" EntityType="Self.InvestigadorXIdioma" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InvestigadorXSubdisciplina" EntityType="Self.InvestigadorXSubdisciplina" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Meta" EntityType="Self.Meta" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ModalidadProyecto" EntityType="Self.ModalidadProyecto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NivelDeResponsabilidad" EntityType="Self.NivelDeResponsabilidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NivelIdioma" EntityType="Self.NivelIdioma" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ObjetivoEspecifico" EntityType="Self.ObjetivoEspecifico" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ODS" EntityType="Self.ODS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
@@ -1364,8 +1690,10 @@
     <EntitySet Name="Sede" EntityType="Self.Sede" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SetDatosGenerales" EntityType="Self.SetDatosGenerales" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SubAreaFrascati" EntityType="Self.SubAreaFrascati" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subdisciplina" EntityType="Self.Subdisciplina" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SubODS" EntityType="Self.SubODS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoDeIdentificacion" EntityType="Self.TipoDeIdentificacion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoDepartamento" EntityType="Self.TipoDepartamento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoDeProceso" EntityType="Self.TipoDeProceso" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoHora" EntityType="Self.TipoHora" Schema="dbo" store:Type="Tables" />
@@ -1388,6 +1716,10 @@
     <AssociationSet Name="FK_Distrito_Canton" Association="Self.FK_Distrito_Canton">
       <End Role="Canton" EntitySet="Canton" />
       <End Role="Distrito" EntitySet="Distrito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EntradaBitacora_Investigador" Association="Self.FK_EntradaBitacora_Investigador">
+      <End Role="Investigador" EntitySet="Investigador" />
+      <End Role="EntradaBitacora" EntitySet="EntradaBitacora" />
     </AssociationSet>
     <AssociationSet Name="FK_EntradaBitacora_Proyecto" Association="Self.FK_EntradaBitacora_Proyecto">
       <End Role="Proyecto" EntitySet="Proyecto" />
@@ -1432,6 +1764,54 @@
     <AssociationSet Name="FK_Informe_TipoInforme" Association="Self.FK_Informe_TipoInforme">
       <End Role="TipoInforme" EntitySet="TipoInforme" />
       <End Role="Informe" EntitySet="Informe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Investigador_Pais" Association="Self.FK_Investigador_Pais">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="Investigador" EntitySet="Investigador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Investigador_TipoDeIdentificacion" Association="Self.FK_Investigador_TipoDeIdentificacion">
+      <End Role="TipoDeIdentificacion" EntitySet="TipoDeIdentificacion" />
+      <End Role="Investigador" EntitySet="Investigador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvestigadorXEscuela_Escuela" Association="Self.FK_InvestigadorXEscuela_Escuela">
+      <End Role="Escuela" EntitySet="Escuela" />
+      <End Role="InvestigadorXEscuela" EntitySet="InvestigadorXEscuela" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvestigadorXEscuela_Investigador" Association="Self.FK_InvestigadorXEscuela_Investigador">
+      <End Role="Investigador" EntitySet="Investigador" />
+      <End Role="InvestigadorXEscuela" EntitySet="InvestigadorXEscuela" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvestigadorXIdioma_Idioma" Association="Self.FK_InvestigadorXIdioma_Idioma">
+      <End Role="Idioma" EntitySet="Idioma" />
+      <End Role="InvestigadorXIdioma" EntitySet="InvestigadorXIdioma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvestigadorXIdioma_Investigador" Association="Self.FK_InvestigadorXIdioma_Investigador">
+      <End Role="Investigador" EntitySet="Investigador" />
+      <End Role="InvestigadorXIdioma" EntitySet="InvestigadorXIdioma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvestigadorXIdioma_NivelIdioma" Association="Self.FK_InvestigadorXIdioma_NivelIdioma">
+      <End Role="NivelIdioma" EntitySet="NivelIdioma" />
+      <End Role="InvestigadorXIdioma" EntitySet="InvestigadorXIdioma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvestigadorXIdioma_NivelIdioma1" Association="Self.FK_InvestigadorXIdioma_NivelIdioma1">
+      <End Role="NivelIdioma" EntitySet="NivelIdioma" />
+      <End Role="InvestigadorXIdioma" EntitySet="InvestigadorXIdioma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvestigadorXIdioma_NivelIdioma2" Association="Self.FK_InvestigadorXIdioma_NivelIdioma2">
+      <End Role="NivelIdioma" EntitySet="NivelIdioma" />
+      <End Role="InvestigadorXIdioma" EntitySet="InvestigadorXIdioma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvestigadorXSubdisciplina_DisciplinaCientifica" Association="Self.FK_InvestigadorXSubdisciplina_DisciplinaCientifica">
+      <End Role="DisciplinaCientifica" EntitySet="DisciplinaCientifica" />
+      <End Role="InvestigadorXSubdisciplina" EntitySet="InvestigadorXSubdisciplina" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvestigadorXSubdisciplina_Investigador" Association="Self.FK_InvestigadorXSubdisciplina_Investigador">
+      <End Role="Investigador" EntitySet="Investigador" />
+      <End Role="InvestigadorXSubdisciplina" EntitySet="InvestigadorXSubdisciplina" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvestigadorXSubdisciplina_Subdisciplina" Association="Self.FK_InvestigadorXSubdisciplina_Subdisciplina">
+      <End Role="Subdisciplina" EntitySet="Subdisciplina" />
+      <End Role="InvestigadorXSubdisciplina" EntitySet="InvestigadorXSubdisciplina" />
     </AssociationSet>
     <AssociationSet Name="FK_Meta_ObjetivoEspecifico" Association="Self.FK_Meta_ObjetivoEspecifico">
       <End Role="ObjetivoEspecifico" EntitySet="ObjetivoEspecifico" />
@@ -1565,6 +1945,10 @@
       <End Role="AreaFrascati" EntitySet="AreaFrascati" />
       <End Role="SubAreaFrascati" EntitySet="SubAreaFrascati" />
     </AssociationSet>
+    <AssociationSet Name="FK_Subdisciplina_DisciplinaCientifica" Association="Self.FK_Subdisciplina_DisciplinaCientifica">
+      <End Role="DisciplinaCientifica" EntitySet="DisciplinaCientifica" />
+      <End Role="Subdisciplina" EntitySet="Subdisciplina" />
+    </AssociationSet>
     <AssociationSet Name="FK_SubODS_ODS" Association="Self.FK_SubODS_ODS">
       <End Role="ODS" EntitySet="ODS" />
       <End Role="SubODS" EntitySet="SubODS" />
@@ -1575,6 +1959,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_UbicacionGeografica_Provincia" Association="Self.FK_UbicacionGeografica_Provincia">
       <End Role="Provincia" EntitySet="Provincia" />
+      <End Role="UbicacionGeografica" EntitySet="UbicacionGeografica" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UbicacionGeografica_Proyecto" Association="Self.FK_UbicacionGeografica_Proyecto">
+      <End Role="Proyecto" EntitySet="Proyecto" />
       <End Role="UbicacionGeografica" EntitySet="UbicacionGeografica" />
     </AssociationSet>
     <AssociationSet Name="FK_UbicacionGeografica_Region" Association="Self.FK_UbicacionGeografica_Region">

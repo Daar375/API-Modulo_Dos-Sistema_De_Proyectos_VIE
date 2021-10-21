@@ -46,7 +46,7 @@ namespace modulo2DBConectionAPI.Controllers
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
-                return entities.Pr_EntradaBitacora_Insertar(RequestInfo.descripcion, RequestInfo.responsable, DateTime.Parse(RequestInfo.fechaYHora) , RequestInfo.codigoProyecto).ToList();
+                return entities.Pr_EntradaBitacora_Insertar(RequestInfo.descripcion, RequestInfo.responsable, RequestInfo.cedulaResponsable, DateTime.Parse(RequestInfo.fechaYHora) , RequestInfo.codigoProyecto).ToList();
             }
         }
     }

@@ -12,16 +12,19 @@ namespace AccesoDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class EntradaBitacora
+    public partial class InvestigadorXIdioma
     {
         public int Id { get; set; }
-        public string Descripcion { get; set; }
-        public string Responsable { get; set; }
-        public System.DateTime FechaYHora { get; set; }
-        public string CodigoProyecto { get; set; }
-        public string CedulaResponsable { get; set; }
+        public string NumIdentidad { get; set; }
+        public int IdIdioma { get; set; }
+        public int NivelLectura { get; set; }
+        public int NivelHabla { get; set; }
+        public int NivelEscritura { get; set; }
     
+        public virtual Idioma Idioma { get; set; }
         public virtual Investigador Investigador { get; set; }
-        public virtual Proyecto Proyecto { get; set; }
+        public virtual NivelIdioma NivelIdioma { get; set; }
+        public virtual NivelIdioma NivelIdioma1 { get; set; }
+        public virtual NivelIdioma NivelIdioma2 { get; set; }
     }
 }

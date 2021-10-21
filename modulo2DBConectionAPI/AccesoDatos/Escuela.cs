@@ -17,6 +17,7 @@ namespace AccesoDatos
         public Escuela()
         {
             this.EquipoDeTrabajo = new HashSet<EquipoDeTrabajo>();
+            this.InvestigadorXEscuela = new HashSet<InvestigadorXEscuela>();
         }
     
         public int Id { get; set; }
@@ -25,5 +26,6 @@ namespace AccesoDatos
     
         public virtual ICollection<EquipoDeTrabajo> EquipoDeTrabajo { get; set; }
         public virtual Sede Sede { get; set; }
+        public virtual ICollection<InvestigadorXEscuela> InvestigadorXEscuela { get; set; }
     }
 }

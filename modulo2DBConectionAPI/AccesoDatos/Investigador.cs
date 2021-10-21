@@ -16,7 +16,11 @@ namespace AccesoDatos
     {
         public Investigador()
         {
+            this.EntradaBitacora = new HashSet<EntradaBitacora>();
             this.EquipoDeTrabajo = new HashSet<EquipoDeTrabajo>();
+            this.InvestigadorXEscuela = new HashSet<InvestigadorXEscuela>();
+            this.InvestigadorXIdioma = new HashSet<InvestigadorXIdioma>();
+            this.InvestigadorXSubdisciplina = new HashSet<InvestigadorXSubdisciplina>();
             this.ProductoObjetivo = new HashSet<ProductoObjetivo>();
             this.Proyecto = new HashSet<Proyecto>();
             this.Proyecto1 = new HashSet<Proyecto>();
@@ -28,8 +32,19 @@ namespace AccesoDatos
         public string SegundoApellido { get; set; }
         public string CorreoElectronico { get; set; }
         public string TelefonoMovil { get; set; }
+        public bool EstadoActual { get; set; }
+        public System.DateTime FechaNacimiento { get; set; }
+        public int TipoIdentificacion { get; set; }
+        public int PaisNacimiento { get; set; }
+        public string Sexo { get; set; }
     
+        public virtual ICollection<EntradaBitacora> EntradaBitacora { get; set; }
         public virtual ICollection<EquipoDeTrabajo> EquipoDeTrabajo { get; set; }
+        public virtual Pais Pais { get; set; }
+        public virtual TipoDeIdentificacion TipoDeIdentificacion { get; set; }
+        public virtual ICollection<InvestigadorXEscuela> InvestigadorXEscuela { get; set; }
+        public virtual ICollection<InvestigadorXIdioma> InvestigadorXIdioma { get; set; }
+        public virtual ICollection<InvestigadorXSubdisciplina> InvestigadorXSubdisciplina { get; set; }
         public virtual ICollection<ProductoObjetivo> ProductoObjetivo { get; set; }
         public virtual ICollection<Proyecto> Proyecto { get; set; }
         public virtual ICollection<Proyecto> Proyecto1 { get; set; }
