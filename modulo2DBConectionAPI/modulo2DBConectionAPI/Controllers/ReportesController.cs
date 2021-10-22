@@ -9,8 +9,8 @@ using modulo2DBConectionAPI.Models;
 
 namespace modulo2DBConectionAPI.Controllers
 {
-    [RoutePrefix("api/Investigador")]
-    public class InvestigadorController : ApiController
+    [RoutePrefix("api/Reportes")]
+    public class ReportesController : ApiController
     {
         public List<Investigador> Get()
         {

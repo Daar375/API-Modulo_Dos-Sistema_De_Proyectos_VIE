@@ -28,5 +28,17 @@ namespace modulo2DBConectionAPI.Controllers
             }
 
         }
+        public System.Data.Objects.ObjectResult<int?> Post(string codigo, string numIdentidad)
+        {
+            using (VieEntidades entities = new VieEntidades())
+            {
+                entities.Configuration.ProxyCreationEnabled = false;
+
+                return entities.Pr_Proyecto_CambiarInvCoord(codigo, numIdentidad);
+            }
+
+        }
+
+
     }
 }

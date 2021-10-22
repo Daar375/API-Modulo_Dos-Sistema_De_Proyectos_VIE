@@ -169,8 +169,10 @@
     <Compile Include="Controllers\DepartamentoController.cs" />
     <Compile Include="Controllers\EstadoProyectoController.cs" />
     <Compile Include="Controllers\FrascatiController.cs" />
+    <Compile Include="Controllers\FuenteController.cs" />
     <Compile Include="Controllers\InformeController.cs" />
-    <Compile Include="Controllers\InvestigadorController.cs" />
+    <Compile Include="Controllers\PartidaController.cs" />
+    <Compile Include="Controllers\ReportesController.cs" />
     <Compile Include="Controllers\MetasController.cs" />
     <Compile Include="Controllers\ModalidadController.cs" />
     <Compile Include="Controllers\ObjetivosEspecificosController.cs" />
@@ -251,6 +253,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\EstadoProyecto\" />
+    <Folder Include="Views\Fuente\" />
     <Folder Include="Views\Investigador\" />
     <Folder Include="Views\PostAmpliacionResponce\" />
     <Folder Include="Views\TipoDepartamento\" />
