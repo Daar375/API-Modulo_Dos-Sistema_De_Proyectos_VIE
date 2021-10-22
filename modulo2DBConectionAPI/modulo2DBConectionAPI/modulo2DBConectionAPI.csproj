@@ -166,6 +166,7 @@
     <Compile Include="Controllers\BitacoraController.cs" />
     <Compile Include="Controllers\ColaboradoresController.cs" />
     <Compile Include="Controllers\CompraController.cs" />
+    <Compile Include="Controllers\CoordinadorController.cs" />
     <Compile Include="Controllers\DepartamentoController.cs" />
     <Compile Include="Controllers\EstadoProyectoController.cs" />
     <Compile Include="Controllers\FrascatiController.cs" />
@@ -254,6 +255,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Coordinador\" />
     <Folder Include="Views\EstadoProyecto\" />
     <Folder Include="Views\Fuente\" />
     <Folder Include="Views\Incidencias\" />
