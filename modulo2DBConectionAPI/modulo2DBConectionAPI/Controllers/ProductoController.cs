@@ -20,7 +20,7 @@ namespace modulo2DBConectionAPI.Controllers
             }
         }
 
-                public List<Pr_ProductoObjetivo_Seleccionar_Result> Get(String id)
+                public List<Pr_ProductoObjetivo_Seleccionar_Result> Get(int id)
         {
             using (VieEntidades entities = new VieEntidades())
             {
