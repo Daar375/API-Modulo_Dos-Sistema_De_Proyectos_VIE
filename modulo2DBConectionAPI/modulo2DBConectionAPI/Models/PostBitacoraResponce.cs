@@ -7,6 +7,7 @@ namespace modulo2DBConectionAPI.Models
 {
     public class PostBitacoraResponce 
     {
+        public int Id { get; set; }
 
         public string descripcion { get; set; }
         public string responsable { get; set; }

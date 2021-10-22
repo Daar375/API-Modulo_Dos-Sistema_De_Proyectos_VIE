@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AmpliacionFechas">
           <Key>
             <PropertyRef Name="id" />
@@ -1975,8 +1975,7 @@
             <End Role="UbicacionGeografica" EntitySet="UbicacionGeografica" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -3751,7 +3750,7 @@
           </AssociationSet>
           <FunctionImport Name="Pr_Colaborador_Seleccionar" ReturnType="Collection(Model.Pr_Colaborador_Seleccionar_Result)" />
           <FunctionImport Name="Pr_Compra_Eliminar" ReturnType="Collection(Int32)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Compra_Insertar" ReturnType="Collection(Model.Pr_Compra_Insertar_Result)">
             <Parameter Name="NombreProducto" Mode="In" Type="String" />
@@ -3760,10 +3759,10 @@
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Compra_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_Compra_SeleccionarXProyecto_Result)">
-            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_EntradaBitacora_Eliminar" ReturnType="Collection(Int32)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_EntradaBitacora_Insertar" ReturnType="Collection(Model.Pr_EntradaBitacora_Insertar_Result)">
             <Parameter Name="Descripcion" Mode="In" Type="String" />
@@ -3773,13 +3772,13 @@
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_EntradaBitacora_Seleccionar" ReturnType="Collection(Model.Pr_EntradaBitacora_Seleccionar_Result)">
-            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_EquipoDeTrabajo_Seleccionar" ReturnType="Collection(Model.Pr_EquipoDeTrabajo_Seleccionar_Result)">
-            <Parameter Name="Codigo" Mode="In" Type="String" />
+          <Parameter Name="Codigo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Incidencia_Eliminar" ReturnType="Collection(Int32)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Incidencia_Insertar" ReturnType="Collection(Model.Pr_Incidencia_Insertar_Result)">
             <Parameter Name="TituloIncidencia" Mode="In" Type="String" />
@@ -3787,10 +3786,10 @@
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Incidencias_Seleccionar" ReturnType="Collection(Model.Pr_Incidencias_Seleccionar_Result)">
-            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Informe_Eliminar" ReturnType="Collection(Int32)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Informe_Insertar" ReturnType="Collection(Model.Pr_Informe_Insertar_Result)">
             <Parameter Name="TituloInforme" Mode="In" Type="String" />
@@ -3802,7 +3801,7 @@
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Informe_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_Informe_SeleccionarXProyecto_Result)">
-            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Investigador_AgregarAProy" ReturnType="Collection(String)">
             <Parameter Name="NumIdentidad" Mode="In" Type="String" />
@@ -3819,10 +3818,10 @@
             <Parameter Name="CantidadHoras" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Investigador_Buscar" ReturnType="Collection(Model.Pr_Investigador_Buscar_Result)">
-            <Parameter Name="NombreInvestigador" Mode="In" Type="String" />
+          <Parameter Name="NombreInvestigador" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Investigador_Consultar" ReturnType="Collection(Model.Pr_Investigador_Consultar_Result)">
-            <Parameter Name="NumIdentidad" Mode="In" Type="String" />
+          <Parameter Name="NumIdentidad" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Investigador_ConsultHoras" ReturnType="Collection(Model.Pr_Investigador_ConsultHoras_Result)">
             <Parameter Name="NumIdentidad" Mode="In" Type="String" />
@@ -3837,19 +3836,19 @@
             <Parameter Name="Escuela" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Investigador_EstadoSelect" ReturnType="Collection(Model.Pr_Investigador_EstadoSelect_Result)">
-            <Parameter Name="Estado" Mode="In" Type="String" />
+          <Parameter Name="Estado" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Investigador_SelectDiscip" ReturnType="Collection(Model.Pr_Investigador_SelectDiscip_Result)">
-            <Parameter Name="NumIdentidad" Mode="In" Type="String" />
+          <Parameter Name="NumIdentidad" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Investigador_SelectEscuela" ReturnType="Collection(Model.Pr_Investigador_SelectEscuela_Result)">
-            <Parameter Name="NumIdentidad" Mode="In" Type="String" />
+          <Parameter Name="NumIdentidad" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Investigador_SelectIdiomas" ReturnType="Collection(Model.Pr_Investigador_SelectIdiomas_Result)">
-            <Parameter Name="NumIdentidad" Mode="In" Type="String" />
+          <Parameter Name="NumIdentidad" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Meta_Eliminar" ReturnType="Collection(String)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Meta_Insertar" ReturnType="Collection(Model.Pr_Meta_Insertar_Result)">
             <Parameter Name="Nombre" Mode="In" Type="String" />
@@ -3857,27 +3856,27 @@
             <Parameter Name="IdObjectivoEspecifico" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Meta_Seleccionar" ReturnType="Collection(Model.Pr_Meta_Seleccionar_Result)">
-            <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
+          <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ObjetivoEspecifico_Seleccionar" ReturnType="Collection(Model.Pr_ObjetivoEspecifico_Seleccionar_Result)">
-            <Parameter Name="Codigo" Mode="In" Type="String" />
+          <Parameter Name="Codigo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_PalabraClave_Eliminar" ReturnType="Collection(Int32)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_PalabraClave_Insertar" ReturnType="Collection(Model.Pr_PalabraClave_Insertar_Result)">
             <Parameter Name="PalabraClave" Mode="In" Type="String" />
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_PalabrasClave_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_PalabrasClave_SeleccionarXProyecto_Result)">
-            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_PlanDeAccion_ObjGenModificar" ReturnType="Collection(Int32)">
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
             <Parameter Name="NuevoObjGeneral" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_PresupuestoProyecto_Eliminar" ReturnType="Collection(Int32)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_PresupuestoProyecto_Insertar" ReturnType="Collection(Model.Pr_PresupuestoProyecto_Insertar_Result)">
             <Parameter Name="IdFuenteFinanciamiento" Mode="In" Type="Int32" />
@@ -3888,10 +3887,10 @@
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_PresupuestoProyecto_Seleccionar" ReturnType="Collection(Model.Pr_PresupuestoProyecto_Seleccionar_Result)">
-            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProductoObjetivo_Eliminar" ReturnType="Collection(String)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProductoObjetivo_Insertar" ReturnType="Collection(Model.Pr_ProductoObjetivo_Insertar_Result)">
             <Parameter Name="Actividad" Mode="In" Type="String" />
@@ -3905,7 +3904,7 @@
             <Parameter Name="Fecha" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProductoObjetivo_Seleccionar" ReturnType="Collection(Model.Pr_ProductoObjetivo_Seleccionar_Result)">
-            <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
+          <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_AmpliarFecha" ReturnType="Collection(Int32)">
             <Parameter Name="FechaAprobacion" Mode="In" Type="DateTime" />
@@ -3923,7 +3922,7 @@
             <Parameter Name="NumIdentidad" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_Consultar" ReturnType="Collection(Model.Pr_Proyecto_Consultar_Result)">
-            <Parameter Name="Codigo" Mode="In" Type="String" />
+          <Parameter Name="Codigo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_Modificar" ReturnType="Collection(Int32)">
             <Parameter Name="Codigo" Mode="In" Type="String" />
@@ -3962,7 +3961,7 @@
             <Parameter Name="IdBeneficiaria" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_ReporteEstado" ReturnType="Collection(Model.Pr_Proyecto_ReporteEstado_Result)">
-            <Parameter Name="EstadoBusqueda" Mode="In" Type="String" />
+          <Parameter Name="EstadoBusqueda" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_ReporteModalidad" ReturnType="Collection(Model.Pr_Proyecto_ReporteModalidad_Result)">
             <Parameter Name="EstadoBusqueda" Mode="In" Type="String" />
@@ -3980,17 +3979,17 @@
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_Seleccionar" ReturnType="Collection(Model.Pr_Proyecto_Seleccionar_Result)" />
           <FunctionImport Name="Pr_ProyectoXBeneficiaria_Eliminar" ReturnType="Collection(Int32)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXBeneficiaria_Insertar" ReturnType="Collection(Model.Pr_ProyectoXBeneficiaria_Insertar_Result)">
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
             <Parameter Name="IdPoblacionBeneficiaria" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXBeneficiaria_Seleccionar" ReturnType="Collection(Model.Pr_ProyectoXBeneficiaria_Seleccionar_Result)">
-            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXDepartamento_Eliminar" ReturnType="Collection(Int32)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXDepartamento_Insertar" ReturnType="Collection(Model.Pr_ProyectoXDepartamento_Insertar_Result)">
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
@@ -3998,10 +3997,10 @@
             <Parameter Name="IdTipoDepartamento" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXDepartamentos_Seleccionar" ReturnType="Collection(Model.Pr_ProyectoXDepartamentos_Seleccionar_Result)">
-            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXFrascati_Eliminar" ReturnType="Collection(Int32)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXFrascati_Insertar" ReturnType="Collection(Model.Pr_ProyectoXFrascati_Insertar_Result)">
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
@@ -4009,10 +4008,10 @@
             <Parameter Name="IdArea" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXFrascati_Seleccionar" ReturnType="Collection(Model.Pr_ProyectoXFrascati_Seleccionar_Result)">
-            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXODS_Eliminar" ReturnType="Collection(Int32)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXODS_Insertar" ReturnType="Collection(Model.Pr_ProyectoXODS_Insertar_Result)">
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
@@ -4020,10 +4019,10 @@
             <Parameter Name="IdODS" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXODS_Seleccionar" ReturnType="Collection(Model.Pr_ProyectoXODS_Seleccionar_Result)">
-            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Riesgo_Eliminar" ReturnType="Collection(String)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Riesgo_Insertar" ReturnType="Collection(Model.Pr_Riesgo_Insertar_Result)">
             <Parameter Name="Nombre" Mode="In" Type="String" />
@@ -4031,16 +4030,16 @@
             <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Riesgo_Seleccionar" ReturnType="Collection(Model.Pr_Riesgo_Seleccionar_Result)">
-            <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
+          <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_SubAreaFrascati_Consultar" ReturnType="Collection(Model.Pr_SubAreaFrascati_Consultar_Result)">
-            <Parameter Name="IdAreaFrascati" Mode="In" Type="Int32" />
+          <Parameter Name="IdAreaFrascati" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_SubODS_Consultar" ReturnType="Collection(Model.Pr_SubODS_Consultar_Result)">
-            <Parameter Name="IdODS" Mode="In" Type="Int32" />
+          <Parameter Name="IdODS" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_UbicacionGeografica_Eliminar" ReturnType="Collection(Int32)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_UbicacionGeografica_Insertar" ReturnType="Collection(Model.Pr_UbicacionGeografica_Insertar_Result)">
             <Parameter Name="IdPais" Mode="In" Type="Int32" />
@@ -4049,7 +4048,7 @@
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_UbicacionGeografica_Seleccionar" ReturnType="Collection(Model.Pr_UbicacionGeografica_Seleccionar_Result)">
-            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
