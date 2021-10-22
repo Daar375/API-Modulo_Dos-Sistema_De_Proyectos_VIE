@@ -170,6 +170,7 @@
     <Compile Include="Controllers\EstadoProyectoController.cs" />
     <Compile Include="Controllers\FrascatiController.cs" />
     <Compile Include="Controllers\FuenteController.cs" />
+    <Compile Include="Controllers\IncidenciasController.cs" />
     <Compile Include="Controllers\InformeController.cs" />
     <Compile Include="Controllers\PartidaController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
@@ -255,6 +256,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\EstadoProyecto\" />
     <Folder Include="Views\Fuente\" />
+    <Folder Include="Views\Incidencias\" />
     <Folder Include="Views\Investigador\" />
     <Folder Include="Views\PostAmpliacionResponce\" />
     <Folder Include="Views\Producto\" />
