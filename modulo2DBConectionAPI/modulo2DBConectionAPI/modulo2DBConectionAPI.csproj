@@ -197,6 +197,7 @@
     <Compile Include="Controllers\TipoDeProyectoController.cs" />
     <Compile Include="Controllers\TipoInformeController.cs" />
     <Compile Include="Controllers\TipoProcesoController.cs" />
+    <Compile Include="Controllers\TiposHoraController.cs" />
     <Compile Include="Controllers\UbicacionGeograficaController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -274,6 +275,7 @@
     <Folder Include="Views\Provincia\" />
     <Folder Include="Views\Region\" />
     <Folder Include="Views\TipoDepartamento\" />
+    <Folder Include="Views\TiposHora\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
