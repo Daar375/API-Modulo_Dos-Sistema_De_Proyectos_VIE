@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace modulo2DBConectionAPI.Controllers
 {
-    public class PartodaController : ApiController
+    public class PartidaController : ApiController
     {
 
         public List<Partida> Get()

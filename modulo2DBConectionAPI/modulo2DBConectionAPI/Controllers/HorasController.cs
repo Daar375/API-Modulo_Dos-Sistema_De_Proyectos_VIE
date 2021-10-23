@@ -16,7 +16,6 @@ namespace modulo2DBConectionAPI.Controllers
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
-
                 return entities.Pr_Investigador_ConsultHoras(numIdentidad, codigoProyecto).ToList();
             }
 
