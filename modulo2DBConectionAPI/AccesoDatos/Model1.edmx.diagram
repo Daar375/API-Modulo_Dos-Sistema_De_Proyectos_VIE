@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="92a3eef0abb9470ead7d661e9a17670e" Name="Diagram1" ZoomLevel="88">
+      <Diagram DiagramId="8b946d26415341eab0c2c643249b44e8" Name="Diagram1">
         <EntityTypeShape EntityType="Model.AmpliacionFechas" Width="1.5" PointX="13.5" PointY="26.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.AreaFrascati" Width="1.5" PointX="17.25" PointY="23.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Canton" Width="1.5" PointX="13.5" PointY="13.25" IsExpanded="true" />
@@ -26,7 +26,7 @@
         <EntityTypeShape EntityType="Model.InvestigadorXEscuela" Width="1.5" PointX="5.25" PointY="27.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.InvestigadorXIdioma" Width="1.5" PointX="5.25" PointY="33.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.InvestigadorXSubdisciplina" Width="1.5" PointX="8.25" PointY="26.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Meta" Width="1.5" PointX="8.25" PointY="51.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Meta" Width="1.5" PointX="8.25" PointY="51.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.ModalidadProyecto" Width="1.5" PointX="9" PointY="20.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.NivelDeResponsabilidad" Width="1.5" PointX="6" PointY="48.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.NivelIdioma" Width="1.5" PointX="3" PointY="37.625" IsExpanded="true" />
@@ -47,7 +47,7 @@
         <EntityTypeShape EntityType="Model.ProyectoXFrascati" Width="1.5" PointX="19.5" PointY="26.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.ProyectoXODS" Width="1.5" PointX="19.5" PointY="34.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Region" Width="1.5" PointX="11.25" PointY="23.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Riesgo" Width="1.5" PointX="8.25" PointY="54.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Riesgo" Width="1.5" PointX="8.25" PointY="54.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Sede" Width="1.5" PointX="0.75" PointY="24.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.SetDatosGenerales" Width="1.5" PointX="9" PointY="42.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.SubAreaFrascati" Width="1.5" PointX="17.25" PointY="19.75" IsExpanded="true" />

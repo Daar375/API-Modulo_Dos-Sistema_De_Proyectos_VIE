@@ -226,6 +226,7 @@
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="EstaCumplida" ColumnName="EstaCumplida" />
           <ScalarProperty Name="IdObjectivoEspecifico" ColumnName="IdObjectivoEspecifico" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -698,6 +699,17 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_Investigador_BuscarPorCod" FunctionName="Model.Store.Pr_Investigador_BuscarPorCod">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Investigador_BuscarPorCod_Result">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="NumIdentidad" ColumnName="NumIdentidad" />
+          <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Pr_Investigador_Consultar" FunctionName="Model.Store.Pr_Investigador_Consultar">
       <ResultMapping>
         <ComplexTypeMapping TypeName="Model.Pr_Investigador_Consultar_Result">
@@ -757,6 +769,29 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_Investigador_InfPendientes" FunctionName="Model.Store.Pr_Investigador_InfPendientes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Investigador_InfPendientes_Result">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="NumIdentidad" ColumnName="NumIdentidad" />
+          <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_Investigador_SelectCoord" FunctionName="Model.Store.Pr_Investigador_SelectCoord">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Investigador_SelectCoord_Result">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="NumIdentidad" ColumnName="NumIdentidad" />
+          <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Pr_Investigador_SelectDiscip" FunctionName="Model.Store.Pr_Investigador_SelectDiscip">
       <ResultMapping>
         <ComplexTypeMapping TypeName="Model.Pr_Investigador_SelectDiscip_Result">
@@ -783,6 +818,17 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_Investigador_SexoSelect" FunctionName="Model.Store.Pr_Investigador_SexoSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Investigador_SexoSelect_Result">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="NumIdentidad" ColumnName="NumIdentidad" />
+          <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Pr_Meta_Eliminar" FunctionName="Model.Store.Pr_Meta_Eliminar" />
     <FunctionImportMapping FunctionImportName="Pr_Meta_Insertar" FunctionName="Model.Store.Pr_Meta_Insertar">
       <ResultMapping>
@@ -791,6 +837,7 @@
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="EstaCumplida" ColumnName="EstaCumplida" />
           <ScalarProperty Name="IdObjectivoEspecifico" ColumnName="IdObjectivoEspecifico" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -800,6 +847,15 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="EstaCumplida" ColumnName="EstaCumplida" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_ObjEspecifico_GetByCodigo" FunctionName="Model.Store.Pr_ObjEspecifico_GetByCodigo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_ObjEspecifico_GetByCodigo_Result">
+          <ScalarProperty Name="ObjetivoEspecifico" ColumnName="ObjetivoEspecifico" />
+          <ScalarProperty Name="Metodologia" ColumnName="Metodologia" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -929,6 +985,38 @@
           <ScalarProperty Name="FechaAprobacion" ColumnName="FechaAprobacion" />
           <ScalarProperty Name="FechaInicioEjecucion" ColumnName="FechaInicioEjecucion" />
           <ScalarProperty Name="FechaFinEjecucion" ColumnName="FechaFinEjecucion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_Proyecto_InfPendientes" FunctionName="Model.Store.Pr_Proyecto_InfPendientes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Proyecto_InfPendientes_Result">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="NombreDelProyecto" ColumnName="NombreDelProyecto" />
+          <ScalarProperty Name="FechaInicioEjecucion" ColumnName="FechaInicioEjecucion" />
+          <ScalarProperty Name="FechaFinEjecucion" ColumnName="FechaFinEjecucion" />
+          <ScalarProperty Name="NombreOficial" ColumnName="NombreOficial" />
+          <ScalarProperty Name="Apellido1Oficial" ColumnName="Apellido1Oficial" />
+          <ScalarProperty Name="Apellido2Oficial" ColumnName="Apellido2Oficial" />
+          <ScalarProperty Name="NombreInvestigador" ColumnName="NombreInvestigador" />
+          <ScalarProperty Name="Apellido1Investigador" ColumnName="Apellido1Investigador" />
+          <ScalarProperty Name="Apellido2Investigador" ColumnName="Apellido2Investigador" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_Proyecto_InvParticipante" FunctionName="Model.Store.Pr_Proyecto_InvParticipante">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Proyecto_InvParticipante_Result">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="NombreDelProyecto" ColumnName="NombreDelProyecto" />
+          <ScalarProperty Name="FechaInicioEjecucion" ColumnName="FechaInicioEjecucion" />
+          <ScalarProperty Name="FechaFinEjecucion" ColumnName="FechaFinEjecucion" />
+          <ScalarProperty Name="NombreOficial" ColumnName="NombreOficial" />
+          <ScalarProperty Name="Apellido1Oficial" ColumnName="Apellido1Oficial" />
+          <ScalarProperty Name="Apellido2Oficial" ColumnName="Apellido2Oficial" />
+          <ScalarProperty Name="NombreInvestigador" ColumnName="NombreInvestigador" />
+          <ScalarProperty Name="Apellido1Investigador" ColumnName="Apellido1Investigador" />
+          <ScalarProperty Name="Apellido2Investigador" ColumnName="Apellido2Investigador" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

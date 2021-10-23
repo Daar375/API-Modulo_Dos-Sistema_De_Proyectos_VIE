@@ -29,6 +29,17 @@ namespace modulo2DBConectionAPI.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("ObjetivosEspecificos/{idObjetivo}")]
+        public List<Pr_ObjEspecifico_GetByCodigo_Result> Get(int idObjetivo)
+        {
+            using (VieEntidades entities = new VieEntidades())
+            {
+                entities.Configuration.ProxyCreationEnabled = false;
+                System.Data.Objects.ObjectResult<Pr_ObjEspecifico_GetByCodigo_Result> res = entities.Pr_ObjEspecifico_GetByCodigo(idObjetivo);
+                return res.ToList();
+            }
+        }
 
     }
 }

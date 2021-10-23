@@ -21,15 +21,6 @@ namespace modulo2DBConectionAPI.Controllers
         }
 
 
-        /*    [HttpPost]
-            public List<Pr_ProyectoXFrascati_Insertar_Result> Post(string codigoProyecto, int area, int subArea)
-            {
-                using (VieEntidades entidades = new VieEntidades())
-                {
-                    entidades.Configuration.ProxyCreationEnabled = false;
-                    System.Data.Objects.ObjectResult<Pr_ProyectoXFrascati_Insertar_Result> res = entidades.Pr_ProyectoXFrascati_Insertar(codigoProyecto, subArea, area);
-                    return res.ToList();
-                }
-            }*/
+
     }
 }

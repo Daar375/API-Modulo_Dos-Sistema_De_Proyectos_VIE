@@ -254,6 +254,7 @@
     <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="EstaCumplida" Type="Boolean" Nullable="false" />
     <Property Name="IdObjectivoEspecifico" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="ObjetivoEspecifico" Relationship="Self.FK_Meta_ObjetivoEspecifico" FromRole="Meta" ToRole="ObjetivoEspecifico" />
   </EntityType>
   <EntityType Name="ModalidadProyecto">
@@ -302,6 +303,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ODS1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="ProyectoXODS" Relationship="Self.FK_ProyectoXODS_ODS" FromRole="ODS" ToRole="ProyectoXODS" />
+    <NavigationProperty Name="SubODS" Relationship="Self.FK_SubODS_ODS" FromRole="ODS" ToRole="SubODS" />
   </EntityType>
   <EntityType Name="Pais">
     <Key>
@@ -1841,6 +1843,9 @@
     <FunctionImport Name="Pr_Investigador_Buscar" ReturnType="Collection(Model.Pr_Investigador_Buscar_Result)">
       <Parameter Name="NombreInvestigador" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="Pr_Investigador_BuscarPorCod" ReturnType="Collection(Model.Pr_Investigador_BuscarPorCod_Result)">
+      <Parameter Name="NumIdentidad" Mode="In" Type="String" />
+    </FunctionImport>
     <FunctionImport Name="Pr_Investigador_Consultar" ReturnType="Collection(Model.Pr_Investigador_Consultar_Result)">
       <Parameter Name="NumIdentidad" Mode="In" Type="String" />
     </FunctionImport>
@@ -1859,6 +1864,8 @@
     <FunctionImport Name="Pr_Investigador_EstadoSelect" ReturnType="Collection(Model.Pr_Investigador_EstadoSelect_Result)">
       <Parameter Name="Estado" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="Pr_Investigador_InfPendientes" ReturnType="Collection(Model.Pr_Investigador_InfPendientes_Result)" />
+    <FunctionImport Name="Pr_Investigador_SelectCoord" ReturnType="Collection(Model.Pr_Investigador_SelectCoord_Result)" />
     <FunctionImport Name="Pr_Investigador_SelectDiscip" ReturnType="Collection(Model.Pr_Investigador_SelectDiscip_Result)">
       <Parameter Name="NumIdentidad" Mode="In" Type="String" />
     </FunctionImport>
@@ -1868,15 +1875,22 @@
     <FunctionImport Name="Pr_Investigador_SelectIdiomas" ReturnType="Collection(Model.Pr_Investigador_SelectIdiomas_Result)">
       <Parameter Name="NumIdentidad" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="Pr_Meta_Eliminar" ReturnType="Collection(String)">
+    <FunctionImport Name="Pr_Investigador_SexoSelect" ReturnType="Collection(Model.Pr_Investigador_SexoSelect_Result)">
+      <Parameter Name="Sexo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_Meta_Eliminar" ReturnType="Collection(Int32)">
       <Parameter Name="Id" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="Pr_Meta_Insertar" ReturnType="Collection(Model.Pr_Meta_Insertar_Result)">
       <Parameter Name="Nombre" Mode="In" Type="String" />
       <Parameter Name="EstaCumplida" Mode="In" Type="Boolean" />
       <Parameter Name="IdObjectivoEspecifico" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Pr_Meta_Seleccionar" ReturnType="Collection(Model.Pr_Meta_Seleccionar_Result)">
+      <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_ObjEspecifico_GetByCodigo" ReturnType="Collection(Model.Pr_ObjEspecifico_GetByCodigo_Result)">
       <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="Pr_ObjetivoEspecifico_Seleccionar" ReturnType="Collection(Model.Pr_ObjetivoEspecifico_Seleccionar_Result)">
@@ -1910,7 +1924,7 @@
     <FunctionImport Name="Pr_PresupuestoProyecto_Seleccionar" ReturnType="Collection(Model.Pr_PresupuestoProyecto_Seleccionar_Result)">
       <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="Pr_ProductoObjetivo_Eliminar" ReturnType="Collection(String)">
+    <FunctionImport Name="Pr_ProductoObjetivo_Eliminar" ReturnType="Collection(Int32)">
       <Parameter Name="Id" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="Pr_ProductoObjetivo_Insertar" ReturnType="Collection(Model.Pr_ProductoObjetivo_Insertar_Result)">
@@ -1944,6 +1958,10 @@
     </FunctionImport>
     <FunctionImport Name="Pr_Proyecto_Consultar" ReturnType="Collection(Model.Pr_Proyecto_Consultar_Result)">
       <Parameter Name="Codigo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_Proyecto_InfPendientes" ReturnType="Collection(Model.Pr_Proyecto_InfPendientes_Result)" />
+    <FunctionImport Name="Pr_Proyecto_InvParticipante" ReturnType="Collection(Model.Pr_Proyecto_InvParticipante_Result)">
+      <Parameter Name="NumIdentidad" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Pr_Proyecto_Modificar" ReturnType="Collection(Int32)">
       <Parameter Name="Codigo" Mode="In" Type="String" />
@@ -2042,7 +2060,7 @@
     <FunctionImport Name="Pr_ProyectoXODS_Seleccionar" ReturnType="Collection(Model.Pr_ProyectoXODS_Seleccionar_Result)">
       <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="Pr_Riesgo_Eliminar" ReturnType="Collection(String)">
+    <FunctionImport Name="Pr_Riesgo_Eliminar" ReturnType="Collection(Int32)">
       <Parameter Name="Id" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="Pr_Riesgo_Insertar" ReturnType="Collection(Model.Pr_Riesgo_Insertar_Result)">
@@ -2186,6 +2204,13 @@
     <Property Type="String" Name="NumIdentidad" Nullable="false" MaxLength="20" />
     <Property Type="String" Name="CorreoElectronico" Nullable="false" MaxLength="50" />
   </ComplexType>
+  <ComplexType Name="Pr_Investigador_BuscarPorCod_Result">
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="NumIdentidad" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="CorreoElectronico" Nullable="false" MaxLength="50" />
+  </ComplexType>
   <ComplexType Name="Pr_Investigador_Consultar_Result">
     <Property Type="String" Name="NumIdentidad" Nullable="false" MaxLength="20" />
     <Property Type="String" Name="TipoIdentificacion" Nullable="false" MaxLength="20" />
@@ -2225,6 +2250,21 @@
     <Property Type="String" Name="NumIdentidad" Nullable="false" MaxLength="20" />
     <Property Type="String" Name="CorreoElectronico" Nullable="false" MaxLength="50" />
   </ComplexType>
+  <ComplexType Name="Pr_Investigador_InfPendientes_Result">
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="NumIdentidad" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="CorreoElectronico" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Pr_Investigador_SelectCoord_Result">
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="NumIdentidad" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="CorreoElectronico" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
+  </ComplexType>
   <ComplexType Name="Pr_Investigador_SelectDiscip_Result">
     <Property Type="String" Name="DisciplinaCientifica" Nullable="false" MaxLength="25" />
     <Property Type="String" Name="Subdisciplina" Nullable="false" MaxLength="25" />
@@ -2239,16 +2279,29 @@
     <Property Type="String" Name="NivelHabla" Nullable="false" MaxLength="20" />
     <Property Type="String" Name="NivelEscritura" Nullable="false" MaxLength="20" />
   </ComplexType>
+  <ComplexType Name="Pr_Investigador_SexoSelect_Result">
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="NumIdentidad" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="CorreoElectronico" Nullable="false" MaxLength="50" />
+  </ComplexType>
   <ComplexType Name="Pr_Meta_Insertar_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
     <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
     <Property Type="Boolean" Name="EstaCumplida" Nullable="false" />
     <Property Type="Int32" Name="IdObjectivoEspecifico" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="Max" />
   </ComplexType>
   <ComplexType Name="Pr_Meta_Seleccionar_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
     <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
     <Property Type="Boolean" Name="EstaCumplida" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="Pr_ObjEspecifico_GetByCodigo_Result">
+    <Property Type="String" Name="ObjetivoEspecifico" Nullable="false" MaxLength="Max" />
+    <Property Type="String" Name="Metodologia" Nullable="false" MaxLength="Max" />
   </ComplexType>
   <ComplexType Name="Pr_ObjetivoEspecifico_Seleccionar_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
@@ -2336,6 +2389,30 @@
     <Property Type="DateTime" Name="FechaAprobacion" Nullable="false" />
     <Property Type="DateTime" Name="FechaInicioEjecucion" Nullable="false" />
     <Property Type="DateTime" Name="FechaFinEjecucion" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Pr_Proyecto_InfPendientes_Result">
+    <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="NombreDelProyecto" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="FechaInicioEjecucion" Nullable="false" />
+    <Property Type="DateTime" Name="FechaFinEjecucion" Nullable="false" />
+    <Property Type="String" Name="NombreOficial" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido1Oficial" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido2Oficial" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="NombreInvestigador" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido1Investigador" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido2Investigador" Nullable="true" MaxLength="15" />
+  </ComplexType>
+  <ComplexType Name="Pr_Proyecto_InvParticipante_Result">
+    <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="NombreDelProyecto" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="FechaInicioEjecucion" Nullable="false" />
+    <Property Type="DateTime" Name="FechaFinEjecucion" Nullable="false" />
+    <Property Type="String" Name="NombreOficial" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido1Oficial" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido2Oficial" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="NombreInvestigador" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido1Investigador" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido2Investigador" Nullable="true" MaxLength="15" />
   </ComplexType>
   <ComplexType Name="Pr_Proyecto_ReporteBeneficiaria_Result">
     <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />

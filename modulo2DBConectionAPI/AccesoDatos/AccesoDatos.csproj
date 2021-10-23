@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{81AF0FA5-C601-4A38-ADB4-747C5676E81F}</ProjectGuid>
+    <ProjectGuid>{27F6A28E-C23E-4599-BA4E-AFE507F3A284}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AccesoDatos</RootNamespace>
@@ -218,6 +218,9 @@
     <Compile Include="Pr_Informe_SeleccionarXProyecto_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pr_Investigador_BuscarPorCod_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Pr_Investigador_Buscar_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -236,6 +239,12 @@
     <Compile Include="Pr_Investigador_EstadoSelect_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pr_Investigador_InfPendientes_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pr_Investigador_SelectCoord_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Pr_Investigador_SelectDiscip_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -245,10 +254,16 @@
     <Compile Include="Pr_Investigador_SelectIdiomas_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pr_Investigador_SexoSelect_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Pr_Meta_Insertar_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Pr_Meta_Seleccionar_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pr_ObjEspecifico_GetByCodigo_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Pr_ObjetivoEspecifico_Seleccionar_Result.cs">
@@ -300,6 +315,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Pr_Proyecto_Consultar_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pr_Proyecto_InfPendientes_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pr_Proyecto_InvParticipante_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Pr_Proyecto_ReporteBeneficiaria_Result.cs">

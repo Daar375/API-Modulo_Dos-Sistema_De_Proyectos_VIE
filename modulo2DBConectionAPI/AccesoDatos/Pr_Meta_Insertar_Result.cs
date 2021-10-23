@@ -17,5 +17,6 @@ namespace AccesoDatos
         public string Nombre { get; set; }
         public bool EstaCumplida { get; set; }
         public int IdObjectivoEspecifico { get; set; }
+        public string Descripcion { get; set; }
     }
 }

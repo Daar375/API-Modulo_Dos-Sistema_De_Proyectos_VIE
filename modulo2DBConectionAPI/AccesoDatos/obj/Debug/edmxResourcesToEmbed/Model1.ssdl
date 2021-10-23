@@ -205,6 +205,7 @@
     <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="EstaCumplida" Type="bit" Nullable="false" />
     <Property Name="IdObjectivoEspecifico" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="text" Nullable="false" />
   </EntityType>
   <EntityType Name="ModalidadProyecto">
     <Key>
@@ -1383,6 +1384,9 @@
   <Function Name="Pr_Investigador_Buscar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NombreInvestigador" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="Pr_Investigador_BuscarPorCod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumIdentidad" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="Pr_Investigador_Consultar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NumIdentidad" Type="nvarchar" Mode="In" />
   </Function>
@@ -1401,6 +1405,8 @@
   <Function Name="Pr_Investigador_EstadoSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Estado" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="Pr_Investigador_InfPendientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Pr_Investigador_SelectCoord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Pr_Investigador_SelectDiscip" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NumIdentidad" Type="nvarchar" Mode="In" />
   </Function>
@@ -1410,6 +1416,9 @@
   <Function Name="Pr_Investigador_SelectIdiomas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NumIdentidad" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="Pr_Investigador_SexoSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Sexo" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="Pr_Meta_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Id" Type="int" Mode="In" />
   </Function>
@@ -1417,8 +1426,12 @@
     <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
     <Parameter Name="EstaCumplida" Type="bit" Mode="In" />
     <Parameter Name="IdObjectivoEspecifico" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="text" Mode="In" />
   </Function>
   <Function Name="Pr_Meta_Seleccionar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdObjetivoEspecifico" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Pr_ObjEspecifico_GetByCodigo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="IdObjetivoEspecifico" Type="int" Mode="In" />
   </Function>
   <Function Name="Pr_ObjetivoEspecifico_Seleccionar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1486,6 +1499,10 @@
   </Function>
   <Function Name="Pr_Proyecto_Consultar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Codigo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Pr_Proyecto_InfPendientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Pr_Proyecto_InvParticipante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumIdentidad" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="Pr_Proyecto_Modificar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Codigo" Type="nvarchar" Mode="In" />

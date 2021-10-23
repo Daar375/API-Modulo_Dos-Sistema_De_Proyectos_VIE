@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AmpliacionFechas">
           <Key>
             <PropertyRef Name="id" />
@@ -210,6 +210,7 @@
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="EstaCumplida" Type="bit" Nullable="false" />
           <Property Name="IdObjectivoEspecifico" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="text" Nullable="false" />
         </EntityType>
         <EntityType Name="ModalidadProyecto">
           <Key>
@@ -1388,6 +1389,9 @@
         <Function Name="Pr_Investigador_Buscar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NombreInvestigador" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="Pr_Investigador_BuscarPorCod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumIdentidad" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="Pr_Investigador_Consultar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NumIdentidad" Type="nvarchar" Mode="In" />
         </Function>
@@ -1406,6 +1410,8 @@
         <Function Name="Pr_Investigador_EstadoSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Estado" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="Pr_Investigador_InfPendientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Pr_Investigador_SelectCoord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Pr_Investigador_SelectDiscip" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NumIdentidad" Type="nvarchar" Mode="In" />
         </Function>
@@ -1415,6 +1421,9 @@
         <Function Name="Pr_Investigador_SelectIdiomas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NumIdentidad" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="Pr_Investigador_SexoSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Sexo" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="Pr_Meta_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="int" Mode="In" />
         </Function>
@@ -1422,8 +1431,12 @@
           <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
           <Parameter Name="EstaCumplida" Type="bit" Mode="In" />
           <Parameter Name="IdObjectivoEspecifico" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="text" Mode="In" />
         </Function>
         <Function Name="Pr_Meta_Seleccionar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdObjetivoEspecifico" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Pr_ObjEspecifico_GetByCodigo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdObjetivoEspecifico" Type="int" Mode="In" />
         </Function>
         <Function Name="Pr_ObjetivoEspecifico_Seleccionar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1491,6 +1504,10 @@
         </Function>
         <Function Name="Pr_Proyecto_Consultar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Codigo" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Pr_Proyecto_InfPendientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Pr_Proyecto_InvParticipante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumIdentidad" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="Pr_Proyecto_Modificar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Codigo" Type="nvarchar" Mode="In" />
@@ -1975,7 +1992,8 @@
             <End Role="UbicacionGeografica" EntitySet="UbicacionGeografica" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -2233,6 +2251,7 @@
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EstaCumplida" Type="Boolean" Nullable="false" />
           <Property Name="IdObjectivoEspecifico" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="ObjetivoEspecifico" Relationship="Self.FK_Meta_ObjetivoEspecifico" FromRole="Meta" ToRole="ObjetivoEspecifico" />
         </EntityType>
         <EntityType Name="ModalidadProyecto">
@@ -2281,6 +2300,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ODS1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ProyectoXODS" Relationship="Self.FK_ProyectoXODS_ODS" FromRole="ODS" ToRole="ProyectoXODS" />
+          <NavigationProperty Name="SubODS" Relationship="Self.FK_SubODS_ODS" FromRole="ODS" ToRole="SubODS" />
         </EntityType>
         <EntityType Name="Pais">
           <Key>
@@ -3750,7 +3770,7 @@
           </AssociationSet>
           <FunctionImport Name="Pr_Colaborador_Seleccionar" ReturnType="Collection(Model.Pr_Colaborador_Seleccionar_Result)" />
           <FunctionImport Name="Pr_Compra_Eliminar" ReturnType="Collection(Int32)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Compra_Insertar" ReturnType="Collection(Model.Pr_Compra_Insertar_Result)">
             <Parameter Name="NombreProducto" Mode="In" Type="String" />
@@ -3759,10 +3779,10 @@
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Compra_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_Compra_SeleccionarXProyecto_Result)">
-          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_EntradaBitacora_Eliminar" ReturnType="Collection(Int32)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_EntradaBitacora_Insertar" ReturnType="Collection(Model.Pr_EntradaBitacora_Insertar_Result)">
             <Parameter Name="Descripcion" Mode="In" Type="String" />
@@ -3772,13 +3792,13 @@
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_EntradaBitacora_Seleccionar" ReturnType="Collection(Model.Pr_EntradaBitacora_Seleccionar_Result)">
-          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_EquipoDeTrabajo_Seleccionar" ReturnType="Collection(Model.Pr_EquipoDeTrabajo_Seleccionar_Result)">
-          <Parameter Name="Codigo" Mode="In" Type="String" />
+            <Parameter Name="Codigo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Incidencia_Eliminar" ReturnType="Collection(Int32)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Incidencia_Insertar" ReturnType="Collection(Model.Pr_Incidencia_Insertar_Result)">
             <Parameter Name="TituloIncidencia" Mode="In" Type="String" />
@@ -3786,10 +3806,10 @@
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Incidencias_Seleccionar" ReturnType="Collection(Model.Pr_Incidencias_Seleccionar_Result)">
-          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Informe_Eliminar" ReturnType="Collection(Int32)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Informe_Insertar" ReturnType="Collection(Model.Pr_Informe_Insertar_Result)">
             <Parameter Name="TituloInforme" Mode="In" Type="String" />
@@ -3801,7 +3821,7 @@
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Informe_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_Informe_SeleccionarXProyecto_Result)">
-          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Investigador_AgregarAProy" ReturnType="Collection(String)">
             <Parameter Name="NumIdentidad" Mode="In" Type="String" />
@@ -3818,10 +3838,13 @@
             <Parameter Name="CantidadHoras" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Investigador_Buscar" ReturnType="Collection(Model.Pr_Investigador_Buscar_Result)">
-          <Parameter Name="NombreInvestigador" Mode="In" Type="String" />
+            <Parameter Name="NombreInvestigador" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_Investigador_BuscarPorCod" ReturnType="Collection(Model.Pr_Investigador_BuscarPorCod_Result)">
+            <Parameter Name="NumIdentidad" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Investigador_Consultar" ReturnType="Collection(Model.Pr_Investigador_Consultar_Result)">
-          <Parameter Name="NumIdentidad" Mode="In" Type="String" />
+            <Parameter Name="NumIdentidad" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Investigador_ConsultHoras" ReturnType="Collection(Model.Pr_Investigador_ConsultHoras_Result)">
             <Parameter Name="NumIdentidad" Mode="In" Type="String" />
@@ -3836,47 +3859,56 @@
             <Parameter Name="Escuela" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Investigador_EstadoSelect" ReturnType="Collection(Model.Pr_Investigador_EstadoSelect_Result)">
-          <Parameter Name="Estado" Mode="In" Type="String" />
+            <Parameter Name="Estado" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Pr_Investigador_InfPendientes" ReturnType="Collection(Model.Pr_Investigador_InfPendientes_Result)" />
+          <FunctionImport Name="Pr_Investigador_SelectCoord" ReturnType="Collection(Model.Pr_Investigador_SelectCoord_Result)" />
           <FunctionImport Name="Pr_Investigador_SelectDiscip" ReturnType="Collection(Model.Pr_Investigador_SelectDiscip_Result)">
-          <Parameter Name="NumIdentidad" Mode="In" Type="String" />
+            <Parameter Name="NumIdentidad" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Investigador_SelectEscuela" ReturnType="Collection(Model.Pr_Investigador_SelectEscuela_Result)">
-          <Parameter Name="NumIdentidad" Mode="In" Type="String" />
+            <Parameter Name="NumIdentidad" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Investigador_SelectIdiomas" ReturnType="Collection(Model.Pr_Investigador_SelectIdiomas_Result)">
-          <Parameter Name="NumIdentidad" Mode="In" Type="String" />
+            <Parameter Name="NumIdentidad" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="Pr_Meta_Eliminar" ReturnType="Collection(String)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+          <FunctionImport Name="Pr_Investigador_SexoSelect" ReturnType="Collection(Model.Pr_Investigador_SexoSelect_Result)">
+            <Parameter Name="Sexo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_Meta_Eliminar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Meta_Insertar" ReturnType="Collection(Model.Pr_Meta_Insertar_Result)">
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="EstaCumplida" Mode="In" Type="Boolean" />
             <Parameter Name="IdObjectivoEspecifico" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Meta_Seleccionar" ReturnType="Collection(Model.Pr_Meta_Seleccionar_Result)">
-          <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
+            <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_ObjEspecifico_GetByCodigo" ReturnType="Collection(Model.Pr_ObjEspecifico_GetByCodigo_Result)">
+            <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ObjetivoEspecifico_Seleccionar" ReturnType="Collection(Model.Pr_ObjetivoEspecifico_Seleccionar_Result)">
-          <Parameter Name="Codigo" Mode="In" Type="String" />
+            <Parameter Name="Codigo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_PalabraClave_Eliminar" ReturnType="Collection(Int32)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_PalabraClave_Insertar" ReturnType="Collection(Model.Pr_PalabraClave_Insertar_Result)">
             <Parameter Name="PalabraClave" Mode="In" Type="String" />
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_PalabrasClave_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_PalabrasClave_SeleccionarXProyecto_Result)">
-          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_PlanDeAccion_ObjGenModificar" ReturnType="Collection(Int32)">
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
             <Parameter Name="NuevoObjGeneral" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_PresupuestoProyecto_Eliminar" ReturnType="Collection(Int32)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_PresupuestoProyecto_Insertar" ReturnType="Collection(Model.Pr_PresupuestoProyecto_Insertar_Result)">
             <Parameter Name="IdFuenteFinanciamiento" Mode="In" Type="Int32" />
@@ -3887,10 +3919,10 @@
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_PresupuestoProyecto_Seleccionar" ReturnType="Collection(Model.Pr_PresupuestoProyecto_Seleccionar_Result)">
-          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="Pr_ProductoObjetivo_Eliminar" ReturnType="Collection(String)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+          <FunctionImport Name="Pr_ProductoObjetivo_Eliminar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProductoObjetivo_Insertar" ReturnType="Collection(Model.Pr_ProductoObjetivo_Insertar_Result)">
             <Parameter Name="Actividad" Mode="In" Type="String" />
@@ -3904,7 +3936,7 @@
             <Parameter Name="Fecha" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProductoObjetivo_Seleccionar" ReturnType="Collection(Model.Pr_ProductoObjetivo_Seleccionar_Result)">
-          <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
+            <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_AmpliarFecha" ReturnType="Collection(Int32)">
             <Parameter Name="FechaAprobacion" Mode="In" Type="DateTime" />
@@ -3922,7 +3954,11 @@
             <Parameter Name="NumIdentidad" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_Consultar" ReturnType="Collection(Model.Pr_Proyecto_Consultar_Result)">
-          <Parameter Name="Codigo" Mode="In" Type="String" />
+            <Parameter Name="Codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_Proyecto_InfPendientes" ReturnType="Collection(Model.Pr_Proyecto_InfPendientes_Result)" />
+          <FunctionImport Name="Pr_Proyecto_InvParticipante" ReturnType="Collection(Model.Pr_Proyecto_InvParticipante_Result)">
+            <Parameter Name="NumIdentidad" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_Modificar" ReturnType="Collection(Int32)">
             <Parameter Name="Codigo" Mode="In" Type="String" />
@@ -3961,7 +3997,7 @@
             <Parameter Name="IdBeneficiaria" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_ReporteEstado" ReturnType="Collection(Model.Pr_Proyecto_ReporteEstado_Result)">
-          <Parameter Name="EstadoBusqueda" Mode="In" Type="String" />
+            <Parameter Name="EstadoBusqueda" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_ReporteModalidad" ReturnType="Collection(Model.Pr_Proyecto_ReporteModalidad_Result)">
             <Parameter Name="EstadoBusqueda" Mode="In" Type="String" />
@@ -3979,17 +4015,17 @@
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_Seleccionar" ReturnType="Collection(Model.Pr_Proyecto_Seleccionar_Result)" />
           <FunctionImport Name="Pr_ProyectoXBeneficiaria_Eliminar" ReturnType="Collection(Int32)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXBeneficiaria_Insertar" ReturnType="Collection(Model.Pr_ProyectoXBeneficiaria_Insertar_Result)">
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
             <Parameter Name="IdPoblacionBeneficiaria" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXBeneficiaria_Seleccionar" ReturnType="Collection(Model.Pr_ProyectoXBeneficiaria_Seleccionar_Result)">
-          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXDepartamento_Eliminar" ReturnType="Collection(Int32)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXDepartamento_Insertar" ReturnType="Collection(Model.Pr_ProyectoXDepartamento_Insertar_Result)">
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
@@ -3997,10 +4033,10 @@
             <Parameter Name="IdTipoDepartamento" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXDepartamentos_Seleccionar" ReturnType="Collection(Model.Pr_ProyectoXDepartamentos_Seleccionar_Result)">
-          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXFrascati_Eliminar" ReturnType="Collection(Int32)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXFrascati_Insertar" ReturnType="Collection(Model.Pr_ProyectoXFrascati_Insertar_Result)">
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
@@ -4008,10 +4044,10 @@
             <Parameter Name="IdArea" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXFrascati_Seleccionar" ReturnType="Collection(Model.Pr_ProyectoXFrascati_Seleccionar_Result)">
-          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXODS_Eliminar" ReturnType="Collection(Int32)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXODS_Insertar" ReturnType="Collection(Model.Pr_ProyectoXODS_Insertar_Result)">
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
@@ -4019,10 +4055,10 @@
             <Parameter Name="IdODS" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_ProyectoXODS_Seleccionar" ReturnType="Collection(Model.Pr_ProyectoXODS_Seleccionar_Result)">
-          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="Pr_Riesgo_Eliminar" ReturnType="Collection(String)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+          <FunctionImport Name="Pr_Riesgo_Eliminar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Riesgo_Insertar" ReturnType="Collection(Model.Pr_Riesgo_Insertar_Result)">
             <Parameter Name="Nombre" Mode="In" Type="String" />
@@ -4030,16 +4066,16 @@
             <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Riesgo_Seleccionar" ReturnType="Collection(Model.Pr_Riesgo_Seleccionar_Result)">
-          <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
+            <Parameter Name="IdObjetivoEspecifico" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_SubAreaFrascati_Consultar" ReturnType="Collection(Model.Pr_SubAreaFrascati_Consultar_Result)">
-          <Parameter Name="IdAreaFrascati" Mode="In" Type="Int32" />
+            <Parameter Name="IdAreaFrascati" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_SubODS_Consultar" ReturnType="Collection(Model.Pr_SubODS_Consultar_Result)">
-          <Parameter Name="IdODS" Mode="In" Type="Int32" />
+            <Parameter Name="IdODS" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_UbicacionGeografica_Eliminar" ReturnType="Collection(Int32)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_UbicacionGeografica_Insertar" ReturnType="Collection(Model.Pr_UbicacionGeografica_Insertar_Result)">
             <Parameter Name="IdPais" Mode="In" Type="Int32" />
@@ -4048,7 +4084,7 @@
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_UbicacionGeografica_Seleccionar" ReturnType="Collection(Model.Pr_UbicacionGeografica_Seleccionar_Result)">
-          <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -4165,6 +4201,13 @@
           <Property Type="String" Name="NumIdentidad" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="CorreoElectronico" Nullable="false" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="Pr_Investigador_BuscarPorCod_Result">
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="NumIdentidad" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="CorreoElectronico" Nullable="false" MaxLength="50" />
+        </ComplexType>
         <ComplexType Name="Pr_Investigador_Consultar_Result">
           <Property Type="String" Name="NumIdentidad" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="TipoIdentificacion" Nullable="false" MaxLength="20" />
@@ -4204,6 +4247,21 @@
           <Property Type="String" Name="NumIdentidad" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="CorreoElectronico" Nullable="false" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="Pr_Investigador_InfPendientes_Result">
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="NumIdentidad" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="CorreoElectronico" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Pr_Investigador_SelectCoord_Result">
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="NumIdentidad" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="CorreoElectronico" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
+        </ComplexType>
         <ComplexType Name="Pr_Investigador_SelectDiscip_Result">
           <Property Type="String" Name="DisciplinaCientifica" Nullable="false" MaxLength="25" />
           <Property Type="String" Name="Subdisciplina" Nullable="false" MaxLength="25" />
@@ -4218,16 +4276,29 @@
           <Property Type="String" Name="NivelHabla" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="NivelEscritura" Nullable="false" MaxLength="20" />
         </ComplexType>
+        <ComplexType Name="Pr_Investigador_SexoSelect_Result">
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="NumIdentidad" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="CorreoElectronico" Nullable="false" MaxLength="50" />
+        </ComplexType>
         <ComplexType Name="Pr_Meta_Insertar_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
           <Property Type="Boolean" Name="EstaCumplida" Nullable="false" />
           <Property Type="Int32" Name="IdObjectivoEspecifico" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="Max" />
         </ComplexType>
         <ComplexType Name="Pr_Meta_Seleccionar_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
           <Property Type="Boolean" Name="EstaCumplida" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="Pr_ObjEspecifico_GetByCodigo_Result">
+          <Property Type="String" Name="ObjetivoEspecifico" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="Metodologia" Nullable="false" MaxLength="Max" />
         </ComplexType>
         <ComplexType Name="Pr_ObjetivoEspecifico_Seleccionar_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -4315,6 +4386,30 @@
           <Property Type="DateTime" Name="FechaAprobacion" Nullable="false" />
           <Property Type="DateTime" Name="FechaInicioEjecucion" Nullable="false" />
           <Property Type="DateTime" Name="FechaFinEjecucion" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Pr_Proyecto_InfPendientes_Result">
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="NombreDelProyecto" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="FechaInicioEjecucion" Nullable="false" />
+          <Property Type="DateTime" Name="FechaFinEjecucion" Nullable="false" />
+          <Property Type="String" Name="NombreOficial" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Apellido1Oficial" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Apellido2Oficial" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="NombreInvestigador" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Apellido1Investigador" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Apellido2Investigador" Nullable="true" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="Pr_Proyecto_InvParticipante_Result">
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="NombreDelProyecto" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="FechaInicioEjecucion" Nullable="false" />
+          <Property Type="DateTime" Name="FechaFinEjecucion" Nullable="false" />
+          <Property Type="String" Name="NombreOficial" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Apellido1Oficial" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Apellido2Oficial" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="NombreInvestigador" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Apellido1Investigador" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Apellido2Investigador" Nullable="true" MaxLength="15" />
         </ComplexType>
         <ComplexType Name="Pr_Proyecto_ReporteBeneficiaria_Result">
           <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
@@ -4707,6 +4802,7 @@
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="EstaCumplida" ColumnName="EstaCumplida" />
                 <ScalarProperty Name="IdObjectivoEspecifico" ColumnName="IdObjectivoEspecifico" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -5179,6 +5275,17 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_Investigador_BuscarPorCod" FunctionName="Model.Store.Pr_Investigador_BuscarPorCod">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_Investigador_BuscarPorCod_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="NumIdentidad" ColumnName="NumIdentidad" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Pr_Investigador_Consultar" FunctionName="Model.Store.Pr_Investigador_Consultar">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Model.Pr_Investigador_Consultar_Result">
@@ -5238,6 +5345,29 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_Investigador_InfPendientes" FunctionName="Model.Store.Pr_Investigador_InfPendientes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_Investigador_InfPendientes_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="NumIdentidad" ColumnName="NumIdentidad" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_Investigador_SelectCoord" FunctionName="Model.Store.Pr_Investigador_SelectCoord">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_Investigador_SelectCoord_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="NumIdentidad" ColumnName="NumIdentidad" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Pr_Investigador_SelectDiscip" FunctionName="Model.Store.Pr_Investigador_SelectDiscip">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Model.Pr_Investigador_SelectDiscip_Result">
@@ -5264,6 +5394,17 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_Investigador_SexoSelect" FunctionName="Model.Store.Pr_Investigador_SexoSelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_Investigador_SexoSelect_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="NumIdentidad" ColumnName="NumIdentidad" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Pr_Meta_Eliminar" FunctionName="Model.Store.Pr_Meta_Eliminar" />
           <FunctionImportMapping FunctionImportName="Pr_Meta_Insertar" FunctionName="Model.Store.Pr_Meta_Insertar">
             <ResultMapping>
@@ -5272,6 +5413,7 @@
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="EstaCumplida" ColumnName="EstaCumplida" />
                 <ScalarProperty Name="IdObjectivoEspecifico" ColumnName="IdObjectivoEspecifico" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -5281,6 +5423,15 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="EstaCumplida" ColumnName="EstaCumplida" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_ObjEspecifico_GetByCodigo" FunctionName="Model.Store.Pr_ObjEspecifico_GetByCodigo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_ObjEspecifico_GetByCodigo_Result">
+                <ScalarProperty Name="ObjetivoEspecifico" ColumnName="ObjetivoEspecifico" />
+                <ScalarProperty Name="Metodologia" ColumnName="Metodologia" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -5410,6 +5561,38 @@
                 <ScalarProperty Name="FechaAprobacion" ColumnName="FechaAprobacion" />
                 <ScalarProperty Name="FechaInicioEjecucion" ColumnName="FechaInicioEjecucion" />
                 <ScalarProperty Name="FechaFinEjecucion" ColumnName="FechaFinEjecucion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_Proyecto_InfPendientes" FunctionName="Model.Store.Pr_Proyecto_InfPendientes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_Proyecto_InfPendientes_Result">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="NombreDelProyecto" ColumnName="NombreDelProyecto" />
+                <ScalarProperty Name="FechaInicioEjecucion" ColumnName="FechaInicioEjecucion" />
+                <ScalarProperty Name="FechaFinEjecucion" ColumnName="FechaFinEjecucion" />
+                <ScalarProperty Name="NombreOficial" ColumnName="NombreOficial" />
+                <ScalarProperty Name="Apellido1Oficial" ColumnName="Apellido1Oficial" />
+                <ScalarProperty Name="Apellido2Oficial" ColumnName="Apellido2Oficial" />
+                <ScalarProperty Name="NombreInvestigador" ColumnName="NombreInvestigador" />
+                <ScalarProperty Name="Apellido1Investigador" ColumnName="Apellido1Investigador" />
+                <ScalarProperty Name="Apellido2Investigador" ColumnName="Apellido2Investigador" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_Proyecto_InvParticipante" FunctionName="Model.Store.Pr_Proyecto_InvParticipante">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_Proyecto_InvParticipante_Result">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="NombreDelProyecto" ColumnName="NombreDelProyecto" />
+                <ScalarProperty Name="FechaInicioEjecucion" ColumnName="FechaInicioEjecucion" />
+                <ScalarProperty Name="FechaFinEjecucion" ColumnName="FechaFinEjecucion" />
+                <ScalarProperty Name="NombreOficial" ColumnName="NombreOficial" />
+                <ScalarProperty Name="Apellido1Oficial" ColumnName="Apellido1Oficial" />
+                <ScalarProperty Name="Apellido2Oficial" ColumnName="Apellido2Oficial" />
+                <ScalarProperty Name="NombreInvestigador" ColumnName="NombreInvestigador" />
+                <ScalarProperty Name="Apellido1Investigador" ColumnName="Apellido1Investigador" />
+                <ScalarProperty Name="Apellido2Investigador" ColumnName="Apellido2Investigador" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

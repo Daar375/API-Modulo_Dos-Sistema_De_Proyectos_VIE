@@ -29,7 +29,7 @@ namespace modulo2DBConectionAPI.Controllers
         }
         [HttpDelete]
 
-        public List<String> Delete(int id)
+        public List<int?> Delete(int id)
         {
             using (VieEntidades entities = new VieEntidades())
             {
@@ -38,12 +38,12 @@ namespace modulo2DBConectionAPI.Controllers
             }
         }
         [HttpPost]
-        public List<Pr_Meta_Insertar_Result> Post(string nombre, bool estaCumplida, int idObjectivoEspecifico)
+        public List<Pr_Meta_Insertar_Result> Post(string nombre, string estaCumplida, int idObjectivoEspecifico,string descripcion)
         {
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
-                return entities.Pr_Meta_Insertar(nombre, estaCumplida, idObjectivoEspecifico).ToList();
+                return entities.Pr_Meta_Insertar(nombre, false, idObjectivoEspecifico,descripcion).ToList();
             }
         }
     }

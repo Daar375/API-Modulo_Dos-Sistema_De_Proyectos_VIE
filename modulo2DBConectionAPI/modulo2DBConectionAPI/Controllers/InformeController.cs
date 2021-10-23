@@ -41,8 +41,7 @@ namespace modulo2DBConectionAPI.Controllers
 
 
         [HttpPost]
-        [Route("api/Informe/AgregarInforme")]
-
+        [Route("api/informe/agregarinforme")]
         public List<Pr_Informe_Insertar_Result> Post([FromBody] PostInformeResponce RequestInfo)
         {
             using (VieEntidades entities = new VieEntidades())
@@ -52,5 +51,5 @@ namespace modulo2DBConectionAPI.Controllers
                 return res.ToList();
             }
         }
-    }
+    }   
 }

@@ -11,11 +11,9 @@ namespace AccesoDatos
 {
     using System;
     
-    public partial class Pr_Meta_Seleccionar_Result
+    public partial class Pr_ObjEspecifico_GetByCodigo_Result
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public bool EstaCumplida { get; set; }
-        public string Descripcion { get; set; }
+        public string ObjetivoEspecifico { get; set; }
+        public string Metodologia { get; set; }
     }
 }

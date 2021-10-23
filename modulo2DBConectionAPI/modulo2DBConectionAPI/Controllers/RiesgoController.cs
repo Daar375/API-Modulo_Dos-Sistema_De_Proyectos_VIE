@@ -29,7 +29,7 @@ namespace modulo2DBConectionAPI.Controllers
         }
         [HttpDelete]
 
-        public List<String> Delete(int id)
+        public List<int?> Delete(int id)
         {
             using (VieEntidades entities = new VieEntidades())
             {
