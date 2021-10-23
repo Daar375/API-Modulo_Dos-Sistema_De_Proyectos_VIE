@@ -27,7 +27,6 @@ namespace modulo2DBConectionAPI.Controllers
         {
             using (VieEntidades entities = new VieEntidades())
             {
-                entities.Pr_PlanDeAccion_ObjGenModificar
                 entities.Configuration.ProxyCreationEnabled = false;
                 return entities.Pr_Proyecto_AmpliarFecha(DateTime.Parse(RequestInfo.fechaAprobacion), DateTime.Parse(RequestInfo.nuevaFechaFinalizacion), DateTime.Parse(RequestInfo.viejaFechaFinalizacion), RequestInfo.observaciones, RequestInfo.codigo).ToList();
             }
