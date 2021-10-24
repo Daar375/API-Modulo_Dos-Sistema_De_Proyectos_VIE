@@ -162,6 +162,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\ActividadesController.cs" />
     <Compile Include="Controllers\AmpliacionController.cs" />
     <Compile Include="Controllers\BitacoraController.cs" />
     <Compile Include="Controllers\CantonController.cs" />
@@ -262,6 +263,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Actividades\" />
     <Folder Include="Views\Canton\" />
     <Folder Include="Views\Coordinador\" />
     <Folder Include="Views\EstadoProyecto\" />
@@ -314,7 +316,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj">
-      <Project>{2857cd55-5714-42f6-bc76-8fce342a15cf}</Project>
+      <Project>{b518fc77-944b-4658-b066-7278b4cb00b9}</Project>
       <Name>AccesoDatos</Name>
     </ProjectReference>
   </ItemGroup>

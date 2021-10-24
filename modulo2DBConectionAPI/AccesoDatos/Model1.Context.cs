@@ -868,7 +868,7 @@ namespace AccesoDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Proyecto_ReporteBeneficiaria_Result>("Pr_Proyecto_ReporteBeneficiaria", estadoBusquedaParameter, idBeneficiariaParameter);
         }
     
-        public virtual ObjectResult<Pr_Proyecto_ReporteEscuelas_Result> Pr_Proyecto_ReporteEscuelas(Nullable<System.DateTime> fechaRangoInicio, Nullable<System.DateTime> fechaRangoFinal, Nullable<int> idDepartamento, Nullable<int> idTipoDepartamento)
+        public virtual ObjectResult<Pr_Proyecto_ReporteEscuelas_Result> Pr_Proyecto_ReporteEscuelas(Nullable<System.DateTime> fechaRangoInicio, Nullable<System.DateTime> fechaRangoFinal, Nullable<int> idDepartamento, Nullable<int> idTipoDepartamento, string estadoBusqueda)
         {
             var fechaRangoInicioParameter = fechaRangoInicio.HasValue ?
                 new ObjectParameter("FechaRangoInicio", fechaRangoInicio) :
@@ -886,7 +886,11 @@ namespace AccesoDatos
                 new ObjectParameter("IdTipoDepartamento", idTipoDepartamento) :
                 new ObjectParameter("IdTipoDepartamento", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Proyecto_ReporteEscuelas_Result>("Pr_Proyecto_ReporteEscuelas", fechaRangoInicioParameter, fechaRangoFinalParameter, idDepartamentoParameter, idTipoDepartamentoParameter);
+            var estadoBusquedaParameter = estadoBusqueda != null ?
+                new ObjectParameter("EstadoBusqueda", estadoBusqueda) :
+                new ObjectParameter("EstadoBusqueda", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Proyecto_ReporteEscuelas_Result>("Pr_Proyecto_ReporteEscuelas", fechaRangoInicioParameter, fechaRangoFinalParameter, idDepartamentoParameter, idTipoDepartamentoParameter, estadoBusquedaParameter);
         }
     
         public virtual ObjectResult<Pr_Proyecto_ReporteEstado_Result> Pr_Proyecto_ReporteEstado(string estadoBusqueda)
@@ -896,6 +900,31 @@ namespace AccesoDatos
                 new ObjectParameter("EstadoBusqueda", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Proyecto_ReporteEstado_Result>("Pr_Proyecto_ReporteEstado", estadoBusquedaParameter);
+        }
+    
+        public virtual ObjectResult<Pr_Proyecto_ReporteHoras_Result> Pr_Proyecto_ReporteHoras(Nullable<System.DateTime> fechaRangoInicio, Nullable<System.DateTime> fechaRangoFinal, Nullable<int> idDepartamento, Nullable<int> idTipoDepartamento, string estadoBusqueda)
+        {
+            var fechaRangoInicioParameter = fechaRangoInicio.HasValue ?
+                new ObjectParameter("FechaRangoInicio", fechaRangoInicio) :
+                new ObjectParameter("FechaRangoInicio", typeof(System.DateTime));
+    
+            var fechaRangoFinalParameter = fechaRangoFinal.HasValue ?
+                new ObjectParameter("FechaRangoFinal", fechaRangoFinal) :
+                new ObjectParameter("FechaRangoFinal", typeof(System.DateTime));
+    
+            var idDepartamentoParameter = idDepartamento.HasValue ?
+                new ObjectParameter("IdDepartamento", idDepartamento) :
+                new ObjectParameter("IdDepartamento", typeof(int));
+    
+            var idTipoDepartamentoParameter = idTipoDepartamento.HasValue ?
+                new ObjectParameter("IdTipoDepartamento", idTipoDepartamento) :
+                new ObjectParameter("IdTipoDepartamento", typeof(int));
+    
+            var estadoBusquedaParameter = estadoBusqueda != null ?
+                new ObjectParameter("EstadoBusqueda", estadoBusqueda) :
+                new ObjectParameter("EstadoBusqueda", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Proyecto_ReporteHoras_Result>("Pr_Proyecto_ReporteHoras", fechaRangoInicioParameter, fechaRangoFinalParameter, idDepartamentoParameter, idTipoDepartamentoParameter, estadoBusquedaParameter);
         }
     
         public virtual ObjectResult<Pr_Proyecto_ReporteModalidad_Result> Pr_Proyecto_ReporteModalidad(string estadoBusqueda, Nullable<int> idModalidadProyecto)
@@ -911,7 +940,7 @@ namespace AccesoDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Proyecto_ReporteModalidad_Result>("Pr_Proyecto_ReporteModalidad", estadoBusquedaParameter, idModalidadProyectoParameter);
         }
     
-        public virtual ObjectResult<Pr_Proyecto_ReportePresup_Result> Pr_Proyecto_ReportePresup(Nullable<System.DateTime> fechaRangoInicio, Nullable<System.DateTime> fechaRangoFinal, Nullable<int> idDepartamento, Nullable<int> idTipoDepartamento)
+        public virtual ObjectResult<Pr_Proyecto_ReportePresup_Result> Pr_Proyecto_ReportePresup(Nullable<System.DateTime> fechaRangoInicio, Nullable<System.DateTime> fechaRangoFinal, Nullable<int> idDepartamento, Nullable<int> idTipoDepartamento, string estadoBusqueda)
         {
             var fechaRangoInicioParameter = fechaRangoInicio.HasValue ?
                 new ObjectParameter("FechaRangoInicio", fechaRangoInicio) :
@@ -929,7 +958,11 @@ namespace AccesoDatos
                 new ObjectParameter("IdTipoDepartamento", idTipoDepartamento) :
                 new ObjectParameter("IdTipoDepartamento", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Proyecto_ReportePresup_Result>("Pr_Proyecto_ReportePresup", fechaRangoInicioParameter, fechaRangoFinalParameter, idDepartamentoParameter, idTipoDepartamentoParameter);
+            var estadoBusquedaParameter = estadoBusqueda != null ?
+                new ObjectParameter("EstadoBusqueda", estadoBusqueda) :
+                new ObjectParameter("EstadoBusqueda", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Proyecto_ReportePresup_Result>("Pr_Proyecto_ReportePresup", fechaRangoInicioParameter, fechaRangoFinalParameter, idDepartamentoParameter, idTipoDepartamentoParameter, estadoBusquedaParameter);
         }
     
         public virtual ObjectResult<Pr_Proyecto_ReporteTipoProy_Result> Pr_Proyecto_ReporteTipoProy(string estadoBusqueda, Nullable<int> idTipoProyecto)

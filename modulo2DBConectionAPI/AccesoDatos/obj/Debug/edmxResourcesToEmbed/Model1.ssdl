@@ -1551,8 +1551,16 @@
     <Parameter Name="FechaRangoFinal" Type="date" Mode="In" />
     <Parameter Name="IdDepartamento" Type="int" Mode="In" />
     <Parameter Name="IdTipoDepartamento" Type="int" Mode="In" />
+    <Parameter Name="EstadoBusqueda" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="Pr_Proyecto_ReporteEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EstadoBusqueda" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Pr_Proyecto_ReporteHoras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FechaRangoInicio" Type="date" Mode="In" />
+    <Parameter Name="FechaRangoFinal" Type="date" Mode="In" />
+    <Parameter Name="IdDepartamento" Type="int" Mode="In" />
+    <Parameter Name="IdTipoDepartamento" Type="int" Mode="In" />
     <Parameter Name="EstadoBusqueda" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="Pr_Proyecto_ReporteModalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1564,6 +1572,7 @@
     <Parameter Name="FechaRangoFinal" Type="date" Mode="In" />
     <Parameter Name="IdDepartamento" Type="int" Mode="In" />
     <Parameter Name="IdTipoDepartamento" Type="int" Mode="In" />
+    <Parameter Name="EstadoBusqueda" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="Pr_Proyecto_ReporteTipoProy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="EstadoBusqueda" Type="nvarchar" Mode="In" />

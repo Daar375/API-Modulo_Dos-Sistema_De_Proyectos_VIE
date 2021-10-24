@@ -1074,6 +1074,15 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_Proyecto_ReporteHoras" FunctionName="Model.Store.Pr_Proyecto_ReporteHoras">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Proyecto_ReporteHoras_Result">
+          <ScalarProperty Name="HorasTotales" ColumnName="HorasTotales" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="NombreDelProyecto" ColumnName="NombreDelProyecto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Pr_Proyecto_ReporteModalidad" FunctionName="Model.Store.Pr_Proyecto_ReporteModalidad">
       <ResultMapping>
         <ComplexTypeMapping TypeName="Model.Pr_Proyecto_ReporteModalidad_Result">

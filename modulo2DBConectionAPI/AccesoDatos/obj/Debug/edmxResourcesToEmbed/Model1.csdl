@@ -304,6 +304,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ODS1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="ProyectoXODS" Relationship="Self.FK_ProyectoXODS_ODS" FromRole="ODS" ToRole="ProyectoXODS" />
+    <NavigationProperty Name="SubODS" Relationship="Self.FK_SubODS_ODS" FromRole="ODS" ToRole="SubODS" />
   </EntityType>
   <EntityType Name="Pais">
     <Key>
@@ -2009,8 +2010,16 @@
       <Parameter Name="FechaRangoFinal" Mode="In" Type="DateTime" />
       <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
       <Parameter Name="IdTipoDepartamento" Mode="In" Type="Int32" />
+      <Parameter Name="EstadoBusqueda" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Pr_Proyecto_ReporteEstado" ReturnType="Collection(Model.Pr_Proyecto_ReporteEstado_Result)">
+      <Parameter Name="EstadoBusqueda" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Pr_Proyecto_ReporteHoras" ReturnType="Collection(Model.Pr_Proyecto_ReporteHoras_Result)">
+      <Parameter Name="FechaRangoInicio" Mode="In" Type="DateTime" />
+      <Parameter Name="FechaRangoFinal" Mode="In" Type="DateTime" />
+      <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
+      <Parameter Name="IdTipoDepartamento" Mode="In" Type="Int32" />
       <Parameter Name="EstadoBusqueda" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Pr_Proyecto_ReporteModalidad" ReturnType="Collection(Model.Pr_Proyecto_ReporteModalidad_Result)">
@@ -2022,6 +2031,7 @@
       <Parameter Name="FechaRangoFinal" Mode="In" Type="DateTime" />
       <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
       <Parameter Name="IdTipoDepartamento" Mode="In" Type="Int32" />
+      <Parameter Name="EstadoBusqueda" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Pr_Proyecto_ReporteTipoProy" ReturnType="Collection(Model.Pr_Proyecto_ReporteTipoProy_Result)">
       <Parameter Name="EstadoBusqueda" Mode="In" Type="String" />
@@ -2470,6 +2480,11 @@
     <Property Type="String" Name="Apellido2Oficial" Nullable="true" MaxLength="15" />
     <Property Type="DateTime" Name="FechaInicioEjecucion" Nullable="false" />
     <Property Type="DateTime" Name="FechaFinEjecucion" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Pr_Proyecto_ReporteHoras_Result">
+    <Property Type="Int32" Name="HorasTotales" Nullable="true" />
+    <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="NombreDelProyecto" Nullable="false" MaxLength="100" />
   </ComplexType>
   <ComplexType Name="Pr_Proyecto_ReporteModalidad_Result">
     <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />

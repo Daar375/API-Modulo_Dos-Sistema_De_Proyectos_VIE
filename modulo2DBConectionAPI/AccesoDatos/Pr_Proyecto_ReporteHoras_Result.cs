@@ -10,20 +10,11 @@
 namespace AccesoDatos
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class ODS
+    public partial class Pr_Proyecto_ReporteHoras_Result
     {
-        public ODS()
-        {
-            this.ProyectoXODS = new HashSet<ProyectoXODS>();
-            this.SubODS = new HashSet<SubODS>();
-        }
-    
-        public int Id { get; set; }
-        public string ODS1 { get; set; }
-    
-        public virtual ICollection<ProyectoXODS> ProyectoXODS { get; set; }
-        public virtual ICollection<SubODS> SubODS { get; set; }
+        public Nullable<int> HorasTotales { get; set; }
+        public string Codigo { get; set; }
+        public string NombreDelProyecto { get; set; }
     }
 }

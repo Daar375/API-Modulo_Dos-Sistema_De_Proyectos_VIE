@@ -1556,8 +1556,16 @@
           <Parameter Name="FechaRangoFinal" Type="date" Mode="In" />
           <Parameter Name="IdDepartamento" Type="int" Mode="In" />
           <Parameter Name="IdTipoDepartamento" Type="int" Mode="In" />
+          <Parameter Name="EstadoBusqueda" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="Pr_Proyecto_ReporteEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EstadoBusqueda" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Pr_Proyecto_ReporteHoras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FechaRangoInicio" Type="date" Mode="In" />
+          <Parameter Name="FechaRangoFinal" Type="date" Mode="In" />
+          <Parameter Name="IdDepartamento" Type="int" Mode="In" />
+          <Parameter Name="IdTipoDepartamento" Type="int" Mode="In" />
           <Parameter Name="EstadoBusqueda" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="Pr_Proyecto_ReporteModalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1569,6 +1577,7 @@
           <Parameter Name="FechaRangoFinal" Type="date" Mode="In" />
           <Parameter Name="IdDepartamento" Type="int" Mode="In" />
           <Parameter Name="IdTipoDepartamento" Type="int" Mode="In" />
+          <Parameter Name="EstadoBusqueda" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="Pr_Proyecto_ReporteTipoProy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="EstadoBusqueda" Type="nvarchar" Mode="In" />
@@ -2322,6 +2331,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ODS1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ProyectoXODS" Relationship="Self.FK_ProyectoXODS_ODS" FromRole="ODS" ToRole="ProyectoXODS" />
+          <NavigationProperty Name="SubODS" Relationship="Self.FK_SubODS_ODS" FromRole="ODS" ToRole="SubODS" />
         </EntityType>
         <EntityType Name="Pais">
           <Key>
@@ -4027,8 +4037,16 @@
             <Parameter Name="FechaRangoFinal" Mode="In" Type="DateTime" />
             <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
             <Parameter Name="IdTipoDepartamento" Mode="In" Type="Int32" />
+            <Parameter Name="EstadoBusqueda" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_ReporteEstado" ReturnType="Collection(Model.Pr_Proyecto_ReporteEstado_Result)">
+            <Parameter Name="EstadoBusqueda" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_Proyecto_ReporteHoras" ReturnType="Collection(Model.Pr_Proyecto_ReporteHoras_Result)">
+            <Parameter Name="FechaRangoInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaRangoFinal" Mode="In" Type="DateTime" />
+            <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
+            <Parameter Name="IdTipoDepartamento" Mode="In" Type="Int32" />
             <Parameter Name="EstadoBusqueda" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_ReporteModalidad" ReturnType="Collection(Model.Pr_Proyecto_ReporteModalidad_Result)">
@@ -4040,6 +4058,7 @@
             <Parameter Name="FechaRangoFinal" Mode="In" Type="DateTime" />
             <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
             <Parameter Name="IdTipoDepartamento" Mode="In" Type="Int32" />
+            <Parameter Name="EstadoBusqueda" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pr_Proyecto_ReporteTipoProy" ReturnType="Collection(Model.Pr_Proyecto_ReporteTipoProy_Result)">
             <Parameter Name="EstadoBusqueda" Mode="In" Type="String" />
@@ -4488,6 +4507,11 @@
           <Property Type="String" Name="Apellido2Oficial" Nullable="true" MaxLength="15" />
           <Property Type="DateTime" Name="FechaInicioEjecucion" Nullable="false" />
           <Property Type="DateTime" Name="FechaFinEjecucion" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Pr_Proyecto_ReporteHoras_Result">
+          <Property Type="Int32" Name="HorasTotales" Nullable="true" />
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="NombreDelProyecto" Nullable="false" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="Pr_Proyecto_ReporteModalidad_Result">
           <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
@@ -5712,6 +5736,15 @@
                 <ScalarProperty Name="Apellido2Oficial" ColumnName="Apellido2Oficial" />
                 <ScalarProperty Name="FechaInicioEjecucion" ColumnName="FechaInicioEjecucion" />
                 <ScalarProperty Name="FechaFinEjecucion" ColumnName="FechaFinEjecucion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_Proyecto_ReporteHoras" FunctionName="Model.Store.Pr_Proyecto_ReporteHoras">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_Proyecto_ReporteHoras_Result">
+                <ScalarProperty Name="HorasTotales" ColumnName="HorasTotales" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="NombreDelProyecto" ColumnName="NombreDelProyecto" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
