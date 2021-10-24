@@ -88,6 +88,7 @@
     <Property Name="IdCondicionDeParticipacion" Type="int" Nullable="false" />
     <Property Name="IdEscuela" Type="int" Nullable="false" />
     <Property Name="AreaConocimiento" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EstaEliminado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="EquipoDeTrabajoXTipoHora">
     <Key>
@@ -316,6 +317,7 @@
     <Property Name="Ano" Type="int" Nullable="false" />
     <Property Name="Trimestre" Type="int" Nullable="false" />
     <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="DescripcionActividad" Type="text" Nullable="false" />
   </EntityType>
   <EntityType Name="Provincia">
     <Key>
@@ -1500,6 +1502,10 @@
   <Function Name="Pr_Proyecto_Consultar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Codigo" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="Pr_Proyecto_EliminarInv" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumIdentidad" Type="nvarchar" Mode="In" />
+    <Parameter Name="IdSetDatos" Type="int" Mode="In" />
+  </Function>
   <Function Name="Pr_Proyecto_InfPendientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Pr_Proyecto_InvParticipante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NumIdentidad" Type="nvarchar" Mode="In" />
@@ -1540,12 +1546,24 @@
     <Parameter Name="EstadoBusqueda" Type="nvarchar" Mode="In" />
     <Parameter Name="IdBeneficiaria" Type="int" Mode="In" />
   </Function>
+  <Function Name="Pr_Proyecto_ReporteEscuelas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FechaRangoInicio" Type="date" Mode="In" />
+    <Parameter Name="FechaRangoFinal" Type="date" Mode="In" />
+    <Parameter Name="IdDepartamento" Type="int" Mode="In" />
+    <Parameter Name="IdTipoDepartamento" Type="int" Mode="In" />
+  </Function>
   <Function Name="Pr_Proyecto_ReporteEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="EstadoBusqueda" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="Pr_Proyecto_ReporteModalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="EstadoBusqueda" Type="nvarchar" Mode="In" />
     <Parameter Name="IdModalidadProyecto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Pr_Proyecto_ReportePresup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FechaRangoInicio" Type="date" Mode="In" />
+    <Parameter Name="FechaRangoFinal" Type="date" Mode="In" />
+    <Parameter Name="IdDepartamento" Type="int" Mode="In" />
+    <Parameter Name="IdTipoDepartamento" Type="int" Mode="In" />
   </Function>
   <Function Name="Pr_Proyecto_ReporteTipoProy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="EstadoBusqueda" Type="nvarchar" Mode="In" />
@@ -1558,6 +1576,9 @@
     <Parameter Name="IdProvinvia" Type="int" Mode="In" />
   </Function>
   <Function Name="Pr_Proyecto_Seleccionar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Pr_Proyecto_SelectActividades" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Codigo" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="Pr_ProyectoXBeneficiaria_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Id" Type="int" Mode="In" />
   </Function>

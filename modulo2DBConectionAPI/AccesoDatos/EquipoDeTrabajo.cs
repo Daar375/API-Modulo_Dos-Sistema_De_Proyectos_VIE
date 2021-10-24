@@ -25,6 +25,7 @@ namespace AccesoDatos
         public int IdCondicionDeParticipacion { get; set; }
         public int IdEscuela { get; set; }
         public string AreaConocimiento { get; set; }
+        public bool EstaEliminado { get; set; }
     
         public virtual Escuela Escuela { get; set; }
         public virtual Investigador Investigador { get; set; }

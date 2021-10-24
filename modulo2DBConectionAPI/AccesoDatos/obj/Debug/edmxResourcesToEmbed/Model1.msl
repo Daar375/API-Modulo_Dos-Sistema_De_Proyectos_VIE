@@ -97,6 +97,7 @@
           <ScalarProperty Name="IdCondicionDeParticipacion" ColumnName="IdCondicionDeParticipacion" />
           <ScalarProperty Name="IdEscuela" ColumnName="IdEscuela" />
           <ScalarProperty Name="AreaConocimiento" ColumnName="AreaConocimiento" />
+          <ScalarProperty Name="EstaEliminado" ColumnName="EstaEliminado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -350,6 +351,7 @@
           <ScalarProperty Name="Ano" ColumnName="Ano" />
           <ScalarProperty Name="Trimestre" ColumnName="Trimestre" />
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="DescripcionActividad" ColumnName="DescripcionActividad" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -625,6 +627,7 @@
     <FunctionImportMapping FunctionImportName="Pr_EquipoDeTrabajo_Seleccionar" FunctionName="Model.Store.Pr_EquipoDeTrabajo_Seleccionar">
       <ResultMapping>
         <ComplexTypeMapping TypeName="Model.Pr_EquipoDeTrabajo_Seleccionar_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="NumIdentidad" ColumnName="NumIdentidad" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
@@ -988,6 +991,7 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_Proyecto_EliminarInv" FunctionName="Model.Store.Pr_Proyecto_EliminarInv" />
     <FunctionImportMapping FunctionImportName="Pr_Proyecto_InfPendientes" FunctionName="Model.Store.Pr_Proyecto_InfPendientes">
       <ResultMapping>
         <ComplexTypeMapping TypeName="Model.Pr_Proyecto_InfPendientes_Result">
@@ -1038,6 +1042,22 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_Proyecto_ReporteEscuelas" FunctionName="Model.Store.Pr_Proyecto_ReporteEscuelas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Proyecto_ReporteEscuelas_Result">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="NombreDelProyecto" ColumnName="NombreDelProyecto" />
+          <ScalarProperty Name="FechaInicioEjecucion" ColumnName="FechaInicioEjecucion" />
+          <ScalarProperty Name="FechaFinEjecucion" ColumnName="FechaFinEjecucion" />
+          <ScalarProperty Name="NombreOficial" ColumnName="NombreOficial" />
+          <ScalarProperty Name="Apellido1Oficial" ColumnName="Apellido1Oficial" />
+          <ScalarProperty Name="Apellido2Oficial" ColumnName="Apellido2Oficial" />
+          <ScalarProperty Name="NombreInvestigador" ColumnName="NombreInvestigador" />
+          <ScalarProperty Name="Apellido1Investigador" ColumnName="Apellido1Investigador" />
+          <ScalarProperty Name="Apellido2Investigador" ColumnName="Apellido2Investigador" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Pr_Proyecto_ReporteEstado" FunctionName="Model.Store.Pr_Proyecto_ReporteEstado">
       <ResultMapping>
         <ComplexTypeMapping TypeName="Model.Pr_Proyecto_ReporteEstado_Result">
@@ -1067,6 +1087,15 @@
           <ScalarProperty Name="Apellido2Oficial" ColumnName="Apellido2Oficial" />
           <ScalarProperty Name="FechaInicioEjecucion" ColumnName="FechaInicioEjecucion" />
           <ScalarProperty Name="FechaFinEjecucion" ColumnName="FechaFinEjecucion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_Proyecto_ReportePresup" FunctionName="Model.Store.Pr_Proyecto_ReportePresup">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Proyecto_ReportePresup_Result">
+          <ScalarProperty Name="PresupuestoTotal" ColumnName="PresupuestoTotal" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="NombreDelProyecto" ColumnName="NombreDelProyecto" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -1115,6 +1144,16 @@
           <ScalarProperty Name="NombreCoordinador" ColumnName="NombreCoordinador" />
           <ScalarProperty Name="Apellido1Coordinador" ColumnName="Apellido1Coordinador" />
           <ScalarProperty Name="Apellido2Coordinador" ColumnName="Apellido2Coordinador" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_Proyecto_SelectActividades" FunctionName="Model.Store.Pr_Proyecto_SelectActividades">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Proyecto_SelectActividades_Result">
+          <ScalarProperty Name="Actividad" ColumnName="Actividad" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Trimestre" ColumnName="Trimestre" />
+          <ScalarProperty Name="DescripcionActividad" ColumnName="DescripcionActividad" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

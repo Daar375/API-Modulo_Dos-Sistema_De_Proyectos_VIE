@@ -3,8 +3,8 @@ C:\Users\Daar375\repos\API-Modulo_Dos-Sistema_De_Proyectos_VIE\modulo2DBConectio
 C:\Users\Daar375\repos\API-Modulo_Dos-Sistema_De_Proyectos_VIE\modulo2DBConectionAPI\AccesoDatos\bin\Debug\AccesoDatos.pdb
 C:\Users\Daar375\repos\API-Modulo_Dos-Sistema_De_Proyectos_VIE\modulo2DBConectionAPI\AccesoDatos\bin\Debug\EntityFramework.dll
 C:\Users\Daar375\repos\API-Modulo_Dos-Sistema_De_Proyectos_VIE\modulo2DBConectionAPI\AccesoDatos\bin\Debug\EntityFramework.xml
+C:\Users\Daar375\repos\API-Modulo_Dos-Sistema_De_Proyectos_VIE\modulo2DBConectionAPI\AccesoDatos\obj\Debug\AccesoDatos.csprojAssemblyReference.cache
 C:\Users\Daar375\repos\API-Modulo_Dos-Sistema_De_Proyectos_VIE\modulo2DBConectionAPI\AccesoDatos\obj\Debug\AccesoDatos.csproj.CoreCompileInputs.cache
 C:\Users\Daar375\repos\API-Modulo_Dos-Sistema_De_Proyectos_VIE\modulo2DBConectionAPI\AccesoDatos\obj\Debug\AccesoDatos.csproj.CopyComplete
 C:\Users\Daar375\repos\API-Modulo_Dos-Sistema_De_Proyectos_VIE\modulo2DBConectionAPI\AccesoDatos\obj\Debug\AccesoDatos.dll
 C:\Users\Daar375\repos\API-Modulo_Dos-Sistema_De_Proyectos_VIE\modulo2DBConectionAPI\AccesoDatos\obj\Debug\AccesoDatos.pdb
-C:\Users\Daar375\repos\API-Modulo_Dos-Sistema_De_Proyectos_VIE\modulo2DBConectionAPI\AccesoDatos\obj\Debug\AccesoDatos.csprojAssemblyReference.cache

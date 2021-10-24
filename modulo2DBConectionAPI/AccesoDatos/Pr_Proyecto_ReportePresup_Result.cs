@@ -11,14 +11,10 @@ namespace AccesoDatos
 {
     using System;
     
-    public partial class Pr_EquipoDeTrabajo_Seleccionar_Result
+    public partial class Pr_Proyecto_ReportePresup_Result
     {
-        public int Id { get; set; }
-        public string NumIdentidad { get; set; }
-        public string Nombre { get; set; }
-        public string PrimerApellido { get; set; }
-        public string SegundoApellido { get; set; }
-        public string TipoParticipacion { get; set; }
-        public string CorreoElectronico { get; set; }
+        public Nullable<int> PresupuestoTotal { get; set; }
+        public string Codigo { get; set; }
+        public string NombreDelProyecto { get; set; }
     }
 }

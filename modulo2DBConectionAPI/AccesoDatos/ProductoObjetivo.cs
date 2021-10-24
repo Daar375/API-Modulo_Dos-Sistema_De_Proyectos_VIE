@@ -24,6 +24,7 @@ namespace AccesoDatos
         public int Ano { get; set; }
         public int Trimestre { get; set; }
         public System.DateTime Fecha { get; set; }
+        public string DescripcionActividad { get; set; }
     
         public virtual Colaborador Colaborador { get; set; }
         public virtual Investigador Investigador { get; set; }
