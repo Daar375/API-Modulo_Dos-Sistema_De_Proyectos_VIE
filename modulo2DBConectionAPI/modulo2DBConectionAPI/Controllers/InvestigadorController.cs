@@ -40,8 +40,20 @@ namespace modulo2DBConectionAPI.Controllers
 
         }
 
+
         [HttpPost]
-        public System.Data.Objects.ObjectResult<int?> Post(string numIdentidad, int idSetDatos)
+        public System.Data.Objects.ObjectResult<string> Post(string numIdentidad, int idSetDatos, int idCondicionDeParticipacion,int idEscuela, string areaConocimiento)
+        {
+            using (VieEntidades entities = new VieEntidades())
+            {
+                entities.Configuration.ProxyCreationEnabled = false;
+                return entities.Pr_Investigador_AgregarAProy( numIdentidad,  idSetDatos,  idCondicionDeParticipacion,  idEscuela,  areaConocimiento);
+            }
+
+        }
+
+        [HttpDelete]
+        public System.Data.Objects.ObjectResult<int?> Delete(string numIdentidad, int idSetDatos)
         {
             using (VieEntidades entities = new VieEntidades())
             {
