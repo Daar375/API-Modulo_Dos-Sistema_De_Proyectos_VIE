@@ -39,7 +39,7 @@ namespace modulo2DBConectionAPI.Controllers
                 }
             }
             [HttpPost]
-            public List<Pr_UbicacionGeografica_Insertar_Result> Post(int idPais, int idRegion, int idProvincia, string codigoProyecto)
+            public List<Pr_UbicacionGeografica_Insertar_Result> Post(int idPais, Nullable<int> idRegion, Nullable<int> idProvincia, string codigoProyecto)
         {
                 using (VieEntidades entities = new VieEntidades())
                 {
