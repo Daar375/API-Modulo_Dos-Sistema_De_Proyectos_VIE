@@ -293,7 +293,7 @@ namespace AccesoDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("Pr_Investigador_AgregarAProy", numIdentidadParameter, idSetDatosParameter, idCondicionDeParticipacionParameter, idEscuelaParameter, areaConocimientoParameter);
         }
     
-        public virtual ObjectResult<string> Pr_Investigador_AgregarHoras(Nullable<int> idEquipoDeTrabajo, Nullable<int> idTipoHora, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFinalizacion, Nullable<int> cantidadHoras)
+        public virtual ObjectResult<Pr_Investigador_AgregarHoras_Result> Pr_Investigador_AgregarHoras(Nullable<int> idEquipoDeTrabajo, Nullable<int> idTipoHora, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFinalizacion, Nullable<int> cantidadHoras)
         {
             var idEquipoDeTrabajoParameter = idEquipoDeTrabajo.HasValue ?
                 new ObjectParameter("IdEquipoDeTrabajo", idEquipoDeTrabajo) :
@@ -315,7 +315,7 @@ namespace AccesoDatos
                 new ObjectParameter("CantidadHoras", cantidadHoras) :
                 new ObjectParameter("CantidadHoras", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("Pr_Investigador_AgregarHoras", idEquipoDeTrabajoParameter, idTipoHoraParameter, fechaInicioParameter, fechaFinalizacionParameter, cantidadHorasParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Investigador_AgregarHoras_Result>("Pr_Investigador_AgregarHoras", idEquipoDeTrabajoParameter, idTipoHoraParameter, fechaInicioParameter, fechaFinalizacionParameter, cantidadHorasParameter);
         }
     
         public virtual ObjectResult<Pr_Investigador_Buscar_Result> Pr_Investigador_Buscar(string nombreInvestigador)
@@ -369,6 +369,15 @@ namespace AccesoDatos
                 new ObjectParameter("Disciplina", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Investigador_DiscipSelect_Result>("Pr_Investigador_DiscipSelect", estadoParameter, disciplinaParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Pr_Investigador_EliminarHoras(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Pr_Investigador_EliminarHoras", idParameter);
         }
     
         public virtual ObjectResult<Pr_Investigador_EscuelaSelect_Result> Pr_Investigador_EscuelaSelect(string estado, Nullable<int> escuela)

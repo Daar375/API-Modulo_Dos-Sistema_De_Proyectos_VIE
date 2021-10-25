@@ -1400,6 +1400,9 @@
     <Parameter Name="Estado" Type="nvarchar" Mode="In" />
     <Parameter Name="Disciplina" Type="int" Mode="In" />
   </Function>
+  <Function Name="Pr_Investigador_EliminarHoras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
   <Function Name="Pr_Investigador_EscuelaSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Estado" Type="nvarchar" Mode="In" />
     <Parameter Name="Escuela" Type="int" Mode="In" />

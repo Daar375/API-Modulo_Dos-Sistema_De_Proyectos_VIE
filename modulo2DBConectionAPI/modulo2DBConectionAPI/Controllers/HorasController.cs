@@ -22,12 +22,23 @@ namespace modulo2DBConectionAPI.Controllers
         }
         [HttpPost]
 
-        public System.Data.Objects.ObjectResult<string> Post(int idEquipoDeTrabajo, int idTipoHora, string fechaInicio, string fechaFinalizacion, int cantidadHoras)
+        public System.Data.Objects.ObjectResult<Pr_Investigador_AgregarHoras_Result> Post(int idEquipoDeTrabajo, int idTipoHora, string fechaInicio, string fechaFinalizacion, int cantidadHoras)
         {
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
-                return entities.Pr_Investigador_AgregarHoras(idEquipoDeTrabajo, idTipoHora, DateTime.Parse( fechaInicio), DateTime.Parse(fechaFinalizacion), cantidadHoras);
+                    return entities.Pr_Investigador_AgregarHoras(idEquipoDeTrabajo, idTipoHora, DateTime.Parse( fechaInicio), DateTime.Parse(fechaFinalizacion), cantidadHoras);
+            }
+
+        }
+
+        [HttpDelete]
+        public System.Data.Objects.ObjectResult<int?> Delete(int idHoras)
+        {
+            using (VieEntidades entities = new VieEntidades())
+            {
+                entities.Configuration.ProxyCreationEnabled = false;
+                return entities.Pr_Investigador_EliminarHoras(idHoras);
             }
 
         }

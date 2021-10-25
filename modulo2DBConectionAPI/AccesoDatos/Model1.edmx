@@ -1405,6 +1405,9 @@
           <Parameter Name="Estado" Type="nvarchar" Mode="In" />
           <Parameter Name="Disciplina" Type="int" Mode="In" />
         </Function>
+        <Function Name="Pr_Investigador_EliminarHoras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
         <Function Name="Pr_Investigador_EscuelaSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Estado" Type="nvarchar" Mode="In" />
           <Parameter Name="Escuela" Type="int" Mode="In" />
@@ -2331,7 +2334,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ODS1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ProyectoXODS" Relationship="Self.FK_ProyectoXODS_ODS" FromRole="ODS" ToRole="ProyectoXODS" />
-          <NavigationProperty Name="SubODS" Relationship="Self.FK_SubODS_ODS" FromRole="ODS" ToRole="SubODS" />
         </EntityType>
         <EntityType Name="Pais">
           <Key>
@@ -3862,7 +3864,7 @@
             <Parameter Name="IdEscuela" Mode="In" Type="Int32" />
             <Parameter Name="AreaConocimiento" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="Pr_Investigador_AgregarHoras" ReturnType="Collection(String)">
+          <FunctionImport Name="Pr_Investigador_AgregarHoras" ReturnType="Collection(Model.Pr_Investigador_AgregarHoras_Result)">
             <Parameter Name="IdEquipoDeTrabajo" Mode="In" Type="Int32" />
             <Parameter Name="IdTipoHora" Mode="In" Type="Int32" />
             <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
@@ -3885,6 +3887,9 @@
           <FunctionImport Name="Pr_Investigador_DiscipSelect" ReturnType="Collection(Model.Pr_Investigador_DiscipSelect_Result)">
             <Parameter Name="Estado" Mode="In" Type="String" />
             <Parameter Name="Disciplina" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Pr_Investigador_EliminarHoras" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pr_Investigador_EscuelaSelect" ReturnType="Collection(Model.Pr_Investigador_EscuelaSelect_Result)">
             <Parameter Name="Estado" Mode="In" Type="String" />
@@ -4255,6 +4260,14 @@
           <Property Type="String" Name="MemorandoDIP" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Observaciones" Nullable="false" MaxLength="Max" />
         </ComplexType>
+        <ComplexType Name="Pr_Investigador_AgregarHoras_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="IdEquipoDeTrabajo" Nullable="false" />
+          <Property Type="Int32" Name="IdTipoHora" Nullable="false" />
+          <Property Type="DateTime" Name="FechaInicio" Nullable="false" />
+          <Property Type="DateTime" Name="FechaFinalizacion" Nullable="false" />
+          <Property Type="Int32" Name="CantidadHoras" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="Pr_Investigador_Buscar_Result">
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="15" />
           <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="15" />
@@ -4286,6 +4299,7 @@
           <Property Type="DateTime" Name="FechaInicio" Nullable="false" />
           <Property Type="DateTime" Name="FechaFinalizacion" Nullable="false" />
           <Property Type="Int32" Name="CantidadHoras" Nullable="true" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
         </ComplexType>
         <ComplexType Name="Pr_Investigador_DiscipSelect_Result">
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="15" />
@@ -5355,7 +5369,18 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Pr_Investigador_AgregarAProy" FunctionName="Model.Store.Pr_Investigador_AgregarAProy" />
-          <FunctionImportMapping FunctionImportName="Pr_Investigador_AgregarHoras" FunctionName="Model.Store.Pr_Investigador_AgregarHoras" />
+          <FunctionImportMapping FunctionImportName="Pr_Investigador_AgregarHoras" FunctionName="Model.Store.Pr_Investigador_AgregarHoras">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_Investigador_AgregarHoras_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdEquipoDeTrabajo" ColumnName="IdEquipoDeTrabajo" />
+                <ScalarProperty Name="IdTipoHora" ColumnName="IdTipoHora" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFinalizacion" ColumnName="FechaFinalizacion" />
+                <ScalarProperty Name="CantidadHoras" ColumnName="CantidadHoras" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Pr_Investigador_Buscar" FunctionName="Model.Store.Pr_Investigador_Buscar">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Model.Pr_Investigador_Buscar_Result">
@@ -5401,6 +5426,7 @@
                 <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
                 <ScalarProperty Name="FechaFinalizacion" ColumnName="FechaFinalizacion" />
                 <ScalarProperty Name="CantidadHoras" ColumnName="CantidadHoras" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -5415,6 +5441,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pr_Investigador_EliminarHoras" FunctionName="Model.Store.Pr_Investigador_EliminarHoras" />
           <FunctionImportMapping FunctionImportName="Pr_Investigador_EscuelaSelect" FunctionName="Model.Store.Pr_Investigador_EscuelaSelect">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Model.Pr_Investigador_EscuelaSelect_Result">

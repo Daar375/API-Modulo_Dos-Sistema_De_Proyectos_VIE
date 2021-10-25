@@ -690,7 +690,18 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Pr_Investigador_AgregarAProy" FunctionName="Model.Store.Pr_Investigador_AgregarAProy" />
-    <FunctionImportMapping FunctionImportName="Pr_Investigador_AgregarHoras" FunctionName="Model.Store.Pr_Investigador_AgregarHoras" />
+    <FunctionImportMapping FunctionImportName="Pr_Investigador_AgregarHoras" FunctionName="Model.Store.Pr_Investigador_AgregarHoras">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Investigador_AgregarHoras_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdEquipoDeTrabajo" ColumnName="IdEquipoDeTrabajo" />
+          <ScalarProperty Name="IdTipoHora" ColumnName="IdTipoHora" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaFinalizacion" ColumnName="FechaFinalizacion" />
+          <ScalarProperty Name="CantidadHoras" ColumnName="CantidadHoras" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Pr_Investigador_Buscar" FunctionName="Model.Store.Pr_Investigador_Buscar">
       <ResultMapping>
         <ComplexTypeMapping TypeName="Model.Pr_Investigador_Buscar_Result">
@@ -736,6 +747,7 @@
           <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
           <ScalarProperty Name="FechaFinalizacion" ColumnName="FechaFinalizacion" />
           <ScalarProperty Name="CantidadHoras" ColumnName="CantidadHoras" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -750,6 +762,7 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pr_Investigador_EliminarHoras" FunctionName="Model.Store.Pr_Investigador_EliminarHoras" />
     <FunctionImportMapping FunctionImportName="Pr_Investigador_EscuelaSelect" FunctionName="Model.Store.Pr_Investigador_EscuelaSelect">
       <ResultMapping>
         <ComplexTypeMapping TypeName="Model.Pr_Investigador_EscuelaSelect_Result">
