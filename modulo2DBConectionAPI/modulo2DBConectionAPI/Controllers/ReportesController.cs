@@ -1,14 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using AccesoDatos;
 using modulo2DBConectionAPI.Models;
+using Newtonsoft.Json;
 
 namespace modulo2DBConectionAPI.Controllers
 {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     [RoutePrefix("api/Reportes")]
     public class ReportesController : ApiController
     {
@@ -190,14 +207,14 @@ namespace modulo2DBConectionAPI.Controllers
         }
 
         [HttpPost]
-        [Route("ReporteUbicacion/{estadoBusqueda}/{idPais}/{idRegion}/{idProvinvia}/{estadoBusqueda}")]
-        public List<Pr_Proyecto_ReporteUbicacion_Result> ReporteUbicacion(string estadoBusqueda, int idPais, Nullable<int> idRegion, Nullable<int> idProvinvia)
+        [Route("ReporteUbicacion/{estadoBusqueda}/{idPais}/{idRegion}/{idProvincia}")]
+        public List<Pr_Proyecto_ReporteUbicacion_Result> ReporteUbicacion(string estadoBusqueda, int idPais, Nullable<int> idRegion, Nullable<int> idProvincia)
         {
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
 
-                return entities.Pr_Proyecto_ReporteUbicacion(estadoBusqueda, idPais, idRegion, idProvinvia).ToList();
+                return entities.Pr_Proyecto_ReporteUbicacion(estadoBusqueda, idPais, idRegion, idProvincia).ToList();
             }
         }
 
