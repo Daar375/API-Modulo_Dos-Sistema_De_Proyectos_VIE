@@ -39,5 +39,16 @@ namespace modulo2DBConectionAPI.Controllers
             }
 
         }
+
+        [HttpPost]
+        public System.Data.Objects.ObjectResult<int?> Post(string numIdentidad, int idSetDatos)
+        {
+            using (VieEntidades entities = new VieEntidades())
+            {
+                entities.Configuration.ProxyCreationEnabled = false;
+                return entities.Pr_Proyecto_EliminarInv(numIdentidad, idSetDatos);
+            }
+
+        }
     }
 }

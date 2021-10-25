@@ -634,6 +634,7 @@
           <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
           <ScalarProperty Name="TipoParticipacion" ColumnName="TipoParticipacion" />
           <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+          <ScalarProperty Name="EstaEliminado" ColumnName="EstaEliminado" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

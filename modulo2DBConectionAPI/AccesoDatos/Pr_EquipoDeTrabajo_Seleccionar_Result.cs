@@ -20,5 +20,6 @@ namespace AccesoDatos
         public string SegundoApellido { get; set; }
         public string TipoParticipacion { get; set; }
         public string CorreoElectronico { get; set; }
+        public bool EstaEliminado { get; set; }
     }
 }
