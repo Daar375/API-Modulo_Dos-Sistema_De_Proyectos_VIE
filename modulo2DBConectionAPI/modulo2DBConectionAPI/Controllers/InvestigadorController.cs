@@ -29,7 +29,6 @@ namespace modulo2DBConectionAPI.Controllers
 
         }
         [HttpPost]
-
         public System.Data.Objects.ObjectResult<int?> Post(string codigo, string numIdentidad)
         {
             using (VieEntidades entities = new VieEntidades())
