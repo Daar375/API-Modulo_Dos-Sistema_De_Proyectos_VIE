@@ -32,5 +32,6 @@ namespace AccesoDatos
         public System.DateTime FechaAprobacion { get; set; }
         public System.DateTime FechaInicioEjecucion { get; set; }
         public System.DateTime FechaFinEjecucion { get; set; }
+        public int Id { get; set; }
     }
 }

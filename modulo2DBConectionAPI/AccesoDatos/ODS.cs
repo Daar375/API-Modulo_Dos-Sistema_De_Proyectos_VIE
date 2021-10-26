@@ -17,11 +17,13 @@ namespace AccesoDatos
         public ODS()
         {
             this.ProyectoXODS = new HashSet<ProyectoXODS>();
+            this.SubODS = new HashSet<SubODS>();
         }
     
         public int Id { get; set; }
         public string ODS1 { get; set; }
     
         public virtual ICollection<ProyectoXODS> ProyectoXODS { get; set; }
+        public virtual ICollection<SubODS> SubODS { get; set; }
     }
 }

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "modulo2DBConectionAPI", "modulo2DBConectionAPI\modulo2DBConectionAPI.csproj", "{FF685172-408D-4184-9119-A0486E8DFB22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatos", "AccesoDatos\AccesoDatos.csproj", "{8CAB951E-6847-4707-A5CD-504EAC2187D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatos", "AccesoDatos\AccesoDatos.csproj", "{58FAABE4-1F5E-4644-8A18-5F17AAD02697}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{FF685172-408D-4184-9119-A0486E8DFB22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF685172-408D-4184-9119-A0486E8DFB22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF685172-408D-4184-9119-A0486E8DFB22}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8CAB951E-6847-4707-A5CD-504EAC2187D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8CAB951E-6847-4707-A5CD-504EAC2187D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8CAB951E-6847-4707-A5CD-504EAC2187D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8CAB951E-6847-4707-A5CD-504EAC2187D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58FAABE4-1F5E-4644-8A18-5F17AAD02697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58FAABE4-1F5E-4644-8A18-5F17AAD02697}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58FAABE4-1F5E-4644-8A18-5F17AAD02697}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58FAABE4-1F5E-4644-8A18-5F17AAD02697}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

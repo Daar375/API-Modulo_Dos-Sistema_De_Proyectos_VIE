@@ -14,7 +14,7 @@ namespace modulo2DBConectionAPI.Controllers
         {
             using (VieEntidades entities = new VieEntidades())
             {
-                entities.Configuration.ProxyCreationEnabled = false;
+                    entities.Configuration.ProxyCreationEnabled = false;
                 return entities.Escuela.ToList();
             }
         }

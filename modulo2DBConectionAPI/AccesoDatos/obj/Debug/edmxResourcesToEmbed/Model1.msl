@@ -1002,6 +1002,7 @@
           <ScalarProperty Name="FechaAprobacion" ColumnName="FechaAprobacion" />
           <ScalarProperty Name="FechaInicioEjecucion" ColumnName="FechaInicioEjecucion" />
           <ScalarProperty Name="FechaFinEjecucion" ColumnName="FechaFinEjecucion" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
