@@ -41,7 +41,7 @@ namespace modulo2DBConectionAPI.Controllers
 
 
         [HttpPost]
-        public System.Data.Objects.ObjectResult<string> Post(string numIdentidad, int idSetDatos, int idCondicionDeParticipacion,int idEscuela, string areaConocimiento)
+        public System.Data.Objects.ObjectResult<Pr_Investigador_AgregarAProy_Result> Post(string numIdentidad, int idSetDatos, int idCondicionDeParticipacion,int idEscuela, string areaConocimiento)
         {
             using (VieEntidades entities = new VieEntidades())
             {

@@ -10,18 +10,15 @@
 namespace AccesoDatos
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class ODS
+    public partial class Pr_Investigador_AgregarAProy_Result
     {
-        public ODS()
-        {
-            this.ProyectoXODS = new HashSet<ProyectoXODS>();
-        }
-    
         public int Id { get; set; }
-        public string ODS1 { get; set; }
-    
-        public virtual ICollection<ProyectoXODS> ProyectoXODS { get; set; }
+        public string NumIdentidad { get; set; }
+        public int IdSetDatos { get; set; }
+        public int IdCondicionDeParticipacion { get; set; }
+        public int IdEscuela { get; set; }
+        public string AreaConocimiento { get; set; }
+        public bool EstaEliminado { get; set; }
     }
 }

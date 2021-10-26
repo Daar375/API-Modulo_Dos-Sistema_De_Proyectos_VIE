@@ -2334,7 +2334,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ODS1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ProyectoXODS" Relationship="Self.FK_ProyectoXODS_ODS" FromRole="ODS" ToRole="ProyectoXODS" />
-          <NavigationProperty Name="SubODS" Relationship="Self.FK_SubODS_ODS" FromRole="ODS" ToRole="SubODS" />
         </EntityType>
         <EntityType Name="Pais">
           <Key>
@@ -3858,7 +3857,7 @@
           <FunctionImport Name="Pr_Informe_SeleccionarXProyecto" ReturnType="Collection(Model.Pr_Informe_SeleccionarXProyecto_Result)">
             <Parameter Name="CodigoProyecto" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="Pr_Investigador_AgregarAProy" ReturnType="Collection(String)">
+          <FunctionImport Name="Pr_Investigador_AgregarAProy" ReturnType="Collection(Model.Pr_Investigador_AgregarAProy_Result)">
             <Parameter Name="NumIdentidad" Mode="In" Type="String" />
             <Parameter Name="IdSetDatos" Mode="In" Type="Int32" />
             <Parameter Name="IdCondicionDeParticipacion" Mode="In" Type="Int32" />
@@ -4261,6 +4260,15 @@
           <Property Type="Int32" Name="IdDocumento" Nullable="true" />
           <Property Type="String" Name="MemorandoDIP" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Observaciones" Nullable="false" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="Pr_Investigador_AgregarAProy_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="NumIdentidad" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="IdSetDatos" Nullable="false" />
+          <Property Type="Int32" Name="IdCondicionDeParticipacion" Nullable="false" />
+          <Property Type="Int32" Name="IdEscuela" Nullable="false" />
+          <Property Type="String" Name="AreaConocimiento" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="EstaEliminado" Nullable="false" />
         </ComplexType>
         <ComplexType Name="Pr_Investigador_AgregarHoras_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -5372,7 +5380,19 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Pr_Investigador_AgregarAProy" FunctionName="Model.Store.Pr_Investigador_AgregarAProy" />
+          <FunctionImportMapping FunctionImportName="Pr_Investigador_AgregarAProy" FunctionName="Model.Store.Pr_Investigador_AgregarAProy">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Pr_Investigador_AgregarAProy_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NumIdentidad" ColumnName="NumIdentidad" />
+                <ScalarProperty Name="IdSetDatos" ColumnName="IdSetDatos" />
+                <ScalarProperty Name="IdCondicionDeParticipacion" ColumnName="IdCondicionDeParticipacion" />
+                <ScalarProperty Name="IdEscuela" ColumnName="IdEscuela" />
+                <ScalarProperty Name="AreaConocimiento" ColumnName="AreaConocimiento" />
+                <ScalarProperty Name="EstaEliminado" ColumnName="EstaEliminado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Pr_Investigador_AgregarHoras" FunctionName="Model.Store.Pr_Investigador_AgregarHoras">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Model.Pr_Investigador_AgregarHoras_Result">

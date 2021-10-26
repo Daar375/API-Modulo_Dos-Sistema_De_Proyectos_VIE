@@ -268,7 +268,7 @@ namespace AccesoDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Informe_SeleccionarXProyecto_Result>("Pr_Informe_SeleccionarXProyecto", codigoProyectoParameter);
         }
     
-        public virtual ObjectResult<string> Pr_Investigador_AgregarAProy(string numIdentidad, Nullable<int> idSetDatos, Nullable<int> idCondicionDeParticipacion, Nullable<int> idEscuela, string areaConocimiento)
+        public virtual ObjectResult<Pr_Investigador_AgregarAProy_Result> Pr_Investigador_AgregarAProy(string numIdentidad, Nullable<int> idSetDatos, Nullable<int> idCondicionDeParticipacion, Nullable<int> idEscuela, string areaConocimiento)
         {
             var numIdentidadParameter = numIdentidad != null ?
                 new ObjectParameter("NumIdentidad", numIdentidad) :
@@ -290,7 +290,7 @@ namespace AccesoDatos
                 new ObjectParameter("AreaConocimiento", areaConocimiento) :
                 new ObjectParameter("AreaConocimiento", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("Pr_Investigador_AgregarAProy", numIdentidadParameter, idSetDatosParameter, idCondicionDeParticipacionParameter, idEscuelaParameter, areaConocimientoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Investigador_AgregarAProy_Result>("Pr_Investigador_AgregarAProy", numIdentidadParameter, idSetDatosParameter, idCondicionDeParticipacionParameter, idEscuelaParameter, areaConocimientoParameter);
         }
     
         public virtual ObjectResult<Pr_Investigador_AgregarHoras_Result> Pr_Investigador_AgregarHoras(Nullable<int> idEquipoDeTrabajo, Nullable<int> idTipoHora, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFinalizacion, Nullable<int> cantidadHoras)

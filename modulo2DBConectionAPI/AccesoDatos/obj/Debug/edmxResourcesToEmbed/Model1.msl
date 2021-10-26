@@ -690,7 +690,19 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="Pr_Investigador_AgregarAProy" FunctionName="Model.Store.Pr_Investigador_AgregarAProy" />
+    <FunctionImportMapping FunctionImportName="Pr_Investigador_AgregarAProy" FunctionName="Model.Store.Pr_Investigador_AgregarAProy">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Investigador_AgregarAProy_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NumIdentidad" ColumnName="NumIdentidad" />
+          <ScalarProperty Name="IdSetDatos" ColumnName="IdSetDatos" />
+          <ScalarProperty Name="IdCondicionDeParticipacion" ColumnName="IdCondicionDeParticipacion" />
+          <ScalarProperty Name="IdEscuela" ColumnName="IdEscuela" />
+          <ScalarProperty Name="AreaConocimiento" ColumnName="AreaConocimiento" />
+          <ScalarProperty Name="EstaEliminado" ColumnName="EstaEliminado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Pr_Investigador_AgregarHoras" FunctionName="Model.Store.Pr_Investigador_AgregarHoras">
       <ResultMapping>
         <ComplexTypeMapping TypeName="Model.Pr_Investigador_AgregarHoras_Result">

@@ -322,7 +322,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj">
-      <Project>{58faabe4-1f5e-4644-8a18-5f17aad02697}</Project>
+      <Project>{2e14e39f-1e42-4dae-9128-e94d4b0d3e85}</Project>
       <Name>AccesoDatos</Name>
     </ProjectReference>
   </ItemGroup>
