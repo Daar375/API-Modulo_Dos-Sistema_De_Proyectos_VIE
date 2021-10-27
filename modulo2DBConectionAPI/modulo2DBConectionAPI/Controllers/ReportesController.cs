@@ -112,7 +112,7 @@ namespace modulo2DBConectionAPI.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("DiscipliInvestigador/{numIdentidad}")]
         public List<Pr_Investigador_SelectDiscip_Result> DiscipliInvestigador(String numIdentidad)
         {
@@ -125,7 +125,7 @@ namespace modulo2DBConectionAPI.Controllers
         }
 
 
-        [HttpPost]
+        [HttpGet]
         [Route("EscuelaInvestigador/{numIdentidad}")]
         public List<Pr_Investigador_SelectEscuela_Result> EscuelaInvestigador(String numIdentidad)
         {
@@ -138,7 +138,7 @@ namespace modulo2DBConectionAPI.Controllers
         }
 
 
-        [HttpPost]
+        [HttpGet]
         [Route("IdiomasInvestigador/{numIdentidad}")]
         public List<Pr_Investigador_SelectIdiomas_Result> IdiomasInvestigador(String numIdentidad)
         {
