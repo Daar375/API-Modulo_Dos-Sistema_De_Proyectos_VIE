@@ -2463,9 +2463,9 @@
     <Property Type="String" Name="NombreOficial" Nullable="false" MaxLength="15" />
     <Property Type="String" Name="Apellido1Oficial" Nullable="false" MaxLength="15" />
     <Property Type="String" Name="Apellido2Oficial" Nullable="true" MaxLength="15" />
-    <Property Type="String" Name="NombreInvestigador" Nullable="false" MaxLength="15" />
-    <Property Type="String" Name="Apellido1Investigador" Nullable="false" MaxLength="15" />
-    <Property Type="String" Name="Apellido2Investigador" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="NombreCoordinador" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido1Coordinador" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Apellido2Coordinador" Nullable="true" MaxLength="15" />
   </ComplexType>
   <ComplexType Name="Pr_Proyecto_ReporteBeneficiaria_Result">
     <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
