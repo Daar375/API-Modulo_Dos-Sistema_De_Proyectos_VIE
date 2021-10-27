@@ -38,6 +38,21 @@ namespace modulo2DBConectionAPI.Controllers
             }
         }
         [HttpGet]
+        [Route("InvesBuscarCod/{numIdentidad}")]
+        public List<Pr_Investigador_BuscarPorCod_Result> InvesBuscarCod(string numIdentidad)
+        {
+            using (VieEntidades entities = new VieEntidades())
+            {
+                entities.Configuration.ProxyCreationEnabled = false;
+
+                return entities.Pr_Investigador_BuscarPorCod(numIdentidad).ToList();
+            }
+
+        }
+
+
+
+        [HttpGet]
         [Route("GetNombre/{nombre}")]
         public List<Pr_Investigador_Buscar_Result> Get(String nombre)
         {
@@ -148,13 +163,13 @@ namespace modulo2DBConectionAPI.Controllers
         }
         [HttpPost]
         [Route("ReporteBeneficiaria/{fechaRangoInicio}/{fechaRangoFinal}/{idDepartamento}/{idTipoDepartamento}/{estadoBusqueda}")]
-        public List<Pr_Proyecto_ReporteEscuelas_Result> ResporteEscuelas(System.DateTime fechaRangoInicio, System.DateTime fechaRangoFinal,int idDepartamento,int idTipoDepartamento, string estadoBusqueda)
+        public List<Pr_Proyecto_ReporteEscuelas_Result> ResporteEscuelas(System.DateTime fechaRangoInicio, System.DateTime fechaRangoFinal, int idDepartamento, int idTipoDepartamento, string estadoBusqueda)
         {
             using (VieEntidades entities = new VieEntidades())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
 
-                return entities.Pr_Proyecto_ReporteEscuelas(fechaRangoInicio,  fechaRangoFinal,  idDepartamento,  idTipoDepartamento,  estadoBusqueda).ToList();
+                return entities.Pr_Proyecto_ReporteEscuelas(fechaRangoInicio, fechaRangoFinal, idDepartamento, idTipoDepartamento, estadoBusqueda).ToList();
             }
         }
 
@@ -202,7 +217,7 @@ namespace modulo2DBConectionAPI.Controllers
             {
                 entities.Configuration.ProxyCreationEnabled = false;
 
-                return entities.Pr_Proyecto_ReportePresup(fechaRangoInicio,  fechaRangoFinal,  idDepartamento,  idTipoDepartamento,  estadoBusqueda).ToList();
+                return entities.Pr_Proyecto_ReportePresup(fechaRangoInicio, fechaRangoFinal, idDepartamento, idTipoDepartamento, estadoBusqueda).ToList();
             }
         }
 
@@ -226,7 +241,7 @@ namespace modulo2DBConectionAPI.Controllers
             {
                 entities.Configuration.ProxyCreationEnabled = false;
 
-                return entities.Pr_Proyecto_ReporteTipoProy( estadoBusqueda,  idTipoProyecto).ToList();
+                return entities.Pr_Proyecto_ReporteTipoProy(estadoBusqueda, idTipoProyecto).ToList();
             }
         }
 
@@ -303,5 +318,8 @@ namespace modulo2DBConectionAPI.Controllers
                 return entities.Pr_Investigador_SelectCoord().ToList();
             }
         }
+
+
+
     }
 }

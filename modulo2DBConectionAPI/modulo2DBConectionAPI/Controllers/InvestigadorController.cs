@@ -28,6 +28,9 @@ namespace modulo2DBConectionAPI.Controllers
             }
 
         }
+
+
+
         [HttpPost]
         public System.Data.Objects.ObjectResult<int?> Post(string codigo, string numIdentidad)
         {
@@ -40,6 +43,10 @@ namespace modulo2DBConectionAPI.Controllers
         }
 
 
+
+
+
+        
         [HttpPost]
         public System.Data.Objects.ObjectResult<Pr_Investigador_AgregarAProy_Result> Post(string numIdentidad, int idSetDatos, int idCondicionDeParticipacion,int idEscuela, string areaConocimiento)
         {
