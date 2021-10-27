@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "modulo2DBConectionAPI", "modulo2DBConectionAPI\modulo2DBConectionAPI.csproj", "{FF685172-408D-4184-9119-A0486E8DFB22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatos", "AccesoDatos\AccesoDatos.csproj", "{B142B469-29B5-49BA-8C01-8072CF6C8EBA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatos", "AccesoDatos\AccesoDatos.csproj", "{0656EF66-1C68-405C-92B8-3FC1CB705961}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{FF685172-408D-4184-9119-A0486E8DFB22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF685172-408D-4184-9119-A0486E8DFB22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF685172-408D-4184-9119-A0486E8DFB22}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B142B469-29B5-49BA-8C01-8072CF6C8EBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B142B469-29B5-49BA-8C01-8072CF6C8EBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B142B469-29B5-49BA-8C01-8072CF6C8EBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B142B469-29B5-49BA-8C01-8072CF6C8EBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0656EF66-1C68-405C-92B8-3FC1CB705961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0656EF66-1C68-405C-92B8-3FC1CB705961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0656EF66-1C68-405C-92B8-3FC1CB705961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0656EF66-1C68-405C-92B8-3FC1CB705961}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

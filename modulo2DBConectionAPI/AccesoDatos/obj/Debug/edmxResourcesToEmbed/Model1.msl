@@ -1079,9 +1079,9 @@
           <ScalarProperty Name="NombreOficial" ColumnName="NombreOficial" />
           <ScalarProperty Name="Apellido1Oficial" ColumnName="Apellido1Oficial" />
           <ScalarProperty Name="Apellido2Oficial" ColumnName="Apellido2Oficial" />
-          <ScalarProperty Name="NombreInvestigador" ColumnName="NombreInvestigador" />
-          <ScalarProperty Name="Apellido1Investigador" ColumnName="Apellido1Investigador" />
-          <ScalarProperty Name="Apellido2Investigador" ColumnName="Apellido2Investigador" />
+          <ScalarProperty Name="NombreCoordinador" ColumnName="NombreCoordinador" />
+          <ScalarProperty Name="Apellido1Coordinador" ColumnName="Apellido1Coordinador" />
+          <ScalarProperty Name="Apellido2Coordinador" ColumnName="Apellido2Coordinador" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
