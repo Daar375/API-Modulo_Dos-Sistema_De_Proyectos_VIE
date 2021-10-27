@@ -162,7 +162,7 @@ namespace modulo2DBConectionAPI.Controllers
             }
         }
         [HttpPost]
-        [Route("ReporteBeneficiaria/{fechaRangoInicio}/{fechaRangoFinal}/{idDepartamento}/{idTipoDepartamento}/{estadoBusqueda}")]
+        [Route("ReporteCantidadEscuela/{fechaRangoInicio}/{fechaRangoFinal}/{idDepartamento}/{idTipoDepartamento}/{estadoBusqueda}")]
         public List<Pr_Proyecto_ReporteEscuelas_Result> ResporteEscuelas(System.DateTime fechaRangoInicio, System.DateTime fechaRangoFinal, int idDepartamento, int idTipoDepartamento, string estadoBusqueda)
         {
             using (VieEntidades entities = new VieEntidades())
