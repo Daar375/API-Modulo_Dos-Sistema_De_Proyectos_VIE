@@ -680,19 +680,6 @@ namespace AccesoDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Pr_Proyecto_AmpliarFecha", fechaAprobacionParameter, nuevaFechaFinalizacionParameter, viejaFechaFinalizacionParameter, observacionesParameter, codigoParameter);
         }
     
-        public virtual ObjectResult<Pr_Proyecto_Buscar_Result> Pr_Proyecto_Buscar(string criterioBusqueda, string parametro)
-        {
-            var criterioBusquedaParameter = criterioBusqueda != null ?
-                new ObjectParameter("CriterioBusqueda", criterioBusqueda) :
-                new ObjectParameter("CriterioBusqueda", typeof(string));
-    
-            var parametroParameter = parametro != null ?
-                new ObjectParameter("Parametro", parametro) :
-                new ObjectParameter("Parametro", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Proyecto_Buscar_Result>("Pr_Proyecto_Buscar", criterioBusquedaParameter, parametroParameter);
-        }
-    
         public virtual ObjectResult<Nullable<int>> Pr_Proyecto_CambiarInvCoord(string codigo, string numIdentidad)
         {
             var codigoParameter = codigo != null ?
@@ -1351,6 +1338,19 @@ namespace AccesoDatos
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual ObjectResult<Pr_Proyecto_Buscar_Result> Pr_Proyecto_Buscar(string criterioBusqueda, string parametro)
+        {
+            var criterioBusquedaParameter = criterioBusqueda != null ?
+                new ObjectParameter("CriterioBusqueda", criterioBusqueda) :
+                new ObjectParameter("CriterioBusqueda", typeof(string));
+    
+            var parametroParameter = parametro != null ?
+                new ObjectParameter("Parametro", parametro) :
+                new ObjectParameter("Parametro", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pr_Proyecto_Buscar_Result>("Pr_Proyecto_Buscar", criterioBusquedaParameter, parametroParameter);
         }
     }
 }

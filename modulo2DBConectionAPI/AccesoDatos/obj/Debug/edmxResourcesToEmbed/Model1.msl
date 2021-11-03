@@ -975,22 +975,6 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Pr_Proyecto_AmpliarFecha" FunctionName="Model.Store.Pr_Proyecto_AmpliarFecha" />
-    <FunctionImportMapping FunctionImportName="Pr_Proyecto_Buscar" FunctionName="Model.Store.Pr_Proyecto_Buscar">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="Model.Pr_Proyecto_Buscar_Result">
-          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-          <ScalarProperty Name="NombreDelProyecto" ColumnName="NombreDelProyecto" />
-          <ScalarProperty Name="FechaInicioEjecucion" ColumnName="FechaInicioEjecucion" />
-          <ScalarProperty Name="FechaFinEjecucion" ColumnName="FechaFinEjecucion" />
-          <ScalarProperty Name="NombreOficial" ColumnName="NombreOficial" />
-          <ScalarProperty Name="Apellido1Oficial" ColumnName="Apellido1Oficial" />
-          <ScalarProperty Name="Apellido2Oficial" ColumnName="Apellido2Oficial" />
-          <ScalarProperty Name="NombreInvestigador" ColumnName="NombreInvestigador" />
-          <ScalarProperty Name="Apellido1Investigador" ColumnName="Apellido1Investigador" />
-          <ScalarProperty Name="Apellido2Investigador" ColumnName="Apellido2Investigador" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Pr_Proyecto_CambiarInvCoord" FunctionName="Model.Store.Pr_Proyecto_CambiarInvCoord" />
     <FunctionImportMapping FunctionImportName="Pr_Proyecto_Consultar" FunctionName="Model.Store.Pr_Proyecto_Consultar">
       <ResultMapping>
@@ -1356,5 +1340,21 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Model.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Model.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="Pr_Proyecto_Buscar" FunctionName="Model.Store.Pr_Proyecto_Buscar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Pr_Proyecto_Buscar_Result">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="NombreDelProyecto" ColumnName="NombreDelProyecto" />
+          <ScalarProperty Name="FechaInicioEjecucion" ColumnName="FechaInicioEjecucion" />
+          <ScalarProperty Name="FechaFinEjecucion" ColumnName="FechaFinEjecucion" />
+          <ScalarProperty Name="NombreOficial" ColumnName="NombreOficial" />
+          <ScalarProperty Name="Apellido1Oficial" ColumnName="Apellido1Oficial" />
+          <ScalarProperty Name="Apellido2Oficial" ColumnName="Apellido2Oficial" />
+          <ScalarProperty Name="NombreCoordinador" ColumnName="NombreCoordinador" />
+          <ScalarProperty Name="Apellido1Coordinador" ColumnName="Apellido1Coordinador" />
+          <ScalarProperty Name="Apellido2Coordinador" ColumnName="Apellido2Coordinador" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

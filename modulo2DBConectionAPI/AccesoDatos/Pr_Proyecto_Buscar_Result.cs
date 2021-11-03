@@ -20,8 +20,8 @@ namespace AccesoDatos
         public string NombreOficial { get; set; }
         public string Apellido1Oficial { get; set; }
         public string Apellido2Oficial { get; set; }
-        public string NombreInvestigador { get; set; }
-        public string Apellido1Investigador { get; set; }
-        public string Apellido2Investigador { get; set; }
+        public string NombreCoordinador { get; set; }
+        public string Apellido1Coordinador { get; set; }
+        public string Apellido2Coordinador { get; set; }
     }
 }

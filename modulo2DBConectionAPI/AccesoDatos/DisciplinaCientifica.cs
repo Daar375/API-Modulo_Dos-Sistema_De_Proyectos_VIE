@@ -17,13 +17,11 @@ namespace AccesoDatos
         public DisciplinaCientifica()
         {
             this.InvestigadorXSubdisciplina = new HashSet<InvestigadorXSubdisciplina>();
-            this.Subdisciplina = new HashSet<Subdisciplina>();
         }
     
         public int Id { get; set; }
         public string DisciplinaCientifica1 { get; set; }
     
         public virtual ICollection<InvestigadorXSubdisciplina> InvestigadorXSubdisciplina { get; set; }
-        public virtual ICollection<Subdisciplina> Subdisciplina { get; set; }
     }
 }
